@@ -1,0 +1,27 @@
+[gd_scene load_steps=4 format=3 uid="uid://b865bu8xw64sy"]
+
+[ext_resource type="PackedScene" uid="uid://2odic1m47nva" path="res://Scenes/wall.tscn" id="1_5a7ea"]
+[ext_resource type="PackedScene" uid="uid://dn2dpf0haseiq" path="res://Scenes/character2D.tscn" id="2_8j60k"]
+[ext_resource type="PackedScene" uid="uid://t7ktbcl5debv" path="res://Scenes/WeaponPickup.tscn" id="3_fo5ed"]
+
+[node name="world" type="Node2D"]
+
+[node name="sciana" parent="." instance=ExtResource("1_5a7ea")]
+position = Vector2(1546, 251)
+collision_mask = 5
+
+[node name="sciana2" parent="." instance=ExtResource("1_5a7ea")]
+position = Vector2(1263, 830)
+collision_mask = 5
+
+[node name="CharacterBody2D" parent="." instance=ExtResource("2_8j60k")]
+position = Vector2(367, 423)
+
+[node name="WeaponPickup" parent="." instance=ExtResource("3_fo5ed")]
+position = Vector2(566, 774)
+
+[node name="WeaponPickup2" parent="." instance=ExtResource("3_fo5ed")]
+position = Vector2(958, 269)
+
+[node name="WeaponPickup3" parent="." instance=ExtResource("3_fo5ed")]
+position = Vector2(1499, 813)
