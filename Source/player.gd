@@ -3,8 +3,8 @@ extends CharacterBody2D
 @export var speed: float = 700
 @export var camera_speed: float =4
 var current_weapon: Node = null
-var camera_direction: Vector2 =Vector2.ZERO
-var camera_offset_limit: float =0.5
+var camera_direction: Vector2 = Vector2.ZERO
+var camera_offset_limit: float = 0.5
 
 func _physics_process(delta):
 	var input_dir = Vector2.ZERO
