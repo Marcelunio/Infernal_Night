@@ -1,19 +1,62 @@
-[gd_scene load_steps=4 format=3 uid="uid://dn2dpf0haseiq"]
+[gd_scene load_steps=9 format=3 uid="uid://dn2dpf0haseiq"]
 
 [ext_resource type="Script" uid="uid://c705e1fe7v6id" path="res://Source/player.gd" id="1_2cyhl"]
-[ext_resource type="Texture2D" uid="uid://bueu1fbuarpxm" path="res://Assets/playerTEMP.png" id="2_eaijf"]
+[ext_resource type="Texture2D" uid="uid://dh43mit11c2u4" path="res://Assets/Player/ziutek.png" id="2_q2x60"]
 
-[sub_resource type="CircleShape2D" id="CircleShape2D_2cyhl"]
-radius = 50.24938
+[sub_resource type="CircleShape2D" id="CircleShape2D_q2x60"]
+radius = 22.84
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_penu4"]
+atlas = ExtResource("2_q2x60")
+region = Rect2(0, 0, 43, 21)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_fnj8c"]
+atlas = ExtResource("2_q2x60")
+region = Rect2(43, 0, 43, 21)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_w1jjy"]
+atlas = ExtResource("2_q2x60")
+region = Rect2(86, 0, 43, 21)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ulbab"]
+atlas = ExtResource("2_q2x60")
+region = Rect2(129, 0, 43, 21)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_dd3p8"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_penu4")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_fnj8c")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_w1jjy")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ulbab")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
 
 [node name="CharacterBody2D" type="CharacterBody2D" groups=["player"]]
-position = Vector2(624, 347)
+position = Vector2(649, 388)
 collision_mask = 18
 script = ExtResource("1_2cyhl")
 metadata/_edit_group_ = true
 
-[node name="Sprite2D" type="Sprite2D" parent="."]
-texture = ExtResource("2_eaijf")
-
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-shape = SubResource("CircleShape2D_2cyhl")
+shape = SubResource("CircleShape2D_q2x60")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+z_index = 1
+scale = Vector2(2.1904776, 2.1904774)
+sprite_frames = SubResource("SpriteFrames_dd3p8")
+frame = 2
+frame_progress = 0.20617694
+
+[node name="Camera2D" type="Camera2D" parent="."]
+position_smoothing_enabled = true

@@ -1,7 +1,7 @@
 [gd_scene load_steps=5 format=3 uid="uid://t7ktbcl5debv"]
 
 [ext_resource type="Script" uid="uid://1sve1s3by3ie" path="res://Source/WeaponPickup.gd" id="1_osvus"]
-[ext_resource type="Texture2D" uid="uid://cjca5o08q75c7" path="res://Assets/gun.png" id="2_kfb1x"]
+[ext_resource type="Texture2D" uid="uid://cjca5o08q75c7" path="res://Assets/Guns/gun.png" id="2_kfb1x"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_gn8yl"]
 size = Vector2(50, 25)

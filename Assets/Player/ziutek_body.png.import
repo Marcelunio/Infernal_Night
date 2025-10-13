@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bueu1fbuarpxm"
-path="res://.godot/imported/playerTEMP.png-11d5e089bf3435a7d4e0868bcb1858d8.ctex"
+uid="uid://dcxn4iubbj3xg"
+path="res://.godot/imported/ziutek_body.png-f46cdd38c9e038913e6c73e5b1cfabf5.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/playerTEMP.png"
-dest_files=["res://.godot/imported/playerTEMP.png-11d5e089bf3435a7d4e0868bcb1858d8.ctex"]
+source_file="res://Assets/Player/ziutek_body.png"
+dest_files=["res://.godot/imported/ziutek_body.png-f46cdd38c9e038913e6c73e5b1cfabf5.ctex"]
 
 [params]
 

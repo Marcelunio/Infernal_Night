@@ -47,7 +47,6 @@ func _on_body_entered(body):
 		hide()
 		set_collision_layer_value(1, false)
 		set_collision_mask_value(1, false)
-		
 		# Przenieś broń jako dziecko gracza
 		var parent = get_parent()
 		parent.remove_child(self)

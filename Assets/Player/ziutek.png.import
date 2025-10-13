@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://fd0nh1kau1m7"
-path="res://.godot/imported/bullet.png-4c3a60f3b94fcc693bdb889fe34d5669.ctex"
+uid="uid://dh43mit11c2u4"
+path="res://.godot/imported/ziutek.png-d227e422718344e7b154c450e1a1570c.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/bullet.png"
-dest_files=["res://.godot/imported/bullet.png-4c3a60f3b94fcc693bdb889fe34d5669.ctex"]
+source_file="res://Assets/Player/ziutek.png"
+dest_files=["res://.godot/imported/ziutek.png-d227e422718344e7b154c450e1a1570c.ctex"]
 
 [params]
 
