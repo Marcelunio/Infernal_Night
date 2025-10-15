@@ -10,8 +10,6 @@ size = Vector2(50, 25)
 size = Vector2(50, 26)
 
 [node name="WeaponPickup" type="RigidBody2D"]
-collision_layer = 4
-collision_mask = 2
 gravity_scale = 0.0
 linear_damp = 1.065
 script = ExtResource("1_osvus")
