@@ -6,11 +6,11 @@
 
 [node name="world" type="Node2D"]
 
-[node name="sciana" parent="." instance=ExtResource("1_5a7ea")]
+[node name="Wall1" parent="." instance=ExtResource("1_5a7ea")]
 position = Vector2(1546, 251)
 collision_mask = 5
 
-[node name="sciana2" parent="." instance=ExtResource("1_5a7ea")]
+[node name="Wall2" parent="." instance=ExtResource("1_5a7ea")]
 position = Vector2(1263, 830)
 collision_mask = 5
 

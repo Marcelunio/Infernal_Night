@@ -17,7 +17,7 @@ func _physics_process(delta):
 	rotation = direction.angle() - deg_to_rad(90)
 
 func _on_body_entered(body):
-	print("Pocisk trafił:", body.name)
+	print("Pocisk trafił:", body) #body.name
 	
 	if body == shooter:
 		return

@@ -49,8 +49,8 @@ func _on_body_entered(body):
 		set_collision_mask_value(1, false)
 		# Przenieś broń jako dziecko gracza
 		var parent = get_parent()
-		parent.remove_child(self)
-		body.add_child(self)
+		parent.call_deferred("remove_child", self)
+		body.call_deferred("add_child", self)
 		
 		# Ustaw pozycję lokalną na (0,0)
 		position = Vector2.ZERO
