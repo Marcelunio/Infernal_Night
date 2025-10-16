@@ -2,6 +2,7 @@ extends RigidBody2D
 
 @export var weapon_name: String = "Pistol"
 @export var throw_force: float = 1000
+var player_velocity_to_throw_force:float =0.6
 var is_picked_up: bool = false
 
 #do fizyki rzucania bronia
@@ -74,12 +75,10 @@ func throw(spawn_pos: Vector2, velocity_player):
 	show()
 	
 	var throw_direction = Vector2.RIGHT.rotated(player.rotation - deg_to_rad(90))
-	var total_force = velocity_player + throw_force
 	
 	#freeze = false #wlacza fizyke
 	is_thrown = true
-	apply_impulse(throw_direction * total_force)
-	
+	apply_impulse(throw_direction * throw_force + velocity_player*player_velocity_to_throw_force)
 func shoot(spawn_pos: Vector2, player):
 	print("DEBUG - oddano strzal")
 	var bullet = preload("res://Scenes/bullet.tscn").instantiate()

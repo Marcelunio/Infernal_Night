@@ -40,7 +40,7 @@ func _physics_process(delta):
 	
 	if Input.is_action_just_pressed("throw"):
 		if current_weapon != null:
-			current_weapon.throw(global_position, velocity.length())
+			current_weapon.throw(global_position, velocity)
 			current_weapon = null
 		else:
 			print("Nie masz broni do wyrzucenia")
