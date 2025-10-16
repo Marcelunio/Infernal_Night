@@ -1,7 +1,7 @@
 [gd_scene load_steps=9 format=3 uid="uid://dn2dpf0haseiq"]
 
-[ext_resource type="Script" uid="uid://c705e1fe7v6id" path="res://Source/player.gd" id="1_2cyhl"]
-[ext_resource type="Texture2D" uid="uid://dh43mit11c2u4" path="res://Assets/Player/ziutek.png" id="2_q2x60"]
+[ext_resource type="Script" uid="uid://c705e1fe7v6id" path="res://Source/Player.gd" id="1_2cyhl"]
+[ext_resource type="Texture2D" uid="uid://dh43mit11c2u4" path="res://Assets/Player/Ziutek.png" id="2_q2x60"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_q2x60"]
 radius = 22.84
@@ -42,20 +42,20 @@ animations = [{
 "speed": 5.0
 }]
 
-[node name="CharacterBody2D" type="CharacterBody2D" groups=["player"]]
+[node name="Player" type="CharacterBody2D" groups=["player"]]
 collision_mask = 60
 script = ExtResource("1_2cyhl")
 metadata/_edit_group_ = true
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+[node name="PlayerCollision" type="CollisionShape2D" parent="."]
 shape = SubResource("CircleShape2D_q2x60")
 
-[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+[node name="PlayerSprites" type="AnimatedSprite2D" parent="."]
 z_index = 1
 scale = Vector2(2.1904776, 2.1904774)
 sprite_frames = SubResource("SpriteFrames_dd3p8")
 frame = 2
 frame_progress = 0.20617694
 
-[node name="Camera2D" type="Camera2D" parent="."]
+[node name="Camera" type="Camera2D" parent="."]
 position_smoothing_enabled = true

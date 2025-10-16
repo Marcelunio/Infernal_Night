@@ -1,7 +1,7 @@
 [gd_scene load_steps=5 format=3 uid="uid://t7ktbcl5debv"]
 
 [ext_resource type="Script" uid="uid://1sve1s3by3ie" path="res://Source/WeaponPickup.gd" id="1_osvus"]
-[ext_resource type="Texture2D" uid="uid://bg7f0syedwukm" path="res://Assets/test/gun.png" id="2_phod8"]
+[ext_resource type="Texture2D" uid="uid://bg7f0syedwukm" path="res://Assets/test/Gun.png" id="2_phod8"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_phod8"]
 size = Vector2(32, 22)
@@ -16,15 +16,15 @@ gravity_scale = 0.0
 linear_damp = 1.065
 script = ExtResource("1_osvus")
 
-[node name="Sprite2D" type="Sprite2D" parent="."]
+[node name="WeaponSprite" type="Sprite2D" parent="."]
 texture = ExtResource("2_phod8")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+[node name="WeaponCollsion" type="CollisionShape2D" parent="."]
 shape = SubResource("RectangleShape2D_phod8")
 
-[node name="Area2D" type="Area2D" parent="."]
+[node name="WeaponArea" type="Area2D" parent="."]
 collision_layer = 4
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+[node name="WeaponAreaShape" type="CollisionShape2D" parent="WeaponArea"]
 shape = SubResource("RectangleShape2D_osvus")
 debug_color = Color(0.89498323, 0.2559664, 0.4939599, 0.41960785)

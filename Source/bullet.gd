@@ -17,15 +17,14 @@ func _physics_process(delta):
 	rotation = direction.angle() - deg_to_rad(90)
 
 func _on_body_entered(body):
-	print("Pocisk trafił:", body) #body.name
-	
 	if body == shooter:
 		return
 	
+	print("Pocisk trafił: ", body)
+	
 	if body.is_in_group("enemy"):
 		print("Trafiony przeciwnik!")
-		
-	if body.is_in_group("wall"):
-		print("trafiono sciane")
-		
+	
+	if body.name == "Layout":
+		print("Trafiono element layout'u!")
 	queue_free()

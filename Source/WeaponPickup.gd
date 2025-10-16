@@ -13,7 +13,7 @@ var bullet_speed: float = 1500
 
 func _ready():
 	print("Ready wywołane!")
-	var area = get_node("Area2D")
+	var area = get_node("WeaponArea")
 	print("Area znalezione:", area)
 	area.connect("body_entered", Callable(self, "_on_body_entered"))
 	print("Sygnał podłączony!")
@@ -35,12 +35,12 @@ func _on_body_entered(body):
 	if is_picked_up or is_thrown:
 		return
 		
-	if body.is_in_group("player"):
+	if body.name == "Player":
 		if body.get_player_occupied():
 			return
 			
 		is_picked_up = true
-		print("Podniosłeś:", weapon_name)
+		print("Podniosłeś: ", weapon_name)
 		
 		#freeze = true #wylacza fizyke
 		
@@ -60,7 +60,7 @@ func _on_body_entered(body):
 		body.current_weapon = self
 
 func throw(spawn_pos: Vector2, velocity_player):
-	print("Broń wyrzucona:", weapon_name)
+	print("Broń wyrzucona: ", weapon_name)
 	is_picked_up = false
 	
 	# Usuń z gracza i dodaj z powrotem do sceny

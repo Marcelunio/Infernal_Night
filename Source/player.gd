@@ -19,9 +19,9 @@ func _physics_process(delta):
 	
 	if input_dir != Vector2.ZERO:
 		input_dir = input_dir.normalized()
-		$AnimatedSprite2D.play()
+		$PlayerSprites.play()
 	else:
-		$AnimatedSprite2D.stop()
+		$PlayerSprites.stop()
 	
 	velocity = input_dir * speed
 	move_and_slide()
@@ -48,11 +48,11 @@ func _physics_process(delta):
 	
 	
 	if  Input.is_action_pressed("control_camera"):
-		camera_direction=lerp(camera_direction,(direction-$Camera2D.get_offset())*camera_offset_limit*$Camera2D.zoom,camera_speed*delta)
-		$Camera2D.set_offset(camera_direction)
+		camera_direction=lerp(camera_direction,(direction-$Camera.get_offset())*camera_offset_limit*$Camera.zoom,camera_speed*delta)
+		$Camera.set_offset(camera_direction)
 	else:
 		camera_direction=lerp(camera_direction,Vector2.ZERO,camera_speed*delta)
-		$Camera2D.set_offset(camera_direction)
+		$Camera.set_offset(camera_direction)
 func get_player_occupied():
 	if current_weapon != null:
 		return true
