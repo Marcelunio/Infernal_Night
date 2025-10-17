@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dh43mit11c2u4"
-path="res://.godot/imported/Ziutek.png-b24fb8d095e7b8d3f7bc526f298e2d80.ctex"
+uid="uid://cd1vfy3t68rwr"
+path="res://.godot/imported/player_sprites.png-00d681b4c570ae9c8ddbc2789fd60c46.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/Player/Ziutek.png"
-dest_files=["res://.godot/imported/Ziutek.png-b24fb8d095e7b8d3f7bc526f298e2d80.ctex"]
+source_file="res://Assets/Player/player_sprites.png"
+dest_files=["res://.godot/imported/player_sprites.png-00d681b4c570ae9c8ddbc2789fd60c46.ctex"]
 
 [params]
 
