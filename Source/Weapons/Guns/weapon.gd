@@ -3,12 +3,16 @@ class_name Weapon
 extends RigidBody2D
 
 @export var weapon_name: String = "Pistol"
+@onready var sprite_node = $"WeaponSprite"
+var sprite: Texture2D
+
 var throw_force: float = 1000
 var player_velocity_to_throw_force: float =0.6
 var is_picked_up: bool = false
 var weapon_delay: float = 0.2
 var is_thrown: bool = false
-
+var max_ammo: int
+var current_ammo: int 
 var bullet_speed: float = 1500
 
 var timer: Timer
@@ -18,7 +22,7 @@ func _ready():
 	var area = get_node("WeaponArea")
 	area.connect("body_entered", Callable(self, "_on_body_entered"))
 	
-	
+	sprite = sprite_node.texture
 	#~~Kleks 19.10.2025
 	#Timer strzalu
 	timer = Timer.new()
@@ -91,9 +95,11 @@ func shoot(spawn_pos: Vector2, player):
 	if !(timer.is_stopped()):
 		return
 		
+	if current_ammo <= 0:
+		print("dzwiek pustego magazynka XD")
+		return
+		
 	timer.start()
 	__shoot(spawn_pos,player)
 	
-
-	
-	#apply_impulse(shoot_direction * bullet_speed)
+	current_ammo -= 1

@@ -1,6 +1,10 @@
 extends Weapon
 
-		
+func _ready():
+	super._ready()
+	max_ammo = 17
+	current_ammo =  17
+
 func __shoot(spawn_pos: Vector2, player):
 	
 	

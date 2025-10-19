@@ -10,6 +10,8 @@ func _ready():
 	weapon_delay = 0.1
 	super._ready()
 	throw_force = 900
+	max_ammo = 30
+	current_ammo = 30  
 
 func __shoot(spawn_pos: Vector2, player):
 	
