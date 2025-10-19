@@ -1,10 +1,10 @@
 [gd_scene load_steps=8 format=3 uid="uid://dn2dpf0haseiq"]
 
-[ext_resource type="Script" uid="uid://c705e1fe7v6id" path="res://Source/player.gd" id="1_2cyhl"]
+[ext_resource type="Script" uid="uid://c705e1fe7v6id" path="res://Source/Entities/player.gd" id="1_2cyhl"]
 [ext_resource type="Texture2D" uid="uid://cqx0ab10hyexx" path="res://Assets/Test/player_sprites.png" id="2_kyqiw"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_q2x60"]
-radius = 22.84
+radius = 30.016663
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_gntrk"]
 atlas = ExtResource("2_kyqiw")
@@ -40,7 +40,7 @@ collision_mask = 60
 script = ExtResource("1_2cyhl")
 metadata/_edit_group_ = true
 
-[node name="PlayerCollision" type="CollisionShape2D" parent="."]
+[node name="PlayerCollision" type="CollisionShape2D" parent="." groups=["player"]]
 shape = SubResource("CircleShape2D_q2x60")
 
 [node name="PlayerSprites" type="AnimatedSprite2D" parent="."]

@@ -31,12 +31,17 @@ func _physics_process(delta):
 	rotation = direction.angle() + 0.5*PI
 	
 	# Strzały
-	if Input.is_action_just_pressed("shoot"):
-		if current_weapon != null:
-			print("Bang!", current_weapon.weapon_name)
-			current_weapon.shoot(global_position, self)
+	#~~Kleks dodalem mozliwosc przytrzymania przycisku dla broni maszynowych
+	if current_weapon != null:
+		if current_weapon.is_in_group("weapon-machineGuns"):
+			if Input.is_action_pressed("shoot"):
+				current_weapon.shoot(global_position, self)
+			else:
+				current_weapon.spread_normalize()
 		else:
-			print("Nie masz broni")
+			if Input.is_action_just_pressed("shoot"):
+				current_weapon.shoot(global_position, self)	
+			
 	
 	if Input.is_action_just_pressed("throw"):
 		if current_weapon != null:
@@ -53,6 +58,7 @@ func _physics_process(delta):
 	else:
 		camera_direction=lerp(camera_direction,Vector2.ZERO,camera_speed*delta)
 		$Camera.set_offset(camera_direction)
+		
 func get_player_occupied():
 	if current_weapon != null:
 		return true

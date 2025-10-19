@@ -1,0 +1,31 @@
+[gd_scene load_steps=5 format=3 uid="uid://t7ktbcl5debv"]
+
+[ext_resource type="Script" uid="uid://bllmlfn3uam3l" path="res://Source/Weapons/Guns/weapon_pickup_pistol.gd" id="1_acthv"]
+[ext_resource type="Texture2D" uid="uid://bg7f0syedwukm" path="res://Assets/Test/gun.png" id="2_phod8"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_phod8"]
+size = Vector2(32, 22)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_osvus"]
+size = Vector2(36, 26)
+
+[node name="WeaponPickup-pistol" type="RigidBody2D" groups=["weapon-pistols"]]
+collision_layer = 2
+collision_mask = 16
+gravity_scale = 0.0
+linear_damp = 1.065
+script = ExtResource("1_acthv")
+metadata/_edit_group_ = true
+
+[node name="WeaponSprite-pistol" type="Sprite2D" parent="."]
+texture = ExtResource("2_phod8")
+
+[node name="WeaponCollsion-pistol" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_phod8")
+
+[node name="WeaponArea-pistol" type="Area2D" parent="."]
+collision_layer = 4
+
+[node name="WeaponAreaShape-pistol" type="CollisionShape2D" parent="WeaponArea-pistol"]
+shape = SubResource("RectangleShape2D_osvus")
+debug_color = Color(0.89498323, 0.2559664, 0.4939599, 0.41960785)

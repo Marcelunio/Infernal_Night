@@ -27,6 +27,11 @@ project/assembly_name="002-awsd"
 
 player=""
 wall=""
+enemy=""
+weapon-white=""
+weapon-pistols=""
+weapon-shotguns=""
+weapon-machineGuns=""
 
 [input]
 

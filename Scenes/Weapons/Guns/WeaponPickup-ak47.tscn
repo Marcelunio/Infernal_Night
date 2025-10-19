@@ -1,0 +1,33 @@
+[gd_scene load_steps=5 format=3 uid="uid://kv6ej6j01fux"]
+
+[ext_resource type="Script" uid="uid://bq7kqwkkvrxt4" path="res://Source/Weapons/Guns/weapon_pickup_ak_47.gd" id="1_k27v1"]
+[ext_resource type="Texture2D" uid="uid://d4nwu8fhji2yb" path="res://Assets/Guns/ak47.png" id="2_k27v1"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_phod8"]
+size = Vector2(92, 26)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_osvus"]
+size = Vector2(92, 26)
+
+[node name="WeaponPickup-ak47" type="RigidBody2D" groups=["weapon-machineGuns"]]
+collision_layer = 2
+collision_mask = 16
+gravity_scale = 0.0
+linear_damp = 1.065
+script = ExtResource("1_k27v1")
+metadata/_edit_group_ = true
+
+[node name="WeaponSprite-ak47" type="Sprite2D" parent="."]
+texture = ExtResource("2_k27v1")
+
+[node name="WeaponCollsion-ak47" type="CollisionShape2D" parent="."]
+position = Vector2(-2, 5)
+shape = SubResource("RectangleShape2D_phod8")
+
+[node name="WeaponArea-ak47" type="Area2D" parent="."]
+collision_layer = 4
+
+[node name="WeaponAreaShape-ak47" type="CollisionShape2D" parent="WeaponArea-ak47"]
+position = Vector2(-2, 5)
+shape = SubResource("RectangleShape2D_osvus")
+debug_color = Color(0.89498323, 0.2559664, 0.4939599, 0.41960785)
