@@ -2,7 +2,7 @@
 
 [ext_resource type="TileSet" uid="uid://dwjq33gve6fks" path="res://TileSets/BaseTileset.tres" id="1_tmj4w"]
 [ext_resource type="Script" uid="uid://bgy071o5jbwec" path="res://Source/Rooms/Doors.gd" id="2_088d3"]
-[ext_resource type="PackedScene" uid="uid://t7ktbcl5debv" path="res://Scenes/Weapons/Guns/WeaponPickup-pistol.tscn" id="3_pusqd"]
+[ext_resource type="PackedScene" uid="uid://t7ktbcl5debv" path="res://Scenes/Weapons/Guns/WeaponPistol.tscn" id="3_pusqd"]
 [ext_resource type="PackedScene" uid="uid://dn2dpf0haseiq" path="res://Scenes/Entities/Player.tscn" id="4_4hfos"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_3xonv"]

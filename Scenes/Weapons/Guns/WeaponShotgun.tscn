@@ -1,6 +1,6 @@
 [gd_scene load_steps=5 format=3 uid="uid://do67sjc1c7h8g"]
 
-[ext_resource type="Script" uid="uid://1vqkoax4on8c" path="res://Source/Weapons/Guns/weapon_pickup_shotgun.gd" id="1_83s6p"]
+[ext_resource type="Script" uid="uid://1vqkoax4on8c" path="res://Source/Weapons/Guns/weapon_shotgun.gd" id="1_83s6p"]
 [ext_resource type="Texture2D" uid="uid://cl3g6qrrpsm3s" path="res://Assets/Guns/shotgun.png" id="2_83s6p"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_phod8"]
@@ -9,7 +9,7 @@ size = Vector2(66, 18)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_osvus"]
 size = Vector2(66, 18)
 
-[node name="WeaponPickup-shotgun" type="RigidBody2D" groups=["weapon-shotguns"]]
+[node name="WeaponShotgun" type="RigidBody2D" groups=["weapon-shotguns"]]
 collision_layer = 2
 collision_mask = 16
 gravity_scale = 0.0
@@ -17,17 +17,17 @@ linear_damp = 1.065
 script = ExtResource("1_83s6p")
 metadata/_edit_group_ = true
 
-[node name="WeaponSprite-shotgun" type="Sprite2D" parent="."]
+[node name="WeaponSprite" type="Sprite2D" parent="."]
 texture = ExtResource("2_83s6p")
 
-[node name="WeaponCollsion-shotgun" type="CollisionShape2D" parent="."]
+[node name="WeaponCollsion" type="CollisionShape2D" parent="."]
 position = Vector2(-15, 0)
 shape = SubResource("RectangleShape2D_phod8")
 
-[node name="WeaponArea-shotgun" type="Area2D" parent="."]
+[node name="WeaponArea" type="Area2D" parent="."]
 collision_layer = 4
 
-[node name="WeaponAreaShape-shotgun" type="CollisionShape2D" parent="WeaponArea-shotgun"]
+[node name="WeaponAreaShape" type="CollisionShape2D" parent="WeaponArea"]
 position = Vector2(-15, 0)
 shape = SubResource("RectangleShape2D_osvus")
 debug_color = Color(0.89498323, 0.2559664, 0.4939599, 0.41960785)
