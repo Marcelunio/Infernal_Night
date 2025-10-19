@@ -14,8 +14,6 @@ var is_thrown: bool = false
 var max_ammo: int
 var current_ammo: int 
 var bullet_speed: float = 1500
-var max_ammo: int = 17 #prawdziwy glock-17 tyle ma :D
-var current_ammo: int = 17
 
 var timer: Timer
 
