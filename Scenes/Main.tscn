@@ -1,8 +1,9 @@
-[gd_scene load_steps=4 format=4 uid="uid://b865bu8xw64sy"]
+[gd_scene load_steps=5 format=4 uid="uid://b865bu8xw64sy"]
 
 [ext_resource type="TileSet" uid="uid://dwjq33gve6fks" path="res://TileSets/BaseTileset.tres" id="1_5nsto"]
 [ext_resource type="PackedScene" uid="uid://dn2dpf0haseiq" path="res://Scenes/Player.tscn" id="2_gjpho"]
 [ext_resource type="PackedScene" uid="uid://t7ktbcl5debv" path="res://Scenes/WeaponPickup.tscn" id="3_p70al"]
+[ext_resource type="PackedScene" uid="uid://didl5ieemco65" path="res://Scenes/Enemy.tscn" id="4_rgh2o"]
 
 [node name="World" type="Node2D"]
 
@@ -20,4 +21,7 @@ position = Vector2(566, 774)
 position = Vector2(958, 269)
 
 [node name="WeaponPickup3" parent="." instance=ExtResource("3_p70al")]
-position = Vector2(1499, 813)
+position = Vector2(1242, 813)
+
+[node name="Enemy" parent="." instance=ExtResource("4_rgh2o")]
+position = Vector2(787, 700)

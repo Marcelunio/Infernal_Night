@@ -1,7 +1,7 @@
 [gd_scene load_steps=9 format=4 uid="uid://br5lp5ne2lq32"]
 
-[ext_resource type="TileSet" uid="uid://dwjq33gve6fks" path="res://TileSets/baseTileset.tres" id="1_tmj4w"]
-[ext_resource type="Script" uid="uid://bgy071o5jbwec" path="res://Rooms/doors.gd" id="2_088d3"]
+[ext_resource type="TileSet" uid="uid://dwjq33gve6fks" path="res://TileSets/BaseTileset.tres" id="1_tmj4w"]
+[ext_resource type="Script" uid="uid://bgy071o5jbwec" path="res://Rooms/Doors.gd" id="2_088d3"]
 [ext_resource type="PackedScene" uid="uid://t7ktbcl5debv" path="res://Scenes/WeaponPickup.tscn" id="3_pusqd"]
 [ext_resource type="PackedScene" uid="uid://dn2dpf0haseiq" path="res://Scenes/Player.tscn" id="4_4hfos"]
 
