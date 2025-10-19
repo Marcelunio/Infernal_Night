@@ -2,6 +2,8 @@ extends RigidBody2D
 
 @export var weapon_name: String = "Pistol"
 @export var throw_force: float = 1000
+@onready var sprite_node = $"WeaponSprite-pistol"
+var sprite: Texture2D
 var player_velocity_to_throw_force:float =0.6
 var is_picked_up: bool = false
 
@@ -10,6 +12,8 @@ var is_thrown: bool = false
 
 #fizyka strzalu
 var bullet_speed: float = 1500
+var max_ammo: int = 17 #prawdziwy glock-17 tyle ma :D
+var current_ammo: int = 17
 
 #~~Kleks 19.10.2025
 #Timer strzalu
@@ -22,6 +26,7 @@ func _ready():
 	area.connect("body_entered", Callable(self, "_on_body_entered"))
 	print("Sygnał podłączony!")
 	
+	sprite = sprite_node.texture#do AmmoUI
 	
 	#~~Kleks 19.10.2025
 	#Timer strzalu
@@ -65,6 +70,7 @@ func _on_body_entered(body):
 		position = Vector2.ZERO
 		
 		body.current_weapon = self
+		body.UI_weapon_signal()
 
 func throw(spawn_pos: Vector2, velocity_player):
 	print("Broń wyrzucona: ", weapon_name)
@@ -87,8 +93,12 @@ func throw(spawn_pos: Vector2, velocity_player):
 func shoot(spawn_pos: Vector2, player):
 	
 	#~~Kleks 19.10.2025 
-	#dodaje timer zeby nie bylo mozna strzelac z pistoletu jak z akacza xD
+	#dodaje timer zeby nie bylo mozna strzelac z pistoletu jak z akacza xD + ammo
 	if !(timer.is_stopped()):
+		return
+		
+	if current_ammo <= 0:
+		print("dzwiek pustego magazynka XD")
 		return
 		
 	timer.start()
@@ -102,6 +112,6 @@ func shoot(spawn_pos: Vector2, player):
 	var shoot_direction = Vector2.RIGHT.rotated(player.rotation - deg_to_rad(90))
 	bullet.direction = shoot_direction
 	bullet.shooter = player
-	
+	current_ammo -= 1
 	
 	#apply_impulse(shoot_direction * bullet_speed)

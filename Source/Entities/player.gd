@@ -6,6 +6,9 @@ var current_weapon: Node = null
 var camera_direction: Vector2 = Vector2.ZERO
 var camera_offset_limit: float = 0.5
 
+signal UI_WeaponChanged(weapon)
+signal UI_AmmoChanged(current_ammo, max_ammo)
+
 func _physics_process(delta):
 	var input_dir = Vector2.ZERO
 	if Input.is_action_pressed("move_up"):
@@ -31,22 +34,26 @@ func _physics_process(delta):
 	rotation = direction.angle() + 0.5*PI
 	
 	# Strzały
-	#~~Kleks dodalem mozliwosc przytrzymania przycisku dla broni maszynowych
+	#~~Kleks dodalem mozliwosc przytrzymania przycisku dla broni maszynowych + sygnaly do ui
 	if current_weapon != null:
+
 		if current_weapon.is_in_group("weapon-machineGuns"):
 			if Input.is_action_pressed("shoot"):
 				current_weapon.shoot(global_position, self)
+				emit_signal("UI_AmmoChanged", current_weapon.current_ammo, current_weapon.max_ammo)
 			else:
 				current_weapon.spread_normalize()
 		else:
 			if Input.is_action_just_pressed("shoot"):
-				current_weapon.shoot(global_position, self)	
+				current_weapon.shoot(global_position, self)
+				emit_signal("UI_AmmoChanged", current_weapon.current_ammo, current_weapon.max_ammo)	
 			
 	
 	if Input.is_action_just_pressed("throw"):
 		if current_weapon != null:
 			current_weapon.throw(global_position, velocity)
 			current_weapon = null
+			emit_signal("UI_WeaponChanged", current_weapon)
 		else:
 			print("Nie masz broni do wyrzucenia")
 			
@@ -64,3 +71,7 @@ func get_player_occupied():
 		return true
 	else:
 		return false
+		
+func UI_weapon_signal():
+	emit_signal("UI_WeaponChanged", current_weapon)
+	emit_signal("UI_AmmoChanged", current_weapon.current_ammo, current_weapon.max_ammo)

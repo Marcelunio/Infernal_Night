@@ -2,6 +2,8 @@ extends RigidBody2D
 
 @export var weapon_name: String = "Shotgun"
 @export var throw_force: float = 800
+@onready var sprite_node = $"WeaponSprite-shotgun"
+var sprite: Texture2D
 var player_velocity_to_throw_force:float = 0.6
 var is_picked_up: bool = false
 
@@ -10,6 +12,8 @@ var is_thrown: bool = false
 
 #fizyka strzalu
 var bullet_speed: float = 1500
+var max_ammo: int = 6 # tyle srednio majo strzelby powtarzalne :D
+var current_ammo: int = 6
 
 #~~Kleks 19.10.2025
 #Timer strzalu
@@ -26,6 +30,8 @@ func _ready():
 	print("Area znalezione:", area)
 	area.connect("body_entered", Callable(self, "_on_body_entered"))
 	print("Sygnał podłączony!")
+	
+	sprite = sprite_node.texture
 	
 	#~~Kleks 19.10.2025
 	#Timer strzalu
@@ -69,6 +75,7 @@ func _on_body_entered(body):
 		position = Vector2.ZERO
 
 		body.current_weapon = self
+		body.UI_weapon_signal()
 
 func throw(spawn_pos: Vector2, velocity_player):
 	print("Broń wyrzucona: ", weapon_name)
@@ -91,9 +98,13 @@ func throw(spawn_pos: Vector2, velocity_player):
 func shoot(spawn_pos: Vector2, player):
 	
 	#~~Kleks 19.10.2025 
-	#dodaje timer zeby nie bylo mozna strzelac z shotguna jak z akacza xD + fizyka shotguna
+	#dodaje timer zeby nie bylo mozna strzelac z shotguna jak z akacza xD + fizyka shotguna + ammo
 	if !(timer.is_stopped()):
 		return
+		
+	if current_ammo <= 0:
+		print("dzwiek pustego magazynka XD")
+		return	
 		
 	timer.start()
 	
@@ -104,11 +115,21 @@ func shoot(spawn_pos: Vector2, player):
 		get_tree().current_scene.add_child(bullet)
 		bullet.global_position = spawn_pos
 		
-		var angle_offset = (i - bullet_count / 2.0) * spread_angle
+		#var angle_offset = (i - bullet_count / 2.0) * spread_angle
+		var max_spread
+		if i < 3:
+			max_spread = 5.625
+		elif i < 5:
+			max_spread = 16.875
+		else:
+			max_spread = 22.5
+		
+		var angle_offset = randf_range(-max_spread, max_spread)
 	
 		var shoot_direction = Vector2.RIGHT.rotated(player.rotation - deg_to_rad(90) + deg_to_rad(angle_offset))
 		bullet.direction = shoot_direction
 		bullet.shooter = player
 	
+	current_ammo -= 1
 	
 	#apply_impulse(shoot_direction * bullet_speed)

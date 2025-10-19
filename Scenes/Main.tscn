@@ -1,4 +1,4 @@
-[gd_scene load_steps=7 format=4 uid="uid://b865bu8xw64sy"]
+[gd_scene load_steps=8 format=4 uid="uid://b865bu8xw64sy"]
 
 [ext_resource type="TileSet" uid="uid://dwjq33gve6fks" path="res://TileSets/BaseTileset.tres" id="1_5nsto"]
 [ext_resource type="PackedScene" uid="uid://dn2dpf0haseiq" path="res://Scenes/Entities/Player.tscn" id="2_gjpho"]
@@ -6,6 +6,7 @@
 [ext_resource type="PackedScene" uid="uid://didl5ieemco65" path="res://Scenes/Entities/enemy.tscn" id="4_rgh2o"]
 [ext_resource type="PackedScene" uid="uid://do67sjc1c7h8g" path="res://Scenes/Weapons/Guns/WeaponPickup-shotgun.tscn" id="5_pbw6q"]
 [ext_resource type="PackedScene" uid="uid://kv6ej6j01fux" path="res://Scenes/Weapons/Guns/WeaponPickup-ak47.tscn" id="6_v1gob"]
+[ext_resource type="PackedScene" uid="uid://e50scyaq600v" path="res://Scenes/UI/AmmoDisplay.tscn" id="7_jw32o"]
 
 [node name="World" type="Node2D"]
 
@@ -45,3 +46,7 @@ position = Vector2(-323, 1767)
 
 [node name="Enemy5" parent="." instance=ExtResource("4_rgh2o")]
 position = Vector2(-28, 1780)
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="AmmoDisplay" parent="CanvasLayer" instance=ExtResource("7_jw32o")]

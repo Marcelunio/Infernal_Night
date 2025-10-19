@@ -3,6 +3,8 @@ extends RigidBody2D
 
 @export var weapon_name: String = "ak47"
 @export var throw_force: float = 800
+@onready var sprite_node = $"WeaponSprite-ak47"
+var sprite: Texture2D
 var player_velocity_to_throw_force:float = 0.6
 var is_picked_up: bool = false
 
@@ -11,6 +13,8 @@ var is_thrown: bool = false
 
 #fizyka strzalu
 var bullet_speed: float = 1500
+var max_ammo: int = 30 #prawdziwy ak-47 tyle ma :D
+var current_ammo: int = 30
 
 #Timer strzalu
 var timer: Timer
@@ -28,6 +32,8 @@ func _ready():
 	print("Area znalezione:", area)
 	area.connect("body_entered", Callable(self, "_on_body_entered"))
 	print("Sygnał podłączony!")
+	
+	sprite = sprite_node.texture#do AmmoUI
 	
 	#Timer strzalu
 	timer = Timer.new()
@@ -69,6 +75,7 @@ func _on_body_entered(body):
 		position = Vector2.ZERO
 
 		body.current_weapon = self
+		body.UI_weapon_signal()
 
 func throw(spawn_pos: Vector2, velocity_player):
 	print("Broń wyrzucona: ", weapon_name)
@@ -93,6 +100,10 @@ func shoot(spawn_pos: Vector2, player):
 	if !(timer.is_stopped()):
 		return
 		
+	if current_ammo <= 0:
+		print("dzwiek pustego magazynka XD")
+		return
+		
 	timer.start()
 	
 	print("DEBUG - oddano strzal")	
@@ -109,6 +120,8 @@ func shoot(spawn_pos: Vector2, player):
 	
 	bullet.direction = shoot_direction
 	bullet.shooter = player
+	#print(ammo)
+	current_ammo -= 1
 	
 func spread_normalize():
 	current_spread = 2.0

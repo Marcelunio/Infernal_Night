@@ -1,0 +1,44 @@
+[gd_scene load_steps=2 format=3 uid="uid://e50scyaq600v"]
+
+[ext_resource type="Script" uid="uid://b8xfnbeecf7eh" path="res://Source/UI/AmmoDisplay.gd" id="1_qmwa5"]
+
+[node name="AmmoDisplay" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 1520.0
+offset_top = 830.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_qmwa5")
+metadata/_edit_group_ = true
+
+[node name="Kolorek" type="ColorRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 0.22745098)
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="WeaponSprite" type="TextureRect" parent="VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="VBoxContainer" type="VBoxContainer" parent="VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="AmmoCounter" type="Label" parent="VBoxContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 7
