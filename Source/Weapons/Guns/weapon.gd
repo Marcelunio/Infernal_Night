@@ -14,6 +14,8 @@ var is_thrown: bool = false
 var max_ammo: int
 var current_ammo: int 
 var bullet_speed: float = 1500
+var max_ammo: int = 17 #prawdziwy glock-17 tyle ma :D
+var current_ammo: int = 17
 
 var timer: Timer
 
@@ -65,6 +67,7 @@ func _on_body_entered(body):
 		position = Vector2.ZERO
 		
 		body.current_weapon = self
+		body.UI_weapon_signal()
 
 func throw(spawn_pos: Vector2, velocity_player):
 	print("Broń wyrzucona: ", weapon_name)
@@ -91,7 +94,7 @@ func __shoot(spawn_pos: Vector2, player)->void
 func shoot(spawn_pos: Vector2, player):
 	
 	#~~Kleks 19.10.2025 
-	#dodaje timer zeby nie bylo mozna strzelac z pistoletu jak z akacza xD
+	#dodaje timer zeby nie bylo mozna strzelac z pistoletu jak z akacza xD + ammo
 	if !(timer.is_stopped()):
 		return
 		
