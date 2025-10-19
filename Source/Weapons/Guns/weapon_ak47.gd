@@ -7,8 +7,9 @@ var spread_increase = 0.75     # O ile zwiększa się rozrzut przy każdym strza
 var current_spread = 2.0
 
 func _ready():
+	weapon_delay = 0.1
 	super._ready()
-	throw_force=900
+	throw_force = 900
 
 func __shoot(spawn_pos: Vector2, player):
 	

@@ -1,6 +1,6 @@
 [gd_scene load_steps=5 format=3 uid="uid://kv6ej6j01fux"]
 
-[ext_resource type="Script" uid="uid://bq7kqwkkvrxt4" path="res://Source/Weapons/Guns/weapon_ak_47.gd" id="1_k27v1"]
+[ext_resource type="Script" uid="uid://bq7kqwkkvrxt4" path="res://Source/Weapons/Guns/weapon_ak47.gd" id="1_k27v1"]
 [ext_resource type="Texture2D" uid="uid://d4nwu8fhji2yb" path="res://Assets/Guns/ak47.png" id="2_k27v1"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_phod8"]

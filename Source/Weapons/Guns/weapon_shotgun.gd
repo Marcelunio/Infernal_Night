@@ -6,6 +6,7 @@ var spread_angle = 3.75
 var bullet_count = 6
 
 func _ready():
+	weapon_delay = 0.8
 	super._ready()
 	throw_force=800
 
