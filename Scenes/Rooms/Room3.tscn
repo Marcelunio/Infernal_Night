@@ -1,8 +1,7 @@
-[gd_scene load_steps=10 format=4 uid="uid://dod8sar1f422t"]
+[gd_scene load_steps=9 format=4 uid="uid://dod8sar1f422t"]
 
 [ext_resource type="Script" uid="uid://bgy071o5jbwec" path="res://Source/Rooms/doors.gd" id="1_cefv8"]
 [ext_resource type="TileSet" uid="uid://dwjq33gve6fks" path="res://Tilesets/BaseTileset.tres" id="2_u8o5a"]
-[ext_resource type="PackedScene" uid="uid://dn2dpf0haseiq" path="res://Scenes/Entities/Player.tscn" id="4_uxlch"]
 [ext_resource type="PackedScene" uid="uid://do67sjc1c7h8g" path="res://Scenes/Weapons/Guns/WeaponShotgun.tscn" id="5_cefv8"]
 [ext_resource type="PackedScene" uid="uid://didl5ieemco65" path="res://Scenes/Entities/Enemy.tscn" id="5_syrkg"]
 
@@ -59,9 +58,6 @@ shape = SubResource("RectangleShape2D_uj1e3")
 
 [node name="Enemy" parent="." instance=ExtResource("5_syrkg")]
 position = Vector2(859, 461)
-
-[node name="Player" parent="." instance=ExtResource("4_uxlch")]
-position = Vector2(347, 200)
 
 [node name="WeaponShotgun" parent="." instance=ExtResource("5_cefv8")]
 position = Vector2(534, 201)
