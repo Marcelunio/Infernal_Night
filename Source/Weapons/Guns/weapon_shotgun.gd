@@ -21,7 +21,13 @@ func __shoot(spawn_pos: Vector2, player):
 		get_tree().current_scene.add_child(bullet)
 		bullet.global_position = spawn_pos
 		
-		var angle_offset = (i - bullet_count / 2.0) * spread_angle
+		var angle_offset
+		if i < 3:
+			angle_offset =  randf_range(-5.625, 5.625)
+		elif i < 5:
+			angle_offset = randf_range(-16.875, 16.875)
+		else:
+			angle_offset = randf_range(-22.5, 22.5)
 	
 		var shoot_direction = Vector2.RIGHT.rotated(player.rotation - deg_to_rad(90) + deg_to_rad(angle_offset))
 		bullet.direction = shoot_direction

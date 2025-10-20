@@ -11,6 +11,7 @@ func _ready():
 	weapon_name = "bat"
 
 func __shoot(spawn_pos: Vector2, player):
+	pass
 	
 	#var attack_area = preload("res://Scenes/Projectiles/MeleeAttackCollision.tscn")
 	#get_tree().current_scene.add_child(attack_area)
