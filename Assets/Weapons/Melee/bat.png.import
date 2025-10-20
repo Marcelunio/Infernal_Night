@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://cl3g6qrrpsm3s"
-path="res://.godot/imported/shotgun.png-38ad21becce823ba7746c34a74feca5e.ctex"
+uid="uid://k0qtx3bdew3w"
+path="res://.godot/imported/bat.png-d17ca0bb2933c2a3f25a3c68c3378a7f.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/Guns/shotgun.png"
-dest_files=["res://.godot/imported/shotgun.png-38ad21becce823ba7746c34a74feca5e.ctex"]
+source_file="res://Assets/Weapons/Melee/bat.png"
+dest_files=["res://.godot/imported/bat.png-d17ca0bb2933c2a3f25a3c68c3378a7f.ctex"]
 
 [params]
 

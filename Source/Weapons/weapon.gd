@@ -2,14 +2,14 @@
 class_name Weapon
 extends RigidBody2D
 
-@export var weapon_name: String = "Pistol"
+@export var weapon_name: String = ""
 @onready var sprite_node = $"WeaponSprite"
 var sprite: Texture2D
 
-var throw_force: float = 1000
+var throw_force: float
 var player_velocity_to_throw_force: float =0.6
 var is_picked_up: bool = false
-var weapon_delay: float = 0.2
+var weapon_delay: float
 var is_thrown: bool = false
 var max_ammo: int
 var current_ammo: int 
@@ -96,7 +96,7 @@ func shoot(spawn_pos: Vector2, player):
 	if !(timer.is_stopped()):
 		return
 		
-	if current_ammo <= 0:
+	if current_ammo == 0:
 		print("dzwiek pustego magazynka XD")
 		return
 		

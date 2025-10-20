@@ -12,10 +12,11 @@ func _ready():
 	throw_force = 900
 	max_ammo = 30
 	current_ammo = 30  
+	weapon_name = "ak47"
 
 func __shoot(spawn_pos: Vector2, player):
 	
-	var bullet = preload("res://Scenes/bullet.tscn").instantiate()
+	var bullet = preload("res://Scenes/Projectiles/bullet.tscn").instantiate()
 	get_tree().current_scene.add_child(bullet)
 	bullet.global_position = spawn_pos
 

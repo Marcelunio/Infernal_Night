@@ -1,7 +1,7 @@
 [gd_scene load_steps=5 format=3 uid="uid://do67sjc1c7h8g"]
 
 [ext_resource type="Script" uid="uid://1vqkoax4on8c" path="res://Source/Weapons/Guns/weapon_shotgun.gd" id="1_83s6p"]
-[ext_resource type="Texture2D" uid="uid://cl3g6qrrpsm3s" path="res://Assets/Guns/shotgun.png" id="2_83s6p"]
+[ext_resource type="Texture2D" uid="uid://cl3g6qrrpsm3s" path="res://Assets/Weapons/Guns/shotgun.png" id="2_83s6p"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_phod8"]
 size = Vector2(66, 18)

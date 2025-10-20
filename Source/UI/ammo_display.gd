@@ -21,4 +21,7 @@ func _on_weapon_changed(weapon):
 		$VBoxContainer/WeaponSprite.texture = weapon.sprite
 
 func _on_ammo_changed(current_ammo, max_ammo):
-	$VBoxContainer/VBoxContainer/AmmoCounter.text = "%d / %d" % [current_ammo, max_ammo]#%int %int [zmienne]
+	if current_ammo != -1 and max_ammo != -1:
+		$VBoxContainer/VBoxContainer/AmmoCounter.text = "%d / %d" % [current_ammo, max_ammo]#%int %int [zmienne]
+	else:
+		$VBoxContainer/VBoxContainer/AmmoCounter.text = "%s" % ["white weapon"]
