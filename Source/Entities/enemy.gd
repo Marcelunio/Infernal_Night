@@ -50,7 +50,7 @@ func _physics_process(delta: float) -> void:
 		direction = Vector2.ZERO
 
 	if direction.length() > 0.1 and sprite:
-		sprite.rotation = direction.angle() + deg_to_rad(90)
+		sprite.rotation = direction.angle() + PI/2
 
 
 	if navigation_agent.avoidance_enabled:

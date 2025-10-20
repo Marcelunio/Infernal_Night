@@ -1,7 +1,7 @@
 [gd_scene load_steps=5 format=3 uid="uid://t7ktbcl5debv"]
 
 [ext_resource type="Script" uid="uid://bllmlfn3uam3l" path="res://Source/Weapons/Guns/weapon_pistol.gd" id="1_acthv"]
-[ext_resource type="Texture2D" uid="uid://bg7f0syedwukm" path="res://Assets/test/gun.png" id="2_phod8"]
+[ext_resource type="Texture2D" uid="uid://bg7f0syedwukm" path="res://Assets/Test/gun.png" id="2_phod8"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_phod8"]
 size = Vector2(32, 22)

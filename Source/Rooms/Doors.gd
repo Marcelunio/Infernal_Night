@@ -3,7 +3,7 @@ extends Node2D
 signal door_entered(direction: String)
 
 func _ready():
-	for child in get_children():
+	for child in $Doors.get_children():
 		if child is Area2D:
 			child.body_entered.connect(_on_any_door_entered.bind(child.name))
 
