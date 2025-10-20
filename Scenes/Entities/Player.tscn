@@ -1,7 +1,8 @@
-[gd_scene load_steps=8 format=3 uid="uid://dn2dpf0haseiq"]
+[gd_scene load_steps=9 format=3 uid="uid://dn2dpf0haseiq"]
 
 [ext_resource type="Script" uid="uid://c705e1fe7v6id" path="res://Source/Entities/player.gd" id="1_2cyhl"]
-[ext_resource type="Texture2D" uid="uid://cqx0ab10hyexx" path="res://Assets/Test/player_sprites.png" id="2_kyqiw"]
+[ext_resource type="Texture2D" uid="uid://cqx0ab10hyexx" path="res://Assets/test/player_sprites.png" id="2_kyqiw"]
+[ext_resource type="PackedScene" uid="uid://e50scyaq600v" path="res://Scenes/UI/AmmoDisplay.tscn" id="3_agccv"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_q2x60"]
 radius = 30.016663
@@ -52,3 +53,8 @@ frame_progress = 0.20617694
 
 [node name="Camera" type="Camera2D" parent="."]
 position_smoothing_enabled = true
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="AmmoDisplay" parent="CanvasLayer" instance=ExtResource("3_agccv")]
+metadata/_edit_use_anchors_ = true
