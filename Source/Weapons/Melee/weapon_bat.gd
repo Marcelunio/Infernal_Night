@@ -11,23 +11,9 @@ func _ready():
 	weapon_name = "bat"
 
 func __shoot(spawn_pos: Vector2, player):
-	pass
 	
-	#var attack_area = preload("res://Scenes/Projectiles/MeleeAttackCollision.tscn")
-	#get_tree().current_scene.add_child(attack_area)
-	#attack_area.global_postion = spawn_pos
-	
-	#var bullet = preload("res://Scenes/bullet.tscn").instantiate()
-	#get_tree().current_scene.add_child(bullet)
-	#bullet.global_position = spawn_pos
+	var attack_area = preload("res://Scenes/Projectiles/MeleeAttackCollision.tscn")
+	get_tree().current_scene.add_child(attack_area)
+	attack_area.global_postion = spawn_pos
 
-	#var angle_offset = (randf_range(0,5) /2.0) * spread_angle
-	#var angle_offset = randf_range(-current_spread, current_spread)
-	#var shoot_direction = Vector2.RIGHT.rotated(player.rotation - deg_to_rad(90) + deg_to_rad(angle_offset))
-	
-	#current_spread += spread_increase
-	#current_spread = min(current_spread, max_spread)   
-	
-	#bullet.direction = shoot_direction
-	#bullet.shooter = player
 	

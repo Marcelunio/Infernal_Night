@@ -1,0 +1,3 @@
+FileName, ClassName, SceneName - PascalCase
+script_name, variable_name  - snake_case
+Nigdy przenigdy Cwel-case
