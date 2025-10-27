@@ -1,9 +1,9 @@
 [gd_scene load_steps=9 format=4 uid="uid://dod8sar1f422t"]
 
-[ext_resource type="Script" uid="uid://bgy071o5jbwec" path="res://Source/Rooms/Doors.gd" id="1_cefv8"]
+[ext_resource type="Script" uid="uid://bgy071o5jbwec" path="res://Source/Rooms/doors.gd" id="1_cefv8"]
 [ext_resource type="TileSet" uid="uid://dwjq33gve6fks" path="res://TileSets/BaseTileset.tres" id="2_u8o5a"]
 [ext_resource type="PackedScene" uid="uid://do67sjc1c7h8g" path="res://Scenes/Weapons/Guns/WeaponShotgun.tscn" id="5_cefv8"]
-[ext_resource type="PackedScene" uid="uid://didl5ieemco65" path="res://Scenes/Entities/enemy.tscn" id="5_syrkg"]
+[ext_resource type="PackedScene" uid="uid://didl5ieemco65" path="res://Scenes/Entities/Enemy.tscn" id="5_syrkg"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_3xonv"]
 size = Vector2(64, 32)

@@ -33,6 +33,7 @@ weapon-white=""
 weapon-pistols=""
 weapon-shotguns=""
 weapon-machineGuns=""
+projectiles=""
 
 [input]
 

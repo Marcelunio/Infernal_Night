@@ -23,3 +23,7 @@ texture = ExtResource("1_hghv2")
 
 [node name="NavigationAgent" type="NavigationAgent2D" parent="."]
 simplify_path = true
+
+[node name="Hurtbox" type="Area2D" parent="."]
+
+[node name="HurtDetect" type="CollisionShape2D" parent="Hurtbox"]
