@@ -6,6 +6,8 @@
 radius = 28.01785
 
 [node name="MeleeAttackCollision" type="Area2D"]
+collision_layer = 128
+collision_mask = 64
 script = ExtResource("1_rmcpd")
 
 [node name="DetectCollision" type="CollisionShape2D" parent="."]

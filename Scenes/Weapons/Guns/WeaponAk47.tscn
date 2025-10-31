@@ -11,7 +11,7 @@ size = Vector2(92, 26)
 
 [node name="WeaponAk47" type="RigidBody2D" groups=["weapon-machineGuns"]]
 collision_layer = 2
-collision_mask = 16
+collision_mask = 80
 gravity_scale = 0.0
 linear_damp = 1.065
 script = ExtResource("1_k27v1")

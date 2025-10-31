@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=4 uid="uid://b865bu8xw64sy"]
+[gd_scene load_steps=10 format=4 uid="uid://b865bu8xw64sy"]
 
 [ext_resource type="TileSet" uid="uid://dwjq33gve6fks" path="res://TileSets/BaseTileset.tres" id="1_5nsto"]
 [ext_resource type="PackedScene" uid="uid://dn2dpf0haseiq" path="res://Scenes/Entities/Player.tscn" id="2_gjpho"]
@@ -8,6 +8,7 @@
 [ext_resource type="PackedScene" uid="uid://kv6ej6j01fux" path="res://Scenes/Weapons/Guns/WeaponAk47.tscn" id="6_v1gob"]
 [ext_resource type="PackedScene" uid="uid://e50scyaq600v" path="res://Scenes/UI/AmmoDisplay.tscn" id="7_jw32o"]
 [ext_resource type="PackedScene" uid="uid://cotiiwrrpdkwu" path="res://Scenes/Weapons/Melee/WeaponBat.tscn" id="8_50glp"]
+[ext_resource type="PackedScene" uid="uid://dhj4hdoqpno23" path="res://Scenes/Weapons/Melee/WeaponKnife.tscn" id="9_vy5pj"]
 
 [node name="World" type="Node2D"]
 
@@ -53,4 +54,7 @@ position = Vector2(-28, 1780)
 [node name="AmmoDisplay" parent="CanvasLayer" instance=ExtResource("7_jw32o")]
 
 [node name="WeaponBat" parent="." instance=ExtResource("8_50glp")]
-position = Vector2(-896, 467)
+position = Vector2(-965, 458)
+
+[node name="WeaponKnife" parent="." instance=ExtResource("9_vy5pj")]
+position = Vector2(-857, 463)

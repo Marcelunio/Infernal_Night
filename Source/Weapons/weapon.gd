@@ -71,7 +71,7 @@ func throw(spawn_pos: Vector2, velocity_player):
 	print("Broń wyrzucona: ", weapon_name)
 	is_picked_up = false
 	
-	# Usuwa z gracza i dodaj z powrotem do sceny
+	# Usuwa z gracza i dodaje z powrotem do sceny
 	var player = get_parent()
 	player.remove_child(self)
 	player.get_parent().add_child(self)
