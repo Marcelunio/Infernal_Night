@@ -13,22 +13,23 @@ func _ready():
 	max_ammo = 30
 	current_ammo = 30  
 	weapon_name = "ak47"
+	weapon_damage = 1.5
 
 func __shoot(spawn_pos: Vector2, player):
-	
 	var bullet = preload("res://Scenes/Projectiles/bullet.tscn").instantiate()
-	get_tree().current_scene.add_child(bullet)
-	bullet.global_position = spawn_pos
 
-	#var angle_offset = (randf_range(0,5) /2.0) * spread_angle
+	bullet.global_position = spawn_pos
 	var angle_offset = randf_range(-current_spread, current_spread)
 	var shoot_direction = Vector2.RIGHT.rotated(player.rotation - deg_to_rad(90) + deg_to_rad(angle_offset))
 	
-	current_spread += spread_increase
-	current_spread = min(current_spread, max_spread)   
-	
 	bullet.direction = shoot_direction
 	bullet.shooter = player
+	bullet.weapon_origin = self 
+	
+	get_tree().current_scene.add_child(bullet)
+	
+	current_spread += spread_increase
+	current_spread = min(current_spread, max_spread)
 	
 func spread_normalize():
 	current_spread = 2.0

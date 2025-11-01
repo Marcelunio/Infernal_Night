@@ -14,6 +14,7 @@ var is_thrown: bool = false
 var max_ammo: int
 var current_ammo: int 
 var bullet_speed: float = 1500
+var weapon_damage: float
 
 var timer: Timer
 

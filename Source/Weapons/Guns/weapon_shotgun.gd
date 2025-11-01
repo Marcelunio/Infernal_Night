@@ -12,13 +12,14 @@ func _ready():
 	max_ammo = 6
 	current_ammo =  6
 	weapon_name = "shotgun"
+	weapon_damage = 0.9
 
 func __shoot(spawn_pos: Vector2, player):
 	
 	for i in range(bullet_count):
 		
 		var bullet = preload("res://Scenes/Projectiles/bullet.tscn").instantiate()
-		get_tree().current_scene.add_child(bullet)
+		
 		bullet.global_position = spawn_pos
 		
 		var angle_offset
@@ -32,6 +33,9 @@ func __shoot(spawn_pos: Vector2, player):
 		var shoot_direction = Vector2.RIGHT.rotated(player.rotation - deg_to_rad(90) + deg_to_rad(angle_offset))
 		bullet.direction = shoot_direction
 		bullet.shooter = player
+		bullet.weapon_origin = self
+		
+		get_tree().current_scene.add_child(bullet)
 	
 	
 	#apply_impulse(shoot_direction * bullet_speed)
