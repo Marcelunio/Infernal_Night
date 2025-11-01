@@ -1,8 +1,7 @@
-[gd_scene load_steps=10 format=4 uid="uid://cxfi1ma76452s"]
+[gd_scene load_steps=9 format=4 uid="uid://cxfi1ma76452s"]
 
 [ext_resource type="Script" uid="uid://bgy071o5jbwec" path="res://Source/Rooms/doors.gd" id="1_momfn"]
-[ext_resource type="TileSet" uid="uid://dwjq33gve6fks" path="res://Tilesets/BaseTileset.tres" id="2_cuhup"]
-[ext_resource type="PackedScene" uid="uid://dn2dpf0haseiq" path="res://Scenes/Entities/Player.tscn" id="4_ut3n5"]
+[ext_resource type="TileSet" uid="uid://dwjq33gve6fks" path="res://TileSets/BaseTileset.tres" id="2_cuhup"]
 [ext_resource type="PackedScene" uid="uid://didl5ieemco65" path="res://Scenes/Entities/Enemy.tscn" id="5_7a7y1"]
 [ext_resource type="PackedScene" uid="uid://kv6ej6j01fux" path="res://Scenes/Weapons/Guns/WeaponAk47.tscn" id="5_momfn"]
 
@@ -57,11 +56,8 @@ position = Vector2(1008, 384)
 rotation = 3.1415927
 shape = SubResource("RectangleShape2D_uj1e3")
 
-[node name="Enemy" parent="." instance=ExtResource("5_7a7y1")]
-position = Vector2(859, 461)
-
-[node name="Player" parent="." instance=ExtResource("4_ut3n5")]
-position = Vector2(347, 200)
-
 [node name="WeaponAk47" parent="." instance=ExtResource("5_momfn")]
 position = Vector2(214, 542)
+
+[node name="Enemy" parent="." instance=ExtResource("5_7a7y1")]
+position = Vector2(859, 461)

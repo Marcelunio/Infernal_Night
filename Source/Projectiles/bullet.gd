@@ -1,30 +1,29 @@
 extends Area2D
 
 var direction: Vector2 = Vector2.RIGHT
-var bullet_speed: float= 1500
+var bullet_speed: float = 1500
 var shooter = null
 
+@export var damage: int = 1
 
-# Called when the node enters the scene tree for the first time.
 func _ready():
+	add_to_group("projectiles")
 	connect("body_entered", _on_body_entered)
-	#connect("area_entered", _on_area_entered)
 
-
-# Called every frame. 'delta' is the elapsed time since the previous frame.
 func _physics_process(delta):
-	position += bullet_speed * direction * delta
-	rotation = direction.angle() - PI/2
+	position += direction * bullet_speed * delta
+	rotation = direction.angle() - PI / 2
 
-func _on_body_entered(body):
+func _on_body_entered(body: Node) -> void:
 	if body == shooter:
 		return
-	
-	print("Pocisk trafił: ", body)
-	
+
 	if body.is_in_group("enemy"):
-		print("Trafiony przeciwnik!")
-	
-	if body.name == "Layout":
-		print("Trafiono element layout'u!")
+		if body.has_method("take_damage"):
+			body.take_damage(damage, 0.12)   
+		elif body.has_method("_take_damage"):
+			body._take_damage(damage, 0.12)
 	queue_free()
+
+func get_damage() -> int:
+	return damage
