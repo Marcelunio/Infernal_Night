@@ -15,16 +15,16 @@ collision_mask = 80
 gravity_scale = 0.0
 linear_damp = 1.065
 script = ExtResource("1_ecfbt")
-metadata/_edit_group_ = true
 
 [node name="WeaponSprite" type="Sprite2D" parent="."]
 texture = ExtResource("2_ecfbt")
 
 [node name="WeaponCollsion" type="CollisionShape2D" parent="."]
-position = Vector2(12.5, 25)
+position = Vector2(-0.5, 0)
 shape = SubResource("RectangleShape2D_phod8")
 
 [node name="WeaponArea" type="Area2D" parent="."]
+position = Vector2(-13, -25)
 collision_layer = 4
 
 [node name="WeaponAreaShape" type="CollisionShape2D" parent="WeaponArea"]

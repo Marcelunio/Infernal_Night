@@ -1,6 +1,6 @@
 [gd_scene load_steps=5 format=3 uid="uid://b783hpp0owvai"]
 
-[ext_resource type="Script" uid="uid://3gl8u5e7p5de" path="res://Source/Weapons/Guns/double_barrel.gd" id="1_4s30w"]
+[ext_resource type="Script" uid="uid://3gl8u5e7p5de" path="res://Source/Weapons/Guns/weapon_double_barrel.gd" id="1_4s30w"]
 [ext_resource type="Texture2D" uid="uid://cx01h0tlqh5xm" path="res://Assets/Weapons/Guns/doubleBarrel.png" id="2_0fmmj"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_phod8"]
@@ -18,18 +18,15 @@ script = ExtResource("1_4s30w")
 metadata/_edit_group_ = true
 
 [node name="WeaponSprite" type="Sprite2D" parent="."]
-position = Vector2(94.5, 36)
 scale = Vector2(0.44200003, 0.5)
 texture = ExtResource("2_0fmmj")
 
 [node name="WeaponCollsion" type="CollisionShape2D" parent="."]
-position = Vector2(119.5, 43.5)
 shape = SubResource("RectangleShape2D_phod8")
 
 [node name="WeaponArea" type="Area2D" parent="."]
 collision_layer = 4
 
 [node name="WeaponAreaShape" type="CollisionShape2D" parent="WeaponArea"]
-position = Vector2(119.5, 43.5)
 shape = SubResource("RectangleShape2D_osvus")
 debug_color = Color(0.89498323, 0.2559664, 0.4939599, 0.41960785)
