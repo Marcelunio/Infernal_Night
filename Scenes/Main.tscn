@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=4 uid="uid://b865bu8xw64sy"]
+[gd_scene load_steps=13 format=4 uid="uid://b865bu8xw64sy"]
 
 [ext_resource type="TileSet" uid="uid://dwjq33gve6fks" path="res://TileSets/BaseTileset.tres" id="1_5nsto"]
 [ext_resource type="PackedScene" uid="uid://dn2dpf0haseiq" path="res://Scenes/Entities/Player.tscn" id="2_gjpho"]
@@ -9,6 +9,9 @@
 [ext_resource type="PackedScene" uid="uid://e50scyaq600v" path="res://Scenes/UI/AmmoDisplay.tscn" id="7_jw32o"]
 [ext_resource type="PackedScene" uid="uid://cotiiwrrpdkwu" path="res://Scenes/Weapons/Melee/WeaponBat.tscn" id="8_50glp"]
 [ext_resource type="PackedScene" uid="uid://dhj4hdoqpno23" path="res://Scenes/Weapons/Melee/WeaponKnife.tscn" id="9_vy5pj"]
+[ext_resource type="PackedScene" uid="uid://da1ap0hsfecta" path="res://Scenes/Weapons/Guns/WeaponUzi.tscn" id="10_bmxlf"]
+[ext_resource type="PackedScene" uid="uid://b783hpp0owvai" path="res://Scenes/Weapons/Guns/DoubleBarrel.tscn" id="11_4kpch"]
+[ext_resource type="PackedScene" uid="uid://bxg5woeatx4uj" path="res://Scenes/Weapons/Guns/WeaponRevolver.tscn" id="12_grg3l"]
 
 [node name="World" type="Node2D"]
 
@@ -29,13 +32,13 @@ position = Vector2(638, 1065)
 position = Vector2(1254, 811)
 
 [node name="WeaponPickup-pistol3" parent="." instance=ExtResource("3_p70al")]
-position = Vector2(-34, 441)
+position = Vector2(49, 440)
 
 [node name="WeaponPickup-shotgun" parent="." instance=ExtResource("5_pbw6q")]
-position = Vector2(-304, 440)
+position = Vector2(-209, 433)
 
 [node name="WeaponPickup-ak47" parent="." instance=ExtResource("6_v1gob")]
-position = Vector2(-610, 449)
+position = Vector2(-684, 431)
 
 [node name="Enemy2" parent="." instance=ExtResource("4_rgh2o")]
 position = Vector2(-899, 1787)
@@ -58,3 +61,12 @@ position = Vector2(-965, 458)
 
 [node name="WeaponKnife" parent="." instance=ExtResource("9_vy5pj")]
 position = Vector2(-857, 463)
+
+[node name="WeaponUzi" parent="." instance=ExtResource("10_bmxlf")]
+position = Vector2(-528, 460)
+
+[node name="WeaponDoubleBarrel" parent="." instance=ExtResource("11_4kpch")]
+position = Vector2(924, 315)
+
+[node name="WeaponRevolver" parent="." instance=ExtResource("12_grg3l")]
+position = Vector2(-126, 422)

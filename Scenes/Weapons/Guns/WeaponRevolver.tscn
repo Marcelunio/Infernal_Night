@@ -1,0 +1,33 @@
+[gd_scene load_steps=5 format=3 uid="uid://bxg5woeatx4uj"]
+
+[ext_resource type="Script" uid="uid://diirqkl7s8m8q" path="res://Source/Weapons/Guns/weapon_revolver.gd" id="1_ecfbt"]
+[ext_resource type="Texture2D" uid="uid://iihv6tgwjj5o" path="res://Assets/Weapons/Guns/revolver.png" id="2_ecfbt"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_phod8"]
+size = Vector2(65, 32)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_osvus"]
+size = Vector2(65, 32)
+
+[node name="WeaponRevolver" type="RigidBody2D" groups=["weapon-pistols"]]
+collision_layer = 2
+collision_mask = 80
+gravity_scale = 0.0
+linear_damp = 1.065
+script = ExtResource("1_ecfbt")
+metadata/_edit_group_ = true
+
+[node name="WeaponSprite" type="Sprite2D" parent="."]
+texture = ExtResource("2_ecfbt")
+
+[node name="WeaponCollsion" type="CollisionShape2D" parent="."]
+position = Vector2(12.5, 25)
+shape = SubResource("RectangleShape2D_phod8")
+
+[node name="WeaponArea" type="Area2D" parent="."]
+collision_layer = 4
+
+[node name="WeaponAreaShape" type="CollisionShape2D" parent="WeaponArea"]
+position = Vector2(12.5, 25)
+shape = SubResource("RectangleShape2D_osvus")
+debug_color = Color(0.89498323, 0.2559664, 0.4939599, 0.41960785)
