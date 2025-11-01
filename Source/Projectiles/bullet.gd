@@ -4,7 +4,7 @@ var direction: Vector2 = Vector2.RIGHT
 var bullet_speed: float = 1500
 var shooter = null
 var weapon_origin = null
-var damage: float 
+var damage: int 
 
 
 func _ready():

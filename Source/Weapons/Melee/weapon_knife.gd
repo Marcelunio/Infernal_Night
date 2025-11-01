@@ -11,7 +11,7 @@ func _ready():
 	max_ammo = -1
 	current_ammo = -1  
 	weapon_name = "knife"
-	weapon_damage = 3
+	weapon_damage = 360
 
 func __shoot(spawn_pos: Vector2, player):
 	var attack_area = preload("res://Scenes/Projectiles/MeleeAttackCollision.tscn").instantiate()

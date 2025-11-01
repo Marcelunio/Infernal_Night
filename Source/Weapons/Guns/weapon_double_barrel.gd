@@ -2,8 +2,8 @@ extends Weapon
 
 #~~Kleks 31.10.2025
 #fizyka strzelanie z shotguna
-var spread_angle = 0.9375
-var bullet_count = 24
+var spread_angle = 0.625
+var bullet_count = 16
 
 func _ready():
 	weapon_delay = 1
@@ -12,7 +12,7 @@ func _ready():
 	max_ammo = 2
 	current_ammo =  2
 	weapon_name = "DoubleBarrel"
-	weapon_damage = 0.7
+	weapon_damage = 84
 
 func __shoot(spawn_pos: Vector2, player):
 	
@@ -23,9 +23,9 @@ func __shoot(spawn_pos: Vector2, player):
 		bullet.global_position = spawn_pos
 		
 		var angle_offset
-		if i < 3:
+		if i < 8:
 			angle_offset =  randf_range(-5.625, 5.625)
-		elif i < 5:
+		elif i < 14:
 			angle_offset = randf_range(-16.875, 16.875)
 		else:
 			angle_offset = randf_range(-22.5, 22.5)

@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bueu1fbuarpxm"
-path="res://.godot/imported/player_temp.png-9adf7f67093c2b5107bac440e5df2fdc.ctex"
+uid="uid://djd52f1s0qhhd"
+path="res://.godot/imported/GhostNonVisibleTEMP.png-e35a7b6adff0bc31e448666588404892.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/Player/player_temp.png"
-dest_files=["res://.godot/imported/player_temp.png-9adf7f67093c2b5107bac440e5df2fdc.ctex"]
+source_file="res://Assets/Entities/Enemies/GhostFraction/GhostTEMP/GhostNonVisibleTEMP.png"
+dest_files=["res://.godot/imported/GhostNonVisibleTEMP.png-e35a7b6adff0bc31e448666588404892.ctex"]
 
 [params]
 

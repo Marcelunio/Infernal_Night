@@ -13,7 +13,7 @@ func _ready():
 	max_ammo = 30
 	current_ammo = 30  
 	weapon_name = "ak47"
-	weapon_damage = 1.5
+	weapon_damage = 180
 
 func __shoot(spawn_pos: Vector2, player):
 	var bullet = preload("res://Scenes/Projectiles/bullet.tscn").instantiate()

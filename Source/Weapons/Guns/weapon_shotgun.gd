@@ -12,7 +12,7 @@ func _ready():
 	max_ammo = 6
 	current_ammo =  6
 	weapon_name = "shotgun"
-	weapon_damage = 0.9
+	weapon_damage = 108
 
 func __shoot(spawn_pos: Vector2, player):
 	
