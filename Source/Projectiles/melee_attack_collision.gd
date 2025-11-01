@@ -1,7 +1,18 @@
 extends Area2D
+var weapon_origin = null
+var stun_timer :float
+var damage: float 
+
 
 func _ready() -> void:
-	pass  
+	if weapon_origin:
+		damage = weapon_origin.weapon_damage
+		if damage == 0:
+			stun_timer = 5
+		else:
+			stun_timer = 1.2
+	else:
+		print("DEBUG - weapon_origin jest null!")
 
 func setup(melee_range, melee_angle, player) -> void:
 	print("dziala co nie?")
@@ -23,7 +34,13 @@ func setup(melee_range, melee_angle, player) -> void:
 		
 		if abs(angle_diff) <= deg_to_rad(melee_angle / 2.0):
 			if body.is_in_group("enemy"):
-				print("Trafiony!")
+				if body.has_method("take_damage"):
+					body.take_damage(damage, stun_timer) 
+					print("damage broni: TK " , damage)
+			  
+			elif body.has_method("_take_damage"):
+				body._take_damage(damage, stun_timer)
+				print("damage broni: _TK " , damage)
 		else:
 			print("Poza kątem ataku")
 	

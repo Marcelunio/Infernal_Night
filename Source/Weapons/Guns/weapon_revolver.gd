@@ -7,7 +7,7 @@ func _ready():
 	current_ammo =  6
 	weapon_name = "revolwer"
 	throw_force = 950
-	weapon_damage = 2
+	weapon_damage = 3
 
 func __shoot(spawn_pos: Vector2, player):
 	print("DEBUG - oddano strzal")

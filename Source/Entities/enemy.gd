@@ -84,8 +84,6 @@ func _on_navigation_agent_velocity_computed(safe_velocity: Vector2) -> void:
 	applied_velocity = safe_velocity
 
 func take_damage(amount: float, stun_dur: float = -1.0) -> void:
-	print("DEBUG - damage", amount)
-	print("DEBUG - hp", hp)
 	if stun_dur <= 0.0:
 		stun_dur = default_stun_time
 
