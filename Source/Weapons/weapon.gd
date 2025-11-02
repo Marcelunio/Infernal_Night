@@ -14,7 +14,6 @@ var player_velocity_to_throw_force: float =0.6
 var is_picked_up: bool = false
 var is_thrown: bool = false
 
-
 var timer: Timer
 
 func _ready():

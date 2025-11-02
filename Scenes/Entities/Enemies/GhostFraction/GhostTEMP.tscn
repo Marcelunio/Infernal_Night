@@ -1,0 +1,31 @@
+[gd_scene load_steps=4 format=3 uid="uid://bqacb2gjppd5i"]
+
+[ext_resource type="Script" uid="uid://cdsecm14b3vpr" path="res://Source/Entities/Enemies/GhostFraction/ghost_temp.gd" id="1_8vcp7"]
+[ext_resource type="Texture2D" uid="uid://raw4bvtywi2l" path="res://Assets/Entities/Enemies/GhostFraction/GhostTEMP/GhostVisibleTEMP.png" id="2_8vcp7"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_1f0kj"]
+radius = 43.011627
+
+[node name="GhostTEMP" type="CharacterBody2D" groups=["enemy"]]
+position = Vector2(1, -12)
+collision_layer = 64
+collision_mask = 57
+motion_mode = 1
+wall_min_slide_angle = 0.0
+script = ExtResource("1_8vcp7")
+
+[node name="EnemyCollision" type="CollisionShape2D" parent="."]
+position = Vector2(-1, 12)
+shape = SubResource("CircleShape2D_1f0kj")
+
+[node name="EnemySprite" type="Sprite2D" parent="."]
+position = Vector2(-1.0000076, 12.000001)
+scale = Vector2(0.91, 0.6142523)
+texture = ExtResource("2_8vcp7")
+
+[node name="NavigationAgent" type="NavigationAgent2D" parent="."]
+simplify_path = true
+
+[node name="Hurtbox" type="Area2D" parent="."]
+
+[node name="HurtDetect" type="CollisionShape2D" parent="Hurtbox"]

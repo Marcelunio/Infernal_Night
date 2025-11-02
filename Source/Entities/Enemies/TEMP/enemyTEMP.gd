@@ -1,13 +1,13 @@
 extends CharacterBody2D
 
 # --- ustawienia
-@export var max_hp: int = 3
+@export var max_hp: int = 360
 @export var speed: float = 300.0
 @export var start_delay: float = 1.0
 @export var default_stun_time: float = 0.12
 
 # --- stan
-var hp: float
+var hp: int
 var wait_timer: float = 0.0
 var active: bool = false
 var stunned: bool = false
@@ -83,7 +83,7 @@ func _physics_process(delta: float) -> void:
 func _on_navigation_agent_velocity_computed(safe_velocity: Vector2) -> void:
 	applied_velocity = safe_velocity
 
-func take_damage(amount: float, stun_dur: float = -1.0) -> void:
+func take_damage(amount: int, stun_dur: float = -1.0) -> void:
 	if stun_dur <= 0.0:
 		stun_dur = default_stun_time
 

@@ -1,7 +1,7 @@
 extends Area2D
 var weapon_origin = null
 var stun_timer :float
-var damage: float 
+var damage: int
 
 
 func _ready() -> void:

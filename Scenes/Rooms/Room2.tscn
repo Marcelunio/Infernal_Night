@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" uid="uid://bgy071o5jbwec" path="res://Source/Rooms/Doors.gd" id="1_momfn"]
 [ext_resource type="TileSet" uid="uid://dwjq33gve6fks" path="res://TileSets/BaseTileset.tres" id="2_cuhup"]
-[ext_resource type="PackedScene" uid="uid://didl5ieemco65" path="res://Scenes/Entities/enemy.tscn" id="5_7a7y1"]
+[ext_resource type="PackedScene" uid="uid://didl5ieemco65" path="res://Scenes/Entities/Enemies/TEMP/enemyTEMP.tscn" id="5_7a7y1"]
 [ext_resource type="PackedScene" uid="uid://da1ap0hsfecta" path="res://Scenes/Weapons/Guns/WeaponUzi.tscn" id="5_cuhup"]
 [ext_resource type="PackedScene" uid="uid://kv6ej6j01fux" path="res://Scenes/Weapons/Guns/WeaponAk47.tscn" id="5_momfn"]
 [ext_resource type="PackedScene" uid="uid://cotiiwrrpdkwu" path="res://Scenes/Weapons/Melee/WeaponBat.tscn" id="6_0lgib"]

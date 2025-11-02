@@ -1,9 +1,9 @@
-[gd_scene load_steps=13 format=4 uid="uid://b865bu8xw64sy"]
+[gd_scene load_steps=14 format=4 uid="uid://b865bu8xw64sy"]
 
 [ext_resource type="TileSet" uid="uid://dwjq33gve6fks" path="res://TileSets/BaseTileset.tres" id="1_5nsto"]
-[ext_resource type="PackedScene" uid="uid://dn2dpf0haseiq" path="res://Scenes/Entities/Player.tscn" id="2_gjpho"]
+[ext_resource type="PackedScene" uid="uid://dn2dpf0haseiq" path="res://Scenes/Entities/Other/Player.tscn" id="2_gjpho"]
 [ext_resource type="PackedScene" uid="uid://t7ktbcl5debv" path="res://Scenes/Weapons/Guns/WeaponPistol.tscn" id="3_p70al"]
-[ext_resource type="PackedScene" uid="uid://didl5ieemco65" path="res://Scenes/Entities/enemy.tscn" id="4_rgh2o"]
+[ext_resource type="PackedScene" uid="uid://didl5ieemco65" path="res://Scenes/Entities/Enemies/TEMP/enemyTEMP.tscn" id="4_rgh2o"]
 [ext_resource type="PackedScene" uid="uid://do67sjc1c7h8g" path="res://Scenes/Weapons/Guns/WeaponShotgun.tscn" id="5_pbw6q"]
 [ext_resource type="PackedScene" uid="uid://kv6ej6j01fux" path="res://Scenes/Weapons/Guns/WeaponAk47.tscn" id="6_v1gob"]
 [ext_resource type="PackedScene" uid="uid://e50scyaq600v" path="res://Scenes/UI/AmmoDisplay.tscn" id="7_jw32o"]
@@ -12,6 +12,7 @@
 [ext_resource type="PackedScene" uid="uid://da1ap0hsfecta" path="res://Scenes/Weapons/Guns/WeaponUzi.tscn" id="10_bmxlf"]
 [ext_resource type="PackedScene" uid="uid://b783hpp0owvai" path="res://Scenes/Weapons/Guns/WeaponDoubleBarrel.tscn" id="11_4kpch"]
 [ext_resource type="PackedScene" uid="uid://bxg5woeatx4uj" path="res://Scenes/Weapons/Guns/WeaponRevolver.tscn" id="12_grg3l"]
+[ext_resource type="PackedScene" uid="uid://bqacb2gjppd5i" path="res://Scenes/Entities/Enemies/GhostFraction/GhostTEMP.tscn" id="13_cv8e0"]
 
 [node name="World" type="Node2D"]
 
@@ -21,9 +22,6 @@ tile_set = ExtResource("1_5nsto")
 
 [node name="Player" parent="." instance=ExtResource("2_gjpho")]
 position = Vector2(367, 423)
-
-[node name="Enemy" parent="." instance=ExtResource("4_rgh2o")]
-position = Vector2(1111, 1167)
 
 [node name="WeaponPickup-pistol" parent="." instance=ExtResource("3_p70al")]
 position = Vector2(638, 1065)
@@ -70,3 +68,6 @@ position = Vector2(924, 315)
 
 [node name="WeaponRevolver" parent="." instance=ExtResource("12_grg3l")]
 position = Vector2(-126, 422)
+
+[node name="GhostTEMP" parent="." instance=ExtResource("13_cv8e0")]
+position = Vector2(1113, 1160)
