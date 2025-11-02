@@ -19,7 +19,7 @@ max_ammo = 6
 weapon_name = "revolver"
 throw_force = 950.0
 weapon_delay = 0.65
-weapon_damage = 3.0
+weapon_damage = 360.0
 
 [node name="WeaponSprite" type="Sprite2D" parent="."]
 texture = ExtResource("2_ecfbt")

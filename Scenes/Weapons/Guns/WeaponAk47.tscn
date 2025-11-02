@@ -23,7 +23,7 @@ max_ammo = 30
 weapon_name = "ak47"
 throw_force = 900.0
 weapon_delay = 0.1
-weapon_damage = 1.0
+weapon_damage = 180.0
 
 [node name="WeaponSprite" type="Sprite2D" parent="."]
 texture = ExtResource("2_k27v1")

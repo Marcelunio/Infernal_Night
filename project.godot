@@ -11,7 +11,7 @@ config_version=5
 [application]
 
 config/name="Infernal Night"
-run/main_scene="uid://b865bu8xw64sy"
+run/main_scene="uid://dup5ljvtnxmtq"
 config/features=PackedStringArray("4.5", "Forward Plus")
 config/icon="uid://ci6co3vls48fx"
 

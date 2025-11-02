@@ -21,7 +21,7 @@ max_ammo = 2
 weapon_name = "DoubleBarrel"
 throw_force = 600.0
 weapon_delay = 0.9
-weapon_damage = 0.7
+weapon_damage = 84.0
 metadata/_edit_group_ = true
 
 [node name="WeaponSprite" type="Sprite2D" parent="."]

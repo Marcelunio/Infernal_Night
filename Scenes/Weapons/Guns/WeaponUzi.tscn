@@ -23,7 +23,7 @@ max_ammo = 32
 weapon_name = "uzi"
 throw_force = 1000.0
 weapon_delay = 0.025
-weapon_damage = 1.0
+weapon_damage = 120.0
 
 [node name="WeaponSprite" type="Sprite2D" parent="."]
 texture = ExtResource("2_aaf5g")

@@ -1,7 +1,7 @@
 [gd_scene load_steps=5 format=3 uid="uid://t7ktbcl5debv"]
 
 [ext_resource type="Script" uid="uid://bllmlfn3uam3l" path="res://Source/Weapons/Guns/weapon_single_fire.gd" id="1_5xuog"]
-[ext_resource type="Texture2D" uid="uid://bg7f0syedwukm" path="res://Assets/test/gun.png" id="2_phod8"]
+[ext_resource type="Texture2D" uid="uid://bg7f0syedwukm" path="res://Assets/Test/gun.png" id="2_phod8"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_phod8"]
 size = Vector2(32, 22)
@@ -19,7 +19,7 @@ max_ammo = 17
 weapon_name = "pistol"
 throw_force = 1000.0
 weapon_delay = 0.2
-weapon_damage = 1.0
+weapon_damage = 120.0
 metadata/_edit_group_ = true
 
 [node name="WeaponSprite" type="Sprite2D" parent="."]
