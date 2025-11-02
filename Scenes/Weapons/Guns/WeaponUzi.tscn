@@ -1,6 +1,6 @@
 [gd_scene load_steps=5 format=3 uid="uid://da1ap0hsfecta"]
 
-[ext_resource type="Script" uid="uid://b01y7ei2mxn2w" path="res://Source/Weapons/Guns/weapon_uzi.gd" id="1_aaf5g"]
+[ext_resource type="Script" uid="uid://b72f2mdgd5on3" path="res://Source/Weapons/Guns/weapon_rifle.gd" id="1_aaf5g"]
 [ext_resource type="Texture2D" uid="uid://c46kl3pv4efvc" path="res://Assets/Weapons/Guns/uzi.png" id="2_aaf5g"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_phod8"]
@@ -15,19 +15,27 @@ collision_mask = 80
 gravity_scale = 0.0
 linear_damp = 1.065
 script = ExtResource("1_aaf5g")
-metadata/_edit_group_ = true
+spread_angle = 5.0
+max_spread = 20.0
+spread_increase = 1.5
+base_spread = 2.0
+max_ammo = 32
+weapon_name = "uzi"
+throw_force = 1000.0
+weapon_delay = 0.025
+weapon_damage = 1.0
 
 [node name="WeaponSprite" type="Sprite2D" parent="."]
 texture = ExtResource("2_aaf5g")
 
 [node name="WeaponCollsion" type="CollisionShape2D" parent="."]
-position = Vector2(1.5, -11)
+position = Vector2(0.5, 0)
 shape = SubResource("RectangleShape2D_phod8")
 
 [node name="WeaponArea" type="Area2D" parent="."]
 collision_layer = 4
 
 [node name="WeaponAreaShape" type="CollisionShape2D" parent="WeaponArea"]
-position = Vector2(1.5, -11)
+position = Vector2(0.5, 0)
 shape = SubResource("RectangleShape2D_osvus")
 debug_color = Color(0.89498323, 0.2559664, 0.4939599, 0.41960785)

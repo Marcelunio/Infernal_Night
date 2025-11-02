@@ -1,7 +1,7 @@
 extends Area2D
 
 var direction: Vector2 = Vector2.RIGHT
-var bullet_speed: float = 1500
+var bullet_speed: float
 var shooter = null
 var weapon_origin = null
 var damage: float 
@@ -10,7 +10,7 @@ var damage: float
 func _ready():
 	add_to_group("projectiles")
 	connect("body_entered", _on_body_entered)
-	
+	bullet_speed= weapon_origin.bullet_speed
 	if weapon_origin:
 		damage = weapon_origin.weapon_damage
 	else:

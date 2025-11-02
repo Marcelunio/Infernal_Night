@@ -1,6 +1,6 @@
 [gd_scene load_steps=5 format=3 uid="uid://b783hpp0owvai"]
 
-[ext_resource type="Script" uid="uid://3gl8u5e7p5de" path="res://Source/Weapons/Guns/weapon_double_barrel.gd" id="1_4s30w"]
+[ext_resource type="Script" uid="uid://1vqkoax4on8c" path="res://Source/Weapons/Guns/weapon_shotgun.gd" id="1_8tfbl"]
 [ext_resource type="Texture2D" uid="uid://cx01h0tlqh5xm" path="res://Assets/Weapons/Guns/doubleBarrel.png" id="2_0fmmj"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_phod8"]
@@ -14,7 +14,14 @@ collision_layer = 2
 collision_mask = 80
 gravity_scale = 0.0
 linear_damp = 1.065
-script = ExtResource("1_4s30w")
+script = ExtResource("1_8tfbl")
+spread_angle = 45.0
+bullet_count = 28
+max_ammo = 2
+weapon_name = "DoubleBarrel"
+throw_force = 600.0
+weapon_delay = 0.9
+weapon_damage = 0.7
 metadata/_edit_group_ = true
 
 [node name="WeaponSprite" type="Sprite2D" parent="."]

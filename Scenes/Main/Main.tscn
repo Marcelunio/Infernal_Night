@@ -10,7 +10,7 @@
 [ext_resource type="PackedScene" uid="uid://cotiiwrrpdkwu" path="res://Scenes/Weapons/Melee/WeaponBat.tscn" id="8_50glp"]
 [ext_resource type="PackedScene" uid="uid://dhj4hdoqpno23" path="res://Scenes/Weapons/Melee/WeaponKnife.tscn" id="9_vy5pj"]
 [ext_resource type="PackedScene" uid="uid://da1ap0hsfecta" path="res://Scenes/Weapons/Guns/WeaponUzi.tscn" id="10_bmxlf"]
-[ext_resource type="PackedScene" uid="uid://b783hpp0owvai" path="res://Scenes/Weapons/Guns/DoubleBarrel.tscn" id="11_4kpch"]
+[ext_resource type="PackedScene" uid="uid://b783hpp0owvai" path="res://Scenes/Weapons/Guns/WeaponDoubleBarrel.tscn" id="11_4kpch"]
 [ext_resource type="PackedScene" uid="uid://bxg5woeatx4uj" path="res://Scenes/Weapons/Guns/WeaponRevolver.tscn" id="12_grg3l"]
 
 [node name="World" type="Node2D"]

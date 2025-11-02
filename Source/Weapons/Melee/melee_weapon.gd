@@ -1,17 +1,8 @@
-#~~Kleks 20.10.2025
-extends Weapon
+class_name MeleeWeapon extends Weapon
 
-var melee_range: float = 150
-var melee_angle: int = 90
+@export var melee_range: float 
+@export var melee_angle: float 
 
-func _ready():
-	weapon_delay = 0.4
-	super._ready()
-	throw_force = 1050
-	max_ammo = -1
-	current_ammo = -1  
-	weapon_name = "bat"
-	weapon_damage = 0
 
 func __shoot(spawn_pos: Vector2, player):
 	var attack_area = preload("res://Scenes/Projectiles/MeleeAttackCollision.tscn").instantiate()

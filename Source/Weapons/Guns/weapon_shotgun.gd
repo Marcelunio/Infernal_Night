@@ -1,18 +1,11 @@
-extends Weapon
+extends RangedWeapon
 
 #~~Kleks 19.10.2025
 #fizyka strzelanie z shotguna
-var spread_angle = 3.75
-var bullet_count = 6
+@export var spread_angle : float
+@export var bullet_count : int
 
-func _ready():
-	weapon_delay = 0.8
-	super._ready()
-	throw_force=800
-	max_ammo = 6
-	current_ammo =  6
-	weapon_name = "shotgun"
-	weapon_damage = 0.9
+
 
 func __shoot(spawn_pos: Vector2, player):
 	
@@ -24,11 +17,11 @@ func __shoot(spawn_pos: Vector2, player):
 		
 		var angle_offset
 		if i < 3:
-			angle_offset =  randf_range(-5.625, 5.625)
+			angle_offset =  randf_range(-0.2*spread_angle,0.2*spread_angle)
 		elif i < 5:
-			angle_offset = randf_range(-16.875, 16.875)
+			angle_offset = randf_range(-0.5*spread_angle, 0.5*spread_angle)
 		else:
-			angle_offset = randf_range(-22.5, 22.5)
+			angle_offset = randf_range(-spread_angle,spread_angle)
 	
 		var shoot_direction = Vector2.RIGHT.rotated(player.rotation - deg_to_rad(90) + deg_to_rad(angle_offset))
 		bullet.direction = shoot_direction

@@ -1,6 +1,6 @@
 [gd_scene load_steps=5 format=3 uid="uid://do67sjc1c7h8g"]
 
-[ext_resource type="Script" uid="uid://1vqkoax4on8c" path="res://Source/Weapons/Guns/weapon_shotgun.gd" id="1_83s6p"]
+[ext_resource type="Script" uid="uid://1vqkoax4on8c" path="res://Source/Weapons/Guns/weapon_shotgun.gd" id="1_02myo"]
 [ext_resource type="Texture2D" uid="uid://cl3g6qrrpsm3s" path="res://Assets/Weapons/Guns/shotgun.png" id="2_83s6p"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_phod8"]
@@ -14,20 +14,24 @@ collision_layer = 2
 collision_mask = 80
 gravity_scale = 0.0
 linear_damp = 1.065
-script = ExtResource("1_83s6p")
-metadata/_edit_group_ = true
+script = ExtResource("1_02myo")
+spread_angle = 30.0
+bullet_count = 6
+max_ammo = 6
+weapon_name = "shotgun"
+throw_force = 800.0
+weapon_delay = 0.8
+weapon_damage = 0.9
 
 [node name="WeaponSprite" type="Sprite2D" parent="."]
 texture = ExtResource("2_83s6p")
 
 [node name="WeaponCollsion" type="CollisionShape2D" parent="."]
-position = Vector2(-15, 0)
 shape = SubResource("RectangleShape2D_phod8")
 
 [node name="WeaponArea" type="Area2D" parent="."]
 collision_layer = 4
 
 [node name="WeaponAreaShape" type="CollisionShape2D" parent="WeaponArea"]
-position = Vector2(-15, 0)
 shape = SubResource("RectangleShape2D_osvus")
 debug_color = Color(0.89498323, 0.2559664, 0.4939599, 0.41960785)

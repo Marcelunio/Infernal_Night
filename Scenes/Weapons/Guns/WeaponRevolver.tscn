@@ -1,6 +1,6 @@
 [gd_scene load_steps=5 format=3 uid="uid://bxg5woeatx4uj"]
 
-[ext_resource type="Script" uid="uid://diirqkl7s8m8q" path="res://Source/Weapons/Guns/weapon_revolver.gd" id="1_ecfbt"]
+[ext_resource type="Script" uid="uid://bllmlfn3uam3l" path="res://Source/Weapons/Guns/weapon_single_fire.gd" id="1_ecfbt"]
 [ext_resource type="Texture2D" uid="uid://iihv6tgwjj5o" path="res://Assets/Weapons/Guns/revolver.png" id="2_ecfbt"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_phod8"]
@@ -15,6 +15,11 @@ collision_mask = 80
 gravity_scale = 0.0
 linear_damp = 1.065
 script = ExtResource("1_ecfbt")
+max_ammo = 6
+weapon_name = "revolver"
+throw_force = 950.0
+weapon_delay = 0.65
+weapon_damage = 3.0
 
 [node name="WeaponSprite" type="Sprite2D" parent="."]
 texture = ExtResource("2_ecfbt")

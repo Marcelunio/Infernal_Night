@@ -1,19 +1,10 @@
-#~~Kleks 31.10.2025
-extends Weapon
-#fizyka strzelanie z ak47
-var spread_angle = 5.0        # Minimalny rozrzut
-var max_spread = 20.0         # Maksymalny rozrzut
-var spread_increase = 1.5     # O ile zwiększa się rozrzut przy każdym strzale
-var current_spread = 2.0
+extends RangedWeapon
 
-func _ready():
-	weapon_delay = 0.025
-	super._ready()
-	throw_force = 1000
-	max_ammo = 32
-	current_ammo = 32  
-	weapon_name = "uzi"
-	weapon_damage = 1
+@export var spread_angle : float        # Minimalny rozrzut
+@export var max_spread : float       # Maksymalny rozrzut
+@export var spread_increase : float 
+@export var base_spread : float   # O ile zwiększa się rozrzut przy każdym strzale
+var current_spread = base_spread
 
 func __shoot(spawn_pos: Vector2, player):
 	var bullet = preload("res://Scenes/Projectiles/bullet.tscn").instantiate()
@@ -32,4 +23,4 @@ func __shoot(spawn_pos: Vector2, player):
 	current_spread = min(current_spread, max_spread)
 	
 func spread_normalize():
-	current_spread = 2.0
+	current_spread = base_spread

@@ -7,7 +7,6 @@ var camera_direction: Vector2 = Vector2.ZERO
 var camera_offset_limit: float = 0.5
 
 signal UI_WeaponChanged(weapon)
-signal UI_AmmoChanged(current_ammo, max_ammo)
 
 func _physics_process(delta):
 	var input_dir = Vector2.ZERO
@@ -40,13 +39,12 @@ func _physics_process(delta):
 		if current_weapon.is_in_group("weapon-machineGuns"):
 			if Input.is_action_pressed("shoot"):
 				current_weapon.shoot(global_position, self)
-				emit_signal("UI_AmmoChanged", current_weapon.current_ammo, current_weapon.max_ammo)
+				
 			else:
 				current_weapon.spread_normalize()
 		else:
 			if Input.is_action_just_pressed("shoot"):
 				current_weapon.shoot(global_position, self)
-				emit_signal("UI_AmmoChanged", current_weapon.current_ammo, current_weapon.max_ammo)	
 			
 	
 	if Input.is_action_just_pressed("throw"):
@@ -71,7 +69,4 @@ func get_player_occupied():
 		return true
 	else:
 		return false
-		
-func UI_weapon_signal():
-	emit_signal("UI_WeaponChanged", current_weapon)
-	emit_signal("UI_AmmoChanged", current_weapon.current_ammo, current_weapon.max_ammo)
+	

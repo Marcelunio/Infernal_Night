@@ -4,7 +4,7 @@
 [ext_resource type="TileSet" uid="uid://dwjq33gve6fks" path="res://TileSets/BaseTileset.tres" id="2_u8o5a"]
 [ext_resource type="PackedScene" uid="uid://do67sjc1c7h8g" path="res://Scenes/Weapons/Guns/WeaponShotgun.tscn" id="5_cefv8"]
 [ext_resource type="PackedScene" uid="uid://didl5ieemco65" path="res://Scenes/Entities/enemy.tscn" id="5_syrkg"]
-[ext_resource type="PackedScene" uid="uid://b783hpp0owvai" path="res://Scenes/Weapons/Guns/DoubleBarrel.tscn" id="5_u8o5a"]
+[ext_resource type="PackedScene" uid="uid://b783hpp0owvai" path="res://Scenes/Weapons/Guns/WeaponDoubleBarrel.tscn" id="5_u8o5a"]
 [ext_resource type="PackedScene" uid="uid://dhj4hdoqpno23" path="res://Scenes/Weapons/Melee/WeaponKnife.tscn" id="6_rj2n6"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_3xonv"]

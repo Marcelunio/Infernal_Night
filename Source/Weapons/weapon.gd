@@ -4,17 +4,16 @@ extends RigidBody2D
 
 @export var weapon_name: String = ""
 @onready var sprite_node = $"WeaponSprite"
+@export var throw_force: float
+@export var weapon_delay: float
+@export var weapon_damage: float
 var sprite: Texture2D
 
-var throw_force: float
+
 var player_velocity_to_throw_force: float =0.6
 var is_picked_up: bool = false
-var weapon_delay: float
 var is_thrown: bool = false
-var max_ammo: int
-var current_ammo: int 
-var bullet_speed: float = 1500
-var weapon_damage: float
+
 
 var timer: Timer
 
@@ -66,7 +65,7 @@ func _on_body_entered(body):
 		position = Vector2.ZERO
 		
 		body.current_weapon = self
-		body.UI_weapon_signal()
+		body.emit_signal("UI_WeaponChanged",body.current_weapon)
 
 func throw(spawn_pos: Vector2, velocity_player):
 	print("Broń wyrzucona: ", weapon_name)
@@ -90,18 +89,13 @@ func throw(spawn_pos: Vector2, velocity_player):
 func __shoot(spawn_pos: Vector2, player)->void
 	
 
-func shoot(spawn_pos: Vector2, player):
+func shoot(spawn_pos: Vector2, player)->bool:
 	
 	#~~Kleks 19.10.2025 
 	#dodaje timer zeby nie bylo mozna strzelac z pistoletu jak z akacza xD + ammo
 	if !(timer.is_stopped()):
-		return
-		
-	if current_ammo == 0:
-		print("dzwiek pustego magazynka XD")
-		return
+		return false
 		
 	timer.start()
 	__shoot(spawn_pos,player)
-	
-	current_ammo -= 1
+	return true
