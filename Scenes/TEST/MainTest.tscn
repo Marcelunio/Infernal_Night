@@ -1,0 +1,10 @@
+[gd_scene load_steps=3 format=3 uid="uid://cyk7cwk67xkx"]
+
+[ext_resource type="Script" uid="uid://bw2ya8vaci6dj" path="res://Scenes/TEST/main_test.gd" id="1_itjvv"]
+[ext_resource type="TileSet" uid="uid://dwjq33gve6fks" path="res://TileSets/VisibleTileset.tres" id="2_uxshr"]
+
+[node name="MainTest" type="Node2D"]
+script = ExtResource("1_itjvv")
+
+[node name="World" type="TileMapLayer" parent="."]
+tile_set = ExtResource("2_uxshr")
