@@ -1,7 +1,7 @@
 [gd_scene load_steps=4 format=3 uid="uid://didl5ieemco65"]
 
-[ext_resource type="Script" uid="uid://2k1u0n4ax7k0" path="res://Source/Entities/Enemies/TEMP/enemyTEMP.gd" id="1_1f0kj"]
 [ext_resource type="Texture2D" uid="uid://bueu1fbuarpxm" path="res://Assets/Entities/Other/Player/player_temp.png" id="1_hghv2"]
+[ext_resource type="Script" uid="uid://dgyjrm0tg8tx8" path="res://Source/Entities/Enemies/TEMP/enemy_temp.gd" id="1_q7gjh"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_1f0kj"]
 radius = 20.51
@@ -11,7 +11,11 @@ collision_layer = 64
 collision_mask = 57
 motion_mode = 1
 wall_min_slide_angle = 0.0
-script = ExtResource("1_1f0kj")
+script = ExtResource("1_q7gjh")
+max_hp = 100
+speed = 400.0
+start_delay = 0.1
+default_stun_time = 1.0
 metadata/_edit_group_ = true
 
 [node name="EnemyCollision" type="CollisionShape2D" parent="."]
