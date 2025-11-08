@@ -1,0 +1,98 @@
+[gd_scene load_steps=12 format=3 uid="uid://bcoklgm7qabj5"]
+
+[ext_resource type="Script" uid="uid://bgu0eftxie7o0" path="res://Source/Entities/Enemies/SkeletonFraction/skeleton.gd" id="1_150g2"]
+[ext_resource type="Texture2D" uid="uid://dnaqev2r1o8aq" path="res://Assets/Entities/Enemies/SkeletonFraction/skelly.png" id="2_150g2"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_1f0kj"]
+radius = 26.0
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_150g2"]
+atlas = ExtResource("2_150g2")
+region = Rect2(0, 128, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_boeuh"]
+atlas = ExtResource("2_150g2")
+region = Rect2(128, 128, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_pc3q6"]
+atlas = ExtResource("2_150g2")
+region = Rect2(256, 128, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ey7k1"]
+atlas = ExtResource("2_150g2")
+region = Rect2(0, 0, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_eiyh6"]
+atlas = ExtResource("2_150g2")
+region = Rect2(128, 0, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_wumxe"]
+atlas = ExtResource("2_150g2")
+region = Rect2(0, 0, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_1c3qj"]
+atlas = ExtResource("2_150g2")
+region = Rect2(256, 0, 128, 128)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_sy6su"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_150g2")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_boeuh")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_pc3q6")
+}],
+"loop": true,
+"name": &"down",
+"speed": 3.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ey7k1")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_eiyh6")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_wumxe")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_1c3qj")
+}],
+"loop": true,
+"name": &"walking",
+"speed": 3.0
+}]
+
+[node name="GhostTEMP" type="CharacterBody2D" groups=["enemy"]]
+collision_layer = 64
+collision_mask = 57
+motion_mode = 1
+wall_min_slide_angle = 0.0
+script = ExtResource("1_150g2")
+max_hp = 360
+speed = 300.0
+start_delay = 0.1
+default_stun_time = 0.1
+rotation_speed = 25.0
+
+[node name="EnemyCollision" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_1f0kj")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_sy6su")
+animation = &"walking"
+
+[node name="NavigationAgent" type="NavigationAgent2D" parent="."]
+simplify_path = true
+
+[node name="Hurtbox" type="Area2D" parent="."]
+
+[node name="HurtDetect" type="CollisionShape2D" parent="Hurtbox"]
+
+[node name="PostMortemTimer" type="Timer" parent="."]
+wait_time = 5.0

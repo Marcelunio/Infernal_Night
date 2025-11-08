@@ -3,9 +3,9 @@
 [ext_resource type="Script" uid="uid://bgy071o5jbwec" path="res://Source/Rooms/Doors.gd" id="1_cefv8"]
 [ext_resource type="TileSet" uid="uid://dwjq33gve6fks" path="res://TileSets/BaseTileset.tres" id="2_u8o5a"]
 [ext_resource type="PackedScene" uid="uid://do67sjc1c7h8g" path="res://Scenes/Weapons/Guns/WeaponShotgun.tscn" id="5_cefv8"]
-[ext_resource type="PackedScene" uid="uid://didl5ieemco65" path="res://Scenes/Entities/enemy.tscn" id="5_syrkg"]
 [ext_resource type="PackedScene" uid="uid://b783hpp0owvai" path="res://Scenes/Weapons/Guns/WeaponDoubleBarrel.tscn" id="5_u8o5a"]
 [ext_resource type="PackedScene" uid="uid://dhj4hdoqpno23" path="res://Scenes/Weapons/Melee/WeaponKnife.tscn" id="6_rj2n6"]
+[ext_resource type="PackedScene" uid="uid://bqacb2gjppd5i" path="res://Scenes/Entities/Enemies/GhostFraction/GhostTEMP.tscn" id="6_u8o5a"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_3xonv"]
 size = Vector2(64, 32)
@@ -61,11 +61,11 @@ shape = SubResource("RectangleShape2D_uj1e3")
 [node name="WeaponShotgun" parent="." instance=ExtResource("5_cefv8")]
 position = Vector2(534, 201)
 
-[node name="Enemy" parent="." instance=ExtResource("5_syrkg")]
-position = Vector2(859, 461)
-
 [node name="WeaponDoubleBarrel" parent="." instance=ExtResource("5_u8o5a")]
 position = Vector2(170, 674)
 
 [node name="WeaponKnife" parent="." instance=ExtResource("6_rj2n6")]
 position = Vector2(105, 106)
+
+[node name="GhostTEMP" parent="." instance=ExtResource("6_u8o5a")]
+position = Vector2(859, 576)

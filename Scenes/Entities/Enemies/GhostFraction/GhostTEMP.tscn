@@ -7,19 +7,21 @@
 radius = 43.011627
 
 [node name="GhostTEMP" type="CharacterBody2D" groups=["enemy"]]
-position = Vector2(1, -12)
 collision_layer = 64
 collision_mask = 57
 motion_mode = 1
 wall_min_slide_angle = 0.0
 script = ExtResource("1_8vcp7")
+max_hp = 360
+speed = 200.0
+start_delay = 0.1
+can_be_stunned = false
+rotation_speed = 25.0
 
 [node name="EnemyCollision" type="CollisionShape2D" parent="."]
-position = Vector2(-1, 12)
 shape = SubResource("CircleShape2D_1f0kj")
 
 [node name="EnemySprite" type="Sprite2D" parent="."]
-position = Vector2(-1.0000076, 12.000001)
 scale = Vector2(0.91, 0.6142523)
 texture = ExtResource("2_8vcp7")
 

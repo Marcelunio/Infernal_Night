@@ -1,25 +1,42 @@
-extends CharacterBody2D
+extends Enemy
 
+var noVisibleSprite 
+var visibleSprite
 
-const SPEED = 300.0
-const JUMP_VELOCITY = -400.0
+func __ready():
+	noVisibleSprite = preload("res://Assets/Entities/Enemies/GhostFraction/GhostTEMP/GhostNonVisibleTEMP.png")
+	visibleSprite = preload("res://Assets/Entities/Enemies/GhostFraction/GhostTEMP/GhostVisibleTEMP.png")
 
-
-func _physics_process(delta: float) -> void:
-	# Add the gravity.
-	if not is_on_floor():
-		velocity += get_gravity() * delta
-
-	# Handle jump.
-	if Input.is_action_just_pressed("ui_accept") and is_on_floor():
-		velocity.y = JUMP_VELOCITY
-
-	# Get the input direction and handle the movement/deceleration.
-	# As good practice, you should replace UI actions with custom gameplay actions.
-	var direction := Input.get_axis("ui_left", "ui_right")
-	if direction:
-		velocity.x = direction * SPEED
+func __find_target():
+	if target_path and has_node(target_path):
+		return get_node(target_path)
 	else:
-		velocity.x = move_toward(velocity.x, 0, SPEED)
+		var players := get_tree().get_nodes_in_group("player")
+		if players.size() > 0:
+			return players[0]
 
-	move_and_slide()
+func __die():
+	queue_free()
+	
+func __on_physics_process(delta: float) -> void:
+	var dist = global_position.distance_to(target.global_position)
+	
+	if dist <= 576:
+		$EnemySprite.texture = noVisibleSprite
+		$EnemyCollision.disabled = true
+		$Hurtbox/HurtDetect.disabled = true
+		$NavigationAgent.navigation_layers = 2
+		speed = 150
+		
+		collision_layer = 0
+		collision_mask = 0
+		
+		phasing = true
+	else:
+		$EnemySprite.texture = visibleSprite
+		$EnemyCollision.disabled = false
+		$Hurtbox/HurtDetect.disabled = false
+		$NavigationAgent.navigation_layers = 1
+		speed = 300
+		
+		phasing = false

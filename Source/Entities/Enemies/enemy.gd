@@ -8,6 +8,15 @@ extends CharacterBody2D
 @export var start_delay: float
 @export var default_stun_time: float
 @export var can_be_stunned: bool = true
+@export var rotation_speed: float
+
+#ghost
+@export var phasing: bool = false
+
+#skelly
+@export var post_mortem: bool = false
+@export var post_mortem_max_hp: float
+@export var post_mortem_down: bool = false
 
 var hp: int
 var wait_timer: float = 0.0
@@ -37,6 +46,12 @@ func __while_stunned(delta):
 func __ready() -> void:
 	pass
 
+func __on_physics_process(delta: float) -> void:
+	pass
+	
+func __post_mortem() -> void:
+	pass
+
 func _ready() -> void:
 	hp = max_hp
 	
@@ -53,6 +68,11 @@ func _ready() -> void:
 	
 func _physics_process(delta: float) -> void:
 	
+	__on_physics_process(delta)
+	
+	if post_mortem_down:
+		return
+	
 	if stunned:
 		stun_timer -= delta
 		__while_stunned(delta)
@@ -67,11 +87,9 @@ func _physics_process(delta: float) -> void:
 		wait_timer += delta
 		if wait_timer >= start_delay:
 			active = true
-		move_and_slide()
 		return
 
 	if not is_instance_valid(target):
-		move_and_slide()
 		return
 
 	var dir := Vector2.ZERO
@@ -82,20 +100,19 @@ func _physics_process(delta: float) -> void:
 		dir = next_point - global_position
 		if dir.length() < 5.0:
 			dir = target.global_position - global_position
-	else:
-		dir = target.global_position - global_position
+	#else:
+		#dir = target.global_position - global_position
 
 	if dir.length() > 0.1:
 		dir = dir.normalized()
 		applied_velocity = dir * speed
-		rotation = dir.angle() + 0.5*PI
+		var target_rotation = dir.angle() + 0.5 * PI
+		rotation = lerp_angle(rotation, target_rotation, rotation_speed * delta)
 	else:
 		applied_velocity = Vector2.ZERO
 
 	velocity = applied_velocity
 	move_and_slide()
-
-	
 
 func _on_navigation_agent_velocity_computed(safe_velocity: Vector2) -> void:
 	applied_velocity = safe_velocity
@@ -117,4 +134,7 @@ func take_damage(amount: int, stun_dur: float = -1.0) -> void:
 		velocity = Vector2.ZERO
 
 func _die() -> void:
-	__die()
+	if post_mortem:
+		__post_mortem()
+	else:
+		__die()

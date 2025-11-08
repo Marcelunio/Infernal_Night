@@ -3,8 +3,8 @@
 [ext_resource type="TileSet" uid="uid://dwjq33gve6fks" path="res://TileSets/BaseTileset.tres" id="1_p8p37"]
 [ext_resource type="Script" uid="uid://bgy071o5jbwec" path="res://Source/Rooms/Doors.gd" id="2_t1wpb"]
 [ext_resource type="PackedScene" uid="uid://t7ktbcl5debv" path="res://Scenes/Weapons/Guns/WeaponPistol.tscn" id="3_477ix"]
-[ext_resource type="PackedScene" uid="uid://didl5ieemco65" path="res://Scenes/Entities/Enemies/TEMP/enemyTEMP.tscn" id="5_1kmgg"]
 [ext_resource type="PackedScene" uid="uid://bxg5woeatx4uj" path="res://Scenes/Weapons/Guns/WeaponRevolver.tscn" id="5_kdtvj"]
+[ext_resource type="PackedScene" uid="uid://bcoklgm7qabj5" path="res://Scenes/Entities/Enemies/SkeletonFraction/Skeleton.tscn" id="5_uc76g"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_3xonv"]
 size = Vector2(64, 32)
@@ -60,8 +60,8 @@ shape = SubResource("RectangleShape2D_uj1e3")
 [node name="WeaponPickup" parent="." instance=ExtResource("3_477ix")]
 position = Vector2(219, 129)
 
-[node name="Enemy" parent="." instance=ExtResource("5_1kmgg")]
-position = Vector2(669, 618)
-
 [node name="WeaponRevolver" parent="." instance=ExtResource("5_kdtvj")]
 position = Vector2(295, 105)
+
+[node name="GhostTEMP" parent="." instance=ExtResource("5_uc76g")]
+position = Vector2(744, 523)

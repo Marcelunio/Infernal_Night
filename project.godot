@@ -73,6 +73,20 @@ control_camera={
 ]
 }
 
+[layer_names]
+
+2d_physics/layer_1="Gracz"
+2d_physics/layer_2="Bron"
+2d_physics/layer_3="PickupBroni"
+2d_physics/layer_4="projectiles"
+2d_physics/layer_5="sciana"
+2d_physics/layer_6="woda"
+2d_physics/layer_7="enemy"
+
+[navigation]
+
+2d/merge_rasterizer_cell_scale=0.001
+
 [rendering]
 
 textures/canvas_textures/default_texture_filter=0
