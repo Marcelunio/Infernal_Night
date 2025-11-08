@@ -28,9 +28,6 @@ func __on_physics_process(delta: float) -> void:
 		$NavigationAgent.navigation_layers = 2
 		speed = 150
 		
-		collision_layer = 0
-		collision_mask = 0
-		
 		phasing = true
 	else:
 		$EnemySprite.texture = visibleSprite

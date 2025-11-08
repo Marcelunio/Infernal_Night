@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=4 uid="uid://b865bu8xw64sy"]
+[gd_scene load_steps=15 format=4 uid="uid://b865bu8xw64sy"]
 
 [ext_resource type="TileSet" uid="uid://dwjq33gve6fks" path="res://TileSets/BaseTileset.tres" id="1_5nsto"]
 [ext_resource type="PackedScene" uid="uid://dn2dpf0haseiq" path="res://Scenes/Entities/Other/Player.tscn" id="2_gjpho"]
@@ -13,6 +13,7 @@
 [ext_resource type="PackedScene" uid="uid://b783hpp0owvai" path="res://Scenes/Weapons/Guns/WeaponDoubleBarrel.tscn" id="11_4kpch"]
 [ext_resource type="PackedScene" uid="uid://bxg5woeatx4uj" path="res://Scenes/Weapons/Guns/WeaponRevolver.tscn" id="12_grg3l"]
 [ext_resource type="PackedScene" uid="uid://bcoklgm7qabj5" path="res://Scenes/Entities/Enemies/SkeletonFraction/Skeleton.tscn" id="13_cv8e0"]
+[ext_resource type="PackedScene" uid="uid://bqacb2gjppd5i" path="res://Scenes/Entities/Enemies/GhostFraction/GhostTEMP.tscn" id="14_hkvnm"]
 
 [node name="World" type="Node2D"]
 
@@ -71,3 +72,6 @@ position = Vector2(-126, 422)
 
 [node name="GhostTEMP" parent="." instance=ExtResource("13_cv8e0")]
 position = Vector2(1157, 1232)
+
+[node name="GhostTEMP2" parent="." instance=ExtResource("14_hkvnm")]
+position = Vector2(1305, 1043)

@@ -43,7 +43,7 @@ func __die() -> void:
 func __revival() -> void:
 	$AnimatedSprite2D.stop()
 	post_mortem_max_hp = 50
-	hp = 360
+	hp =max_hp
 	post_mortem_down = false
 	timer_started = false
 	
@@ -54,7 +54,5 @@ func __on_physics_process(delta: float) -> void:
 	if velocity != Vector2.ZERO:
 		$AnimatedSprite2D.animation = "walking"
 		$AnimatedSprite2D.play()
-		pass
 	else:
 		$AnimatedSprite2D.stop()
-		pass
