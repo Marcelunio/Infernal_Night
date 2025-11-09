@@ -1,10 +1,6 @@
-[gd_scene load_steps=3 format=3 uid="uid://cyk7cwk67xkx"]
+[gd_scene load_steps=2 format=3 uid="uid://cyk7cwk67xkx"]
 
-[ext_resource type="Script" uid="uid://bw2ya8vaci6dj" path="res://Scenes/TEST/main_test.gd" id="1_itjvv"]
-[ext_resource type="TileSet" uid="uid://dwjq33gve6fks" path="res://TileSets/VisibleTileset.tres" id="2_uxshr"]
+[ext_resource type="Script" uid="uid://dmj5n6kb77sjg" path="res://Scenes/TEST/room_manager.gd" id="1_itjvv"]
 
 [node name="MainTest" type="Node2D"]
 script = ExtResource("1_itjvv")
-
-[node name="World" type="TileMapLayer" parent="."]
-tile_set = ExtResource("2_uxshr")

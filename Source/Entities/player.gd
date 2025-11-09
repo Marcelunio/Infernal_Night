@@ -8,6 +8,10 @@ var camera_offset_limit: float = 0.5
 
 signal UI_WeaponChanged(weapon)
 signal UI_AmmoChanged(current_ammo, max_ammo)
+signal entered_door(tile_pos: Vector2i)
+
+var current_tile = Vector2i()
+var previous_tile = Vector2i()
 
 func _physics_process(delta):
 	var input_dir = Vector2.ZERO
@@ -66,6 +70,8 @@ func _physics_process(delta):
 		camera_direction=lerp(camera_direction,Vector2.ZERO,camera_speed*delta)
 		$Camera.set_offset(camera_direction)
 		
+	check_door_tiles()
+		
 func get_player_occupied():
 	if current_weapon != null:
 		return true
@@ -75,3 +81,17 @@ func get_player_occupied():
 func UI_weapon_signal():
 	emit_signal("UI_WeaponChanged", current_weapon)
 	emit_signal("UI_AmmoChanged", current_weapon.current_ammo, current_weapon.max_ammo)
+
+func check_door_tiles():
+	var room_manager = get_parent()
+	var invisible_tilemap = null
+	for child in room_manager.get_children():
+		if child.name == "WorldInvisibleTileMap":
+			invisible_tilemap = child
+			break
+	if not invisible_tilemap:
+		return
+	current_tile = invisible_tilemap.local_to_map(global_position)
+	if current_tile != previous_tile:
+		entered_door.emit(current_tile)
+		previous_tile = current_tile
