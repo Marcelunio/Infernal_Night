@@ -15,6 +15,9 @@ func _ready():
 		damage = weapon_origin.weapon_damage
 	else:
 		print("DEBUG - weapon_origin jest null!")
+		
+	$BulletAnimatedSprite.animation = "BANG"
+	$BulletAnimatedSprite.play()
 
 func _physics_process(delta):
 	position += direction * bullet_speed * delta
@@ -32,6 +35,8 @@ func _on_body_entered(body: Node) -> void:
 		elif body.has_method("_take_damage"):
 			body._take_damage(damage, 0.12)
 			print("damage broni: _TK " , damage)
+			
+	$BulletAnimatedSprite.stop()
 	queue_free()
 
 #func get_damage() -> int:
