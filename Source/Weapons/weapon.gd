@@ -20,6 +20,7 @@ func _ready():
 	
 	var area = get_node("WeaponArea")
 	area.connect("body_entered", Callable(self, "_on_body_entered"))
+	area.connect("body_exited", Callable(self, "_on_body_exited")) 
 	
 	sprite = sprite_node.texture
 	#~~Kleks 19.10.2025
@@ -48,23 +49,34 @@ func _on_body_entered(body):
 	if body.name == "Player":
 		if body.get_player_occupied():
 			return
+		else:
+			body.pick_up_check = true 
+			body.nearest_weapon = self
+		
+func _on_body_exited(body):
+	if body.name == "Player":
+		if body.nearest_weapon == self:
+			body.pick_up_check = false
+			body.nearest_weapon = null
 			
-		is_picked_up = true
-		print("Podniosłeś: ", weapon_name)
+	
+func pick_up(body):
+	is_picked_up = true
+	print("Podniosłeś: ", weapon_name)
 		
-		# Ukryj broń ale nie usuwaj jej
-		hide()
-		set_collision_layer_value(1, false)
-		set_collision_mask_value(1, false)
+	# Ukryj broń ale nie usuwaj jej
+	hide()
+	set_collision_layer_value(1, false)
+	set_collision_mask_value(1, false)
 
-		var parent = get_parent()
-		parent.call_deferred("remove_child", self)
-		body.call_deferred("add_child", self)
+	var parent = get_parent()
+	parent.call_deferred("remove_child", self)
+	body.call_deferred("add_child", self)
 
-		position = Vector2.ZERO
+	position = Vector2.ZERO
 		
-		body.current_weapon = self
-		body.emit_signal("UI_WeaponChanged",body.current_weapon)
+	body.current_weapon = self
+	body.emit_signal("UI_WeaponChanged",body.current_weapon)
 
 func throw(spawn_pos: Vector2, velocity_player):
 	print("Broń wyrzucona: ", weapon_name)

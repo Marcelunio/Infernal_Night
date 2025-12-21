@@ -64,11 +64,11 @@ position = Vector2(-857, 463)
 [node name="WeaponUzi" parent="." instance=ExtResource("10_bmxlf")]
 position = Vector2(-528, 460)
 
-[node name="WeaponDoubleBarrel" parent="." instance=ExtResource("11_4kpch")]
-position = Vector2(924, 315)
-
 [node name="WeaponRevolver" parent="." instance=ExtResource("12_grg3l")]
 position = Vector2(-126, 422)
+
+[node name="WeaponDoubleBarrel" parent="." instance=ExtResource("11_4kpch")]
+position = Vector2(924, 315)
 
 [node name="GhostTEMP" parent="." instance=ExtResource("13_cv8e0")]
 position = Vector2(1157, 1232)

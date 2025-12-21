@@ -1,0 +1,32 @@
+[gd_scene load_steps=5 format=3 uid="uid://dnjuntixfdqq0"]
+
+[ext_resource type="Script" uid="uid://ct3empoi6mu3a" path="res://Scenes/Weapons/Throwable/weapon_holy_granate.gd" id="1_4glms"]
+[ext_resource type="Texture2D" uid="uid://k0qtx3bdew3w" path="res://Assets/Weapons/Melee/bat.png" id="2_58l82"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_36jba"]
+size = Vector2(20, 87)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_7mxlh"]
+size = Vector2(20, 87)
+
+[node name="WeaponBat" type="RigidBody2D" groups=["weapon-white"]]
+collision_layer = 2
+collision_mask = 80
+gravity_scale = 0.0
+script = ExtResource("1_4glms")
+metadata/_edit_group_ = true
+
+[node name="WeaponSprite" type="Sprite2D" parent="."]
+texture = ExtResource("2_58l82")
+
+[node name="WeaponCollision" type="CollisionShape2D" parent="."]
+position = Vector2(-2, 2.5)
+shape = SubResource("RectangleShape2D_36jba")
+
+[node name="WeaponArea" type="Area2D" parent="."]
+collision_layer = 4
+
+[node name="WeaponAreaShape" type="CollisionShape2D" parent="WeaponArea"]
+position = Vector2(-2, 2.5)
+shape = SubResource("RectangleShape2D_7mxlh")
+debug_color = Color(0.94360435, 9.241105e-06, 0.60311705, 0.41960785)

@@ -21,7 +21,7 @@ func __die():
 func __on_physics_process(delta: float) -> void:
 	var dist = global_position.distance_to(target.global_position)
 	
-	if dist <= 576:
+	if dist >= 576:
 		$EnemySprite.texture = noVisibleSprite
 		$EnemyCollision.disabled = true
 		$Hurtbox/HurtDetect.disabled = true
