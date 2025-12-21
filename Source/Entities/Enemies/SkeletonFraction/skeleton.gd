@@ -47,7 +47,7 @@ func __revival() -> void:
 	post_mortem_down = false
 	timer_started = false
 	
-func __on_physics_process(delta: float) -> void:
+func __on_physics_process(_delta: float) -> void:
 	if post_mortem_down:
 		return 
 		

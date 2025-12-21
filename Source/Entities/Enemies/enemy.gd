@@ -37,16 +37,16 @@ func __find_target() -> Node2D
 @abstract
 func __die() -> void
 
-func __on_damage_taken(amount: int) -> void:
+func __on_damage_taken(_amount: int) -> void:
 	pass
 
-func __while_stunned(delta):
+func __while_stunned(_delta):
 	pass
 	
 func __ready() -> void:
 	pass
 
-func __on_physics_process(delta: float) -> void:
+func __on_physics_process(_delta: float) -> void:
 	pass
 	
 func __post_mortem() -> void:

@@ -12,16 +12,20 @@ func _ready():
 	
 	player.UI_WeaponChanged.connect(_on_weapon_changed)
 
-
-
 func _on_weapon_changed(weapon):
 	if weapon == null:
-		if current_weapon is RangedWeapon:
-			current_weapon.UI_AmmoChanged.disconnect(_on_ammo_changed)
+		if current_weapon is RangedWeapon and current_weapon != null:
+			if current_weapon.UI_AmmoChanged.is_connected(_on_ammo_changed):
+				current_weapon.UI_AmmoChanged.disconnect(_on_ammo_changed)
 		visible = false
 	else:
 		visible = true
 		$VBoxContainer/WeaponSprite.texture = weapon.sprite
+		
+		if current_weapon is RangedWeapon and current_weapon != null:
+			if current_weapon.UI_AmmoChanged.is_connected(_on_ammo_changed):
+				current_weapon.UI_AmmoChanged.disconnect(_on_ammo_changed)
+		
 		current_weapon=weapon
 	if weapon is RangedWeapon:
 		$VBoxContainer/VBoxContainer/AmmoCounter.text = "%d / %d" % [weapon.current_ammo, weapon.max_ammo]

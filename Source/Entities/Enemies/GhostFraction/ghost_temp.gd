@@ -18,7 +18,7 @@ func __find_target():
 func __die():
 	queue_free()
 	
-func __on_physics_process(delta: float) -> void:
+func __on_physics_process(_delta: float) -> void:
 	var dist = global_position.distance_to(target.global_position)
 	
 	if dist >= 576:

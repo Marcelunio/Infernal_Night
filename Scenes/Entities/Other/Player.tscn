@@ -58,3 +58,5 @@ position_smoothing_enabled = true
 
 [node name="AmmoDisplay" parent="CanvasLayer" instance=ExtResource("3_agccv")]
 metadata/_edit_use_anchors_ = true
+
+[node name="WeaponContainer" type="Node2D" parent="."]

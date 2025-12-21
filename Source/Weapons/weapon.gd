@@ -62,6 +62,11 @@ func _on_body_exited(body):
 	
 func pick_up(body):
 	is_picked_up = true
+	
+	if not body.add_weapon_to_invetnory(self):
+		print("Ekwipunek pelny")
+		is_picked_up = false
+		return
 	print("Podniosłeś: ", weapon_name)
 		
 	# Ukryj broń ale nie usuwaj jej
@@ -71,21 +76,21 @@ func pick_up(body):
 
 	var parent = get_parent()
 	parent.call_deferred("remove_child", self)
-	body.call_deferred("add_child", self)
+	body.NODE_weapon_container.call_deferred("add_child", self)
 
 	position = Vector2.ZERO
-		
-	body.current_weapon = self
-	body.emit_signal("UI_WeaponChanged",body.current_weapon)
 
 func throw(spawn_pos: Vector2, velocity_player):
 	print("Broń wyrzucona: ", weapon_name)
 	is_picked_up = false
 	
 	# Usuwa z gracza i dodaje z powrotem do sceny
-	var player = get_parent()
-	player.remove_child(self)
-	player.get_parent().add_child(self)
+	var player = get_tree().get_first_node_in_group("player")
+	var world = player.get_parent()
+	var weapon_container = get_parent() 
+
+	weapon_container.remove_child(self)
+	world.add_child(self)
 	
 	global_position = spawn_pos
 	
