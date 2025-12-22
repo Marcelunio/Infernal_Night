@@ -12,3 +12,5 @@ script = ExtResource("1_rmcpd")
 
 [node name="DetectCollision" type="CollisionShape2D" parent="."]
 shape = SubResource("CircleShape2D_5dehd")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]

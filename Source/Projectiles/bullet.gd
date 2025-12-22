@@ -24,7 +24,7 @@ func _physics_process(delta):
 	rotation = direction.angle() - PI / 2
 
 func _on_body_entered(body: Node) -> void:
-	if body == shooter:
+	if body == shooter:#sam caly czas sie w tym gubie... Shooter jest przypisywany w najniszej hierarchi klas weapon, jest on poto zeby zdefioniowac jakiedy strzela np. czy gracz czy przeciwnik ~~Kekls
 		return
 
 	if body.is_in_group("enemy"):
@@ -36,8 +36,10 @@ func _on_body_entered(body: Node) -> void:
 			body._take_damage(damage, 0.12)
 			print("damage broni: _TK " , damage)
 			
+	if body.is_in_group("player"):
+		if body.has_method("take_damage"):
+			body.take_damage(damage)
+			print("gracz dostał:", damage, "-hp")
+			
 	$BulletAnimatedSprite.stop()
 	queue_free()
-
-#func get_damage() -> int:
-	#return damage

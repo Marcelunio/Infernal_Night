@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dtvjr7oi5e6kg"
-path="res://.godot/imported/bullet.png-4d51021bdd7125f95f80def6795d2d61.ctex"
+uid="uid://cn8c0d1tqbpp1"
+path="res://.godot/imported/HolyGranateExplosion.png-74270ee534ec5933837a21f15d3fb867.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/Weapons/Guns/bullets/bullet.png"
-dest_files=["res://.godot/imported/bullet.png-4d51021bdd7125f95f80def6795d2d61.ctex"]
+source_file="res://Assets/Weapons/Projectiles/HolyGranateExplosion.png"
+dest_files=["res://.godot/imported/HolyGranateExplosion.png-74270ee534ec5933837a21f15d3fb867.ctex"]
 
 [params]
 

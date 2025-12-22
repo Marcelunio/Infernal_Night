@@ -34,6 +34,8 @@ weapon-pistols=""
 weapon-shotguns=""
 weapon-machineGuns=""
 projectiles=""
+weapon-throwable-granate=""
+weapon-throwable-nongranate=""
 weapon-throwable=""
 
 [input]

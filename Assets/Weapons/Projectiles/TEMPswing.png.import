@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://c02l34qcbybd6"
-path="res://.godot/imported/bullet.png-ca98b58dddc4195d9cab24507474001e.ctex"
+uid="uid://dr7jaq30sgs2f"
+path="res://.godot/imported/TEMPswing.png-98597013dfb3f8fa8a4d914f902d25b7.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/Test/bullet.png"
-dest_files=["res://.godot/imported/bullet.png-ca98b58dddc4195d9cab24507474001e.ctex"]
+source_file="res://Assets/Weapons/Projectiles/TEMPswing.png"
+dest_files=["res://.godot/imported/TEMPswing.png-98597013dfb3f8fa8a4d914f902d25b7.ctex"]
 
 [params]
 

@@ -7,10 +7,10 @@ class_name RangedWeapon extends Weapon
 
 signal UI_AmmoChanged(current_ammo, max_ammo)
 
-func shoot(spawn_pos: Vector2, player):
+func shoot(spawn_pos: Vector2, entity):
 	
 	if(current_ammo<1):
 		return
-	if(super.shoot(spawn_pos,player)):
+	if(super.shoot(spawn_pos,entity)):
 		current_ammo-=1
 		emit_signal("UI_AmmoChanged",current_ammo, max_ammo)

@@ -1,7 +1,8 @@
-[gd_scene load_steps=5 format=3 uid="uid://cotiiwrrpdkwu"]
+[gd_scene load_steps=6 format=3 uid="uid://cotiiwrrpdkwu"]
 
 [ext_resource type="Script" uid="uid://oibk6qjt3f2q" path="res://Source/Weapons/Melee/melee_weapon.gd" id="1_oh6b4"]
 [ext_resource type="Texture2D" uid="uid://k0qtx3bdew3w" path="res://Assets/Weapons/Melee/bat.png" id="2_nsli5"]
+[ext_resource type="Texture2D" uid="uid://dr7jaq30sgs2f" path="res://Assets/Weapons/Projectiles/TEMPswing.png" id="3_nsli5"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_36jba"]
 size = Vector2(20, 87)
@@ -35,3 +36,6 @@ collision_layer = 4
 position = Vector2(-2, 2.5)
 shape = SubResource("RectangleShape2D_7mxlh")
 debug_color = Color(0.94360435, 9.241105e-06, 0.60311705, 0.41960785)
+
+[node name="SwingSprite" type="Sprite2D" parent="."]
+texture = ExtResource("3_nsli5")

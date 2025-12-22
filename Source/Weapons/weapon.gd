@@ -18,9 +18,12 @@ var timer: Timer
 
 func _ready():
 	
-	var area = get_node("WeaponArea")
-	area.connect("body_entered", Callable(self, "_on_body_entered"))
-	area.connect("body_exited", Callable(self, "_on_body_exited")) 
+	var area = get_node_or_null("WeaponArea")
+	if area:
+		area.connect("body_entered", Callable(self, "_on_body_entered"))
+		area.connect("body_exited", Callable(self, "_on_body_exited"))
+	else:
+		push_error("Brak WeaponArea w " + weapon_name + "! Nie będzie można podnieść.")
 	
 	sprite = sprite_node.texture
 	#~~Kleks 19.10.2025
@@ -102,10 +105,10 @@ func throw(spawn_pos: Vector2, velocity_player):
 	apply_impulse(throw_direction * throw_force + velocity_player*player_velocity_to_throw_force)
 
 @abstract
-func __shoot(spawn_pos: Vector2, player)->void
+func __shoot(spawn_pos: Vector2, entity)->void
 	
 
-func shoot(spawn_pos: Vector2, player)->bool:
+func shoot(spawn_pos: Vector2, entity)->bool:
 	
 	#~~Kleks 19.10.2025 
 	#dodaje timer zeby nie bylo mozna strzelac z pistoletu jak z akacza xD + ammo
@@ -113,5 +116,5 @@ func shoot(spawn_pos: Vector2, player)->bool:
 		return false
 		
 	timer.start()
-	__shoot(spawn_pos,player)
+	__shoot(spawn_pos, entity)
 	return true

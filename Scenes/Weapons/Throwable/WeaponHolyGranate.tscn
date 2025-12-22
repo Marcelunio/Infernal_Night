@@ -1,32 +1,47 @@
-[gd_scene load_steps=5 format=3 uid="uid://dnjuntixfdqq0"]
+[gd_scene load_steps=6 format=3 uid="uid://dnjuntixfdqq0"]
 
-[ext_resource type="Script" uid="uid://ct3empoi6mu3a" path="res://Scenes/Weapons/Throwable/weapon_holy_granate.gd" id="1_4glms"]
-[ext_resource type="Texture2D" uid="uid://k0qtx3bdew3w" path="res://Assets/Weapons/Melee/bat.png" id="2_58l82"]
+[ext_resource type="Script" uid="uid://f6vagumq5irb" path="res://Source/Weapons/Throwable/throwable.gd" id="1_4glms"]
+[ext_resource type="Texture2D" uid="uid://dn3x3dwrbgrh2" path="res://Assets/Weapons/Throwable/holyGranate.png" id="1_8vdwt"]
+[ext_resource type="Texture2D" uid="uid://cn8c0d1tqbpp1" path="res://Assets/Weapons/Projectiles/HolyGranateExplosion.png" id="3_5vmhu"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_36jba"]
-size = Vector2(20, 87)
+size = Vector2(36, 43)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_7mxlh"]
-size = Vector2(20, 87)
+size = Vector2(37, 43)
 
-[node name="WeaponBat" type="RigidBody2D" groups=["weapon-white"]]
+[node name="WeaponHolyGranate" type="RigidBody2D" groups=["weapon-throwable", "weapon-throwable-granate"]]
 collision_layer = 2
 collision_mask = 80
 gravity_scale = 0.0
 script = ExtResource("1_4glms")
+granade_familly = true
+melee_range = 300.0
+melee_angle = 360.0
+weapon_name = "HolyGranate"
+throw_force = 1050.0
+weapon_delay = 0.1
+weapon_damage = 1.6
 metadata/_edit_group_ = true
 
 [node name="WeaponSprite" type="Sprite2D" parent="."]
-texture = ExtResource("2_58l82")
+texture = ExtResource("1_8vdwt")
 
 [node name="WeaponCollision" type="CollisionShape2D" parent="."]
-position = Vector2(-2, 2.5)
+position = Vector2(0, 0.5)
 shape = SubResource("RectangleShape2D_36jba")
 
 [node name="WeaponArea" type="Area2D" parent="."]
 collision_layer = 4
 
 [node name="WeaponAreaShape" type="CollisionShape2D" parent="WeaponArea"]
-position = Vector2(-2, 2.5)
+position = Vector2(0.5, 0.5)
 shape = SubResource("RectangleShape2D_7mxlh")
 debug_color = Color(0.94360435, 9.241105e-06, 0.60311705, 0.41960785)
+
+[node name="PinTimer" type="Timer" parent="."]
+wait_time = 3.0
+one_shot = true
+
+[node name="ExplosionSprite" type="Sprite2D" parent="."]
+texture = ExtResource("3_5vmhu")

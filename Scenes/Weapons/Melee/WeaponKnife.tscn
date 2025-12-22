@@ -1,7 +1,8 @@
-[gd_scene load_steps=5 format=3 uid="uid://dhj4hdoqpno23"]
+[gd_scene load_steps=6 format=3 uid="uid://dhj4hdoqpno23"]
 
 [ext_resource type="Script" uid="uid://oibk6qjt3f2q" path="res://Source/Weapons/Melee/melee_weapon.gd" id="1_74jeq"]
 [ext_resource type="Texture2D" uid="uid://dc2oaphwvu3co" path="res://Assets/Weapons/Melee/knife.png" id="2_74jeq"]
+[ext_resource type="Texture2D" uid="uid://dr7jaq30sgs2f" path="res://Assets/Weapons/Projectiles/TEMPswing.png" id="3_vq6rc"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_36jba"]
 size = Vector2(40, 12)
@@ -19,7 +20,7 @@ melee_angle = 60.0
 weapon_name = "knife"
 throw_force = 1250.0
 weapon_delay = 0.2
-weapon_damage = 3.0
+weapon_damage = 360.0
 metadata/_edit_group_ = true
 
 [node name="WeaponSprite" type="Sprite2D" parent="."]
@@ -34,3 +35,6 @@ collision_layer = 4
 [node name="WeaponAreaShape" type="CollisionShape2D" parent="WeaponArea"]
 shape = SubResource("RectangleShape2D_7mxlh")
 debug_color = Color(0.94360435, 9.241105e-06, 0.60311705, 0.41960785)
+
+[node name="SwingSprite" type="Sprite2D" parent="."]
+texture = ExtResource("3_vq6rc")

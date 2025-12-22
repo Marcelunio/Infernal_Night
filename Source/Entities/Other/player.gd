@@ -13,7 +13,13 @@ var selected_weapon: int = 0
 @export var weapon_container_capacity = 3
 @onready var NODE_weapon_container = $WeaponContainer
 
+@export var max_hp:int = 360
+var hp: int
+
 signal UI_WeaponChanged(weapon)
+
+func _ready():
+	hp = max_hp
 
 func _unhandled_input(event: InputEvent):
 	if not weapon_container.is_empty():
@@ -60,8 +66,8 @@ func _physics_process(delta):
 			else:
 				current_weapon.spread_normalize()
 		if current_weapon.is_in_group("weapon-throwable"):
-			if Input.is_action_pressed("shoot"):
-				action_pressed_throw()
+			if Input.is_action_just_pressed("shoot"):
+				action_pressed_throw(true)
 		else:
 			if Input.is_action_just_pressed("shoot"):
 				current_weapon.shoot(global_position, self)
@@ -69,7 +75,7 @@ func _physics_process(delta):
 	
 		if Input.is_action_just_pressed("throw"):
 			if current_weapon != null:
-				action_pressed_throw()
+				action_pressed_throw(false)
 			else:
 				print("Nie masz broni do wyrzucenia")
 			
@@ -87,29 +93,39 @@ func _physics_process(delta):
 			if nearest_weapon != null:
 				nearest_weapon.pick_up(self)
 
-func action_pressed_throw():
+func action_pressed_throw(granate: bool):
 	if weapon_container.is_empty():
 		return
 	
 	var weapon = weapon_container[selected_weapon]
 	
-	weapon_container.remove_at(selected_weapon)
+	if granate and weapon.granate_pin:
+		weapon.pin()
+		weapon.shoot(global_position, self)#to jest uzywane tylko do przypisania entity
+		weapon.granate_pin = false
+		return
 	
-	if weapon_container.is_empty():
-		selected_weapon = 0
-		current_weapon = null
-		
+	if weapon.is_in_group("weapon-throwable") and weapon.exploded.is_connected(_on_weapon_exploded_in_hand):
+		weapon.exploded.disconnect(_on_weapon_exploded_in_hand)
+	
+	weapon_container.remove_at(selected_weapon)
+	weapon_container_ui_update()
+	
+	weapon.throw(global_position, velocity)
+	
+func weapon_container_ui_update():
+	
 	if selected_weapon >= weapon_container.size():
 		selected_weapon = weapon_container.size() - 1
 	
 	if not weapon_container.is_empty():
 		change_weapon(selected_weapon)
 	else:
+		selected_weapon = 0
+		current_weapon = null
 		emit_signal("UI_WeaponChanged", null)
-	
-	weapon.throw(global_position, velocity)
 		
-func get_player_occupied():
+func get_player_occupied() -> bool:
 	if weapon_container.size() >= weapon_container_capacity:
 		pick_up_check = false
 		return true
@@ -122,15 +138,38 @@ func add_weapon_to_invetnory(weapon):
 		
 	weapon_container.append(weapon)	
 		
+	if weapon.is_in_group("weapon-throwable"):
+		weapon.exploded.connect(_on_weapon_exploded_in_hand.bind(weapon))
+		
 	current_weapon = weapon
 	selected_weapon = weapon_container.size() - 1
 	emit_signal("UI_WeaponChanged", current_weapon)
 		
 	return true
 	
-func change_weapon(select):
+func change_weapon(select) -> void:
 	current_weapon = weapon_container[select]
 	emit_signal("UI_WeaponChanged", current_weapon)
+
+func _on_weapon_exploded_in_hand(weapon):
+	var index = weapon_container.find(weapon)
 	
+	if index != -1:
+		weapon_container.remove_at(index)
 	
+	var node_weapon_container = weapon.get_parent()
+	node_weapon_container.remove_child(weapon)
+	
+	weapon_container_ui_update()
+	
+func take_damage(amount: int):
+	hp -= amount
+	if hp <= 0:
+		die()
+		return
+		
+func die() -> void:
+	print("smierc!!!!")
+	pass
+	#bedzie ekeran smierci czy cos ~~Kleks
 	
