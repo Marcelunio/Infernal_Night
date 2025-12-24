@@ -1,3 +1,5 @@
+#Zrobił to Kekls, wszelkie niepewności oraz pytania kierować do mnie...
+#Znane bugi: 0
 extends Control
 #~~Kleks 19.10.2025
 var current_weapon
@@ -10,7 +12,7 @@ func _ready():
 		print("BŁĄD: Gracz nie ma grupy 'player'!")
 		return
 	
-	player.UI_WeaponChanged.connect(_on_weapon_changed)
+	player.inventory.UI_WeaponChanged.connect(_on_weapon_changed)
 
 func _on_weapon_changed(weapon):
 	if is_instance_valid(current_weapon):#dla <freed instance>

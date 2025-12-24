@@ -1,3 +1,64 @@
-FileName, ClassName, SceneName - PascalCase
-script_name, variable_name  - snake_case
-Nigdy przenigdy Cwel-case
+===========================================
+STYLE GUIDE - PROJEKT GRY
+===========================================
+
+KONWENCJE NAZEWNICTWA:
+	- FileName, ClassName, SceneName → PascalCase
+	  Przykład: WeaponBat.tscn
+	
+	- script_name, variable_name, function_name → snake_case
+	  Przykład: inventory_menager.gd
+	
+	- STAŁE → SCREAMING_SNAKE_CASE
+	  Przykład: MAX_HEALTH, WEAPON_CAPACITY
+	
+	Zero Cwel-case
+
+-------------------------------------------
+
+STRUKTURA PLIKU:
+
+1. HEADER (zawsze na górze):
+	#Zrobił to: [Nick], wszelkie pytania kierować do mnie
+	#Znane bugi: [lista bugów lub "0" jeśli brak]
+
+2. KOMENTARZE FUNKCJI:
+	- Piszemy CO robi funkcja, nie JAK
+	- Krótko i konkretnie
+	- Opcjonalnie: skąd jest wywoływana
+	
+	Przykłady:
+	func _handle_player_movement(): # Obsługuje ruch gracza
+	func next_weapon(): #player.gd _unhandled_input()
+
+3. FORMAT:
+	- Spacja po # w komentarzach
+	- Wcięcia: tabulacja (tab)
+
+-------------------------------------------
+
+ORGANIZACJA KODU (kolejność):
+	1. Zmienne (od góry kategoriami, w danej kategorii od góry: @export, @onready i reszta) - przykład w player.gd
+	2. Funkcje wbudowane (_ready, _process, _physics_process)
+	3. Reszta funkcji
+	4. Handlery sygnałów
+
+-------------------------------------------
+
+	- W notes.txt zapisujemy wszystkie znane i nierozwiązane bugi 
+	(czyli takie których nie jesteśmy w stanie rozwiązać w jednym posiedzeniu i ktoś inny może na nie się natknąć)
+	
+	- Dla każdego buga informujemy:
+		- Kiedy występuje (warunki reprodukcji)
+		- Co podejrzewamy za przyczynę
+		- Kiedy został odkryty
+	
+	- Gdy bug zostanie naprawiony, oznaczamy go jako [ROZWIĄZANY]
+	  i przenosimy na koniec listy (archiwum)
+-------------------------------------------
+
+PROŚBY KLEKSA:
+	✓ Header z autorem i bugami - oszczędza czas każdemu w razie pytań i nie porozumień
+	✓ Komentarze opisują CEL, nie implementację
+
+===========================================

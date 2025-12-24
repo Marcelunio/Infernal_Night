@@ -2,7 +2,7 @@
 
 [ext_resource type="TileSet" uid="uid://dwjq33gve6fks" path="res://TileSets/BaseTileset.tres" id="1_5nsto"]
 [ext_resource type="PackedScene" uid="uid://dnjuntixfdqq0" path="res://Scenes/Weapons/Throwable/WeaponHolyGranate.tscn" id="2_5ci8a"]
-[ext_resource type="PackedScene" uid="uid://dn2dpf0haseiq" path="res://Scenes/Entities/Other/Player.tscn" id="2_gjpho"]
+[ext_resource type="PackedScene" uid="uid://dn2dpf0haseiq" path="res://Scenes/Entities/Other/Player/Player.tscn" id="2_gjpho"]
 [ext_resource type="PackedScene" uid="uid://t7ktbcl5debv" path="res://Scenes/Weapons/Guns/WeaponPistol.tscn" id="3_p70al"]
 [ext_resource type="PackedScene" uid="uid://didl5ieemco65" path="res://Scenes/Entities/Enemies/TEMP/enemyTEMP.tscn" id="4_rgh2o"]
 [ext_resource type="PackedScene" uid="uid://do67sjc1c7h8g" path="res://Scenes/Weapons/Guns/WeaponShotgun.tscn" id="5_pbw6q"]

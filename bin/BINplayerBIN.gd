@@ -4,6 +4,7 @@ extends CharacterBody2D
 @export var camera_speed: float = 4
 var camera_direction: Vector2 = Vector2.ZERO
 var camera_offset_limit: float = 0.5
+
 var pick_up_check : bool = false
 var nearest_weapon = null
 

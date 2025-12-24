@@ -1,3 +1,5 @@
+#Zrobił to Kekls, wszelkie niepewności oraz pytania kierować do mnie...
+#Znane bugi: 0
 extends Area2D
 var weapon_origin = null
 var stun_timer :float

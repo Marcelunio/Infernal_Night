@@ -1,3 +1,5 @@
+#Zrobił to Kekls, wszelkie niepewności oraz pytania kierować do mnie...
+#Znane bugi: 0
 class_name MeleeWeapon extends Weapon
 
 @export var melee_range: float 

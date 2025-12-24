@@ -1,7 +1,8 @@
-[gd_scene load_steps=8 format=3 uid="uid://dn2dpf0haseiq"]
+[gd_scene load_steps=9 format=3 uid="uid://dn2dpf0haseiq"]
 
-[ext_resource type="Script" uid="uid://c705e1fe7v6id" path="res://Source/Entities/Other/player.gd" id="1_2cyhl"]
+[ext_resource type="Script" uid="uid://3mc7lvum6rxd" path="res://Source/Entities/Other/Player/player.gd" id="1_nfgiu"]
 [ext_resource type="Texture2D" uid="uid://cqx0ab10hyexx" path="res://Assets/Entities/Other/Player/player_sprites (2).png" id="2_kyqiw"]
+[ext_resource type="PackedScene" uid="uid://cgmet28rsns7e" path="res://Scenes/Entities/Other/Player/InventoryMenager.tscn" id="3_4peru"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_q2x60"]
 radius = 30.016663
@@ -37,7 +38,7 @@ animations = [{
 
 [node name="Player" type="CharacterBody2D" groups=["player"]]
 collision_mask = 60
-script = ExtResource("1_2cyhl")
+script = ExtResource("1_nfgiu")
 metadata/_edit_group_ = true
 
 [node name="PlayerCollision" type="CollisionShape2D" parent="." groups=["player"]]
@@ -53,4 +54,4 @@ frame_progress = 0.20617694
 [node name="Camera" type="Camera2D" parent="."]
 position_smoothing_enabled = true
 
-[node name="WeaponContainer" type="Node2D" parent="."]
+[node name="InventoryMenager" parent="." instance=ExtResource("3_4peru")]

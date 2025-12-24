@@ -1,3 +1,5 @@
+#Zrobił to Kekls, wszelkie niepewności oraz pytania kierować do mnie...
+#Znane bugi: 0
 @abstract
 class_name Weapon
 extends RigidBody2D
@@ -43,30 +45,22 @@ func _physics_process(delta):
 			linear_velocity = Vector2.ZERO
 			angular_velocity = 0
 			is_thrown = false
-	
 
 func _on_body_entered(body):
 	if is_picked_up or is_thrown:
 		return
-		
+
 	if body.name == "Player":
-		if body.get_player_occupied():
-			return
-		else:
-			body.pick_up_check = true 
-			body.nearest_weapon = self
-		
+		body.inventory.is_full(self)
+
 func _on_body_exited(body):
 	if body.name == "Player":
-		if body.nearest_weapon == self:
-			body.pick_up_check = false
-			body.nearest_weapon = null
-			
-	
+		body.inventory.body_exit(self)
+
 func pick_up(body):
 	is_picked_up = true
 	
-	if not body.add_weapon_to_invetnory(self):
+	if not body.inventory.add_weapon(self):
 		print("Ekwipunek pelny")
 		is_picked_up = false
 		return
@@ -76,11 +70,6 @@ func pick_up(body):
 	hide()
 	set_collision_layer_value(1, false)
 	set_collision_mask_value(1, false)
-
-	var parent = get_parent()
-	parent.call_deferred("remove_child", self)
-	body.NODE_weapon_container.call_deferred("add_child", self)
-
 	position = Vector2.ZERO
 
 func throw(spawn_pos: Vector2, velocity_player):
@@ -89,11 +78,6 @@ func throw(spawn_pos: Vector2, velocity_player):
 	
 	# Usuwa z gracza i dodaje z powrotem do sceny
 	var player = get_tree().get_first_node_in_group("player")
-	var world = player.get_parent()
-	var weapon_container = get_parent() 
-
-	weapon_container.remove_child(self)
-	world.add_child(self)
 	
 	global_position = spawn_pos
 	

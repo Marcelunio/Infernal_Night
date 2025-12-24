@@ -1,3 +1,5 @@
+#Zrobił to Kekls, wszelkie niepewności oraz pytania kierować do mnie...
+#Znane bugi: 0
 class_name Throwable extends Weapon
 
 @onready var pin_timer = get_node_or_null("PinTimer")
