@@ -75,14 +75,14 @@ func _handle_weapon_action():#obslugue wszelkie interakcje gracza
 
 		elif weapon.is_in_group("weapon-throwable"):
 			if Input.is_action_just_pressed("shoot"):
-				inventory.throw(velocity,weapon, true)
+				inventory.throw(velocity,weapon)
 
 		else:
 			if Input.is_action_just_pressed("shoot"):
 				weapon.shoot(global_position, self)
 
 		if Input.is_action_just_pressed("throw"):
-			inventory.throw(velocity, weapon, false)
+			inventory.throw(velocity, weapon)
 
 		if Input.is_action_pressed("reload"):
 			if weapon.is_in_group("weapon-ranged"):
@@ -100,10 +100,13 @@ func _handle_player_camera(delta, direction):#obsluguje wszelkie nie naturalne z
 		$Camera.set_offset(camera_direction)
 
 func _handle_player_pick_up():#obslguje poczatkowy proces podnoszenia broni
-	if inventory.pick_up_check:
+	if inventory.pick_up_check or inventory.ammo_pick_up_check:
 		if Input.is_action_just_pressed("pick_up"):
 			if inventory.nearest_weapon != null:
 				inventory.nearest_weapon.pick_up(self)
+			
+			if inventory.nearest_ammo != null:
+				inventory.nearest_ammo.ammo_pick_up(self)
 
 func take_damage(amount: int):#obsluga damage'a
 	hp -= amount

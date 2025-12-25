@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=4 uid="uid://b865bu8xw64sy"]
+[gd_scene load_steps=17 format=4 uid="uid://b865bu8xw64sy"]
 
 [ext_resource type="TileSet" uid="uid://dwjq33gve6fks" path="res://TileSets/BaseTileset.tres" id="1_5nsto"]
 [ext_resource type="PackedScene" uid="uid://dnjuntixfdqq0" path="res://Scenes/Weapons/Throwable/WeaponHolyGranate.tscn" id="2_5ci8a"]
@@ -14,6 +14,8 @@
 [ext_resource type="PackedScene" uid="uid://b783hpp0owvai" path="res://Scenes/Weapons/Guns/WeaponDoubleBarrel.tscn" id="11_4kpch"]
 [ext_resource type="PackedScene" uid="uid://bxg5woeatx4uj" path="res://Scenes/Weapons/Guns/WeaponRevolver.tscn" id="12_grg3l"]
 [ext_resource type="PackedScene" uid="uid://bqacb2gjppd5i" path="res://Scenes/Entities/Enemies/GhostFraction/GhostTEMP.tscn" id="14_hkvnm"]
+[ext_resource type="PackedScene" uid="uid://bt2sjl85bpm3i" path="res://Scenes/PickUps/Ammo/9mm.tscn" id="15_5ci8a"]
+[ext_resource type="PackedScene" uid="uid://cltvr8ugr4leu" path="res://Scenes/Weapons/Throwable/WeaponHolyWater.tscn" id="16_18xdc"]
 
 [node name="World" type="Node2D"]
 
@@ -84,3 +86,19 @@ position = Vector2(367, 423)
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
 [node name="AmmoDisplay" parent="CanvasLayer" instance=ExtResource("7_jw32o")]
+
+[node name="PickUps" type="Node2D" parent="."]
+
+[node name="Ammo" type="Node2D" parent="PickUps"]
+
+[node name="9mm" parent="PickUps/Ammo" instance=ExtResource("15_5ci8a")]
+position = Vector2(204, 333)
+
+[node name="9mm2" parent="PickUps/Ammo" instance=ExtResource("15_5ci8a")]
+position = Vector2(389, 260)
+
+[node name="9mm3" parent="PickUps/Ammo" instance=ExtResource("15_5ci8a")]
+position = Vector2(293, 294)
+
+[node name="WeaponHolyWater" parent="." instance=ExtResource("16_18xdc")]
+position = Vector2(610, 209)

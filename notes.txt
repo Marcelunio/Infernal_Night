@@ -22,6 +22,20 @@ This warning can be toggled under 'navigation/2d/warnings/navmesh_edge_merge_err
 -Osoba Naprawiająca Bug: Marcelunio
 --------------------------------------------
 
+--------------------------------------------
+				Zgłasza Kekls
+Kod błedu:
+	Brak, moje spostrzezenie, generalnie jak sie rozladuje ammo do zera (9mm) i sie spowrote sobedzie je z pickupa to ono
+	w ekwipunku ale nie mozna go przeladowac
+-Waruek reprodukcji:
+	rozladuj ammo do zera, zdobadz nowe, sproboj przeladowac
+-Prawdopodobna przyczyna:
+	nie wiem bede szukal
+-Data Odkrycia: 
+	25.12.2025
+-Osoba Naprawiająca Bug: Kekls
+--------------------------------------------
+
 ============================================
 				 Archiwum  					
 ============================================

@@ -55,3 +55,7 @@ frame_progress = 0.20617694
 position_smoothing_enabled = true
 
 [node name="InventoryMenager" parent="." instance=ExtResource("3_4peru")]
+max_9mm = 50
+max_5_56mm = 200
+max_12gauge = 40
+max_7_62mm = 200

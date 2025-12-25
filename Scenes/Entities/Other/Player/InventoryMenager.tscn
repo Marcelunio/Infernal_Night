@@ -4,5 +4,9 @@
 
 [node name="InventoryMenager" type="Node2D"]
 script = ExtResource("1_qtqp8")
+max_9mm = 50
+max_5_56mm = 200
+max_12gauge = 40
+max_7_62mm = 200
 
 [node name="WeaponContainer" type="Node2D" parent="."]

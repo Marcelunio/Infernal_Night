@@ -1,0 +1,19 @@
+[gd_scene load_steps=4 format=3 uid="uid://bt2sjl85bpm3i"]
+
+[ext_resource type="Script" uid="uid://3xwbijw7ji6o" path="res://Source/PickUps/Ammo/ammo.gd" id="1_kboyt"]
+[ext_resource type="Texture2D" uid="uid://cc6x6bpmrhbpv" path="res://Assets/PickUps/Ammo/9mm_bloody.png" id="2_c542t"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_vbesi"]
+size = Vector2(68, 71)
+
+[node name="9mm" type="Area2D"]
+script = ExtResource("1_kboyt")
+ammo_type = "9mm"
+ammo_count = 20
+metadata/_edit_group_ = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_vbesi")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("2_c542t")
