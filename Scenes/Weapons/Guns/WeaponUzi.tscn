@@ -9,7 +9,7 @@ size = Vector2(63, 48)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_osvus"]
 size = Vector2(63, 48)
 
-[node name="WeaponUzi" type="RigidBody2D" groups=["weapon-machineGuns"]]
+[node name="WeaponUzi" type="RigidBody2D" groups=["weapon-machineGuns", "weapon-ranged"]]
 collision_layer = 2
 collision_mask = 80
 gravity_scale = 0.0
@@ -19,11 +19,13 @@ spread_angle = 5.0
 max_spread = 20.0
 spread_increase = 1.5
 base_spread = 2.0
-max_ammo = 32
 weapon_name = "uzi"
 throw_force = 1000.0
 weapon_delay = 0.025
 weapon_damage = 120.0
+weapon_ammo_type = "9mm"
+max_ammo = 32
+reload_time = 5.0
 
 [node name="WeaponSprite" type="Sprite2D" parent="."]
 texture = ExtResource("2_aaf5g")

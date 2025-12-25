@@ -9,7 +9,7 @@ size = Vector2(66, 18)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_osvus"]
 size = Vector2(66, 18)
 
-[node name="WeaponShotgun" type="RigidBody2D" groups=["weapon-shotguns"]]
+[node name="WeaponShotgun" type="RigidBody2D" groups=["weapon-ranged", "weapon-shotguns"]]
 collision_layer = 2
 collision_mask = 80
 gravity_scale = 0.0
@@ -17,11 +17,13 @@ linear_damp = 1.065
 script = ExtResource("1_02myo")
 spread_angle = 30.0
 bullet_count = 6
-max_ammo = 6
 weapon_name = "shotgun"
 throw_force = 800.0
 weapon_delay = 0.8
 weapon_damage = 108.0
+weapon_ammo_type = "12gauge"
+max_ammo = 6
+reload_time = 0.7
 
 [node name="WeaponSprite" type="Sprite2D" parent="."]
 texture = ExtResource("2_83s6p")

@@ -75,14 +75,21 @@ func _handle_weapon_action():#obslugue wszelkie interakcje gracza
 
 		elif weapon.is_in_group("weapon-throwable"):
 			if Input.is_action_just_pressed("shoot"):
-				inventory.throw(velocity, true)
+				inventory.throw(velocity,weapon, true)
 
 		else:
 			if Input.is_action_just_pressed("shoot"):
 				weapon.shoot(global_position, self)
 
 		if Input.is_action_just_pressed("throw"):
-			inventory.throw(velocity, false)
+			inventory.throw(velocity, weapon, false)
+
+		if Input.is_action_pressed("reload"):
+			if weapon.is_in_group("weapon-ranged"):
+				if not inventory.reload_pending:
+					inventory.reload(weapon)
+			else:
+				print("DEBUG - bron nie ranged false reload")
 
 func _handle_player_camera(delta, direction):#obsluguje wszelkie nie naturalne zachowania kamery gracza
 	if  Input.is_action_pressed("control_camera"):

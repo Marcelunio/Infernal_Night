@@ -17,6 +17,15 @@ var nearest_weapon = null
 #weapon NODE container
 @onready var NODE_weapon_container = $WeaponContainer
 
+#weapon reloading
+var reload_pending: bool = false
+var ammo_container: Dictionary = {
+	"9mm": 100,        # Pistolety, SMG (UZI, MP5, Glock)
+	"5.56mm": 100,     # Karabiny szturmowe (M16, AK-47, M4)
+	"12gauge": 100,    # Shotguny
+	"7.62mm": 100      # Snajperki, heavy MG
+}
+
 #signal to ammo_display.gd
 signal UI_WeaponChanged(weapon)
 
@@ -58,11 +67,9 @@ func add_weapon(weapon):#weapon.gd pick_up()
 	
 	return true
 
-func throw(velocity: Vector2, granate: bool = false):#player.gd _handle_weapon_action()
+func throw(velocity: Vector2, weapon, granate: bool = false):#player.gd _handle_weapon_action()
 	if weapon_container.is_empty():
 		return
-	
-	var weapon = weapon_container[selected_weapon]
 	
 	if granate and weapon.granate_pin:
 		weapon.pin()
@@ -100,7 +107,7 @@ func change_weapon(select) -> void:#zmiana broni
 	current_weapon = weapon_container[select]
 	emit_signal("UI_WeaponChanged", current_weapon)
 
-#obsługa sygnałów:
+#=========obsługa sygnałów=========:
 
 func _on_weapon_exploded_in_hand(weapon):#specjalny przypadek do obslugi nie typowych zachowan granatow
 	var index = weapon_container.find(weapon)
@@ -112,3 +119,35 @@ func _on_weapon_exploded_in_hand(weapon):#specjalny przypadek do obslugi nie typ
 	node_weapon_container.remove_child(weapon)
 	
 	weapon_container_ui_update()
+
+#TESTING
+func reload(weapon) -> void:#przeladowanie broni
+	if weapon.current_ammo == weapon.max_ammo:
+		return
+	
+	if reload_pending:
+		return
+	else:
+		reload_pending = true
+
+	print("doszl do emit")	
+	if not weapon.has_method("_reload"):
+		push_error("weapon.gd reload(): Tego nie powinienes widziec. jezeli to widzisz w debugerze to ktoras bron ktora nie powinna miec opcji zaladunku wywolala metode reload()")
+		return
+
+	if ammo_container[weapon.weapon_ammo_type] > 0:
+		weapon._reload(ammo_container[weapon.weapon_ammo_type])
+		weapon.reloaded.connect(_on_reload)
+	else:
+		print("DEBUG - brak ammo")
+		return
+
+func _on_reload(weapon, amount) -> void:#zabiera amunicje
+	print("reload finish")
+	ammo_container[weapon.weapon_ammo_type] = ammo_container[weapon.weapon_ammo_type] - amount
+	reload_pending = false
+	
+	if weapon.reloaded.is_connected(_on_reload):
+		weapon.reloaded.disconnect(_on_reload)
+		
+	print(ammo_container[weapon.weapon_ammo_type])

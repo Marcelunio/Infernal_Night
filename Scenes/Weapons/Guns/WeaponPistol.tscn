@@ -9,17 +9,19 @@ size = Vector2(32, 22)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_osvus"]
 size = Vector2(36, 26)
 
-[node name="WeaponPickup" type="RigidBody2D" groups=["weapon-pistols"]]
+[node name="WeaponPickup" type="RigidBody2D" groups=["weapon-pistols", "weapon-ranged"]]
 collision_layer = 2
 collision_mask = 80
 gravity_scale = 0.0
 linear_damp = 1.065
 script = ExtResource("1_5xuog")
-max_ammo = 17
 weapon_name = "pistol"
 throw_force = 1000.0
 weapon_delay = 0.2
 weapon_damage = 120.0
+weapon_ammo_type = "9mm"
+max_ammo = 17
+reload_time = 4.5
 metadata/_edit_group_ = true
 
 [node name="WeaponSprite" type="Sprite2D" parent="."]

@@ -1,5 +1,6 @@
 #Zrobił to Kekls, wszelkie niepewności oraz pytania kierować do mnie...
 #Znane bugi: 0
+class_name Shotgun
 extends RangedWeapon
 
 #~~Kleks 19.10.2025

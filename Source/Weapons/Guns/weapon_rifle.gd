@@ -1,5 +1,6 @@
 #Zrobił to Kekls, wszelkie niepewności oraz pytania kierować do mnie...
 #Znane bugi: 0
+class_name rifle
 extends RangedWeapon
 
 @export var spread_angle : float        # Minimalny rozrzut

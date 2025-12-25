@@ -1,5 +1,6 @@
 #Zrobił to Kekls, wszelkie niepewności oraz pytania kierować do mnie...
 #Znane bugi: 0
+class_name SingleFire  
 extends RangedWeapon
 
 func __shoot(spawn_pos: Vector2, entity):

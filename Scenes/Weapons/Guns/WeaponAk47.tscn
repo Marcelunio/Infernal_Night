@@ -9,7 +9,7 @@ size = Vector2(92, 26)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_osvus"]
 size = Vector2(92, 26)
 
-[node name="WeaponAk47" type="RigidBody2D" groups=["weapon-machineGuns"]]
+[node name="WeaponAk47" type="RigidBody2D" groups=["weapon-machineGuns", "weapon-ranged"]]
 collision_layer = 2
 collision_mask = 80
 gravity_scale = 0.0
@@ -19,11 +19,13 @@ spread_angle = 2.0
 max_spread = 15.0
 spread_increase = 0.75
 base_spread = 2.0
-max_ammo = 30
 weapon_name = "ak47"
 throw_force = 900.0
 weapon_delay = 0.1
 weapon_damage = 180.0
+weapon_ammo_type = "5.56mm"
+max_ammo = 30
+reload_time = 5.0
 
 [node name="WeaponSprite" type="Sprite2D" parent="."]
 texture = ExtResource("2_k27v1")

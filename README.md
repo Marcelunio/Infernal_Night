@@ -48,7 +48,7 @@ Podczas rozgrywki:
 - Eksplorujesz **różnorodne, przeklęte lokacje**
 
 Jako właściciel firmy **TY** decydujesz, które zlecenia przyjmujesz.  
-Jako eksorcysta **TY** ponosisz konsekwencje swoich wyborów.  
+Jako egzorcysta **TY** ponosisz konsekwencje swoich wyborów.  
 Jako człowiek **TY** walczysz o przetrwanie.
 
 ---

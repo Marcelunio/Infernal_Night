@@ -9,7 +9,7 @@ size = Vector2(147, 23)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_osvus"]
 size = Vector2(147, 23)
 
-[node name="WeaponDoubleBarrel" type="RigidBody2D" groups=["weapon-shotguns"]]
+[node name="WeaponDoubleBarrel" type="RigidBody2D" groups=["weapon-ranged", "weapon-shotguns"]]
 collision_layer = 2
 collision_mask = 80
 gravity_scale = 0.0
@@ -17,11 +17,13 @@ linear_damp = 1.065
 script = ExtResource("1_8tfbl")
 spread_angle = 45.0
 bullet_count = 28
-max_ammo = 2
 weapon_name = "DoubleBarrel"
 throw_force = 600.0
 weapon_delay = 0.9
 weapon_damage = 84.0
+weapon_ammo_type = "12gauge"
+max_ammo = 2
+reload_time = 1.0
 metadata/_edit_group_ = true
 
 [node name="WeaponSprite" type="Sprite2D" parent="."]

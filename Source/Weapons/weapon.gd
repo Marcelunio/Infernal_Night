@@ -11,12 +11,17 @@ extends RigidBody2D
 @export var weapon_damage: float
 var sprite: Texture2D
 
-
-var player_velocity_to_throw_force: float =0.6
+const PLAYER_VELOCITY_TO_THROW_FORCE: float =0.6
 var is_picked_up: bool = false
 var is_thrown: bool = false
 
 var timer: Timer
+
+#ammo
+@export var weapon_ammo_type: String = ""
+@export var max_ammo: int
+@onready var current_ammo: int = max_ammo
+@export var reload_time: float 
 
 func _ready():
 	
@@ -86,7 +91,7 @@ func throw(spawn_pos: Vector2, velocity_player):
 	var throw_direction = Vector2.RIGHT.rotated(player.rotation - deg_to_rad(90))
 
 	is_thrown = true
-	apply_impulse(throw_direction * throw_force + velocity_player*player_velocity_to_throw_force)
+	apply_impulse(throw_direction * throw_force + velocity_player* PLAYER_VELOCITY_TO_THROW_FORCE)
 
 @abstract
 func __shoot(spawn_pos: Vector2, entity)->void
