@@ -1,8 +1,8 @@
 [gd_scene load_steps=9 format=3 uid="uid://dn2dpf0haseiq"]
 
-[ext_resource type="Script" uid="uid://c705e1fe7v6id" path="res://Source/Entities/Other/player.gd" id="1_2cyhl"]
-[ext_resource type="Texture2D" uid="uid://cqx0ab10hyexx" path="res://Assets/Test/player_sprites.png" id="2_kyqiw"]
-[ext_resource type="PackedScene" uid="uid://e50scyaq600v" path="res://Scenes/UI/AmmoDisplay.tscn" id="3_agccv"]
+[ext_resource type="Script" uid="uid://3mc7lvum6rxd" path="res://Source/Entities/Other/Player/player.gd" id="1_nfgiu"]
+[ext_resource type="Texture2D" uid="uid://cqx0ab10hyexx" path="res://Assets/Entities/Other/Player/player_sprites (2).png" id="2_kyqiw"]
+[ext_resource type="PackedScene" uid="uid://cgmet28rsns7e" path="res://Scenes/Entities/Other/Player/InventoryMenager.tscn" id="3_4peru"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_q2x60"]
 radius = 30.016663
@@ -38,14 +38,7 @@ animations = [{
 
 [node name="Player" type="CharacterBody2D" groups=["player"]]
 collision_mask = 60
-<<<<<<< Updated upstream:Scenes/Entities/Other/Player.tscn
-script = ExtResource("1_2cyhl")
-=======
 script = ExtResource("1_nfgiu")
-speed = null
-camera_speed = null
-max_hp = null
->>>>>>> Stashed changes:Scenes/Entities/Other/Player/Player.tscn
 metadata/_edit_group_ = true
 
 [node name="PlayerCollision" type="CollisionShape2D" parent="." groups=["player"]]
@@ -61,11 +54,4 @@ frame_progress = 0.20617694
 [node name="Camera" type="Camera2D" parent="."]
 position_smoothing_enabled = true
 
-<<<<<<< Updated upstream:Scenes/Entities/Other/Player.tscn
-[node name="CanvasLayer" type="CanvasLayer" parent="."]
-
-[node name="AmmoDisplay" parent="CanvasLayer" instance=ExtResource("3_agccv")]
-metadata/_edit_use_anchors_ = true
-=======
 [node name="InventoryMenager" parent="." instance=ExtResource("3_4peru")]
->>>>>>> Stashed changes:Scenes/Entities/Other/Player/Player.tscn

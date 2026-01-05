@@ -34,6 +34,14 @@ weapon-pistols=""
 weapon-shotguns=""
 weapon-machineGuns=""
 projectiles=""
+<<<<<<< Updated upstream
+=======
+weapon-throwable-granate=""
+weapon-throwable-nongranate=""
+weapon-throwable=""
+weapon-ranged=""
+weapon-heavy-mg=""
+>>>>>>> Stashed changes
 
 [input]
 
