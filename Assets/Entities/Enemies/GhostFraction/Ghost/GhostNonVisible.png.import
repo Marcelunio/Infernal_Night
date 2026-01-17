@@ -3,15 +3,15 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://djd52f1s0qhhd"
-path="res://.godot/imported/GhostNonVisibleTEMP.png-e35a7b6adff0bc31e448666588404892.ctex"
+path="res://.godot/imported/GhostNonVisible.png-c9f13c5b980f693b97e53d92eeb06c27.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/Entities/Enemies/GhostFraction/GhostTEMP/GhostNonVisibleTEMP.png"
-dest_files=["res://.godot/imported/GhostNonVisibleTEMP.png-e35a7b6adff0bc31e448666588404892.ctex"]
+source_file="res://Assets/Entities/Enemies/GhostFraction/Ghost/GhostNonVisible.png"
+dest_files=["res://.godot/imported/GhostNonVisible.png-c9f13c5b980f693b97e53d92eeb06c27.ctex"]
 
 [params]
 

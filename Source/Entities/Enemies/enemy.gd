@@ -1,140 +1,60 @@
-@abstract
-class_name Enemy
+# the skorpogest
 extends CharacterBody2D
+class_name Enemy
 
-@export var enemy_name: String = ""
-@export var max_hp: int
-@export var speed: float
-@export var start_delay: float
-@export var default_stun_time: float
-@export var can_be_stunned: bool = true
-@export var rotation_speed: float
+@export var speed := 360.0
+@export var steer_force := 0.8
+@export var turn_speed := 8.0
 
-#ghost
-@export var phasing: bool = false
+@onready var agent := $EnemyNavigation
+@onready var ray_front := $RayCastFront
+@onready var ray_left := $RayCastLeft
+@onready var ray_right := $RayCastRight
 
-#skelly
-@export var post_mortem: bool = false
-@export var post_mortem_max_hp: float
-@export var post_mortem_down: bool = false
+var target: Node2D
 
-var hp: int
-var wait_timer: float = 0.0
-var active: bool = false
-var stunned: bool = false
-var stun_timer: float = 0.0
-var applied_velocity: Vector2 = Vector2.ZERO
+func _ready():
+	target = get_tree().get_first_node_in_group("player")
 
-@onready var navigation_agent: NavigationAgent2D = $NavigationAgent if has_node("NavigationAgent") else null
-@onready var sprite: Node2D = $Sprite2D if has_node("Sprite2D") else null
-
-@export var target_path: NodePath
-var target: Node2D = null
-
-@abstract
-func __find_target() -> Node2D
-
-@abstract
-func __die() -> void
-
-func __on_damage_taken(_amount: int) -> void:
-	pass
-
-func __while_stunned(_delta):
-	pass
-	
-func __ready() -> void:
-	pass
-
-func __on_physics_process(_delta: float) -> void:
-	pass
-	
-func __post_mortem() -> void:
-	pass
-
-func _ready() -> void:
-	hp = max_hp
-	
-	target = __find_target()
-			
-	if navigation_agent:
-		navigation_agent.path_desired_distance = 4.0
-		navigation_agent.target_desired_distance = 4.0
-		navigation_agent.max_speed = speed
-		navigation_agent.avoidance_enabled = true
-		navigation_agent.velocity_computed.connect(_on_navigation_agent_velocity_computed)
-		
-	__ready()
-	
-func _physics_process(delta: float) -> void:
-	
-	__on_physics_process(delta)
-	
-	if post_mortem_down:
+func _physics_process(delta):
+	if not target:
 		return
-	
-	if stunned:
-		stun_timer -= delta
-		__while_stunned(delta)
-		if stun_timer <= 0.0:
-			stunned = false
+
+	# ---- PATHFINDING ----
+	agent.target_position = target.global_position
+	var desired_dir := Vector2.ZERO
+
+	if not agent.is_navigation_finished():
+		desired_dir = (agent.get_next_path_position() - global_position).normalized()
+
+	# ---- OMIJANIE PRZESZKÓD ----
+	var avoid_dir := Vector2.ZERO
+
+	if ray_front.is_colliding():
+		# wymuszony skręt – nigdy STOP
+		if ray_left.is_colliding() and not ray_right.is_colliding():
+			avoid_dir = Vector2.RIGHT
+		elif ray_right.is_colliding() and not ray_left.is_colliding():
+			avoid_dir = Vector2.LEFT
 		else:
-			velocity = Vector2.ZERO
-			move_and_slide()
-			return
+			avoid_dir = Vector2.RIGHT.rotated(rotation)
 
-	if not active:
-		wait_timer += delta
-		if wait_timer >= start_delay:
-			active = true
-		return
+	if ray_left.is_colliding():
+		avoid_dir += Vector2.RIGHT
+	if ray_right.is_colliding():
+		avoid_dir += Vector2.LEFT
 
-	if not is_instance_valid(target):
-		return
+	var final_dir = desired_dir + avoid_dir * steer_force
 
-	var dir := Vector2.ZERO
+	if final_dir.length() < 0.1:
+		final_dir = desired_dir.rotated(0.5)
 
-	if navigation_agent:
-		navigation_agent.target_position = target.global_position
-		var next_point: Vector2 = navigation_agent.get_next_path_position()
-		dir = next_point - global_position
-		if dir.length() < 5.0:
-			dir = target.global_position - global_position
-	#else:
-		#dir = target.global_position - global_position
+	final_dir = final_dir.normalized()
 
-	if dir.length() > 0.1:
-		dir = dir.normalized()
-		applied_velocity = dir * speed
-		var target_rotation = dir.angle() + 0.5 * PI
-		rotation = lerp_angle(rotation, target_rotation, rotation_speed * delta)
-	else:
-		applied_velocity = Vector2.ZERO
-
-	velocity = applied_velocity
+	# ---- RUCH ----
+	velocity = final_dir * speed
 	move_and_slide()
 
-func _on_navigation_agent_velocity_computed(safe_velocity: Vector2) -> void:
-	applied_velocity = safe_velocity
-
-func take_damage(amount: int, stun_dur: float = -1.0) -> void:
-	if stun_dur <= 0.0:
-		stun_dur = default_stun_time
-	
-	__on_damage_taken(amount)
-	hp -= amount
-	if hp <= 0:
-		_die()
-		return
-
-	if can_be_stunned:
-		stunned = true
-		stun_timer = stun_dur
-		applied_velocity = Vector2.ZERO
-		velocity = Vector2.ZERO
-
-func _die() -> void:
-	if post_mortem:
-		__post_mortem()
-	else:
-		__die()
+	# ---- OBRÓT W STRONĘ GRACZA(ZJEBANE TO JEST KIEDYS TO ZROBIE) ----
+	var target_angle = (target.global_position - global_position).angle()
+	rotation = lerp_angle(rotation, target_angle, turn_speed * delta)
