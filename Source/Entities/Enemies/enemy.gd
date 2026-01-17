@@ -1,60 +1,81 @@
 # the skorpogest
+# Znane bugi: 0
+
 extends CharacterBody2D
 class_name Enemy
 
-@export var speed := 360.0
-@export var steer_force := 0.8
+
+# =========================
+# ZMIENNE
+# =========================
+
+@export var max_hp: int = 120
+@export var speed := 260.0
 @export var turn_speed := 8.0
 
-@onready var agent := $EnemyNavigation
-@onready var ray_front := $RayCastFront
-@onready var ray_left := $RayCastLeft
-@onready var ray_right := $RayCastRight
+@onready var agent: NavigationAgent2D = $EnemyNavigation
 
-var target: Node2D
+var hp: int
+var player: Node2D
+var move_dir := Vector2.RIGHT
+var dead := false
 
-func _ready():
-	target = get_tree().get_first_node_in_group("player")
 
-func _physics_process(delta):
-	if not target:
+# =========================
+# FUNKCJE WBUDOWANE
+# =========================
+
+func _ready() -> void:
+	add_to_group("enemy")
+	hp = max_hp
+
+	player = get_tree().get_first_node_in_group("player")
+	if player == null:
+		push_error("Enemy: Player not found (group 'player')")
+		set_physics_process(false)
 		return
 
-	# ---- PATHFINDING ----
-	agent.target_position = target.global_position
-	var desired_dir := Vector2.ZERO
+	move_dir = Vector2.RIGHT.rotated(randf() * TAU)
 
-	if not agent.is_navigation_finished():
-		desired_dir = (agent.get_next_path_position() - global_position).normalized()
 
-	# ---- OMIJANIE PRZESZKÓD ----
-	var avoid_dir := Vector2.ZERO
+func _physics_process(delta: float) -> void:
+	if dead:
+		return
 
-	if ray_front.is_colliding():
-		# wymuszony skręt – nigdy STOP
-		if ray_left.is_colliding() and not ray_right.is_colliding():
-			avoid_dir = Vector2.RIGHT
-		elif ray_right.is_colliding() and not ray_left.is_colliding():
-			avoid_dir = Vector2.LEFT
-		else:
-			avoid_dir = Vector2.RIGHT.rotated(rotation)
+	agent.target_position = player.global_position
 
-	if ray_left.is_colliding():
-		avoid_dir += Vector2.RIGHT
-	if ray_right.is_colliding():
-		avoid_dir += Vector2.LEFT
+	if agent.is_navigation_finished():
+		velocity = Vector2.ZERO
+		move_and_slide()
+		return
 
-	var final_dir = desired_dir + avoid_dir * steer_force
+	var next_point := agent.get_next_path_position()
+	var desired_dir := (next_point - global_position).normalized()
 
-	if final_dir.length() < 0.1:
-		final_dir = desired_dir.rotated(0.5)
+	move_dir = move_dir.slerp(desired_dir, turn_speed * delta).normalized()
+	velocity = move_dir * speed
 
-	final_dir = final_dir.normalized()
-
-	# ---- RUCH ----
-	velocity = final_dir * speed
 	move_and_slide()
 
-	# ---- OBRÓT W STRONĘ GRACZA(ZJEBANE TO JEST KIEDYS TO ZROBIE) ----
-	var target_angle = (target.global_position - global_position).angle()
-	rotation = lerp_angle(rotation, target_angle, turn_speed * delta)
+	rotation = move_dir.angle()
+
+
+# =========================
+# LOGIKA GRY
+# =========================
+
+func take_damage(amount: int, _hit_pause := 0.0) -> void:
+	if dead:
+		return
+
+	hp -= amount
+	print("Enemy HP:", hp)
+
+	if hp <= 0:
+		die()
+
+
+func die() -> void:
+	dead = true
+	set_physics_process(false)
+	queue_free()

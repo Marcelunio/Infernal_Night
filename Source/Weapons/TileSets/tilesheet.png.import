@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://c7s0vru747kuu"
-path="res://.godot/imported/tileset.png-6733bacb5d339b495fe596835ec0a21a.ctex"
+uid="uid://dnxbimxabhnbx"
+path="res://.godot/imported/tilesheet.png-da7806b294acf83fc6aac91e4ddac829.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://TileSets/tileset.png"
-dest_files=["res://.godot/imported/tileset.png-6733bacb5d339b495fe596835ec0a21a.ctex"]
+source_file="res://Source/Weapons/TileSets/tilesheet.png"
+dest_files=["res://.godot/imported/tilesheet.png-da7806b294acf83fc6aac91e4ddac829.ctex"]
 
 [params]
 

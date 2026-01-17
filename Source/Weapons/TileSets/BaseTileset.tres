@@ -1,7 +1,7 @@
 [gd_resource type="TileSet" load_steps=8 format=3 uid="uid://dwjq33gve6fks"]
 
-[ext_resource type="Texture2D" uid="uid://dnxbimxabhnbx" path="res://TileSets/tilesheet.png" id="1_rl4aa"]
-[ext_resource type="Texture2D" uid="uid://c7s0vru747kuu" path="res://TileSets/tileset.png" id="3_stlkj"]
+[ext_resource type="Texture2D" uid="uid://dnxbimxabhnbx" path="res://Source/Weapons/TileSets/tilesheet.png" id="1_rl4aa"]
+[ext_resource type="Texture2D" uid="uid://c7s0vru747kuu" path="res://Source/Weapons/TileSets/tileset.png" id="3_stlkj"]
 
 [sub_resource type="NavigationPolygon" id="NavigationPolygon_gv2tp"]
 vertices = PackedVector2Array(16, 16, -16, 16, -16, -16, 16, -16)
@@ -17,13 +17,13 @@ agent_radius = 0.0
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_8w0eo"]
 texture = ExtResource("1_rl4aa")
+margins = Vector2i(2, 2)
 texture_region_size = Vector2i(32, 32)
 1:0/0 = 0
 1:0/0/navigation_layer_0/polygon = SubResource("NavigationPolygon_gv2tp")
 0:0/0 = 0
 0:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-16, -16, 16, -16, 16, 16, -16, 16)
 0:1/0 = 0
-0:1/0/physics_layer_1/polygon_0/points = PackedVector2Array(-16, -16, 16, -16, 16, 16, -16, 16)
 1:1/0 = 0
 1:1/0/navigation_layer_0/polygon = SubResource("NavigationPolygon_f7yts")
 
@@ -178,12 +178,6 @@ texture_region_size = Vector2i(32, 32)
 10:1/0/physics_layer_1/polygon_0/points = PackedVector2Array(-16, -16, 16, -16, 16, 16, -16, 16)
 10:1/0/terrains_peering_bit/right_side = 2
 10:1/0/terrains_peering_bit/top_side = 2
-11:1/0 = 0
-11:1/0/terrain_set = 0
-11:1/0/terrain = 2
-11:1/0/physics_layer_1/polygon_0/points = PackedVector2Array(-16, -16, 16, -16, 16, 16, -16, 16)
-11:1/0/terrains_peering_bit/left_side = 2
-11:1/0/terrains_peering_bit/top_side = 2
 0:2/0 = 0
 0:2/0/terrain_set = 0
 0:2/0/terrain = 0
@@ -662,6 +656,12 @@ texture_region_size = Vector2i(32, 32)
 9:6/0/terrains_peering_bit/left_side = 2
 9:6/0/terrains_peering_bit/top_left_corner = 2
 9:6/0/terrains_peering_bit/top_side = 2
+11:1/0 = 0
+11:1/0/terrain_set = 0
+11:1/0/terrain = 2
+11:1/0/physics_layer_1/polygon_0/points = PackedVector2Array(-16, -16, 16, -16, 16, 16, -16, 16)
+11:1/0/terrains_peering_bit/left_side = 2
+11:1/0/terrains_peering_bit/top_side = 2
 
 [resource]
 tile_size = Vector2i(32, 32)
