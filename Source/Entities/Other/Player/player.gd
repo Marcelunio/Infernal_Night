@@ -70,25 +70,25 @@ func check_door_transition():
 		return
 	
 	# Get the invisible layer with doors
-	var invisible_layer: TileMapLayer = current_room.get_node_or_null("LayerInvisible")
-	if invisible_layer == null:
+	var visible_layer: TileMapLayer = current_room.get_node_or_null("LayerInvisible")
+	if visible_layer == null:
 		return
 	
 	# Convert player position to tile coordinates within the current room
 	var local_pos = position - current_room.position
-	var tile_pos = invisible_layer.local_to_map(local_pos)
+	var tile_pos = visible_layer.local_to_map(local_pos)
 	
 	# Check if player is on a door tile
-	var atlas_coords = invisible_layer.get_cell_atlas_coords(tile_pos)
+	var atlas_coords = visible_layer.get_cell_atlas_coords(tile_pos)
 	
 	# Check which door the player touched
-	if atlas_coords == dungeon.DOOR_UP_ATLAS_LEFT or atlas_coords == dungeon.DOOR_UP_ATLAS_RIGHT:
+	if atlas_coords == dungeon.DOOR_UP_ATLAS:
 		dungeon.transition_to_room(Vector2i.UP)
-	elif atlas_coords == dungeon.DOOR_DOWN_ATLAS_LEFT or atlas_coords == dungeon.DOOR_DOWN_ATLAS_RIGHT:
+	elif atlas_coords == dungeon.DOOR_DOWN_ATLAS:
 		dungeon.transition_to_room(Vector2i.DOWN)
-	elif atlas_coords == dungeon.DOOR_LEFT_ATLAS_TOP or atlas_coords == dungeon.DOOR_LEFT_ATLAS_BOTTOM:
+	elif atlas_coords == dungeon.DOOR_LEFT_ATLAS:
 		dungeon.transition_to_room(Vector2i.LEFT)
-	elif atlas_coords == dungeon.DOOR_RIGHT_ATLAS_TOP or atlas_coords == dungeon.DOOR_RIGHT_ATLAS_BOTTOM:
+	elif atlas_coords == dungeon.DOOR_RIGHT_ATLAS:
 		dungeon.transition_to_room(Vector2i.RIGHT)
 
 func _handle_player_rotation(direction):#obsluguje rotacje gracza

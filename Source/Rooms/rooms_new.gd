@@ -9,16 +9,12 @@ const PLAYER: PackedScene = preload("res://Scenes/Entities/Other/Player/Player.t
 # Atlas coordinates for door tiles in LayerInvisible TileMapLayer
 # Each door is 2 tiles - adjust these to match your tileset atlas positions
 # UP/DOWN doors: 2 horizontal tiles
-const DOOR_UP_ATLAS_LEFT: Vector2i = Vector2i(2, 0)
-const DOOR_UP_ATLAS_RIGHT: Vector2i = Vector2i(2, 0)
-const DOOR_DOWN_ATLAS_LEFT: Vector2i = Vector2i(3, 1)
-const DOOR_DOWN_ATLAS_RIGHT: Vector2i = Vector2i(3, 1)
+const DOOR_UP_ATLAS: Vector2i = Vector2i(12, 1)
+const DOOR_DOWN_ATLAS: Vector2i = Vector2i(12, 4)
 
 # LEFT/RIGHT doors: 2 vertical tiles
-const DOOR_LEFT_ATLAS_TOP: Vector2i = Vector2i(2, 1)
-const DOOR_LEFT_ATLAS_BOTTOM: Vector2i = Vector2i(2, 1)
-const DOOR_RIGHT_ATLAS_TOP: Vector2i = Vector2i(3, 0)
-const DOOR_RIGHT_ATLAS_BOTTOM: Vector2i = Vector2i(3, 0)
+const DOOR_LEFT_ATLAS: Vector2i = Vector2i(12, 2)
+const DOOR_RIGHT_ATLAS: Vector2i = Vector2i(12, 3)
 
 # Tilemap coordinates where doors are placed in rooms
 const DOOR_UP_POS_LEFT: Vector2i = Vector2i(11, 0)
@@ -165,10 +161,16 @@ func spawn_all_rooms():
 func setup_room_doors(room: Node2D, pos: Vector2i):
 	# Get the LayerInvisible TileMapLayer
 	var invisible_layer: TileMapLayer = room.get_node_or_null("LayerInvisible")
+	var visible_layer: TileMapLayer = room.get_node_or_null("LayerVisible")
 	
 	if invisible_layer == null:
 		push_warning("Room at " + str(pos) + " has no LayerInvisible TileMapLayer")
 		return
+	if visible_layer == null:
+		push_warning("Room at " + str(pos) + " has no LayerVisible TileMapLayer")
+		return
+	
+	invisible_layer.visible = false
 	
 	# Check which neighbors exist
 	var has_up := room_positions.has(pos + Vector2i.UP)
@@ -178,41 +180,41 @@ func setup_room_doors(room: Node2D, pos: Vector2i):
 	
 	# Place/erase UP door (2 horizontal tiles)
 	if has_up:
-		invisible_layer.set_cell(DOOR_UP_POS_LEFT, 0, DOOR_UP_ATLAS_LEFT)
-		invisible_layer.set_cell(DOOR_UP_POS_RIGHT, 0, DOOR_UP_ATLAS_RIGHT)
+		visible_layer.set_cell(DOOR_UP_POS_LEFT, 2, DOOR_UP_ATLAS)
+		visible_layer.set_cell(DOOR_UP_POS_RIGHT, 2, DOOR_UP_ATLAS)
 	else:
-		invisible_layer.erase_cell(DOOR_UP_POS_LEFT)
-		invisible_layer.erase_cell(DOOR_UP_POS_RIGHT)
+		visible_layer.set_cell(DOOR_UP_POS_LEFT, 2, DOOR_UP_ATLAS)
+		visible_layer.set_cell(DOOR_UP_POS_RIGHT, 2, DOOR_UP_ATLAS)
 	
 	# Place/erase DOWN door (2 horizontal tiles)
 	if has_down:
-		invisible_layer.set_cell(DOOR_DOWN_POS_LEFT, 0, DOOR_DOWN_ATLAS_LEFT)
-		invisible_layer.set_cell(DOOR_DOWN_POS_RIGHT, 0, DOOR_DOWN_ATLAS_RIGHT)
+		visible_layer.set_cell(DOOR_DOWN_POS_LEFT, 2, DOOR_DOWN_ATLAS)
+		visible_layer.set_cell(DOOR_DOWN_POS_RIGHT, 2, DOOR_DOWN_ATLAS)
 	else:
-		invisible_layer.erase_cell(DOOR_DOWN_POS_LEFT)
-		invisible_layer.erase_cell(DOOR_DOWN_POS_RIGHT)
+		visible_layer.erase_cell(DOOR_DOWN_POS_LEFT)
+		visible_layer.erase_cell(DOOR_DOWN_POS_RIGHT)
 	
 	# Place/erase LEFT door (2 vertical tiles)
 	if has_left:
-		invisible_layer.set_cell(DOOR_LEFT_POS_TOP, 0, DOOR_LEFT_ATLAS_TOP)
-		invisible_layer.set_cell(DOOR_LEFT_POS_BOTTOM, 0, DOOR_LEFT_ATLAS_BOTTOM)
+		visible_layer.set_cell(DOOR_LEFT_POS_TOP, 2, DOOR_LEFT_ATLAS)
+		visible_layer.set_cell(DOOR_LEFT_POS_BOTTOM, 2, DOOR_LEFT_ATLAS)
 	else:
-		invisible_layer.erase_cell(DOOR_LEFT_POS_TOP)
-		invisible_layer.erase_cell(DOOR_LEFT_POS_BOTTOM)
+		visible_layer.erase_cell(DOOR_LEFT_POS_TOP)
+		visible_layer.erase_cell(DOOR_LEFT_POS_BOTTOM)
 	
 	# Place/erase RIGHT door (2 vertical tiles)
 	if has_right:
-		invisible_layer.set_cell(DOOR_RIGHT_POS_TOP, 0, DOOR_RIGHT_ATLAS_TOP)
-		invisible_layer.set_cell(DOOR_RIGHT_POS_BOTTOM, 0, DOOR_RIGHT_ATLAS_BOTTOM)
+		visible_layer.set_cell(DOOR_RIGHT_POS_TOP, 2, DOOR_RIGHT_ATLAS)
+		visible_layer.set_cell(DOOR_RIGHT_POS_BOTTOM, 2, DOOR_RIGHT_ATLAS)
 	else:
-		invisible_layer.erase_cell(DOOR_RIGHT_POS_TOP)
-		invisible_layer.erase_cell(DOOR_RIGHT_POS_BOTTOM)
+		visible_layer.erase_cell(DOOR_RIGHT_POS_TOP)
+		visible_layer.erase_cell(DOOR_RIGHT_POS_BOTTOM)
 
 func spawn_player():
 	player = PLAYER.instantiate()
 	add_child(player)
 	# Spawn in the starting room center
-	player.position = Vector2.ZERO
+	player.position = ROOM_SIZE/2
 	current_room_pos = Vector2i.ZERO
 
 # Call this when player enters a door
