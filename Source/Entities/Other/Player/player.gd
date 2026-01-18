@@ -2,6 +2,7 @@
 #Znane bugi: 0
 extends CharacterBody2D
 
+var dungeon: Node2D
 #movement
 @export var speed: float = 700
 
@@ -18,6 +19,7 @@ var hp: int
 @onready var inventory = $InventoryMenager
 
 func _ready():
+	dungeon = get_parent()
 	hp = max_hp
 
 func _unhandled_input(event: InputEvent):#obsługa nie obsluzonych inputow
@@ -58,6 +60,36 @@ func _handle_player_movement():#obsluguje ruch gracza
 	
 	velocity = input_dir * speed
 	move_and_slide()
+	
+	check_door_transition()
+
+func check_door_transition():
+	# Get the current room
+	var current_room = dungeon.get_current_room()
+	if current_room == null:
+		return
+	
+	# Get the invisible layer with doors
+	var invisible_layer: TileMapLayer = current_room.get_node_or_null("LayerInvisible")
+	if invisible_layer == null:
+		return
+	
+	# Convert player position to tile coordinates within the current room
+	var local_pos = position - current_room.position
+	var tile_pos = invisible_layer.local_to_map(local_pos)
+	
+	# Check if player is on a door tile
+	var atlas_coords = invisible_layer.get_cell_atlas_coords(tile_pos)
+	
+	# Check which door the player touched
+	if atlas_coords == dungeon.DOOR_UP_ATLAS_LEFT or atlas_coords == dungeon.DOOR_UP_ATLAS_RIGHT:
+		dungeon.transition_to_room(Vector2i.UP)
+	elif atlas_coords == dungeon.DOOR_DOWN_ATLAS_LEFT or atlas_coords == dungeon.DOOR_DOWN_ATLAS_RIGHT:
+		dungeon.transition_to_room(Vector2i.DOWN)
+	elif atlas_coords == dungeon.DOOR_LEFT_ATLAS_TOP or atlas_coords == dungeon.DOOR_LEFT_ATLAS_BOTTOM:
+		dungeon.transition_to_room(Vector2i.LEFT)
+	elif atlas_coords == dungeon.DOOR_RIGHT_ATLAS_TOP or atlas_coords == dungeon.DOOR_RIGHT_ATLAS_BOTTOM:
+		dungeon.transition_to_room(Vector2i.RIGHT)
 
 func _handle_player_rotation(direction):#obsluguje rotacje gracza
 	# Obrót w stronę kursora

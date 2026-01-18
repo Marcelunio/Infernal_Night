@@ -1,35 +1,42 @@
-[gd_scene load_steps=9 format=3 uid="uid://dn2dpf0haseiq"]
+[gd_scene load_steps=10 format=3 uid="uid://dn2dpf0haseiq"]
 
 [ext_resource type="Script" uid="uid://3mc7lvum6rxd" path="res://Source/Entities/Other/Player/player.gd" id="1_nfgiu"]
-[ext_resource type="Texture2D" uid="uid://cqx0ab10hyexx" path="res://Assets/Entities/Other/Player/player_sprites (2).png" id="2_kyqiw"]
+[ext_resource type="Texture2D" uid="uid://cd1vfy3t68rwr" path="res://Assets/Entities/Other/Player/player_sprites.png" id="2_nfgiu"]
 [ext_resource type="PackedScene" uid="uid://cgmet28rsns7e" path="res://Scenes/Entities/Other/Player/InventoryMenager.tscn" id="3_4peru"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_q2x60"]
-radius = 30.016663
+radius = 12.0
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_gntrk"]
-atlas = ExtResource("2_kyqiw")
-region = Rect2(64, 0, 64, 64)
+[sub_resource type="AtlasTexture" id="AtlasTexture_4peru"]
+atlas = ExtResource("2_nfgiu")
+region = Rect2(0, 0, 43, 21)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_dewec"]
-atlas = ExtResource("2_kyqiw")
-region = Rect2(128, 0, 64, 64)
+[sub_resource type="AtlasTexture" id="AtlasTexture_r657a"]
+atlas = ExtResource("2_nfgiu")
+region = Rect2(43, 0, 43, 21)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_5ixxa"]
-atlas = ExtResource("2_kyqiw")
-region = Rect2(192, 0, 64, 64)
+[sub_resource type="AtlasTexture" id="AtlasTexture_v3r2t"]
+atlas = ExtResource("2_nfgiu")
+region = Rect2(86, 0, 43, 21)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_xu3wr"]
+atlas = ExtResource("2_nfgiu")
+region = Rect2(129, 0, 43, 21)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_dd3p8"]
 animations = [{
 "frames": [{
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_gntrk")
+"texture": SubResource("AtlasTexture_4peru")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_dewec")
+"texture": SubResource("AtlasTexture_r657a")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_5ixxa")
+"texture": SubResource("AtlasTexture_v3r2t")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_xu3wr")
 }],
 "loop": true,
 "name": &"default",
@@ -46,16 +53,10 @@ shape = SubResource("CircleShape2D_q2x60")
 
 [node name="PlayerSprites" type="AnimatedSprite2D" parent="."]
 z_index = 1
-scale = Vector2(2.1904776, 2.1904774)
 sprite_frames = SubResource("SpriteFrames_dd3p8")
-frame = 2
-frame_progress = 0.20617694
 
 [node name="Camera" type="Camera2D" parent="."]
+zoom = Vector2(2, 2)
 position_smoothing_enabled = true
 
 [node name="InventoryMenager" parent="." instance=ExtResource("3_4peru")]
-max_9mm = 50
-max_5_56mm = 200
-max_12gauge = 40
-max_7_62mm = 200
