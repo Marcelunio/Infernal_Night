@@ -70,7 +70,7 @@ func check_door_transition():
 		return
 	
 	# Get the invisible layer with doors
-	var visible_layer: TileMapLayer = current_room.get_node_or_null("LayerInvisible")
+	var visible_layer: TileMapLayer = current_room.get_node_or_null("LayerVisible")
 	if visible_layer == null:
 		return
 	
@@ -83,13 +83,13 @@ func check_door_transition():
 	
 	# Check which door the player touched
 	if atlas_coords == dungeon.DOOR_UP_ATLAS:
-		dungeon.transition_to_room(Vector2i.UP)
+		dungeon.transition_to_room(Vector2.UP)
 	elif atlas_coords == dungeon.DOOR_DOWN_ATLAS:
-		dungeon.transition_to_room(Vector2i.DOWN)
+		dungeon.transition_to_room(Vector2.DOWN)
 	elif atlas_coords == dungeon.DOOR_LEFT_ATLAS:
-		dungeon.transition_to_room(Vector2i.LEFT)
+		dungeon.transition_to_room(Vector2.LEFT)
 	elif atlas_coords == dungeon.DOOR_RIGHT_ATLAS:
-		dungeon.transition_to_room(Vector2i.RIGHT)
+		dungeon.transition_to_room(Vector2.RIGHT)
 
 func _handle_player_rotation(direction):#obsluguje rotacje gracza
 	# Obrót w stronę kursora
