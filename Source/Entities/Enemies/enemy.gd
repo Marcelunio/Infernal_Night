@@ -31,7 +31,7 @@ func _ready() -> void:
 
 	player = get_tree().get_first_node_in_group("player")
 	if player == null:
-		push_error("Enemy: Player not found (group 'player')")
+		push_error("the whatest")
 		set_physics_process(false)
 		return
 
