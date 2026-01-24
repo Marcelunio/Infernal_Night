@@ -5,6 +5,7 @@ const MAX_ROOMS: int = 10
 const MIN_ROOMS: int = 5
 const ROOM_SIZE: Vector2 = Vector2(768, 512)
 const PLAYER: PackedScene = preload("res://Scenes/Entities/Other/Player/Player.tscn")
+const SPAWN_ROOM: PackedScene = preload("res://Scenes/Floors/ValidRooms/Room0.tscn")
 
 const DOOR_UP_ATLAS: Vector2i = Vector2i(12, 1)
 const DOOR_DOWN_ATLAS: Vector2i = Vector2i(12, 4)
@@ -40,7 +41,7 @@ func preload_rooms():
 		return
 	
 	for file_name in dir.get_files():
-		if file_name.ends_with(".tscn"):
+		if file_name.ends_with(".tscn") and file_name != "Room0.tscn":
 			var full_path := ROOM_FOLDER_PATH + "/" + file_name
 			var scene = load(full_path)
 			if scene is PackedScene:
@@ -119,23 +120,25 @@ func spawn_all_rooms():
 	
 	for i in range(room_positions.size()):
 		var room_pos = room_positions[i]
-		var room_instance: Node2D
+		var room_instance: Room
 		
 		if room_pos == Vector2i(0, 0):
-			room_instance = room_scenes[0].instantiate()
+			room_instance = SPAWN_ROOM.instantiate()
 		else:
 			room_instance = room_scenes.pick_random().instantiate()
 		
 		add_child(room_instance)
-		
 		room_instance.position = Vector2(room_pos) * ROOM_SIZE
 		
-		room_instances[room_pos] = room_instance
+		room_instance.setup(room_pos)
 		
+		room_instances[room_pos] = room_instance
 		setup_room_doors(room_instance, room_pos)
 		
-		if room_pos != Vector2i.ZERO:
-			room_instance.visible = false
+		if room_pos == Vector2i.ZERO:
+			room_instance.enter_room()
+		else:
+			room_instance.exit_room()
 
 func setup_room_doors(room: Node2D, pos: Vector2i):
 	var visible_layer: TileMapLayer = room.get_node_or_null("LayerVisible")
@@ -189,20 +192,20 @@ func transition_to_room(direction: Vector2):
 	if not room_positions.has(next_pos):
 		return
 	
-	if room_instances.has(current_room_pos):
-		room_instances[current_room_pos].visible = false
+	var current_room: Room = room_instances.get(current_room_pos)
+	var next_room: Room = room_instances.get(next_pos)
 	
-	if room_instances.has(next_pos):
-		room_instances[next_pos].visible = true
+	if current_room:
+		current_room.exit_room()
+	
+	if next_room:
+		next_room.enter_room()
 		current_room_pos = next_pos
 		
-		var offset = Vector2.ZERO
-		
-		offset = direction * 64
-		
+		var offset = direction * 64
 		player.position = player.position + offset
 
-func get_current_room() -> Node2D:
+func get_current_room() -> Room:
 	return room_instances.get(current_room_pos)
 
 func reveal_all_rooms():
