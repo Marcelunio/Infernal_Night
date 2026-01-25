@@ -19,6 +19,8 @@ var hp: int
 var player: Node2D
 var move_dir := Vector2.RIGHT
 var dead := false
+var _saved_collision_layer: int
+var _saved_collision_mask: int
 
 
 # =========================
@@ -63,6 +65,17 @@ func _physics_process(delta: float) -> void:
 # =========================
 # LOGIKA GRY
 # =========================
+
+func set_collision_enabled(value: bool) -> void:
+	if value:
+		collision_layer = _saved_collision_layer
+		collision_mask = _saved_collision_mask
+	else:
+		_saved_collision_layer = collision_layer
+		_saved_collision_mask = collision_mask
+		collision_layer = 0
+		collision_mask = 0
+
 
 func take_damage(amount: int, _hit_pause := 0.0) -> void:
 	if dead:

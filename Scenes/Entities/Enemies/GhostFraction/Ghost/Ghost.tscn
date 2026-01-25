@@ -10,6 +10,13 @@ radius = 12.0
 [node name="Enemy" instance=ExtResource("1_c3fwx")]
 rotation = 1.5707964
 script = ExtResource("2_la1fa")
+fade_out_time = 0.5
+invisible_time = 2.5
+fade_in_time = 0.5
+fade_cooldown = 4.0
+spawn_attempts = 8
+orbit_distance = 180.0
+side_drift_speed = 0.6
 
 [node name="EnemyNavigation" parent="." index="0"]
 radius = 10.0
