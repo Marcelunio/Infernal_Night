@@ -1,10 +1,10 @@
 [gd_resource type="TileSet" load_steps=7 format=3 uid="uid://dwjq33gve6fks"]
 
-[ext_resource type="Texture2D" uid="uid://dnxbimxabhnbx" path="res://TileSets/tilesheet.png" id="1_rl4aa"]
-[ext_resource type="Texture2D" uid="uid://c7s0vru747kuu" path="res://TileSets/tileset.png" id="3_stlkj"]
+[ext_resource type="Texture2D" uid="uid://dnxbimxabhnbx" path="res://Assets/Tilesets/tilesheet.png" id="1_f7yts"]
+[ext_resource type="Texture2D" uid="uid://c7s0vru747kuu" path="res://Assets/Tilesets/tileset.png" id="2_stlkj"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_8w0eo"]
-texture = ExtResource("1_rl4aa")
+texture = ExtResource("1_f7yts")
 texture_region_size = Vector2i(32, 32)
 1:0/0 = 0
 0:0/0 = 0
@@ -32,7 +32,7 @@ outlines = Array[PackedVector2Array]([PackedVector2Array(-16, -16, 16, -16, 16, 
 agent_radius = 0.0
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_tqkpo"]
-texture = ExtResource("3_stlkj")
+texture = ExtResource("2_stlkj")
 texture_region_size = Vector2i(32, 32)
 0:0/0 = 0
 0:0/0/terrain_set = 0
