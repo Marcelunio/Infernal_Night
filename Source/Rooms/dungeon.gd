@@ -1,8 +1,14 @@
 extends Node2D
 
-const ROOM_FOLDER_PATH: String = "res://Scenes/Floors/ValidRooms"
-const MAX_ROOMS: int = 10
-const MIN_ROOMS: int = 5
+signal floor_generated
+signal room_changed(new_room_pos: Vector2i)
+
+@onready var camera: Camera2D = get_node("/root/Main/Camera")
+
+@export var min_rooms: int = 7
+@export var max_rooms: int = 10
+@export var room_folder_path: String = "res://Scenes/Floors/ValidRooms"
+
 const ROOM_SIZE: Vector2 = Vector2(768, 512)
 const PLAYER: PackedScene = preload("res://Scenes/Entities/Other/Player/Player.tscn")
 const SPAWN_ROOM: PackedScene = preload("res://Scenes/Floors/ValidRooms/Room0.tscn")
@@ -26,6 +32,9 @@ var room_instances := {}
 var room_positions: Array[Vector2i] = []
 var current_room_pos: Vector2i = Vector2i.ZERO
 var player: Node2D
+var visited_rooms: Array[Vector2i] = [Vector2i.ZERO]
+
+var camera_target: Vector2 = ROOM_SIZE / 2
 
 func _ready():
 	randomize()
@@ -34,22 +43,25 @@ func _ready():
 	spawn_all_rooms()
 	spawn_player()
 
+func _process(delta):
+	camera.position = lerp(camera.position, camera_target, 5.0 * delta)
+
 func preload_rooms():
-	var dir := DirAccess.open(ROOM_FOLDER_PATH)
+	var dir := DirAccess.open(room_folder_path)
 	if dir == null:
-		push_error("Could not open room folder: " + ROOM_FOLDER_PATH)
+		push_error("Could not open room folder: " + room_folder_path)
 		return
 	
 	for file_name in dir.get_files():
 		if file_name.ends_with(".tscn") and file_name != "Room0.tscn":
-			var full_path := ROOM_FOLDER_PATH + "/" + file_name
+			var full_path := room_folder_path + "/" + file_name
 			var scene = load(full_path)
 			if scene is PackedScene:
 				room_scenes.append(scene)
 				print("Loaded room scene:", full_path)
 	
 	if room_scenes.is_empty():
-		push_error("No room scenes found in " + ROOM_FOLDER_PATH)
+		push_error("No room scenes found in " + room_folder_path)
 
 func generate_floor():
 	if room_scenes.is_empty():
@@ -62,7 +74,7 @@ func generate_floor():
 	var visited_positions: Array[Vector2i] = [start_pos]
 	
 	var current_pos := start_pos
-	var target_rooms := randi_range(MIN_ROOMS, MAX_ROOMS)
+	var target_rooms := randi_range(min_rooms, max_rooms)
 	var directions := [Vector2i.UP, Vector2i.DOWN, Vector2i.LEFT, Vector2i.RIGHT]
 	
 	while room_positions.size() < target_rooms:
@@ -87,6 +99,8 @@ func generate_floor():
 	add_branch_rooms()
 	
 	print("Generated floor with ", room_positions.size(), " rooms")
+	
+	call_deferred("emit_signal", "floor_generated")
 
 func is_valid_position(pos: Vector2i) -> bool:
 	var neighbor_count := 0
@@ -139,6 +153,8 @@ func spawn_all_rooms():
 			room_instance.enter_room()
 		else:
 			room_instance.exit_room()
+		
+		room_instance.invisible_layer.visible = false
 
 func setup_room_doors(room: Node2D, pos: Vector2i):
 	var visible_layer: TileMapLayer = room.get_node_or_null("LayerVisible")
@@ -185,6 +201,7 @@ func spawn_player():
 	add_child(player)
 	player.position = ROOM_SIZE/2
 	current_room_pos = Vector2i.ZERO
+	camera.position = ROOM_SIZE / 2
 
 func transition_to_room(direction: Vector2):
 	var next_pos = current_room_pos + Vector2i(direction.x, direction.y)
@@ -202,8 +219,15 @@ func transition_to_room(direction: Vector2):
 		next_room.enter_room()
 		current_room_pos = next_pos
 		
-		var offset = direction * 64
-		player.position = player.position + offset
+	var offset = direction * 64
+	player.position = player.position + offset
+	
+	if not visited_rooms.has(next_pos):
+		visited_rooms.append(next_pos)
+	
+	camera_target = Vector2(next_pos) * ROOM_SIZE + (ROOM_SIZE / 2)
+	
+	room_changed.emit(next_pos)
 
 func get_current_room() -> Room:
 	return room_instances.get(current_room_pos)

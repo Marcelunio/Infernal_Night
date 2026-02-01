@@ -1,15 +1,15 @@
 class_name Room
 extends Node2D
 
-var grid_position: Vector2i = Vector2i.ZERO
-var is_cleared: bool = false
-var enemies_spawned: bool = false
+signal room_entered
+signal room_cleared
 
 @onready var visible_layer: TileMapLayer = $LayerVisible
 @onready var invisible_layer: TileMapLayer = $LayerInvisible
 
-signal room_entered
-signal room_cleared
+var grid_position: Vector2i = Vector2i.ZERO
+var is_cleared: bool = false
+var enemies_spawned: bool = false
 
 func setup(pos: Vector2i):
 	grid_position = pos
