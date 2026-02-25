@@ -2,25 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://c7s0vru747kuu"
-<<<<<<<< HEAD:Assets/Tilesets/tileset.png.import
+uid="uid://c7d3my0tb2wsk"
 path="res://.godot/imported/tileset.png-7924f041008afb9ffb5b3279c27310c6.ctex"
-========
-path="res://.godot/imported/tileset.png-403435f2fe9a3e067d02397338497246.ctex"
->>>>>>>> the_skorpogest_testest_branchest:Source/Weapons/TileSets/tileset.png.import
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-<<<<<<<< HEAD:Assets/Tilesets/tileset.png.import
 source_file="res://Assets/Tilesets/tileset.png"
 dest_files=["res://.godot/imported/tileset.png-7924f041008afb9ffb5b3279c27310c6.ctex"]
-========
-source_file="res://Source/Weapons/TileSets/tileset.png"
-dest_files=["res://.godot/imported/tileset.png-403435f2fe9a3e067d02397338497246.ctex"]
->>>>>>>> the_skorpogest_testest_branchest:Source/Weapons/TileSets/tileset.png.import
 
 [params]
 

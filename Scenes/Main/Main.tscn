@@ -1,6 +1,6 @@
 [gd_scene load_steps=17 format=4 uid="uid://b865bu8xw64sy"]
 
-[ext_resource type="TileSet" uid="uid://dwjq33gve6fks" path="res://Source/Weapons/TileSets/BaseTileset.tres" id="1_5nsto"]
+[ext_resource type="TileSet" uid="uid://dwjq33gve6fks" path="res://TileSets/BaseTileset.tres" id="1_5nsto"]
 [ext_resource type="PackedScene" uid="uid://dnjuntixfdqq0" path="res://Scenes/Weapons/Throwable/WeaponHolyGranate.tscn" id="2_5ci8a"]
 [ext_resource type="PackedScene" uid="uid://dn2dpf0haseiq" path="res://Scenes/Entities/Other/Player/Player.tscn" id="2_gjpho"]
 [ext_resource type="PackedScene" uid="uid://t7ktbcl5debv" path="res://Scenes/Weapons/Guns/WeaponPistol.tscn" id="3_p70al"]

@@ -1,7 +1,7 @@
 [gd_scene load_steps=10 format=4 uid="uid://cqi16uuiory6a"]
 
-[ext_resource type="TileSet" uid="uid://dwjq33gve6fks" path="res://Source/Weapons/TileSets/BaseTileset.tres" id="1_p8p37"]
-[ext_resource type="Script" uid="uid://bgy071o5jbwec" path="res://Source/Rooms/Doors.gd" id="2_t1wpb"]
+[ext_resource type="TileSet" uid="uid://dwjq33gve6fks" path="res://TileSets/BaseTileset.tres" id="1_p8p37"]
+[ext_resource type="Script" path="res://Source/Rooms/Doors.gd" id="2_t1wpb"]
 [ext_resource type="PackedScene" uid="uid://t7ktbcl5debv" path="res://Scenes/Weapons/Guns/WeaponPistol.tscn" id="3_477ix"]
 [ext_resource type="PackedScene" uid="uid://bxg5woeatx4uj" path="res://Scenes/Weapons/Guns/WeaponRevolver.tscn" id="5_kdtvj"]
 [ext_resource type="PackedScene" path="res://Scenes/Entities/Enemies/SkeletonFraction/Skeleton.tscn" id="5_uc76g"]
