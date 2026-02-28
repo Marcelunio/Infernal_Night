@@ -61,7 +61,8 @@ func _handle_player_movement():#obsluguje ruch gracza
 	velocity = input_dir * speed
 	move_and_slide()
 	
-	check_door_transition()
+	if dungeon.name == "Dungeon":
+		check_door_transition()
 
 func check_door_transition():
 	# Get the current room
