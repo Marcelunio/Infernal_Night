@@ -19,6 +19,7 @@ var hp: int
 var player: Node2D
 var move_dir := Vector2.RIGHT
 var dead := false
+var frozen := false
 var _saved_collision_layer: int
 var _saved_collision_mask: int
 
@@ -41,7 +42,7 @@ func _ready() -> void:
 
 
 func _physics_process(delta: float) -> void:
-	if dead:
+	if dead or frozen:
 		return
 
 	agent.target_position = player.global_position

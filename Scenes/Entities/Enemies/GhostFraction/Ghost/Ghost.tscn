@@ -7,7 +7,7 @@
 [sub_resource type="CircleShape2D" id="CircleShape2D_rhd2e"]
 radius = 12.0
 
-[node name="Enemy" instance=ExtResource("1_c3fwx")]
+[node name="Enemy" groups=["enemy"] instance=ExtResource("1_c3fwx")]
 rotation = 1.5707964
 script = ExtResource("2_la1fa")
 fade_out_time = 0.5
