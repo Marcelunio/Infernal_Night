@@ -16,11 +16,9 @@ var hp: int
 var player: Node2D = null
 var move_dir: Vector2 = Vector2.RIGHT
 var dead := false
-<<<<<<< HEAD
-var frozen := false
-=======
 
->>>>>>> 6b032a27bbdb579a0ded68bcbc75c3dac411f84f
+var frozen := false
+
 var _saved_collision_layer: int
 var _saved_collision_mask: int
 
