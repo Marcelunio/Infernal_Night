@@ -1,7 +1,11 @@
-[gd_scene load_steps=3 format=4 uid="uid://bddt51o5ejy1g"]
+[gd_scene load_steps=4 format=4 uid="uid://bddt51o5ejy1g"]
 
 [ext_resource type="Script" uid="uid://fyr3lou5xcva" path="res://Source/Rooms/room.gd" id="1_e3bsy"]
 [ext_resource type="TileSet" uid="uid://dwjq33gve6fks" path="res://TileSets/BaseTileset.tres" id="1_slonl"]
+
+[sub_resource type="NavigationPolygon" id="NavigationPolygon_e3bsy"]
+vertices = PackedVector2Array(726, 470, 42, 470, 42, 42, 726, 42)
+polygons = Array[PackedInt32Array]([PackedInt32Array(0, 1, 2, 3)])
 
 [node name="Room6" type="Node2D"]
 script = ExtResource("1_e3bsy")
@@ -13,3 +17,6 @@ tile_set = ExtResource("1_slonl")
 [node name="LayerInvisible" type="TileMapLayer" parent="."]
 tile_map_data = PackedByteArray("AAALAAAAAAACAAAAAAAMAAAAAAADAAAAAAAXAAcAAAABAAIAAAAXAAgAAAABAAMAAAAMAA8AAAADAAEAAAALAA8AAAACAAEAAAAAAAcAAAAAAAIAAAAAAAgAAAAAAAMAAAALAAYAAAABAAEAAAASAAwAAAABAAEAAAASAAsAAAABAAEAAAAGAAgAAAABAAEAAAATAAUAAAABAAAAAAAEAA0AAAABAAAAAAA=")
 tile_set = ExtResource("1_slonl")
+
+[node name="NavigationRegion2D" type="NavigationRegion2D" parent="."]
+navigation_polygon = SubResource("NavigationPolygon_e3bsy")
