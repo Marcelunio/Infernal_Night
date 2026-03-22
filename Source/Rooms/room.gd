@@ -4,7 +4,7 @@ extends Node2D
 signal room_entered
 signal room_cleared
 
-@onready var visible_layer: TileMapLayer = $LayerVisible
+@onready var visible_layer: TileMapLayer = $NavigationRegion2D/LayerVisible
 @onready var invisible_layer: TileMapLayer = $LayerInvisible
 
 const ENEMY: PackedScene = preload("res://Scenes/Entities/Enemies/GhostFraction/Ghost/Ghost.tscn")
