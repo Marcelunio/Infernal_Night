@@ -1,4 +1,4 @@
-[gd_scene load_steps=17 format=4 uid="uid://b865bu8xw64sy"]
+[gd_scene load_steps=19 format=4 uid="uid://b865bu8xw64sy"]
 
 [ext_resource type="TileSet" uid="uid://dwjq33gve6fks" path="res://TileSets/BaseTileset.tres" id="1_5nsto"]
 [ext_resource type="PackedScene" uid="uid://dnjuntixfdqq0" path="res://Scenes/Weapons/Throwable/WeaponHolyGranate.tscn" id="2_5ci8a"]
@@ -16,6 +16,19 @@
 [ext_resource type="PackedScene" uid="uid://bqacb2gjppd5i" path="res://Scenes/Entities/Enemies/GhostFraction/GhostTEMP.tscn" id="14_hkvnm"]
 [ext_resource type="PackedScene" uid="uid://bt2sjl85bpm3i" path="res://Scenes/PickUps/Ammo/9mm.tscn" id="15_5ci8a"]
 [ext_resource type="PackedScene" uid="uid://cltvr8ugr4leu" path="res://Scenes/Weapons/Throwable/WeaponHolyWater.tscn" id="16_18xdc"]
+[ext_resource type="PackedScene" uid="uid://b6w2pptl8xqdv" path="res://Scenes/UI/Escape.tscn" id="16_hcu3t"]
+
+[sub_resource type="GDScript" id="GDScript_epx8f"]
+script/source = "extends CanvasLayer
+var escapeMenu :Node
+
+# Called when the node enters the scene tree for the first time.
+func _ready() -> void:
+	escapeMenu = get_parent().get_node(\"UI/Escape\")
+	print(\"DEBUG -- escape node: \" , escapeMenu)
+	
+
+"
 
 [node name="World" type="Node2D"]
 
@@ -83,9 +96,12 @@ position = Vector2(899, 1261)
 [node name="Player" parent="." instance=ExtResource("2_gjpho")]
 position = Vector2(367, 423)
 
-[node name="CanvasLayer" type="CanvasLayer" parent="."]
+[node name="UI" type="CanvasLayer" parent="."]
+script = SubResource("GDScript_epx8f")
 
-[node name="AmmoDisplay" parent="CanvasLayer" instance=ExtResource("7_jw32o")]
+[node name="AmmoDisplay" parent="UI" instance=ExtResource("7_jw32o")]
+
+[node name="Escape" parent="UI" instance=ExtResource("16_hcu3t")]
 
 [node name="PickUps" type="Node2D" parent="."]
 
