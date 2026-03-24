@@ -15,6 +15,10 @@ run/main_scene="uid://ck3vvr01kg3mh"
 config/features=PackedStringArray("4.5", "Forward Plus")
 config/icon="uid://ci6co3vls48fx"
 
+[autoload]
+
+Settings="*res://Scenes/Entities/Other/UI/Settings.tscn"
+
 [display]
 
 window/size/viewport_width=1920

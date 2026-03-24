@@ -3,6 +3,7 @@
 extends Control
 
 func _ready() -> void:
+	Settings.closed.connect(_on_settings_closed)
 	visible = false
 	
 func _input(event) -> void:
@@ -22,10 +23,15 @@ func _on_save_pressed() -> void:
 	pass 
 
 func _on_settings_pressed() -> void:
-	pass 
-	#get_tree().change_scene_to_file("res://Scenes/Main/Settings.tscn") bo nie mam menu
+	visible = false
+	Settings.open()
 
 func _on_main_menu_pressed() -> void:
 	get_tree().paused = false
 	visible = false
 	get_tree().change_scene_to_file("res://Scenes/floors/Main/MainMenu.tscn")
+
+#=========obsługa sygnałów=========:
+
+func _on_settings_closed():
+	visible = true

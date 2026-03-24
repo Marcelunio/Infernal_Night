@@ -1,0 +1,72 @@
+[gd_scene load_steps=2 format=3 uid="uid://c5nm3cqnf5jer"]
+
+[ext_resource type="Script" uid="uid://bxkwsjb0d2hia" path="res://Source/Entities/Other/UI/settings.gd" id="1_vm5wi"]
+
+[node name="CanvasLayer" type="CanvasLayer"]
+process_mode = 3
+script = ExtResource("1_vm5wi")
+
+[node name="Control" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+metadata/_edit_group_ = true
+
+[node name="ColorRect" type="ColorRect" parent="Control"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.015686275, 0.015686275, 0.015686275, 0.34117648)
+
+[node name="Main" type="VBoxContainer" parent="Control"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/separation = 20
+
+[node name="TabContainer" type="TabContainer" parent="Control/Main"]
+layout_mode = 2
+size_flags_vertical = 4
+tab_alignment = 1
+current_tab = 0
+
+[node name="Audio" type="CenterContainer" parent="Control/Main/TabContainer"]
+layout_mode = 2
+metadata/_tab_index = 0
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Control/Main/TabContainer/Audio"]
+layout_mode = 2
+
+[node name="Video" type="CenterContainer" parent="Control/Main/TabContainer"]
+visible = false
+layout_mode = 2
+metadata/_tab_index = 1
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Control/Main/TabContainer/Video"]
+layout_mode = 2
+
+[node name="Controls" type="CenterContainer" parent="Control/Main/TabContainer"]
+visible = false
+layout_mode = 2
+metadata/_tab_index = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Control/Main/TabContainer/Controls"]
+layout_mode = 2
+
+[node name="Return" type="Button" parent="Control/Main"]
+process_mode = 3
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+text = "Return"
+
+[connection signal="pressed" from="Control/Main/Return" to="." method="_on_return_pressed"]
