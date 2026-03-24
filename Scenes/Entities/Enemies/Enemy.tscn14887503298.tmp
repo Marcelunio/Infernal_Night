@@ -1,0 +1,19 @@
+[gd_scene load_steps=3 format=3 uid="uid://cfusyie20hge6"]
+
+[ext_resource type="Script" uid="uid://clxjqb0qlt560" path="res://Source/Entities/Enemies/enemy.gd" id="1_154ox"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_154ox"]
+radius = 36.0
+height = 80.0
+
+[node name="Enemy" type="CharacterBody2D"]
+collision_layer = 40
+collision_mask = 80
+script = ExtResource("1_154ox")
+
+[node name="EnemyNavigation" type="NavigationAgent2D" parent="."]
+
+[node name="EnemySprite" type="Sprite2D" parent="."]
+
+[node name="EnemyCollision" type="CollisionShape2D" parent="."]
+shape = SubResource("CapsuleShape2D_154ox")

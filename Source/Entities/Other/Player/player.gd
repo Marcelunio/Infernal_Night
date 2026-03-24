@@ -2,13 +2,14 @@
 #Znane bugi: 0
 extends CharacterBody2D
 
+var dungeon: Node2D
 #movement
-@export var speed: float = 700
+@export var speed: float = 500
 
 #camera
-@export var camera_speed: float = 4
-var camera_direction: Vector2 = Vector2.ZERO
-var camera_offset_limit: float = 0.5
+#@export var camera_speed: float = 4
+#var camera_direction: Vector2 = Vector2.ZERO
+#var camera_offset_limit: float = 0.5
 
 #hp
 @export var max_hp:int = 360
@@ -18,6 +19,7 @@ var hp: int
 @onready var inventory = $InventoryMenager
 
 func _ready():
+	dungeon = get_parent()
 	hp = max_hp
 
 func _unhandled_input(event: InputEvent):#obsługa nie obsluzonych inputow
@@ -36,7 +38,7 @@ func _physics_process(delta):#obsluga zdarzen co klatkowych
 	_handle_player_movement()
 	_handle_player_rotation(direction)
 	_handle_weapon_action()
-	_handle_player_camera(delta, direction)
+	#_handle_player_camera(delta, direction)
 	_handle_player_pick_up()
 
 func _handle_player_movement():#obsluguje ruch gracza
@@ -58,6 +60,37 @@ func _handle_player_movement():#obsluguje ruch gracza
 	
 	velocity = input_dir * speed
 	move_and_slide()
+	
+	if dungeon.name == "Dungeon":
+		check_door_transition()
+
+func check_door_transition():
+	# Get the current room
+	var current_room = dungeon.get_current_room()
+	if current_room == null:
+		return
+	
+	# Get the invisible layer with doors
+	var visible_layer: TileMapLayer = current_room.get_node_or_null("NavigationRegion2D/LayerVisible")
+	if visible_layer == null:
+		return
+	
+	# Convert player position to tile coordinates within the current room
+	var local_pos = position - current_room.position
+	var tile_pos = visible_layer.local_to_map(local_pos)
+	
+	# Check if player is on a door tile
+	var atlas_coords = visible_layer.get_cell_atlas_coords(tile_pos)
+	
+	# Check which door the player touched
+	if atlas_coords == dungeon.DOOR_UP_ATLAS:
+		dungeon.transition_to_room(Vector2.UP)
+	elif atlas_coords == dungeon.DOOR_DOWN_ATLAS:
+		dungeon.transition_to_room(Vector2.DOWN)
+	elif atlas_coords == dungeon.DOOR_LEFT_ATLAS:
+		dungeon.transition_to_room(Vector2.LEFT)
+	elif atlas_coords == dungeon.DOOR_RIGHT_ATLAS:
+		dungeon.transition_to_room(Vector2.RIGHT)
 
 func _handle_player_rotation(direction):#obsluguje rotacje gracza
 	# Obrót w stronę kursora
@@ -91,13 +124,13 @@ func _handle_weapon_action():#obslugue wszelkie interakcje gracza
 			else:
 				print("DEBUG - bron nie ranged false reload")
 
-func _handle_player_camera(delta, direction):#obsluguje wszelkie nie naturalne zachowania kamery gracza
-	if  Input.is_action_pressed("control_camera"):
-		camera_direction=lerp(camera_direction,(direction-$Camera.get_offset())*camera_offset_limit*$Camera.zoom,camera_speed*delta)
-		$Camera.set_offset(camera_direction)
-	else:
-		camera_direction=lerp(camera_direction,Vector2.ZERO,camera_speed*delta)
-		$Camera.set_offset(camera_direction)
+#func _handle_player_camera(delta, direction):#obsluguje wszelkie nie naturalne zachowania kamery gracza
+#	if  Input.is_action_pressed("control_camera"):
+#		camera_direction=lerp(camera_direction,(direction-$Camera.get_offset())*camera_offset_limit*$Camera.zoom,camera_speed*delta)
+#		$Camera.set_offset(camera_direction)
+#	else:
+#		camera_direction=lerp(camera_direction,Vector2.ZERO,camera_speed*delta)
+#		$Camera.set_offset(camera_direction)
 
 func _handle_player_pick_up():#obslguje poczatkowy proces podnoszenia broni
 	if inventory.pick_up_check or inventory.ammo_pick_up_check:
