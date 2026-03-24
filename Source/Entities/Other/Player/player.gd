@@ -71,7 +71,7 @@ func check_door_transition():
 		return
 	
 	# Get the invisible layer with doors
-	var visible_layer: TileMapLayer = current_room.get_node_or_null("LayerVisible")
+	var visible_layer: TileMapLayer = current_room.get_node_or_null("NavigationRegion2D/LayerVisible")
 	if visible_layer == null:
 		return
 	
