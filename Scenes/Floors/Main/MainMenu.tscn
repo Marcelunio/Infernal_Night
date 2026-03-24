@@ -1,6 +1,7 @@
-[gd_scene load_steps=2 format=3 uid="uid://ck3vvr01kg3mh"]
+[gd_scene load_steps=3 format=3 uid="uid://ck3vvr01kg3mh"]
 
-[ext_resource type="Script" uid="uid://dypo0x1s5k1jg" path="res://Source/UI/main_menu.gd" id="1_db2sy"]
+[ext_resource type="Script" uid="uid://dypo0x1s5k1jg" path="res://Source/Entities/Other/UI/main_menu.gd" id="1_db2sy"]
+[ext_resource type="AudioStream" uid="uid://b6rrt8uf6kl3v" path="res://OST/Main_menu.ogg" id="2_14r8h"]
 
 [node name="MainMenu" type="Control"]
 process_mode = 3
@@ -56,6 +57,11 @@ text = "Settings"
 [node name="exit" type="Button" parent="VBoxContainer"]
 layout_mode = 2
 text = "Exit"
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("2_14r8h")
+autoplay = true
+parameters/looping = true
 
 [connection signal="pressed" from="VBoxContainer/new game" to="." method="_on_new_game_pressed"]
 [connection signal="pressed" from="VBoxContainer/load" to="." method="_on_load_pressed"]

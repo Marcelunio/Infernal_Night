@@ -6,13 +6,8 @@ var current_weapon
 func _ready():
 	visible = false
 	
-	var player = get_tree().get_first_node_in_group("player")#tu potrzebowalem pomocy wiadomo kogo generalnie inaczej nie dziala... bede potem probowal to naprawic
-
-	if player == null:
-		print("BŁĄD: Gracz nie ma grupy 'player'!")
-		return
-	
-	player.inventory.UI_WeaponChanged.connect(_on_weapon_changed)
+func setup(inventory):
+	inventory.UI_WeaponChanged.connect(_on_weapon_changed)
 
 func _on_weapon_changed(weapon):
 	if is_instance_valid(current_weapon):#dla <freed instance>
@@ -25,9 +20,6 @@ func _on_weapon_changed(weapon):
 	else:
 		visible = true
 		$VBoxContainer/WeaponSprite.texture = weapon.sprite
-		
-		
-		
 		
 		current_weapon=weapon
 	if weapon is RangedWeapon:

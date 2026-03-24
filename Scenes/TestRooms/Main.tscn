@@ -6,7 +6,7 @@
 [ext_resource type="PackedScene" uid="uid://t7ktbcl5debv" path="res://Scenes/Weapons/Guns/WeaponPistol.tscn" id="3_p70al"]
 [ext_resource type="PackedScene" uid="uid://do67sjc1c7h8g" path="res://Scenes/Weapons/Guns/WeaponShotgun.tscn" id="5_pbw6q"]
 [ext_resource type="PackedScene" uid="uid://kv6ej6j01fux" path="res://Scenes/Weapons/Guns/WeaponAk47.tscn" id="6_v1gob"]
-[ext_resource type="PackedScene" uid="uid://e50scyaq600v" path="res://Scenes/UI/AmmoDisplay.tscn" id="7_jw32o"]
+[ext_resource type="PackedScene" uid="uid://e50scyaq600v" path="res://Scenes/Entities/Other/UI/AmmoDisplay.tscn" id="7_jw32o"]
 [ext_resource type="PackedScene" uid="uid://cotiiwrrpdkwu" path="res://Scenes/Weapons/Melee/WeaponBat.tscn" id="8_50glp"]
 [ext_resource type="PackedScene" uid="uid://dhj4hdoqpno23" path="res://Scenes/Weapons/Melee/WeaponKnife.tscn" id="9_vy5pj"]
 [ext_resource type="PackedScene" uid="uid://da1ap0hsfecta" path="res://Scenes/Weapons/Guns/WeaponUzi.tscn" id="10_bmxlf"]
@@ -15,7 +15,7 @@
 [ext_resource type="PackedScene" uid="uid://bt2sjl85bpm3i" path="res://Scenes/PickUps/Ammo/9mm.tscn" id="15_5ci8a"]
 [ext_resource type="PackedScene" uid="uid://t0o0bmrjln2s" path="res://Scenes/Entities/Enemies/GhostFraction/Ghost/Ghost.tscn" id="15_18xdc"]
 [ext_resource type="PackedScene" uid="uid://cltvr8ugr4leu" path="res://Scenes/Weapons/Throwable/WeaponHolyWater.tscn" id="16_18xdc"]
-[ext_resource type="PackedScene" uid="uid://b6w2pptl8xqdv" path="res://Scenes/UI/Escape.tscn" id="16_hcu3t"]
+[ext_resource type="PackedScene" uid="uid://b6w2pptl8xqdv" path="res://Scenes/Entities/Other/UI/Escape.tscn" id="16_hcu3t"]
 
 [sub_resource type="GDScript" id="GDScript_epx8f"]
 script/source = "extends CanvasLayer

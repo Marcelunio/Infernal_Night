@@ -56,6 +56,15 @@ ORGANIZACJA KODU (kolejność):
 	- Gdy bug zostanie naprawiony, oznaczamy go jako [ROZWIĄZANY]
 	  i przenosimy na koniec listy (archiwum)
 -------------------------------------------
+LAYER:
+	1 - 
+	2 -
+	3 -
+	4 -
+	5 -
+	6 -
+	7 - ENEMIES
+-------------------------------------------
 
 PROŚBY KLEKSA:
 	✓ Header z autorem i bugami - oszczędza czas każdemu w razie pytań i nie porozumień

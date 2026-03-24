@@ -2,25 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dnxbimxabhnbx"
-<<<<<<<< HEAD:Assets/Tilesets/tilesheet.png.import
-path="res://.godot/imported/tilesheet.png-df0c1c9e72b79a43341fb7f7e7237800.ctex"
-========
-path="res://.godot/imported/tilesheet.png-da7806b294acf83fc6aac91e4ddac829.ctex"
->>>>>>>> the_skorpogest_testest_branchest:Source/Weapons/TileSets/tilesheet.png.import
+uid="uid://c00bs0xo60cxb"
+path="res://.godot/imported/tilesheet.png-3787b308e14370f0edf180e80a3ab5c0.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-<<<<<<<< HEAD:Assets/Tilesets/tilesheet.png.import
-source_file="res://Assets/Tilesets/tilesheet.png"
-dest_files=["res://.godot/imported/tilesheet.png-df0c1c9e72b79a43341fb7f7e7237800.ctex"]
-========
-source_file="res://Source/Weapons/TileSets/tilesheet.png"
-dest_files=["res://.godot/imported/tilesheet.png-da7806b294acf83fc6aac91e4ddac829.ctex"]
->>>>>>>> the_skorpogest_testest_branchest:Source/Weapons/TileSets/tilesheet.png.import
+source_file="res://TileSets/tilesheet.png"
+dest_files=["res://.godot/imported/tilesheet.png-3787b308e14370f0edf180e80a3ab5c0.ctex"]
 
 [params]
 

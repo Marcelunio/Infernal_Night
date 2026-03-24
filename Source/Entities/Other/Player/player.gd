@@ -21,6 +21,7 @@ var hp: int
 func _ready():
 	dungeon = get_parent()
 	hp = max_hp
+	$CanvasLayer/AmmoDisplay.setup(inventory)
 
 func _unhandled_input(event: InputEvent):#obsługa nie obsluzonych inputow
 	if not inventory.weapon_container.is_empty():

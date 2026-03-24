@@ -3,10 +3,12 @@
 extends Control
 
 func _ready() -> void:
-	pass # Replace with function body.
+	pass
+	
 
 func _on_new_game_pressed() -> void:
-	get_tree().change_scene_to_file("res://Scenes/Main/Main.tscn")
+	get_tree().change_scene_to_file("res://Scenes/Floors/Main/Main.tscn")
+	#get_tree().change_scene_to_file("res://Scenes/TestRooms/Main.tscn")
 
 func _on_load_pressed() -> void:
 	pass
