@@ -1,0 +1,11 @@
+[gd_scene load_steps=4 format=3 uid="uid://4lel7x6umvoj"]
+
+[ext_resource type="PackedScene" uid="uid://uc6nloqrnmpn" path="res://Scenes/Entities/Enemies/EnemyProjectile.tscn" id="1_scvvf"]
+[ext_resource type="Texture2D" uid="uid://c3ajutjra0kil" path="res://Assets/Entities/Enemies/Ghost/GhostProjectile.png" id="2_mute3"]
+[ext_resource type="Script" uid="uid://by6f15ujwxl5p" path="res://Source/Entities/Enemies/Ghost/ghost_projectile.gd" id="2_oleda"]
+
+[node name="EnemyProjectile" instance=ExtResource("1_scvvf")]
+script = ExtResource("2_oleda")
+
+[node name="Sprite2D" parent="." index="1"]
+texture = ExtResource("2_mute3")
