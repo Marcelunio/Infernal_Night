@@ -7,14 +7,17 @@ radius = 12.0
 
 [node name="Enemy" type="CharacterBody2D"]
 collision_layer = 64
-collision_mask = 120
+collision_mask = 112
 safe_margin = 3.0
 script = ExtResource("1_154ox")
 
 [node name="EnemyNavigation" type="NavigationAgent2D" parent="."]
 path_desired_distance = 8.0
 path_max_distance = 4096.0
-radius = 14.0
+avoidance_enabled = true
+radius = 16.0
+neighbor_distance = 160.0
+max_neighbors = 1
 
 [node name="EnemySprite" type="Sprite2D" parent="."]
 

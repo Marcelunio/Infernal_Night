@@ -7,7 +7,7 @@ signal room_cleared
 @onready var visible_layer: TileMapLayer = $NavigationRegion2D/LayerVisible
 @onready var invisible_layer: TileMapLayer = $LayerInvisible
 
-const ENEMY: PackedScene = preload("res://Scenes/Entities/Enemies/GhostFraction/Ghost/Ghost.tscn")
+const ENEMY: PackedScene = preload("res://Scenes/Entities/Enemies/Ghost/Ghost.tscn")
 
 var grid_position: Vector2i = Vector2i.ZERO
 var is_cleared: bool = false

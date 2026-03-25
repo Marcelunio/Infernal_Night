@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://djd52f1s0qhhd"
-path="res://.godot/imported/GhostNonVisible.png-c9f13c5b980f693b97e53d92eeb06c27.ctex"
+uid="uid://c3ajutjra0kil"
+path="res://.godot/imported/GhostProjectile.png-087c6fe6a37920edbd14956a38b407c1.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/Entities/Enemies/GhostFraction/Ghost/GhostNonVisible.png"
-dest_files=["res://.godot/imported/GhostNonVisible.png-c9f13c5b980f693b97e53d92eeb06c27.ctex"]
+source_file="res://Assets/Entities/Enemies/Ghost/GhostProjectile.png"
+dest_files=["res://.godot/imported/GhostProjectile.png-087c6fe6a37920edbd14956a38b407c1.ctex"]
 
 [params]
 
