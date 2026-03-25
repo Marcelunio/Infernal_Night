@@ -37,3 +37,6 @@ collision_layer = 4
 [node name="WeaponAreaShape" type="CollisionShape2D" parent="WeaponArea"]
 shape = SubResource("RectangleShape2D_osvus")
 debug_color = Color(0.89498323, 0.2559664, 0.4939599, 0.41960785)
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+bus = &"SFX"

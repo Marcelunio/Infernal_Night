@@ -12,11 +12,25 @@ signal UI_AmmoChanged(current_ammo, max_ammo)
 #signal to inventory_menager.gd
 signal reloaded(weapon, amount)
 
-func shoot(spawn_pos: Vector2, entity):
+#SFX
+@onready var audioPlayer = $AudioStreamPlayer
+@export var shoot_sounds: Array[AudioStreamWAV] = []
+@export var reload_sounds: Array[AudioStreamWAV] = []
+@export var empty_sounds: Array[AudioStreamWAV] = []
+
+func shoot(spawn_pos: Vector2, entity): 
 	
 	if(current_ammo<1):
+		if not empty_sounds.is_empty():
+			audioPlayer.stream = empty_sounds.pick_random()
+			audioPlayer.play()
 		return
+		
 	if(super.shoot(spawn_pos,entity)):
+		if not shoot_sounds.is_empty():
+			audioPlayer.stream = shoot_sounds.pick_random()
+			audioPlayer.play()
+		
 		current_ammo-=1
 		emit_signal("UI_AmmoChanged",current_ammo, max_ammo)
 
@@ -36,4 +50,7 @@ func _reload(amount_in_inventory):
 			emit_signal("reloaded", self, amount_in_inventory)
 	
 	emit_signal("UI_AmmoChanged",current_ammo, max_ammo)
-	print("doszl do emit")	
+	if not reload_sounds.is_empty():
+			audioPlayer.stream = reload_sounds.pick_random()
+			audioPlayer.play()
+	

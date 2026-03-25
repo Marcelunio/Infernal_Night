@@ -62,9 +62,6 @@ metadata/_tab_index = 2
 [node name="VBoxContainer" type="VBoxContainer" parent="Control/Main/TabContainer/Controls"]
 layout_mode = 2
 
-[node name="OptionButton" type="OptionButton" parent="Control/Main/TabContainer/Controls/VBoxContainer"]
-layout_mode = 2
-
 [node name="Return" type="Button" parent="Control/Main"]
 process_mode = 3
 layout_mode = 2

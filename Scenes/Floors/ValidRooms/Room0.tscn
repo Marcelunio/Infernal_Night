@@ -1,8 +1,13 @@
-[gd_scene load_steps=5 format=4 uid="uid://dw0b6jnugldsx"]
+[gd_scene load_steps=10 format=4 uid="uid://dw0b6jnugldsx"]
 
 [ext_resource type="TileSet" uid="uid://dwjq33gve6fks" path="res://TileSets/BaseTileset.tres" id="1_18vym"]
 [ext_resource type="Script" uid="uid://fyr3lou5xcva" path="res://Source/Rooms/room.gd" id="1_qper7"]
 [ext_resource type="PackedScene" uid="uid://da1ap0hsfecta" path="res://Scenes/Weapons/Guns/WeaponUzi.tscn" id="3_ubcb3"]
+[ext_resource type="PackedScene" uid="uid://kv6ej6j01fux" path="res://Scenes/Weapons/Guns/WeaponAk47.tscn" id="4_487b6"]
+[ext_resource type="PackedScene" uid="uid://b783hpp0owvai" path="res://Scenes/Weapons/Guns/WeaponDoubleBarrel.tscn" id="5_t5y6e"]
+[ext_resource type="PackedScene" uid="uid://t7ktbcl5debv" path="res://Scenes/Weapons/Guns/WeaponPistol.tscn" id="6_7hba6"]
+[ext_resource type="PackedScene" uid="uid://bxg5woeatx4uj" path="res://Scenes/Weapons/Guns/WeaponRevolver.tscn" id="7_yvwe4"]
+[ext_resource type="PackedScene" uid="uid://do67sjc1c7h8g" path="res://Scenes/Weapons/Guns/WeaponShotgun.tscn" id="8_sgwhs"]
 
 [sub_resource type="NavigationPolygon" id="NavigationPolygon_qper7"]
 vertices = PackedVector2Array(726, 470, 42, 470, 42, 42, 726, 42)
@@ -24,3 +29,18 @@ tile_set = ExtResource("1_18vym")
 
 [node name="WeaponUzi" parent="." instance=ExtResource("3_ubcb3")]
 position = Vector2(642, 108)
+
+[node name="WeaponAk47" parent="." instance=ExtResource("4_487b6")]
+position = Vector2(496, 99)
+
+[node name="WeaponDoubleBarrel" parent="." instance=ExtResource("5_t5y6e")]
+position = Vector2(322, 102)
+
+[node name="WeaponPistol" parent="." instance=ExtResource("6_7hba6")]
+position = Vector2(179, 100)
+
+[node name="WeaponRevolver" parent="." instance=ExtResource("7_yvwe4")]
+position = Vector2(147, 420)
+
+[node name="WeaponShotgun" parent="." instance=ExtResource("8_sgwhs")]
+position = Vector2(286, 417)

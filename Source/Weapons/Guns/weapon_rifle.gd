@@ -11,7 +11,7 @@ var current_spread = base_spread
 
 func __shoot(spawn_pos: Vector2, entity):
 	var bullet = preload("res://Scenes/Projectiles/bullet.tscn").instantiate()
-
+	
 	bullet.global_position = spawn_pos
 	var angle_offset = randf_range(-current_spread, current_spread)
 	var shoot_direction = Vector2.RIGHT.rotated(entity.rotation - deg_to_rad(90) + deg_to_rad(angle_offset))
