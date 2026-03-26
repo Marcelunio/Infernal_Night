@@ -12,6 +12,7 @@ const ENEMY: PackedScene = preload("res://Scenes/Entities/Enemies/Ghost/Ghost.ts
 var grid_position: Vector2i = Vector2i.ZERO
 var is_cleared: bool = false
 var enemies_spawned: bool = false
+var enemy_counter: int = 0
 
 func setup(pos: Vector2i):
 	grid_position = pos
@@ -34,6 +35,7 @@ func exit_room():
 
 func spawn_enemies():
 	enemies_spawned = true
+	enemy_counter = 0
 	
 	if invisible_layer == null:
 		return
@@ -45,13 +47,14 @@ func spawn_enemies():
 		var atlas_coords = invisible_layer.get_cell_atlas_coords(cell_pos)
 		
 		if atlas_coords == Vector2i(1, 1):
+			enemy_counter += 1
 			var world_pos = invisible_layer.map_to_local(cell_pos)
-			
 			var enemy_instance = ENEMY.instantiate()
 			add_child(enemy_instance)
 			enemy_instance.position = world_pos
 			enemy_instance.frozen = true
 			spawned_enemies.append(enemy_instance)
+			enemy_instance.enemy_died.connect(on_enemy_died)
 	
 	await get_tree().create_timer(1.5).timeout
 	
@@ -61,4 +64,12 @@ func spawn_enemies():
 
 func clear_room():
 	is_cleared = true
+	
+	
+	
 	emit_signal("room_cleared")
+
+func on_enemy_died():
+	enemy_counter -= 1
+	if enemy_counter == 0:
+		clear_room()

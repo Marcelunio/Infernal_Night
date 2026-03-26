@@ -9,7 +9,7 @@ signal room_changed(new_room_pos: Vector2i)
 @export var max_rooms: int = 10
 @export var room_folder_path: String = "res://Scenes/Floors/ValidRooms"
 
-const ROOM_SIZE: Vector2 = Vector2(768, 512)
+const ROOM_SIZE: Vector2 = Vector2(1152, 768)
 const PLAYER: PackedScene = preload("res://Scenes/Entities/Other/Player/Player.tscn")
 const SPAWN_ROOM: PackedScene = preload("res://Scenes/Floors/ValidRooms/Room0.tscn")
 
@@ -18,14 +18,14 @@ const DOOR_DOWN_ATLAS: Vector2i = Vector2i(12, 4)
 const DOOR_LEFT_ATLAS: Vector2i = Vector2i(12, 2)
 const DOOR_RIGHT_ATLAS: Vector2i = Vector2i(12, 3)
 
-const DOOR_UP_POS_LEFT: Vector2i = Vector2i(11, 0)
-const DOOR_UP_POS_RIGHT: Vector2i = Vector2i(12, 0)
-const DOOR_DOWN_POS_LEFT: Vector2i = Vector2i(11, 15)
-const DOOR_DOWN_POS_RIGHT: Vector2i = Vector2i(12, 15)
-const DOOR_LEFT_POS_TOP: Vector2i = Vector2i(0, 7)
-const DOOR_LEFT_POS_BOTTOM: Vector2i = Vector2i(0, 8)
-const DOOR_RIGHT_POS_TOP: Vector2i = Vector2i(23, 7)
-const DOOR_RIGHT_POS_BOTTOM: Vector2i = Vector2i(23, 8)
+const DOOR_UP_POS_LEFT: Vector2i = Vector2i(17, 0)
+const DOOR_UP_POS_RIGHT: Vector2i = Vector2i(18, 0)
+const DOOR_DOWN_POS_LEFT: Vector2i = Vector2i(17, 23)
+const DOOR_DOWN_POS_RIGHT: Vector2i = Vector2i(18, 23)
+const DOOR_LEFT_POS_TOP: Vector2i = Vector2i(0, 11)
+const DOOR_LEFT_POS_BOTTOM: Vector2i = Vector2i(0, 12)
+const DOOR_RIGHT_POS_TOP: Vector2i = Vector2i(35, 11)
+const DOOR_RIGHT_POS_BOTTOM: Vector2i = Vector2i(35, 12)
 
 var room_scenes: Array[PackedScene] = []
 var room_instances := {}

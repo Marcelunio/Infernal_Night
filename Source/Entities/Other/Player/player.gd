@@ -4,7 +4,14 @@ extends CharacterBody2D
 
 var dungeon: Node2D
 #movement
-@export var speed: float = 500
+@export var speed: float = 400
+@export var dash_speed: float = 1200
+@export var dash_duration: float = 0.2
+@export var dash_cooldown: float = 0.5
+
+var dashing: bool = false
+var can_dash: bool = true
+var dash_direction: Vector2 = Vector2.ZERO
 
 #camera
 #@export var camera_speed: float = 4
@@ -34,13 +41,14 @@ func _unhandled_input(event: InputEvent):#obsługa nie obsluzonych inputow
 				inventory.previous_weapon()
 
 func _physics_process(delta):#obsluga zdarzen co klatkowych
-	var direction = get_global_mouse_position() - global_position
-
-	_handle_player_movement()
-	_handle_player_rotation(direction)
+	if not dashing:
+		_handle_player_rotation()
+		_handle_player_movement()
 	_handle_weapon_action()
-	#_handle_player_camera(delta, direction)
 	_handle_player_pick_up()
+	
+	if dungeon.name == "Dungeon":
+		check_door_transition()
 
 func _handle_player_movement():#obsluguje ruch gracza
 	var input_dir = Vector2.ZERO
@@ -52,7 +60,10 @@ func _handle_player_movement():#obsluguje ruch gracza
 		input_dir.x -= 1
 	if Input.is_action_pressed("move_right"):
 		input_dir.x += 1
-	
+		
+	if Input.is_action_pressed("dash") and can_dash:
+		dash()
+		
 	if input_dir != Vector2.ZERO:
 		input_dir = input_dir.normalized()
 		$PlayerSprites.play()
@@ -62,8 +73,30 @@ func _handle_player_movement():#obsluguje ruch gracza
 	velocity = input_dir * speed
 	move_and_slide()
 	
-	if dungeon.name == "Dungeon":
-		check_door_transition()
+func dash():
+	if not can_dash or dashing:
+		return
+	
+	dashing = true
+	can_dash = false
+	dash_direction = (get_global_mouse_position() - global_position).normalized()
+	set_collision_mask_value(7, false)
+	
+	var dash_time = 0.0
+	while dash_time < dash_duration:
+		dash_time += get_process_delta_time()
+		var progress = dash_time / dash_duration
+		var current_speed = lerp(dash_speed, 0.0, progress)  # Slow down over time
+		velocity = dash_direction * current_speed
+		move_and_slide()
+		await get_tree().process_frame
+	
+	dashing = false
+	velocity = Vector2.ZERO
+	set_collision_mask_value(7, true)
+	
+	await get_tree().create_timer(dash_cooldown).timeout
+	can_dash = true
 
 func check_door_transition():
 	# Get the current room
@@ -93,9 +126,9 @@ func check_door_transition():
 	elif atlas_coords == dungeon.DOOR_RIGHT_ATLAS:
 		dungeon.transition_to_room(Vector2.RIGHT)
 
-func _handle_player_rotation(direction):#obsluguje rotacje gracza
+func _handle_player_rotation():#obsluguje rotacje gracza
 	# Obrót w stronę kursora
-	rotation = direction.angle() + 0.5*PI
+	rotation = (get_global_mouse_position() - global_position).angle() + 0.5*PI
 
 func _handle_weapon_action():#obslugue wszelkie interakcje gracza
 	var weapon = inventory.current_weapon

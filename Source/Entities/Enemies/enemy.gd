@@ -22,6 +22,8 @@ var frozen := false
 var _saved_collision_layer: int
 var _saved_collision_mask: int
 
+signal enemy_died
+
 # =========================
 # READY
 # =========================
@@ -90,3 +92,4 @@ func die() -> void:
 	dead = true
 	set_physics_process(false)
 	queue_free()
+	call_deferred("emit_signal", "enemy_died")
