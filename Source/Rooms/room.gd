@@ -4,8 +4,7 @@ extends Node2D
 signal room_entered
 signal room_cleared
 
-@onready var visible_layer: TileMapLayer = $NavigationRegion2D/LayerVisible
-@onready var invisible_layer: TileMapLayer = $LayerInvisible
+@onready var room_layout: TileMapLayer = $NavigationRegion2D/RoomLayout
 
 const ENEMY: PackedScene = preload("res://Scenes/Entities/Enemies/Ghost/Ghost.tscn")
 
@@ -37,21 +36,18 @@ func spawn_enemies():
 	enemies_spawned = true
 	enemy_counter = 0
 	
-	if invisible_layer == null:
+	var spawn_markers = get_node_or_null("EnemySpawns")
+	if spawn_markers == null:
 		return
 	
-	var used_cells = invisible_layer.get_used_cells()
-	var spawned_enemies: Array = []  # Track spawned enemies
+	var spawned_enemies: Array = []
 	
-	for cell_pos in used_cells:
-		var atlas_coords = invisible_layer.get_cell_atlas_coords(cell_pos)
-		
-		if atlas_coords == Vector2i(1, 1):
+	for marker in spawn_markers.get_children():
+		if marker is Marker2D:
 			enemy_counter += 1
-			var world_pos = invisible_layer.map_to_local(cell_pos)
 			var enemy_instance = ENEMY.instantiate()
 			add_child(enemy_instance)
-			enemy_instance.position = world_pos
+			enemy_instance.position = marker.position
 			enemy_instance.frozen = true
 			spawned_enemies.append(enemy_instance)
 			enemy_instance.enemy_died.connect(on_enemy_died)

@@ -19,6 +19,11 @@ config/icon="uid://ci6co3vls48fx"
 
 Settings="*res://Scenes/Entities/Other/UI/Settings.tscn"
 
+[debug]
+
+shapes/navigation/2d/geometry_edge_color=Color(0.5019608, 1, 1, 1)
+shapes/navigation/2d/geometry_face_color=Color(0.5019608, 1, 1, 0)
+
 [display]
 
 window/size/viewport_width=1920

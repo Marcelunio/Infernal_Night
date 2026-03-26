@@ -86,7 +86,7 @@ func dash():
 	while dash_time < dash_duration:
 		dash_time += get_process_delta_time()
 		var progress = dash_time / dash_duration
-		var current_speed = lerp(dash_speed, 0.0, progress)  # Slow down over time
+		var current_speed = lerp(dash_speed, 0.0, progress)
 		velocity = dash_direction * current_speed
 		move_and_slide()
 		await get_tree().process_frame
@@ -99,24 +99,19 @@ func dash():
 	can_dash = true
 
 func check_door_transition():
-	# Get the current room
 	var current_room = dungeon.get_current_room()
 	if current_room == null:
 		return
 	
-	# Get the invisible layer with doors
-	var visible_layer: TileMapLayer = current_room.get_node_or_null("NavigationRegion2D/LayerVisible")
+	var visible_layer: TileMapLayer = current_room.get_node_or_null("NavigationRegion2D/RoomLayout")
 	if visible_layer == null:
 		return
 	
-	# Convert player position to tile coordinates within the current room
 	var local_pos = position - current_room.position
 	var tile_pos = visible_layer.local_to_map(local_pos)
 	
-	# Check if player is on a door tile
 	var atlas_coords = visible_layer.get_cell_atlas_coords(tile_pos)
 	
-	# Check which door the player touched
 	if atlas_coords == dungeon.DOOR_UP_ATLAS:
 		dungeon.transition_to_room(Vector2.UP)
 	elif atlas_coords == dungeon.DOOR_DOWN_ATLAS:

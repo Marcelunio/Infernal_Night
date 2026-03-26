@@ -157,10 +157,10 @@ func spawn_all_rooms():
 		room_instance.invisible_layer.visible = false
 
 func setup_room_doors(room: Node2D, pos: Vector2i):
-	var visible_layer: TileMapLayer = room.get_node_or_null("NavigationRegion2D/LayerVisible")
+	var visible_layer: TileMapLayer = room.get_node_or_null("NavigationRegion2D/RoomLayout")
 	
 	if visible_layer == null:
-		push_warning("Room at " + str(pos) + " has no LayerVisible TileMapLayer")
+		push_warning("Room at " + str(pos) + " has no RoomLayout TileMapLayer")
 		return
 	
 	var has_up := room_positions.has(pos + Vector2i.UP)
