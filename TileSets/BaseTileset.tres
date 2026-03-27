@@ -1,7 +1,42 @@
-[gd_resource type="TileSet" load_steps=6 format=3 uid="uid://dwjq33gve6fks"]
+[gd_resource type="TileSet" load_steps=8 format=3 uid="uid://dwjq33gve6fks"]
 
+[ext_resource type="Texture2D" uid="uid://dwvb8gat6kfti" path="res://Assets/Tilesets/van2.png" id="1_stlkj"]
 [ext_resource type="Texture2D" uid="uid://d0fyw2g2wv2ds" path="res://Assets/Tilesets/carpetsstuff.png" id="2_f7yts"]
 [ext_resource type="Texture2D" uid="uid://c7d3my0tb2wsk" path="res://Assets/Tilesets/tileset.png" id="2_stlkj"]
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_tmq46"]
+texture = ExtResource("1_stlkj")
+texture_region_size = Vector2i(32, 32)
+0:0/0 = 0
+1:0/0 = 0
+2:0/0 = 0
+3:0/0 = 0
+4:0/0 = 0
+5:0/0 = 0
+6:0/0 = 0
+1:1/0 = 0
+2:1/0 = 0
+5:1/0 = 0
+6:1/0 = 0
+1:2/0 = 0
+2:2/0 = 0
+5:2/0 = 0
+6:2/0 = 0
+5:3/0 = 0
+6:3/0 = 0
+0:4/0 = 0
+1:4/0 = 0
+2:4/0 = 0
+3:4/0 = 0
+4:4/0 = 0
+5:4/0 = 0
+6:4/0 = 0
+0:5/0 = 0
+1:5/0 = 0
+2:5/0 = 0
+3:5/0 = 0
+5:5/0 = 0
+6:5/0 = 0
 
 [sub_resource type="NavigationPolygon" id="NavigationPolygon_r836e"]
 vertices = PackedVector2Array(16, 16, -16, 16, -16, -16, 16, -16)
@@ -727,3 +762,4 @@ terrain_set_0/terrain_2/color = Color(0.0023697698, 0.0027235528, 0.0006468763, 
 navigation_layer_0/layers = 1
 sources/2 = SubResource("TileSetAtlasSource_tqkpo")
 sources/5 = SubResource("TileSetAtlasSource_stlkj")
+sources/0 = SubResource("TileSetAtlasSource_tmq46")

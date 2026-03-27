@@ -69,13 +69,10 @@ func _physics_process(delta):#obsluga zdarzen co klatkowych
 		_handle_player_movement()
 	_handle_weapon_action()
 	_handle_player_pick_up()
-<<<<<<< Updated upstream
 	
 	if dungeon.name == "Dungeon":
 		check_door_transition()
-=======
-	_handle_tileMap_detection()
->>>>>>> Stashed changes
+		_handle_tileMap_detection()
 
 func _handle_player_movement():#obsluguje ruch gracza
 	var input_dir = Vector2.ZERO

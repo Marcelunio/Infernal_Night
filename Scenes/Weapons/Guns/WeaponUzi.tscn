@@ -31,7 +31,7 @@ weapon_delay = 0.025
 weapon_damage = 120.0
 weapon_ammo_type = "9mm"
 max_ammo = 32
-reload_time = 5.0
+reload_time = 2.0
 
 [node name="WeaponSprite" type="Sprite2D" parent="."]
 texture = ExtResource("2_aaf5g")
