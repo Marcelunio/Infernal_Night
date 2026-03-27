@@ -15,6 +15,7 @@ var enemy_counter: int = 0
 
 func setup(pos: Vector2i):
 	grid_position = pos
+	print(get_path())
 
 func enter_room():
 	visible = true
