@@ -8,10 +8,12 @@ func _ready() -> void:
 	
 func _input(event) -> void:
 	if event.is_action_pressed("escape_menu"):
-		if get_tree().paused == true:
+		if get_tree().paused and GameState.screen_stack.back() == "pause":
+			GameState.pop_screen()
 			get_tree().paused = false
 			visible = false
-		else:
+		elif not GameState.is_busy():
+			GameState.push_screen("pause")
 			get_tree().paused = true
 			visible = true
 

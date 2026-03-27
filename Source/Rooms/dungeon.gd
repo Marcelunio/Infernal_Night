@@ -201,6 +201,8 @@ func spawn_player():
 	player.position = ROOM_SIZE/2
 	current_room_pos = Vector2i.ZERO
 	camera.position = ROOM_SIZE / 2
+	
+	player.current_room = room_instances.get(current_room_pos)
 
 func transition_to_room(direction: Vector2):
 	var next_pos = current_room_pos + Vector2i(direction.x, direction.y)
@@ -220,6 +222,8 @@ func transition_to_room(direction: Vector2):
 		
 	var offset = direction * 64
 	player.position = player.position + offset
+	
+	player.current_room = next_room#Kleks
 	
 	if not visited_rooms.has(next_pos):
 		visited_rooms.append(next_pos)

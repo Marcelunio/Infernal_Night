@@ -17,6 +17,8 @@ const KEY_BINDS = {
 	"Move down": "move_down",
 	"Move left": "move_left",
 	"Move right": "move_right",
+	"Dash": "dash",
+	"Interaction": "interaction",
 	"Shoot": "shoot",
 	"Throw": "throw",
 	"Pick up": "pick_up",
@@ -58,10 +60,12 @@ func _process(delta: float) -> void:
 	pass
 	
 func open() -> void:
+	GameState.push_screen("settings")
 	visible = true
 	
 func close() -> void:
 	closed.emit()
+	GameState.pop_screen()
 	visible = false
 
 func _on_return_pressed() -> void:

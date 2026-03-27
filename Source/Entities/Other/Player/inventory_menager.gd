@@ -95,7 +95,8 @@ func throw(velocity: Vector2, weapon):#player.gd _handle_weapon_action()
 	weapon_container_ui_update()
 	
 	# Przenieś broń z powrotem do świata
-	weapon.reparent(get_tree().current_scene)
+	var player = get_tree().get_first_node_in_group("player")
+	weapon.reparent(player.current_room)
 	
 	weapon.throw(get_parent().global_position, velocity)
 

@@ -1,5 +1,24 @@
-[gd_scene load_steps=2 format=3 uid="uid://ul478xcq3qqo"]
+[gd_scene load_steps=6 format=3 uid="uid://ul478xcq3qqo"]
 
 [ext_resource type="PackedScene" uid="uid://c1da6epqykshi" path="res://Scenes/Floors/ValidRooms/Room.tscn" id="1_014t1"]
+[ext_resource type="PackedScene" uid="uid://da1ap0hsfecta" path="res://Scenes/Weapons/Guns/WeaponUzi.tscn" id="2_nclxc"]
+[ext_resource type="PackedScene" uid="uid://kv6ej6j01fux" path="res://Scenes/Weapons/Guns/WeaponAk47.tscn" id="3_7vf17"]
+[ext_resource type="PackedScene" uid="uid://bxg5woeatx4uj" path="res://Scenes/Weapons/Guns/WeaponRevolver.tscn" id="4_cjroc"]
+
+[sub_resource type="NavigationPolygon" id="NavigationPolygon_nclxc"]
+vertices = PackedVector2Array(1110, 726, 42, 726, 42, 42, 1110, 42)
+polygons = Array[PackedInt32Array]([PackedInt32Array(0, 1, 2, 3)])
 
 [node name="Room" instance=ExtResource("1_014t1")]
+
+[node name="NavigationRegion2D" parent="." index="0"]
+navigation_polygon = SubResource("NavigationPolygon_nclxc")
+
+[node name="WeaponUzi" parent="." index="3" instance=ExtResource("2_nclxc")]
+position = Vector2(171, 145)
+
+[node name="WeaponAk47" parent="." index="4" instance=ExtResource("3_7vf17")]
+position = Vector2(808, 108)
+
+[node name="WeaponRevolver" parent="." index="5" instance=ExtResource("4_cjroc")]
+position = Vector2(533, 521)

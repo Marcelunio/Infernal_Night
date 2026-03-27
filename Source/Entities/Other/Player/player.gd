@@ -13,6 +13,15 @@ var dashing: bool = false
 var can_dash: bool = true
 var dash_direction: Vector2 = Vector2.ZERO
 
+#Death screen
+var enemy_deaths: int = 0
+var shots_fired: int = 0
+var grenades_thrown: int = 0
+signal death(enemy_deaths, shots_fired, grenades_thrown)
+
+#weapon location tracker
+var current_room: Node = null 
+	
 #camera
 #@export var camera_speed: float = 4
 #var camera_direction: Vector2 = Vector2.ZERO
@@ -48,6 +57,7 @@ func _ready():
 	dungeon = get_parent()
 	hp = max_hp
 	$CanvasLayer/AmmoDisplay.setup(inventory)
+	
 	
 
 func _unhandled_input(event: InputEvent):#obsługa nie obsluzonych inputow
@@ -156,15 +166,18 @@ func _handle_weapon_action():#obslugue wszelkie interakcje gracza
 		if weapon.is_in_group("weapon-machineGuns"):
 			if Input.is_action_pressed("shoot"):
 				weapon.shoot(global_position, self)
+				shots_fired +=1
 			else:
 				weapon.spread_normalize()
 
 		elif weapon.is_in_group("weapon-throwable"):
 			if Input.is_action_just_pressed("shoot"):
+				grenades_thrown += 1
 				inventory.throw(velocity,weapon)
 
 		else:
 			if Input.is_action_just_pressed("shoot"):
+				shots_fired +=1
 				weapon.shoot(global_position, self)
 
 		if Input.is_action_just_pressed("throw"):
@@ -221,6 +234,6 @@ func take_damage(amount: int):#obsluga damage'a
 		return
 
 func die() -> void:#obslguje smierc gracza oraz jej efekty
-	print("smierc!!!!")
-	pass
+	GameState.push_screen("death")
+	emit_signal("death", enemy_deaths, shots_fired, grenades_thrown)
 	#bedzie ekeran smierci czy cos ~~Kleks

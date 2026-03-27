@@ -93,3 +93,4 @@ func die() -> void:
 	set_physics_process(false)
 	queue_free()
 	call_deferred("emit_signal", "enemy_died")
+	player.enemy_deaths += 1
