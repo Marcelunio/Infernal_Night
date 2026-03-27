@@ -196,7 +196,7 @@ func setup_room_doors(room: Node2D, pos: Vector2i):
 
 func spawn_player():
 	player = PLAYER.instantiate()
-	player.vanTilemap = get_node("Room/NavigationRegion2D/LayerVisible")#Kleks
+	player.vanTilemap = get_node("Room/NavigationRegion2D/RoomLayout")#Kleks
 	add_child(player)
 	player.position = ROOM_SIZE/2
 	current_room_pos = Vector2i.ZERO
