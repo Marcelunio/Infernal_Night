@@ -1,6 +1,6 @@
 [gd_scene load_steps=2 format=3 uid="uid://u0dk1xi32pab"]
 
-[ext_resource type="Script" uid="uid://d21wdrs4cyv84" path="res://Source/Entities/Other/UI/death_screen.gd" id="1_f0biy"]
+[ext_resource type="Script" uid="uid://d21wdrs4cyv84" path="res://Source/Entities/Other/Player/UI/death_screen.gd" id="1_f0biy"]
 
 [node name="DeathScreen" type="Control"]
 process_mode = 3

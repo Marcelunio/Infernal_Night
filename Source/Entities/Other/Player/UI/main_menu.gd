@@ -6,7 +6,7 @@ func _ready() -> void:
 	Settings.closed.connect(_on_settings_closed)
 	
 func _on_new_game_pressed() -> void:
-	get_tree().change_scene_to_file("res://Scenes/Floors/Main/Main.tscn")
+	$Choice.start()
 	#get_tree().change_scene_to_file("res://Scenes/TestRooms/Main.tscn")
 
 func _on_load_pressed() -> void:

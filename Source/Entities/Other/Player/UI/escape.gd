@@ -18,6 +18,7 @@ func _input(event) -> void:
 			visible = true
 
 func _on_resume_pressed() -> void:
+	GameState.pop_screen()
 	get_tree().paused = false
 	visible = false
 
@@ -31,6 +32,7 @@ func _on_settings_pressed() -> void:
 func _on_main_menu_pressed() -> void:
 	get_tree().paused = false
 	visible = false
+	GameState.pop_screen()
 	get_tree().change_scene_to_file("res://Scenes/floors/Main/MainMenu.tscn")
 
 #=========obsługa sygnałów=========:

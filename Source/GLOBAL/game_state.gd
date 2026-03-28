@@ -1,5 +1,8 @@
 extends Node
 
+var minimum_rooms:int 
+var maximum_rooms:int
+
 var screen_stack: Array = []
 
 func push_screen(screen_name: String):
@@ -10,3 +13,4 @@ func pop_screen():
 
 func is_busy() -> bool:
 	return screen_stack.size() > 0
+	

@@ -1,7 +1,8 @@
-[gd_scene load_steps=3 format=3 uid="uid://ck3vvr01kg3mh"]
+[gd_scene load_steps=4 format=3 uid="uid://ck3vvr01kg3mh"]
 
-[ext_resource type="Script" uid="uid://dypo0x1s5k1jg" path="res://Source/Entities/Other/UI/main_menu.gd" id="1_db2sy"]
+[ext_resource type="Script" uid="uid://dypo0x1s5k1jg" path="res://Source/Entities/Other/Player/UI/main_menu.gd" id="1_db2sy"]
 [ext_resource type="AudioStream" uid="uid://b6rrt8uf6kl3v" path="res://OST/Music/Main_menu.ogg" id="2_14r8h"]
+[ext_resource type="PackedScene" uid="uid://dcb3ulrcsrnf1" path="res://Scenes/Floors/Main/Choice.tscn" id="3_ohoe0"]
 
 [node name="MainMenu" type="Control"]
 process_mode = 3
@@ -54,6 +55,9 @@ stream = ExtResource("2_14r8h")
 autoplay = true
 bus = &"Music"
 parameters/looping = true
+
+[node name="Choice" parent="." instance=ExtResource("3_ohoe0")]
+layout_mode = 1
 
 [connection signal="pressed" from="VBoxContainer/new game" to="." method="_on_new_game_pressed"]
 [connection signal="pressed" from="VBoxContainer/load" to="." method="_on_load_pressed"]

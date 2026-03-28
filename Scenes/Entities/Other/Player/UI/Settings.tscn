@@ -1,6 +1,6 @@
 [gd_scene load_steps=2 format=3 uid="uid://c5nm3cqnf5jer"]
 
-[ext_resource type="Script" uid="uid://bxkwsjb0d2hia" path="res://Source/Entities/Other/UI/settings.gd" id="1_vm5wi"]
+[ext_resource type="Script" uid="uid://bxkwsjb0d2hia" path="res://Source/Entities/Other/Player/UI/settings.gd" id="1_vm5wi"]
 
 [node name="CanvasLayer" type="CanvasLayer"]
 process_mode = 3

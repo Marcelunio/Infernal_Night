@@ -5,8 +5,8 @@ signal room_changed(new_room_pos: Vector2i)
 
 @onready var camera: Camera2D = get_node("/root/Main/Camera")
 
-@export var min_rooms: int = 7
-@export var max_rooms: int = 10
+@export var min_rooms: int = GameState.minimum_rooms #Kleks GLOBAL skrypt game_state.gd
+@export var max_rooms: int = GameState.maximum_rooms
 @export var room_folder_path: String = "res://Scenes/Floors/ValidRooms"
 
 const ROOM_SIZE: Vector2 = Vector2(1152, 768)

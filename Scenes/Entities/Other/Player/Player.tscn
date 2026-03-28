@@ -2,11 +2,11 @@
 
 [ext_resource type="Script" uid="uid://3mc7lvum6rxd" path="res://Source/Entities/Other/Player/player.gd" id="1_nfgiu"]
 [ext_resource type="Texture2D" uid="uid://cd1vfy3t68rwr" path="res://Assets/Entities/Other/Player/player_sprites.png" id="2_nfgiu"]
-[ext_resource type="PackedScene" uid="uid://e50scyaq600v" path="res://Scenes/Entities/Other/UI/AmmoDisplay.tscn" id="2_r657a"]
+[ext_resource type="PackedScene" uid="uid://e50scyaq600v" path="res://Scenes/Entities/Other/Player/UI/AmmoDisplay.tscn" id="2_r657a"]
 [ext_resource type="PackedScene" uid="uid://cgmet28rsns7e" path="res://Scenes/Entities/Other/Player/InventoryMenager.tscn" id="3_4peru"]
-[ext_resource type="PackedScene" uid="uid://b6w2pptl8xqdv" path="res://Scenes/Entities/Other/UI/Escape.tscn" id="3_v3r2t"]
-[ext_resource type="PackedScene" uid="uid://u0dk1xi32pab" path="res://Scenes/Entities/Other/UI/deathScreen.tscn" id="4_v3r2t"]
-[ext_resource type="PackedScene" uid="uid://c5nm3cqnf5jer" path="res://Scenes/Entities/Other/UI/Settings.tscn" id="7_xu3wr"]
+[ext_resource type="PackedScene" uid="uid://b6w2pptl8xqdv" path="res://Scenes/Entities/Other/Player/UI/Escape.tscn" id="3_v3r2t"]
+[ext_resource type="PackedScene" uid="uid://u0dk1xi32pab" path="res://Scenes/Entities/Other/Player/UI/DeathScreen.tscn" id="4_v3r2t"]
+[ext_resource type="PackedScene" uid="uid://c5nm3cqnf5jer" path="res://Scenes/Entities/Other/Player/UI/Settings.tscn" id="7_xu3wr"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_q2x60"]
 radius = 12.0
