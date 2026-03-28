@@ -1,8 +1,10 @@
-[gd_scene load_steps=6 format=3 uid="uid://dnjuntixfdqq0"]
+[gd_scene load_steps=8 format=3 uid="uid://dnjuntixfdqq0"]
 
 [ext_resource type="Script" uid="uid://f6vagumq5irb" path="res://Source/Weapons/Throwable/throwable.gd" id="1_4glms"]
 [ext_resource type="Texture2D" uid="uid://dn3x3dwrbgrh2" path="res://Assets/Weapons/Throwable/holyGranate.png" id="1_8vdwt"]
+[ext_resource type="AudioStream" uid="uid://cp4kca16fcxvl" path="res://Sounds/SFX/Throwable/Granede/grenade_high.wav" id="2_3t4gl"]
 [ext_resource type="Texture2D" uid="uid://cn8c0d1tqbpp1" path="res://Assets/Weapons/Projectiles/HolyGranateExplosion.png" id="3_5vmhu"]
+[ext_resource type="AudioStream" uid="uid://cx7fek6as06pr" path="res://Sounds/SFX/Throwable/Granede/grenade_low.wav" id="3_ecps6"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_36jba"]
 size = Vector2(36, 43)
@@ -18,6 +20,7 @@ script = ExtResource("1_4glms")
 granade_familly = true
 radius = 200.0
 angle = 360.0
+explode_sounds = Array[AudioStreamWAV]([ExtResource("2_3t4gl"), ExtResource("3_ecps6")])
 weapon_name = "HolyGranate"
 throw_force = 1050.0
 weapon_delay = 0.1
@@ -45,3 +48,5 @@ one_shot = true
 
 [node name="ExplosionSprite" type="Sprite2D" parent="."]
 texture = ExtResource("3_5vmhu")
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]

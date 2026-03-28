@@ -1,9 +1,11 @@
-[gd_scene load_steps=14 format=3 uid="uid://dn2dpf0haseiq"]
+[gd_scene load_steps=16 format=3 uid="uid://dn2dpf0haseiq"]
 
 [ext_resource type="Script" uid="uid://3mc7lvum6rxd" path="res://Source/Entities/Other/Player/player.gd" id="1_nfgiu"]
+[ext_resource type="AudioStream" uid="uid://dnarg1ul4lk5n" path="res://Sounds/SFX/Player/Walk/wooden_floor_walk_high.wav" id="2_44eud"]
 [ext_resource type="Texture2D" uid="uid://cd1vfy3t68rwr" path="res://Assets/Entities/Other/Player/player_sprites.png" id="2_nfgiu"]
 [ext_resource type="PackedScene" uid="uid://e50scyaq600v" path="res://Scenes/Entities/Other/Player/UI/AmmoDisplay.tscn" id="2_r657a"]
 [ext_resource type="PackedScene" uid="uid://cgmet28rsns7e" path="res://Scenes/Entities/Other/Player/InventoryMenager.tscn" id="3_4peru"]
+[ext_resource type="AudioStream" uid="uid://beu6djvi8oojk" path="res://Sounds/SFX/Player/Walk/wooden_floor_walk_low.wav" id="3_ji22f"]
 [ext_resource type="PackedScene" uid="uid://b6w2pptl8xqdv" path="res://Scenes/Entities/Other/Player/UI/Escape.tscn" id="3_v3r2t"]
 [ext_resource type="PackedScene" uid="uid://u0dk1xi32pab" path="res://Scenes/Entities/Other/Player/UI/DeathScreen.tscn" id="4_v3r2t"]
 [ext_resource type="PackedScene" uid="uid://c5nm3cqnf5jer" path="res://Scenes/Entities/Other/Player/UI/Settings.tscn" id="7_xu3wr"]
@@ -50,6 +52,7 @@ animations = [{
 [node name="Player" type="CharacterBody2D" groups=["player"]]
 collision_mask = 60
 script = ExtResource("1_nfgiu")
+walk_sounds = Array[AudioStreamWAV]([ExtResource("2_44eud"), ExtResource("3_ji22f")])
 
 [node name="PlayerCollision" type="CollisionShape2D" parent="." groups=["player"]]
 shape = SubResource("CircleShape2D_q2x60")
@@ -59,6 +62,8 @@ z_index = 1
 sprite_frames = SubResource("SpriteFrames_dd3p8")
 
 [node name="InventoryMenager" parent="." instance=ExtResource("3_4peru")]
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 

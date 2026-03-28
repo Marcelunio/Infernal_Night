@@ -39,6 +39,10 @@ var vanTilemap: TileMapLayer = null
 var vanInput:bool = false
 var isOnVan: bool = false
 
+#SFX
+@onready var audio_player = $AudioStreamPlayer
+@export var walk_sounds: Array[AudioStreamWAV] = []
+
 const VAN_TILES_ORIGINAL = [
 	{"pos": Vector2i(16, 10), "atlas": Vector2i(0, 5)},
 	{"pos": Vector2i(17, 10), "atlas": Vector2i(1, 5)},
@@ -105,6 +109,12 @@ func _handle_player_movement():#obsluguje ruch gracza
 		$PlayerSprites.stop()
 	
 	velocity = input_dir * speed
+	
+	if velocity != Vector2.ZERO:
+		if not audio_player.playing:
+			audio_player.stream = walk_sounds.pick_random()
+			audio_player.play()
+		
 	move_and_slide()
 	
 func dash():

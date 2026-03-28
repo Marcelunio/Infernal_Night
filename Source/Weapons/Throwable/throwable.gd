@@ -25,6 +25,10 @@ var after_explode: bool = false
 
 signal exploded()
 
+#SFX
+@onready var audio_player = $AudioStreamPlayer
+@export var explode_sounds: Array[AudioStreamWAV] = []
+
 func _ready():
 	super._ready()#musi byc zeby ready z weapon.gd sie odapalilo bo to ready nadpisuje tamto ~~Kekls
 	if pin_timer:
@@ -56,13 +60,21 @@ func pin():
 		pin_timer.start()
 	
 func explode():
+	print("exploded grenade")
+	
+	# Wyrzuć AudioPlayer do sceny żeby przeżył queue_free granatu
+	var sound = AudioStreamPlayer.new()
+	sound.stream = explode_sounds.pick_random()
+	sound.autoplay = true
+	get_tree().current_scene.add_child(sound)
+	# Usuń się sam po zakończeniu
+	sound.finished.connect(sound.queue_free)
+	
 	after_explode = true
 	var attack_area = preload("res://Scenes/Projectiles/MeleeAttackCollision.tscn").instantiate()
-		
 	attack_area.global_position = global_position
 	attack_area.weapon_origin = self
 	get_tree().current_scene.add_child(attack_area)
 	attack_area.setup(radius, angle, Entity, explosion_sprite, throwable_lethal)
 	self.hide()
 	emit_signal("exploded")
-	

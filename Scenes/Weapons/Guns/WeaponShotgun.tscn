@@ -1,7 +1,10 @@
-[gd_scene load_steps=5 format=3 uid="uid://do67sjc1c7h8g"]
+[gd_scene load_steps=8 format=3 uid="uid://do67sjc1c7h8g"]
 
 [ext_resource type="Script" uid="uid://1vqkoax4on8c" path="res://Source/Weapons/Guns/weapon_shotgun.gd" id="1_02myo"]
 [ext_resource type="Texture2D" uid="uid://cl3g6qrrpsm3s" path="res://Assets/Weapons/Guns/shotgun.png" id="2_83s6p"]
+[ext_resource type="AudioStream" uid="uid://by60fwwypm2yv" path="res://Sounds/SFX/Guns/Shotgun/shotgun_high.wav" id="2_cx7l7"]
+[ext_resource type="AudioStream" uid="uid://djbyq5wsjrcp1" path="res://Sounds/SFX/Guns/Shotgun/shotgun_low.wav" id="3_hdwdh"]
+[ext_resource type="AudioStream" uid="uid://by2v3y4ebbro1" path="res://Sounds/SFX/Guns/Shotgun/shotgun_reload.wav" id="4_530ul"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_phod8"]
 size = Vector2(66, 18)
@@ -17,6 +20,8 @@ linear_damp = 1.065
 script = ExtResource("1_02myo")
 spread_angle = 30.0
 bullet_count = 6
+shoot_sounds = Array[AudioStreamWAV]([ExtResource("2_cx7l7"), ExtResource("3_hdwdh")])
+reload_sounds = Array[AudioStreamWAV]([ExtResource("4_530ul")])
 weapon_name = "shotgun"
 throw_force = 800.0
 weapon_delay = 0.8

@@ -1,10 +1,10 @@
 [gd_scene load_steps=8 format=3 uid="uid://kv6ej6j01fux"]
 
 [ext_resource type="Script" uid="uid://b72f2mdgd5on3" path="res://Source/Weapons/Guns/weapon_rifle.gd" id="1_om6u8"]
-[ext_resource type="AudioStream" uid="uid://4cmeqd7h1v1r" path="res://OST/SFX/GUNS/AK47/ak47_shot_high.wav" id="2_5mmey"]
+[ext_resource type="AudioStream" uid="uid://4cmeqd7h1v1r" path="res://Sounds/SFX/Guns/AK47/ak47_shot_high.wav" id="2_5mmey"]
 [ext_resource type="Texture2D" uid="uid://d4nwu8fhji2yb" path="res://Assets/Weapons/Guns/ak47.png" id="2_k27v1"]
-[ext_resource type="AudioStream" uid="uid://0kp2l74du4dv" path="res://OST/SFX/GUNS/AK47/ak47_shot_low.wav" id="3_mbh6v"]
-[ext_resource type="AudioStream" uid="uid://c3o5e4dw6458a" path="res://OST/SFX/GUNS/AK47/ak47_reload.wav" id="4_0e5rj"]
+[ext_resource type="AudioStream" uid="uid://0kp2l74du4dv" path="res://Sounds/SFX/Guns/AK47/ak47_shot_low.wav" id="3_mbh6v"]
+[ext_resource type="AudioStream" uid="uid://c3o5e4dw6458a" path="res://Sounds/SFX/Guns/AK47/ak47_reload.wav" id="4_0e5rj"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_phod8"]
 size = Vector2(92, 26)

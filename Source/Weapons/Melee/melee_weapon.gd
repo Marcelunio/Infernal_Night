@@ -7,12 +7,18 @@ class_name MeleeWeapon extends Weapon
 
 var swing_sprite
 
+#SFX
+@onready var audio_player = $AudioStreamPlayer
+@export var swing_sounds: Array[AudioStreamWAV] = []
+
 func _ready():
 	super._ready()
 	swing_sprite = $SwingSprite.texture
 	$SwingSprite.hide()
 
 func __shoot(spawn_pos: Vector2, entity):
+	audio_player.stream = swing_sounds.pick_random()
+	audio_player.play()
 	var attack_area = preload("res://Scenes/Projectiles/MeleeAttackCollision.tscn").instantiate()
 		
 	attack_area.global_position = spawn_pos

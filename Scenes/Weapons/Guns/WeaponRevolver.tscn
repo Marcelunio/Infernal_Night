@@ -2,9 +2,9 @@
 
 [ext_resource type="Script" uid="uid://bllmlfn3uam3l" path="res://Source/Weapons/Guns/weapon_single_fire.gd" id="1_ecfbt"]
 [ext_resource type="Texture2D" uid="uid://iihv6tgwjj5o" path="res://Assets/Weapons/Guns/revolver.png" id="2_ecfbt"]
-[ext_resource type="AudioStream" uid="uid://dytd6hdanbff1" path="res://OST/SFX/GUNS/Revolver/revolver_shot_high.wav" id="2_xta7o"]
-[ext_resource type="AudioStream" uid="uid://cpvu42u36g7g4" path="res://OST/SFX/GUNS/Revolver/revolver_shot_low.wav" id="3_08vjj"]
-[ext_resource type="AudioStream" uid="uid://dpobdld6bes7y" path="res://OST/SFX/GUNS/Revolver/revolver_reload.wav" id="4_08vjj"]
+[ext_resource type="AudioStream" uid="uid://dytd6hdanbff1" path="res://Sounds/SFX/Guns/Revolver/revolver_shot_high.wav" id="2_xta7o"]
+[ext_resource type="AudioStream" uid="uid://cpvu42u36g7g4" path="res://Sounds/SFX/Guns/Revolver/revolver_shot_low.wav" id="3_08vjj"]
+[ext_resource type="AudioStream" uid="uid://dpobdld6bes7y" path="res://Sounds/SFX/Guns/Revolver/revolver_reload.wav" id="4_08vjj"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_phod8"]
 size = Vector2(65, 32)

@@ -1,8 +1,10 @@
-[gd_scene load_steps=6 format=3 uid="uid://cltvr8ugr4leu"]
+[gd_scene load_steps=8 format=3 uid="uid://cltvr8ugr4leu"]
 
 [ext_resource type="Script" uid="uid://f6vagumq5irb" path="res://Source/Weapons/Throwable/throwable.gd" id="1_005lj"]
 [ext_resource type="Texture2D" uid="uid://dk6pou814uqhc" path="res://Assets/Weapons/Throwable/HolyWater.png" id="2_005lj"]
+[ext_resource type="AudioStream" uid="uid://tfb3j7f0af0n" path="res://Sounds/SFX/Throwable/HolyWater/holy_water_high.wav" id="2_mo6kq"]
 [ext_resource type="Texture2D" uid="uid://cbt3jebae38sy" path="res://Assets/Weapons/Projectiles/HolyBagnoTEMP.png" id="3_005lj"]
+[ext_resource type="AudioStream" uid="uid://cygyomsht5jbi" path="res://Sounds/SFX/Throwable/HolyWater/holy_water_low.wav" id="3_ct0s6"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_36jba"]
 size = Vector2(37, 43)
@@ -17,6 +19,7 @@ gravity_scale = 0.0
 script = ExtResource("1_005lj")
 radius = 200.0
 angle = 360.0
+explode_sounds = Array[AudioStreamWAV]([ExtResource("2_mo6kq"), ExtResource("3_ct0s6")])
 weapon_name = "HolyGranate"
 throw_force = 1050.0
 weapon_delay = 0.1
@@ -44,3 +47,5 @@ one_shot = true
 
 [node name="ExplosionSprite" type="Sprite2D" parent="."]
 texture = ExtResource("3_005lj")
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
