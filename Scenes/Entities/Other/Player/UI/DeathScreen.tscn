@@ -1,6 +1,7 @@
-[gd_scene load_steps=2 format=3 uid="uid://u0dk1xi32pab"]
+[gd_scene load_steps=3 format=3 uid="uid://u0dk1xi32pab"]
 
 [ext_resource type="Script" uid="uid://d21wdrs4cyv84" path="res://Source/Entities/Other/Player/UI/death_screen.gd" id="1_f0biy"]
+[ext_resource type="Theme" uid="uid://dm5yxvoyhb3ra" path="res://Assets/UI/Menus/Main_menu.tres" id="1_pl2se"]
 
 [node name="DeathScreen" type="Control"]
 process_mode = 3
@@ -10,6 +11,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+theme = ExtResource("1_pl2se")
 script = ExtResource("1_f0biy")
 
 [node name="ColorRect" type="ColorRect" parent="."]
@@ -23,20 +25,21 @@ color = Color(0.015686275, 0.015686275, 0.015686275, 0.34117648)
 
 [node name="VBoxContainer" type="VBoxContainer" parent="."]
 layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -48.0
-offset_top = -29.0
-offset_right = 48.0
-offset_bottom = 29.0
+anchors_preset = -1
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 912.0
+offset_top = 511.0
+offset_right = -912.0
+offset_bottom = -511.0
 grow_horizontal = 2
 grow_vertical = 2
 
 [node name="Label" type="Label" parent="VBoxContainer"]
 layout_mode = 2
+theme_type_variation = &"HeaderLarge"
+text = "Mortis"
+horizontal_alignment = 1
 
 [node name="Button" type="Button" parent="VBoxContainer"]
 layout_mode = 2

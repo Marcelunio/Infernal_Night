@@ -1,7 +1,8 @@
-[gd_scene load_steps=4 format=3 uid="uid://ck3vvr01kg3mh"]
+[gd_scene load_steps=5 format=3 uid="uid://ck3vvr01kg3mh"]
 
 [ext_resource type="Script" uid="uid://dypo0x1s5k1jg" path="res://Source/Entities/Other/Player/UI/main_menu.gd" id="1_db2sy"]
 [ext_resource type="AudioStream" uid="uid://b6rrt8uf6kl3v" path="res://Sounds/Music/Main_menu.ogg" id="2_14r8h"]
+[ext_resource type="Theme" uid="uid://dm5yxvoyhb3ra" path="res://Assets/UI/Menus/Main_menu.tres" id="2_i3nvj"]
 [ext_resource type="PackedScene" uid="uid://dcb3ulrcsrnf1" path="res://Scenes/Floors/Main/Choice.tscn" id="3_ohoe0"]
 
 [node name="MainMenu" type="Control"]
@@ -13,53 +14,91 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_db2sy")
-metadata/_edit_group_ = true
 
-[node name="VBoxContainer" type="VBoxContainer" parent="."]
+[node name="Panel" type="Panel" parent="."]
 layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -20.0
-offset_top = -20.0
-offset_right = 20.0
-offset_bottom = 20.0
+anchors_preset = -1
+anchor_right = 0.58900005
+anchor_bottom = 0.606
+offset_right = 789.1199
+offset_bottom = 425.52002
+theme = ExtResource("2_i3nvj")
+
+[node name="Label" type="Label" parent="Panel"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 186.0
+offset_top = 116.0
+offset_right = -981.0
+offset_bottom = -494.0
 grow_horizontal = 2
 grow_vertical = 2
+theme = ExtResource("2_i3nvj")
+theme_type_variation = &"HeaderLarge"
+text = "Infernal
+  Night"
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Panel"]
+layout_mode = 1
+anchors_preset = -1
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 1282.0
+offset_top = 556.0
+offset_right = -157.0
+offset_bottom = -82.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("2_i3nvj")
 theme_override_constants/separation = 20
+metadata/_edit_group_ = true
 
-[node name="Label" type="Label" parent="VBoxContainer"]
+[node name="new game" type="Button" parent="Panel/VBoxContainer"]
 layout_mode = 2
-text = "Infernal Night"
-
-[node name="new game" type="Button" parent="VBoxContainer"]
-layout_mode = 2
+focus_neighbor_bottom = NodePath("../load")
+focus_next = NodePath("../load")
+theme = ExtResource("2_i3nvj")
 text = "New game"
 
-[node name="load" type="Button" parent="VBoxContainer"]
+[node name="load" type="Button" parent="Panel/VBoxContainer"]
 layout_mode = 2
+focus_neighbor_top = NodePath("../new game")
+focus_neighbor_bottom = NodePath("../settings")
+focus_next = NodePath("../settings")
+focus_previous = NodePath("../new game")
+theme = ExtResource("2_i3nvj")
 text = "Load"
 
-[node name="settings" type="Button" parent="VBoxContainer"]
+[node name="settings" type="Button" parent="Panel/VBoxContainer"]
 layout_mode = 2
+focus_neighbor_top = NodePath("../load")
+focus_neighbor_bottom = NodePath("../exit")
+focus_next = NodePath("../exit")
+focus_previous = NodePath("../load")
+theme = ExtResource("2_i3nvj")
 text = "Settings"
 
-[node name="exit" type="Button" parent="VBoxContainer"]
+[node name="exit" type="Button" parent="Panel/VBoxContainer"]
 layout_mode = 2
+focus_neighbor_top = NodePath("../settings")
+focus_next = NodePath("../new game")
+focus_previous = NodePath("../settings")
+theme = ExtResource("2_i3nvj")
 text = "Exit"
 
-[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="Panel"]
 stream = ExtResource("2_14r8h")
 autoplay = true
 bus = &"Music"
 parameters/looping = true
 
 [node name="Choice" parent="." instance=ExtResource("3_ohoe0")]
+visible = false
 layout_mode = 1
 
-[connection signal="pressed" from="VBoxContainer/new game" to="." method="_on_new_game_pressed"]
-[connection signal="pressed" from="VBoxContainer/load" to="." method="_on_load_pressed"]
-[connection signal="pressed" from="VBoxContainer/settings" to="." method="_on_settings_pressed"]
-[connection signal="pressed" from="VBoxContainer/exit" to="." method="_on_exit_pressed"]
+[connection signal="pressed" from="Panel/VBoxContainer/new game" to="." method="_on_new_game_pressed"]
+[connection signal="pressed" from="Panel/VBoxContainer/load" to="." method="_on_load_pressed"]
+[connection signal="pressed" from="Panel/VBoxContainer/settings" to="." method="_on_settings_pressed"]
+[connection signal="pressed" from="Panel/VBoxContainer/exit" to="." method="_on_exit_pressed"]

@@ -1,7 +1,8 @@
-[gd_scene load_steps=3 format=3 uid="uid://dcb3ulrcsrnf1"]
+[gd_scene load_steps=4 format=3 uid="uid://dcb3ulrcsrnf1"]
 
+[ext_resource type="Theme" uid="uid://dm5yxvoyhb3ra" path="res://Assets/UI/Menus/Main_menu.tres" id="1_3emw1"]
 [ext_resource type="Script" uid="uid://bwibu7rl2sjd3" path="res://Source/Entities/Other/Player/UI/choice.gd" id="1_pjggi"]
-[ext_resource type="Texture2D" uid="uid://d45j32nfxpcs" path="res://Assets/TEMP/backgroundTEMP.png" id="1_r064g"]
+[ext_resource type="Texture2D" uid="uid://cxefrmmb1wm07" path="res://Assets/UI/Menus/level_select.png" id="2_pjggi"]
 
 [node name="Choice" type="Control"]
 layout_mode = 3
@@ -10,6 +11,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+theme = ExtResource("1_3emw1")
 script = ExtResource("1_pjggi")
 
 [node name="TextureRect" type="TextureRect" parent="."]
@@ -19,7 +21,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-texture = ExtResource("1_r064g")
+texture = ExtResource("2_pjggi")
 metadata/_edit_use_anchors_ = true
 
 [node name="HBoxContainer" type="HBoxContainer" parent="."]
