@@ -17,11 +17,11 @@ script = ExtResource("1_db2sy")
 
 [node name="Panel" type="Panel" parent="."]
 layout_mode = 1
-anchors_preset = -1
-anchor_right = 0.58900005
-anchor_bottom = 0.606
-offset_right = 789.1199
-offset_bottom = 425.52002
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
 theme = ExtResource("2_i3nvj")
 
 [node name="Label" type="Label" parent="Panel"]
