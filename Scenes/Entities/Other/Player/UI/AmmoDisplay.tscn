@@ -8,6 +8,7 @@
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ektfd"]
 bg_color = Color(0.015686275, 0.015686275, 0.015686275, 0.34117648)
+corner_radius_top_right = 15
 expand_margin_right = 15.0
 
 [node name="PanelContainer" type="PanelContainer"]

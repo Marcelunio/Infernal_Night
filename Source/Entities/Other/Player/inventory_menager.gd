@@ -29,7 +29,12 @@ var nearest_ammo: Node = null
 
 #signal to weapon_display.gd
 signal UI_WeaponChanged(weapon)
-signal UI_InventoryAmmoChanged(ammo_type)
+
+#signal to ammo_display.gd
+signal UI_InventoryAmmoChanged()
+
+#all items signal:
+signal UI_NearestItemChanged(item: Node, is_nearest: bool)
 
 func _ready() -> void:
 	ammo_container = {
@@ -143,11 +148,13 @@ func is_ammo_full(ammo_box) -> void:
 	else:
 		ammo_pick_up_check = true
 		nearest_ammo = ammo_box
+		emit_signal("UI_NearestItemChanged", ammo_box, true)
 
 func ammo_exit(ammo_box) -> void:
 	if nearest_ammo == ammo_box:
 		nearest_ammo = null
 		ammo_pick_up_check = false
+		emit_signal("UI_NearestItemChanged", ammo_box, false)
 
 func debug_print_ammo() -> void:
 	print("=== AMMO DEBUG ===")
