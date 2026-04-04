@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://cekmxxyuf316f"
-path="res://.godot/imported/12gauge.png-b79e08af89856b96fe5d45caa8fc1c9f.ctex"
+uid="uid://s64o8prgu13t"
+path="res://.godot/imported/7_62mm.png-108c434e67c8ca5921fecd7fadb1ff40.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/PickUps/Ammo/12gauge.png"
-dest_files=["res://.godot/imported/12gauge.png-b79e08af89856b96fe5d45caa8fc1c9f.ctex"]
+source_file="res://Assets/UI/Icons/7_62mm.png"
+dest_files=["res://.godot/imported/7_62mm.png-108c434e67c8ca5921fecd7fadb1ff40.ctex"]
 
 [params]
 

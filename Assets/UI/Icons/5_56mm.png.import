@@ -3,15 +3,15 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://bgh5p5jl2yye4"
-path="res://.godot/imported/5_56mm.png-9128a14b479d827bd649d85a6e82eb56.ctex"
+path="res://.godot/imported/5_56mm.png-62c2f3f71b03b0f1e453211e02a5ca1b.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/PickUps/Ammo/5_56mm.png"
-dest_files=["res://.godot/imported/5_56mm.png-9128a14b479d827bd649d85a6e82eb56.ctex"]
+source_file="res://Assets/UI/Icons/5_56mm.png"
+dest_files=["res://.godot/imported/5_56mm.png-62c2f3f71b03b0f1e453211e02a5ca1b.ctex"]
 
 [params]
 

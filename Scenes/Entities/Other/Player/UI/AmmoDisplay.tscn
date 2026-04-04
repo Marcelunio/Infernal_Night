@@ -1,10 +1,10 @@
 [gd_scene load_steps=7 format=3 uid="uid://bkan3lqpflwny"]
 
 [ext_resource type="Script" uid="uid://b6vgg5t4dpf2t" path="res://Source/Entities/Other/Player/UI/ammo_display.gd" id="1_qmwa5"]
-[ext_resource type="Texture2D" uid="uid://cycdr646kmxth" path="res://Assets/PickUps/Ammo/9mm.png" id="2_au5ml"]
-[ext_resource type="Texture2D" uid="uid://bgh5p5jl2yye4" path="res://Assets/PickUps/Ammo/5_56mm.png" id="3_6nwr3"]
-[ext_resource type="Texture2D" uid="uid://cekmxxyuf316f" path="res://Assets/PickUps/Ammo/12gauge.png" id="4_fpk5f"]
-[ext_resource type="Texture2D" uid="uid://s64o8prgu13t" path="res://Assets/PickUps/Ammo/7_62mm.png" id="5_pkuym"]
+[ext_resource type="Texture2D" uid="uid://cycdr646kmxth" path="res://Assets/UI/Icons/9mm.png" id="2_au5ml"]
+[ext_resource type="Texture2D" uid="uid://bgh5p5jl2yye4" path="res://Assets/UI/Icons/5_56mm.png" id="3_6nwr3"]
+[ext_resource type="Texture2D" uid="uid://cekmxxyuf316f" path="res://Assets/UI/Icons/12gauge.png" id="4_fpk5f"]
+[ext_resource type="Texture2D" uid="uid://s64o8prgu13t" path="res://Assets/UI/Icons/7_62mm.png" id="5_pkuym"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ektfd"]
 bg_color = Color(0.015686275, 0.015686275, 0.015686275, 0.34117648)
