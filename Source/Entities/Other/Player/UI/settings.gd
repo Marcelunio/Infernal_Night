@@ -1,3 +1,5 @@
+#Zrobił to Kekls, wszelkie niepewności oraz pytania kierować do mnie...
+#Znane bugi: 0
 extends CanvasLayer
 
 signal closed
@@ -40,8 +42,10 @@ const WINDOW_TYPES = {
 	"Maximized": DisplayServer.WINDOW_MODE_MAXIMIZED
 }
 
-#------VIDEO------
-var resolutionDropdown: Node = null
+var buttons = {}
+
+#------RESET------
+var after_reset:bool = false
 
 #------CONTROLS------
 var waitingForInput:bool = false
@@ -49,15 +53,17 @@ var currentAction: String = ""
 var currentButton: Node = null
 var buttonsArray: Array = []
 
+#------SAVE------
+const SAVE_PATH = "user://settings.cfg"
+var config = ConfigFile.new()
+
 func _ready() -> void:
 	visible = false
 	
+	_load_settings()
 	_build_audio_list()
 	_build_video_list()
 	_build_controls_list()
-
-func _process(delta: float) -> void:
-	pass
 	
 func open() -> void:
 	GameState.push_screen("settings")
@@ -80,12 +86,45 @@ func _input(event) -> void:
 	
 	InputMap.action_erase_events(currentAction)
 	InputMap.action_add_event(currentAction, event)
+	config.set_value("Controls", currentAction, event)
+	config.save(SAVE_PATH)
 	
 	currentButton.text = event.as_text()
 	waitingForInput = false
 	currentButton = null
 	get_viewport().set_input_as_handled()
+
+func _load_settings():
+	var err = config.load(SAVE_PATH)
+	if err != OK:
+		print("Brak pliku cfg, zostaną użyte domyślne wartości")
+		
+	for bus_label in BUSES.values():
+		var currentValue = db_to_linear(AudioServer.get_bus_volume_db(
+			AudioServer.get_bus_index(BUSES[bus_label])
+		))
+		var value = config.get_value("Audio", BUSES[bus_label], currentValue)
+		AudioServer.set_bus_volume_db(
+			AudioServer.get_bus_index(BUSES[bus_label]),
+			linear_to_db(value)
+		)
+		if after_reset:
+			buttons[bus_label].value = 1.0
+			buttons[bus_label].queue_redraw()
+
+	var res = config.get_value("Video", "resolution", DisplayServer.window_get_size())
+	DisplayServer.window_set_size(res)
 	
+	var mode = config.get_value("Video", "window_type", DisplayServer.window_get_mode())
+	DisplayServer.window_set_mode(mode)
+	
+	for action in KEY_BINDS.values():
+		if config.has_section_key("Controls", action):
+			InputMap.action_erase_events(action)
+			InputMap.action_add_event(action, config.get_value("Controls", action, null))
+	
+	after_reset = false
+
 func _build_audio_list() -> void:
 	for label_text in BUSES:
 		var bus_name = BUSES[label_text]
@@ -108,11 +147,14 @@ func _build_audio_list() -> void:
 		labelValue.text = "%d %s" % [floor(currentValue * 100), "%"]
 		
 		slider.value_changed.connect(_on_volume_changed.bind(bus_name, labelValue))
+		slider.drag_ended.connect(_on_valume_drag_ended.bind(slider, bus_name))
 		
 		hbox.add_child(labelName)
 		hbox.add_child(slider)
 		hbox.add_child(labelValue)
 		audio_vbox.add_child(hbox)
+		
+		buttons[label_text] = slider
 
 func _build_video_list() -> void:
 	var hBox = HBoxContainer.new()
@@ -121,15 +163,17 @@ func _build_video_list() -> void:
 	
 	label.text = "Resolution: "
 	for res in RESOLUTIONS:
-		dropdown.add_item(res)
+		if DisplayServer.screen_get_size() >= RESOLUTIONS[res]:
+			dropdown.add_item(res)
 	
 	dropdown.item_selected.connect(_on_resolution_selected)
 	dropdown.selected = get_index_by_value(RESOLUTIONS, DisplayServer.window_get_size())
-	resolutionDropdown = dropdown
 	
 	hBox.add_child(label)
 	hBox.add_child(dropdown)
 	videoVBox.add_child(hBox)
+	
+	buttons["Resolution"] = dropdown
 	
 	hBox = HBoxContainer.new()
 	label = Label.new()
@@ -145,6 +189,8 @@ func _build_video_list() -> void:
 	hBox.add_child(label)
 	hBox.add_child(dropdown)
 	videoVBox.add_child(hBox)
+	
+	buttons["Window_types"] = dropdown
 
 func _build_controls_list() -> void:
 	for labelText in KEY_BINDS:
@@ -177,6 +223,11 @@ func _on_volume_changed(value, bus_name, labelValue) -> void:
 	
 	labelValue.text = "%d %s" % [floor(value * 100), "%"]
 
+func _on_valume_drag_ended(value_changed, slider, bus_name) -> void:
+	if value_changed:
+		config.set_value("Audio", bus_name, slider.value)
+		config.save(SAVE_PATH)
+
 func _on_keyBind_pressed(keyBind, button) -> void:
 	waitingForInput = true
 	currentButton = button
@@ -186,6 +237,10 @@ func _on_keyBind_pressed(keyBind, button) -> void:
 func _on_resetKeyBinds_pressed() -> void:
 	InputMap.load_from_project_settings()
 	
+	if config.has_section("Controls"):
+		config.erase_section("Controls")
+		config.save(SAVE_PATH)
+	
 	var keys = KEY_BINDS.keys()
 	for i in keys.size():
 		buttonsArray[i].text = InputMap.action_get_events(KEY_BINDS[keys[i]])[0].as_text()
@@ -193,15 +248,19 @@ func _on_resetKeyBinds_pressed() -> void:
 func _on_resolution_selected(index) -> void:
 	var res = RESOLUTIONS.keys()[index]
 	DisplayServer.window_set_size(RESOLUTIONS[res])
+	config.set_value("Video", "resolution", RESOLUTIONS[res])
+	config.save(SAVE_PATH)
 
 func _on_windowType_selected(index) -> void:
 	var mode = WINDOW_TYPES.keys()[index]
 	DisplayServer.window_set_mode(WINDOW_TYPES[mode])
+	config.set_value("Video", "window_type", WINDOW_TYPES[mode])
+	config.save(SAVE_PATH)
 	
 	if not DisplayServer.window_get_mode() == DisplayServer.WINDOW_MODE_WINDOWED:
-		resolutionDropdown.disabled = true
+		buttons["Resolution"].disabled = true
 	else:
-		resolutionDropdown.disabled = false
+		buttons["Resolution"].disabled = false
 
 func get_index_by_value(dict: Dictionary, value) -> int:
 	var keys = dict.keys()
@@ -209,3 +268,9 @@ func get_index_by_value(dict: Dictionary, value) -> int:
 		if dict[keys[i]] == value:
 			return i
 	return -1  # nie znaleziono
+
+func _on_reset_pressed() -> void:
+	after_reset = true
+	DirAccess.remove_absolute(SAVE_PATH)
+	_on_resetKeyBinds_pressed()
+	_load_settings()
