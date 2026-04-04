@@ -1,44 +1,29 @@
-[gd_scene load_steps=2 format=3 uid="uid://e50scyaq600v"]
+[gd_scene load_steps=7 format=3 uid="uid://bkan3lqpflwny"]
 
-[ext_resource type="Script" uid="uid://b8xfnbeecf7eh" path="res://Source/Entities/Other/Player/UI/ammo_display.gd" id="1_qmwa5"]
+[ext_resource type="Script" uid="uid://b6vgg5t4dpf2t" path="res://Source/Entities/Other/Player/UI/ammo_display.gd" id="1_qmwa5"]
+[ext_resource type="Texture2D" uid="uid://cycdr646kmxth" path="res://Assets/PickUps/Ammo/9mm.png" id="2_au5ml"]
+[ext_resource type="Texture2D" uid="uid://bgh5p5jl2yye4" path="res://Assets/PickUps/Ammo/5_56mm.png" id="3_6nwr3"]
+[ext_resource type="Texture2D" uid="uid://cekmxxyuf316f" path="res://Assets/PickUps/Ammo/12gauge.png" id="4_fpk5f"]
+[ext_resource type="Texture2D" uid="uid://s64o8prgu13t" path="res://Assets/PickUps/Ammo/7_62mm.png" id="5_pkuym"]
 
-[node name="AmmoDisplay" type="Control"]
-layout_mode = 3
-anchors_preset = 15
-anchor_right = 1.0
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ektfd"]
+bg_color = Color(0.015686275, 0.015686275, 0.015686275, 0.34117648)
+expand_margin_right = 15.0
+
+[node name="PanelContainer" type="PanelContainer"]
+anchors_preset = 2
+anchor_top = 1.0
 anchor_bottom = 1.0
-offset_left = 1520.0
-offset_top = 830.0
-grow_horizontal = 2
-grow_vertical = 2
+offset_top = -40.0
+offset_right = 40.0
+grow_vertical = 0
+theme_override_styles/panel = SubResource("StyleBoxFlat_ektfd")
 script = ExtResource("1_qmwa5")
-metadata/_edit_group_ = true
-
-[node name="Kolorek" type="ColorRect" parent="."]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-color = Color(0, 0, 0, 0.22745098)
+ammo_icons = Array[Texture2D]([ExtResource("2_au5ml"), ExtResource("3_6nwr3"), ExtResource("4_fpk5f"), ExtResource("5_pkuym")])
 
 [node name="VBoxContainer" type="VBoxContainer" parent="."]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-
-[node name="WeaponSprite" type="TextureRect" parent="VBoxContainer"]
 layout_mode = 2
-size_flags_vertical = 3
 
-[node name="VBoxContainer" type="VBoxContainer" parent="VBoxContainer"]
+[node name="Label" type="Label" parent="VBoxContainer"]
 layout_mode = 2
-size_flags_vertical = 3
-
-[node name="AmmoCounter" type="Label" parent="VBoxContainer/VBoxContainer"]
-layout_mode = 2
-size_flags_vertical = 7
+text = "Ammo in Invetory"

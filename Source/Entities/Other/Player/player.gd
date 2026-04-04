@@ -60,7 +60,7 @@ const VAN_TILES_NEW = [
 func _ready():
 	dungeon = get_parent()
 	hp = max_hp
-	$CanvasLayer/AmmoDisplay.setup(inventory)
+	$CanvasLayer/WeaponDisplay.setup(inventory)
 	
 	
 

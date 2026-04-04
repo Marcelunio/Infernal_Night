@@ -27,8 +27,9 @@ var ammo_container: Dictionary
 var ammo_pick_up_check: bool = false
 var nearest_ammo: Node = null
 
-#signal to ammo_display.gd
+#signal to weapon_display.gd
 signal UI_WeaponChanged(weapon)
+signal UI_InventoryAmmoChanged(ammo_type)
 
 func _ready() -> void:
 	ammo_container = {
@@ -125,7 +126,6 @@ func reload(weapon) -> void:#przeladowanie broni
 	else:
 		reload_pending = true
 
-	print("doszl do emit")	
 	if not weapon.has_method("_reload"):
 		push_error("weapon.gd reload(): Tego nie powinienes widziec. jezeli to widzisz w debugerze to ktoras bron ktora nie powinna miec opcji zaladunku wywolala metode reload()")
 		return
@@ -181,3 +181,4 @@ func _on_reload(weapon, amount) -> void:#zabiera amunicje
 		weapon.reloaded.disconnect(_on_reload)
 		
 	print(ammo_container[weapon.weapon_ammo_type]["current"])
+	emit_signal("UI_InventoryAmmoChanged")
