@@ -14,7 +14,7 @@ size = Vector2(37, 43)
 
 [node name="WeaponHolyWater" type="RigidBody2D" groups=["weapon-throwable", "weapon-throwable-nongranate"]]
 collision_layer = 2
-collision_mask = 16
+collision_mask = 144
 gravity_scale = 0.0
 script = ExtResource("1_005lj")
 radius = 200.0

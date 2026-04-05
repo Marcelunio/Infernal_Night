@@ -51,7 +51,7 @@ animations = [{
 }]
 
 [node name="Player" type="CharacterBody2D" groups=["player"]]
-collision_mask = 60
+collision_mask = 188
 script = ExtResource("1_nfgiu")
 walk_sounds = Array[AudioStreamWAV]([ExtResource("2_44eud"), ExtResource("3_ji22f")])
 

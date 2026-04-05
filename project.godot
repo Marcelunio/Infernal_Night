@@ -116,6 +116,7 @@ interaction={
 2d_physics/layer_5="sciana"
 2d_physics/layer_6="woda"
 2d_physics/layer_7="enemy"
+2d_physics/layer_8="door"
 
 [navigation]
 

@@ -15,7 +15,7 @@ size = Vector2(63, 48)
 
 [node name="WeaponUzi" type="RigidBody2D" groups=["weapon-machineGuns", "weapon-ranged"]]
 collision_layer = 2
-collision_mask = 80
+collision_mask = 208
 gravity_scale = 0.0
 linear_damp = 1.065
 script = ExtResource("1_aaf5g")

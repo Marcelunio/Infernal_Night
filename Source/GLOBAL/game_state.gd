@@ -1,7 +1,6 @@
 extends Node
 
-var minimum_rooms:int 
-var maximum_rooms:int
+var room_number:int 
 
 var screen_stack: Array = []
 

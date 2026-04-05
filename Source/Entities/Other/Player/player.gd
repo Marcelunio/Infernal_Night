@@ -60,8 +60,8 @@ const VAN_TILES_NEW = [
 func _ready():
 	dungeon = get_parent()
 	hp = max_hp
-	$CanvasLayer/WeaponDisplay.setup(inventory)
 	
+	$CanvasLayer/WeaponDisplay.setup(inventory)
 	
 
 func _unhandled_input(event: InputEvent):#obsługa nie obsluzonych inputow
@@ -247,3 +247,6 @@ func die() -> void:#obslguje smierc gracza oraz jej efekty
 	GameState.push_screen("death")
 	emit_signal("death", enemy_deaths, shots_fired, grenades_thrown)
 	#bedzie ekeran smierci czy cos ~~Kleks
+
+func change_door_collision(mode: bool):
+	set_collision_mask_value(8, mode)

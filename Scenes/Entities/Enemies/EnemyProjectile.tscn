@@ -7,7 +7,7 @@ radius = 8.0
 
 [node name="EnemyProjectile" type="CharacterBody2D"]
 collision_layer = 8
-collision_mask = 57
+collision_mask = 185
 script = ExtResource("1_ak2yf")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]

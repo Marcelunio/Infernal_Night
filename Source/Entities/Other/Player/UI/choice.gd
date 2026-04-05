@@ -1,9 +1,9 @@
 extends Control
 
 const ROOMS = {
-	"easy": [6,9],
-	"medium": [10,13],
-	"hard": [14,17]
+	"easy": 8,
+	"medium": 12,
+	"hard": 16
 }
 
 func _ready() -> void:
@@ -14,7 +14,7 @@ func _ready() -> void:
 		var button = Button.new()
 		var v_box = VBoxContainer.new()
 		
-		label.text = str(room) + ":\n minimum rooms: " + str(ROOMS[room][0]) + "\n maximum rooms: " + str(ROOMS[room][1])
+		label.text = str(room) + ":\n Rooms: " + str(ROOMS[room])
 		button.text = "play"
 
 		button.pressed.connect(_pressed.bind(room))
@@ -27,6 +27,5 @@ func start() -> void:
 	visible = true
 	
 func _pressed(room) -> void:
-	GameState.minimum_rooms = ROOMS[room][0]
-	GameState.maximum_rooms = ROOMS[room][1]
+	GameState.room_number = ROOMS[room]
 	get_tree().change_scene_to_file("res://Scenes/Floors/Main/Main.tscn")

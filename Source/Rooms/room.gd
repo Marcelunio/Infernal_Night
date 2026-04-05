@@ -5,6 +5,12 @@ signal room_entered
 signal room_cleared
 
 @onready var room_layout: TileMapLayer = $NavigationRegion2D/RoomLayout
+@onready var doors: Dictionary = {
+	"up": $DoorUp,
+	"right": $DoorRight,
+	"left": $DoorLeft,
+	"down": $DoorDown
+}
 
 const ENEMY: PackedScene = preload("res://Scenes/Entities/Enemies/Ghost/Ghost.tscn")
 
@@ -20,25 +26,27 @@ func setup(pos: Vector2i):
 func enter_room():
 	visible = true
 	emit_signal("room_entered")
-	
-	if not enemies_spawned:
+	if not is_cleared:
 		spawn_enemies()
+		if not is_cleared:
+			for door in doors.values():
+				door.set_collision_mask_value(1, true)
+				door.get_child(0).play("close")
 
 func exit_room():
 	visible = false
-	
-	for child in get_children():
-		if child.is_in_group("enemy"):
-			child.queue_free()
-	
-	enemies_spawned = false
 
 func spawn_enemies():
 	enemies_spawned = true
 	enemy_counter = 0
 	
 	var spawn_markers = get_node_or_null("EnemySpawns")
-	if spawn_markers == null:
+	
+	if spawn_markers.get_child_count() == 0:
+		is_cleared = true
+		for door in doors.values():
+			door.set_collision_mask_value(1, false)
+		emit_signal("room_cleared")
 		return
 	
 	var spawned_enemies: Array = []
@@ -61,12 +69,13 @@ func spawn_enemies():
 
 func clear_room():
 	is_cleared = true
-	
-	
-	
+	for door in doors.values():
+		door.set_collision_mask_value(1, false)
+		door.get_child(0).play("open")
 	emit_signal("room_cleared")
 
 func on_enemy_died():
 	enemy_counter -= 1
+	print(enemy_counter)
 	if enemy_counter == 0:
 		clear_room()

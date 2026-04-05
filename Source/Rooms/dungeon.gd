@@ -5,8 +5,7 @@ signal room_changed(new_room_pos: Vector2i)
 
 @onready var camera: Camera2D = get_node("/root/Main/Camera")
 
-@export var min_rooms: int = GameState.minimum_rooms #Kleks GLOBAL skrypt game_state.gd
-@export var max_rooms: int = GameState.maximum_rooms
+@export var room_number: int = GameState.room_number #Kleks GLOBAL skrypt game_state.gd
 @export var room_folder_path: String = "res://Scenes/Floors/ValidRooms"
 
 const ROOM_SIZE: Vector2 = Vector2(1152, 768)
@@ -53,7 +52,7 @@ func preload_rooms():
 		return
 	
 	for file_name in dir.get_files():
-		if file_name.ends_with(".tscn") and file_name != "Room0.tscn":
+		if file_name.ends_with(".tscn") and file_name != "Room0.tscn" and file_name != "Room.tscn":
 			var full_path := room_folder_path + "/" + file_name
 			var scene = load(full_path)
 			if scene is PackedScene:
@@ -74,7 +73,7 @@ func generate_floor():
 	var visited_positions: Array[Vector2i] = [start_pos]
 	
 	var current_pos := start_pos
-	var target_rooms := randi_range(min_rooms, max_rooms)
+	var target_rooms = floor(room_number*2/3)
 	var directions := [Vector2i.UP, Vector2i.DOWN, Vector2i.LEFT, Vector2i.RIGHT]
 	
 	while room_positions.size() < target_rooms:
@@ -96,7 +95,8 @@ func generate_floor():
 				visited_positions.pop_back()
 				current_pos = visited_positions[-1]
 	
-	add_branch_rooms()
+	var branch_count: int = room_number - target_rooms
+	add_branch_rooms(branch_count)
 	
 	print("Generated floor with ", room_positions.size(), " rooms")
 	
@@ -110,8 +110,7 @@ func is_valid_position(pos: Vector2i) -> bool:
 	
 	return neighbor_count <= 2
 
-func add_branch_rooms():
-	var branch_count: int = mini(3, room_positions.size() / 3)
+func add_branch_rooms(branch_count: int):
 	var possible_positions: Array[Vector2i] = []
 	
 	for room_pos in room_positions:
@@ -152,9 +151,11 @@ func spawn_all_rooms():
 		if room_pos == Vector2i.ZERO:
 			room_instance.enter_room()
 		else:
-			room_instance.exit_room()
+			room_instance.visible = false
+		
+		room_instance.room_cleared.connect(clear_room)
 
-func setup_room_doors(room: Node2D, pos: Vector2i):
+func setup_room_doors(room: Room, pos: Vector2i):
 	var visible_layer: TileMapLayer = room.get_node_or_null("NavigationRegion2D/RoomLayout")
 	
 	if visible_layer == null:
@@ -170,29 +171,25 @@ func setup_room_doors(room: Node2D, pos: Vector2i):
 		visible_layer.set_cell(DOOR_UP_POS_LEFT, 2, DOOR_UP_ATLAS)
 		visible_layer.set_cell(DOOR_UP_POS_RIGHT, 2, DOOR_UP_ATLAS)
 	else:
-		visible_layer.set_cell(DOOR_UP_POS_LEFT, 2, Vector2i(2,0))
-		visible_layer.set_cell(DOOR_UP_POS_RIGHT, 2, Vector2i(2,0))
+		room.doors["up"].visible = false
 	
 	if has_down:
 		visible_layer.set_cell(DOOR_DOWN_POS_LEFT, 2, DOOR_DOWN_ATLAS)
 		visible_layer.set_cell(DOOR_DOWN_POS_RIGHT, 2, DOOR_DOWN_ATLAS)
 	else:
-		visible_layer.set_cell(DOOR_DOWN_POS_LEFT, 2, Vector2i(2,0))
-		visible_layer.set_cell(DOOR_DOWN_POS_RIGHT, 2, Vector2i(2,0))
+		room.doors["down"].visible = false
 	
 	if has_left:
 		visible_layer.set_cell(DOOR_LEFT_POS_TOP, 2, DOOR_LEFT_ATLAS)
 		visible_layer.set_cell(DOOR_LEFT_POS_BOTTOM, 2, DOOR_LEFT_ATLAS)
 	else:
-		visible_layer.set_cell(DOOR_LEFT_POS_TOP, 2, Vector2i(0,2))
-		visible_layer.set_cell(DOOR_LEFT_POS_BOTTOM, 2, Vector2i(0,2))
+		room.doors["left"].visible = false
 	
 	if has_right:
 		visible_layer.set_cell(DOOR_RIGHT_POS_TOP, 2, DOOR_RIGHT_ATLAS)
 		visible_layer.set_cell(DOOR_RIGHT_POS_BOTTOM, 2, DOOR_RIGHT_ATLAS)
 	else:
-		visible_layer.set_cell(DOOR_RIGHT_POS_TOP, 2, Vector2i(0,2))
-		visible_layer.set_cell(DOOR_RIGHT_POS_BOTTOM, 2, Vector2i(0,2))
+		room.doors["right"].visible = false
 
 func spawn_player():
 	player = PLAYER.instantiate()
@@ -203,6 +200,7 @@ func spawn_player():
 	camera.position = ROOM_SIZE / 2
 	
 	player.current_room = room_instances.get(current_room_pos)
+	player.set_collision_mask_value(8, false)
 
 func transition_to_room(direction: Vector2):
 	var next_pos = current_room_pos + Vector2i(direction.x, direction.y)
@@ -218,6 +216,10 @@ func transition_to_room(direction: Vector2):
 	
 	if next_room:
 		next_room.enter_room()
+		if next_room.is_cleared:
+			player.set_collision_mask_value(8, false)
+		else:
+			player.set_collision_mask_value(8, true)
 		current_room_pos = next_pos
 		
 	var offset = direction * 64
@@ -238,3 +240,6 @@ func get_current_room() -> Room:
 func reveal_all_rooms():
 	for room in room_instances.values():
 		room.visible = true
+		
+func clear_room():
+	player.set_collision_mask_value(8, false)

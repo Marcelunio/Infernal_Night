@@ -1,7 +1,8 @@
-[gd_scene load_steps=3 format=4 uid="uid://c1da6epqykshi"]
+[gd_scene load_steps=4 format=4 uid="uid://c1da6epqykshi"]
 
 [ext_resource type="Script" uid="uid://fyr3lou5xcva" path="res://Source/Rooms/room.gd" id="1_cucqp"]
 [ext_resource type="TileSet" uid="uid://dwjq33gve6fks" path="res://TileSets/BaseTileset.tres" id="1_sxd1d"]
+[ext_resource type="PackedScene" uid="uid://bew1thjsdo13d" path="res://Scenes/Miscellaneous/Door.tscn" id="3_o5osp"]
 
 [node name="Room" type="Node2D"]
 script = ExtResource("1_cucqp")
@@ -16,3 +17,18 @@ tile_set = ExtResource("1_sxd1d")
 tile_set = ExtResource("1_sxd1d")
 
 [node name="EnemySpawns" type="Node2D" parent="."]
+
+[node name="DoorDown" parent="." instance=ExtResource("3_o5osp")]
+position = Vector2(576, 752)
+rotation = 4.712389
+
+[node name="DoorRight" parent="." instance=ExtResource("3_o5osp")]
+position = Vector2(1136, 384)
+rotation = 3.1415927
+
+[node name="DoorLeft" parent="." instance=ExtResource("3_o5osp")]
+position = Vector2(16, 384)
+
+[node name="DoorUp" parent="." instance=ExtResource("3_o5osp")]
+position = Vector2(576, 16)
+rotation = 1.5707964
