@@ -33,6 +33,9 @@ signal UI_WeaponChanged(weapon)
 #signal to ammo_display.gd
 signal UI_InventoryAmmoChanged()
 
+#signal to reload_display.gd
+signal UI_Reload(weapon)
+
 #all items signal:
 signal UI_NearestItemChanged(item: Node, is_nearest: bool)
 
@@ -137,6 +140,7 @@ func reload(weapon) -> void:#przeladowanie broni
 
 	if ammo_container[weapon.weapon_ammo_type]["current"] > 0:
 		weapon._reload(ammo_container[weapon.weapon_ammo_type]["current"])
+		emit_signal("UI_Reload", current_weapon)
 		weapon.reloaded.connect(_on_reload)
 	else:
 		print("DEBUG - brak ammo")
