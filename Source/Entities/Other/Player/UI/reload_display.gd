@@ -1,3 +1,5 @@
+#Zrobił to Kekls, wszelkie niepewności oraz pytania kierować do mnie...
+#Znane bugi: 0
 extends Control
 
 var player: Node
@@ -8,7 +10,6 @@ func _ready() -> void:
 	visible = false
 	player = get_tree().get_first_node_in_group("player")
 	inventory = player.get_node("InventoryMenager")
-
 	call_deferred("_connect_signals")
 	
 func _process(delta: float) -> void:

@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=3 uid="uid://ul478xcq3qqo"]
+[gd_scene load_steps=16 format=3 uid="uid://ul478xcq3qqo"]
 
 [ext_resource type="PackedScene" uid="uid://c1da6epqykshi" path="res://Scenes/Floors/ValidRooms/Room.tscn" id="1_014t1"]
 [ext_resource type="PackedScene" uid="uid://da1ap0hsfecta" path="res://Scenes/Weapons/Guns/WeaponUzi.tscn" id="2_nclxc"]
@@ -12,6 +12,8 @@
 [ext_resource type="PackedScene" uid="uid://dnjuntixfdqq0" path="res://Scenes/Weapons/Throwable/WeaponHolyGranate.tscn" id="10_8w2k2"]
 [ext_resource type="PackedScene" uid="uid://cltvr8ugr4leu" path="res://Scenes/Weapons/Throwable/WeaponHolyWater.tscn" id="11_6u2e5"]
 [ext_resource type="PackedScene" uid="uid://bt2sjl85bpm3i" path="res://Scenes/PickUps/Ammo/9mm.tscn" id="12_sgwhs"]
+[ext_resource type="PackedScene" uid="uid://ddj8nnb145ov6" path="res://Scenes/PickUps/Hearts/FullHeart.tscn" id="13_d7iit"]
+[ext_resource type="PackedScene" uid="uid://pfh45psxmewy" path="res://Scenes/PickUps/Hearts/HalfHeart.tscn" id="14_cw3ig"]
 
 [sub_resource type="NavigationPolygon" id="NavigationPolygon_nclxc"]
 vertices = PackedVector2Array(1110, 726, 42, 726, 42, 42, 1110, 42)
@@ -54,3 +56,9 @@ position = Vector2(776, 300)
 
 [node name="9mm" parent="." index="13" instance=ExtResource("12_sgwhs")]
 position = Vector2(160, 119)
+
+[node name="FullHeart" parent="." index="18" instance=ExtResource("13_d7iit")]
+position = Vector2(920, 672)
+
+[node name="FullHeart2" parent="." index="19" instance=ExtResource("14_cw3ig")]
+position = Vector2(751, 677)

@@ -1,7 +1,7 @@
 extends CharacterBody2D
 class_name Enemy
 
-@export var max_hp: int = 120
+@export var max_hp: int = 360
 @export var speed := 260.0
 @export var turn_speed := 8.0
 @export var shoot_cooldown := 1.5

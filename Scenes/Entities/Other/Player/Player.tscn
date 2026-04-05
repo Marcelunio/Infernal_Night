@@ -1,4 +1,4 @@
-[gd_scene load_steps=18 format=3 uid="uid://dn2dpf0haseiq"]
+[gd_scene load_steps=19 format=3 uid="uid://dn2dpf0haseiq"]
 
 [ext_resource type="Script" uid="uid://3mc7lvum6rxd" path="res://Source/Entities/Other/Player/player.gd" id="1_nfgiu"]
 [ext_resource type="AudioStream" uid="uid://dnarg1ul4lk5n" path="res://Sounds/SFX/Player/Walk/wooden_floor_walk_high.wav" id="2_44eud"]
@@ -10,6 +10,7 @@
 [ext_resource type="PackedScene" uid="uid://u0dk1xi32pab" path="res://Scenes/Entities/Other/Player/UI/DeathScreen.tscn" id="4_v3r2t"]
 [ext_resource type="PackedScene" uid="uid://da13ju133u04b" path="res://Scenes/Entities/Other/Player/UI/ReloadDisplay.tscn" id="6_bu5at"]
 [ext_resource type="PackedScene" uid="uid://bkan3lqpflwny" path="res://Scenes/Entities/Other/Player/UI/AmmoDisplay.tscn" id="7_ji22f"]
+[ext_resource type="PackedScene" uid="uid://djrd7sn4dk6fx" path="res://Scenes/Entities/Other/Player/UI/HealthBarDisplay.tscn" id="7_vt6jx"]
 [ext_resource type="PackedScene" uid="uid://c5nm3cqnf5jer" path="res://Scenes/Entities/Other/Player/UI/Settings.tscn" id="7_xu3wr"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_q2x60"]
@@ -70,6 +71,8 @@ sprite_frames = SubResource("SpriteFrames_dd3p8")
 [node name="ReloadDisplay" parent="." instance=ExtResource("6_bu5at")]
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="HealthBarDisplay" parent="CanvasLayer" instance=ExtResource("7_vt6jx")]
 
 [node name="WeaponDisplay" parent="CanvasLayer" instance=ExtResource("2_r657a")]
 

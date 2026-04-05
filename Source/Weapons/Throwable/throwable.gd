@@ -60,7 +60,7 @@ func pin():
 		pin_timer.start()
 	
 func explode():
-	print("exploded grenade")
+	print("exploded grenade", linear_velocity.length_squared())
 	
 	# Wyrzuć AudioPlayer do sceny żeby przeżył queue_free granatu
 	var sound = AudioStreamPlayer.new()

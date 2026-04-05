@@ -1,0 +1,23 @@
+[gd_scene load_steps=5 format=3 uid="uid://pfh45psxmewy"]
+
+[ext_resource type="Script" uid="uid://bp5fqu66ksw1f" path="res://Source/PickUps/Hearts/heart.gd" id="1_vlnrj"]
+[ext_resource type="Texture2D" uid="uid://bf0xycnepfyxb" path="res://Assets/PickUps/Hearts/heart_pick_up.png" id="2_spq3p"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_bnfb6"]
+atlas = ExtResource("2_spq3p")
+region = Rect2(32, 0, 32, 32)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_acuav"]
+size = Vector2(48, 48)
+
+[node name="HalfHeart" type="Area2D"]
+script = ExtResource("1_vlnrj")
+texture = SubResource("AtlasTexture_bnfb6")
+amount_of_healing = 1
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_acuav")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
