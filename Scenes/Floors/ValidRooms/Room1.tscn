@@ -1,6 +1,8 @@
-[gd_scene load_steps=3 format=4 uid="uid://3kkp85nvann"]
+[gd_scene load_steps=5 format=4 uid="uid://3kkp85nvann"]
 
 [ext_resource type="PackedScene" uid="uid://c1da6epqykshi" path="res://Scenes/Floors/ValidRooms/Room.tscn" id="1_eqxdy"]
+[ext_resource type="PackedScene" uid="uid://dmxst7mpeirh7" path="res://Scenes/PickUps/Ammo/12gauge.tscn" id="2_n044l"]
+[ext_resource type="PackedScene" uid="uid://c2qitrutg26mu" path="res://Scenes/PickUps/Coins/Coin.tscn" id="3_ifkh7"]
 
 [sub_resource type="NavigationPolygon" id="NavigationPolygon_eqxdy"]
 vertices = PackedVector2Array(874, 598, 822, 598, 426, 554, 726, 554, 778, 554, 778, 214, 918, 502, 918, 554, 330, 170, 330, 42, 822, 42, 822, 170, 726, 214, 874, 170, 874, 42, 1110, 42, 1110, 214, 918, 214, 918, 266, 1110, 266, 1110, 502, 1110, 554, 1110, 726, 874, 726, 822, 726, 330, 726, 330, 598, 374, 554, 278, 598, 278, 726, 42, 726, 42, 554, 234, 554, 234, 502, 42, 502, 42, 266, 234, 266, 234, 214, 42, 214, 42, 42, 278, 42, 278, 170, 374, 214, 426, 214)
@@ -28,3 +30,9 @@ position = Vector2(147, 125)
 
 [node name="EnemyMarker4" type="Marker2D" parent="EnemySpawns" index="3"]
 position = Vector2(1020, 119)
+
+[node name="12gauge" parent="." index="7" instance=ExtResource("2_n044l")]
+position = Vector2(247, 79)
+
+[node name="FullHeart" parent="." index="8" instance=ExtResource("3_ifkh7")]
+position = Vector2(1024, 698)

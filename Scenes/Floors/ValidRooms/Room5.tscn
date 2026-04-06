@@ -1,6 +1,9 @@
-[gd_scene load_steps=3 format=4 uid="uid://cdj4oc60gqu0u"]
+[gd_scene load_steps=6 format=4 uid="uid://cdj4oc60gqu0u"]
 
 [ext_resource type="PackedScene" uid="uid://c1da6epqykshi" path="res://Scenes/Floors/ValidRooms/Room.tscn" id="1_bfwx8"]
+[ext_resource type="PackedScene" uid="uid://bt2sjl85bpm3i" path="res://Scenes/PickUps/Ammo/9mm.tscn" id="2_vrvpx"]
+[ext_resource type="PackedScene" uid="uid://pfh45psxmewy" path="res://Scenes/PickUps/Hearts/HalfHeart.tscn" id="3_h0d86"]
+[ext_resource type="PackedScene" uid="uid://c2qitrutg26mu" path="res://Scenes/PickUps/Coins/Coin.tscn" id="4_h0d86"]
 
 [sub_resource type="NavigationPolygon" id="NavigationPolygon_bfwx8"]
 vertices = PackedVector2Array(1110, 42, 1110, 726, 1066, 618, 1066, 534, 810, 726, 810, 694, 426, 74, 426, 42, 726, 42, 726, 74, 810, 74, 810, 42, 1066, 150, 1014, 534, 1014, 566, 810, 566, 810, 490, 1002, 490, 950, 406, 950, 438, 810, 438, 810, 330, 950, 330, 950, 362, 1002, 406, 1002, 362, 1002, 278, 810, 278, 810, 202, 1014, 202, 1014, 234, 810, 150, 810, 118, 726, 118, 726, 182, 598, 182, 598, 266, 694, 266, 694, 502, 598, 502, 598, 586, 554, 586, 554, 502, 554, 266, 458, 502, 458, 266, 554, 182, 426, 182, 426, 118, 342, 118, 342, 150, 86, 150, 42, 42, 138, 234, 138, 202, 342, 202, 342, 278, 150, 278, 202, 362, 202, 330, 342, 330, 342, 438, 202, 438, 202, 406, 150, 362, 150, 406, 150, 490, 342, 490, 342, 566, 138, 566, 138, 534, 86, 618, 342, 618, 342, 650, 42, 726, 426, 650, 426, 586, 726, 586, 726, 650, 426, 694, 810, 650, 810, 618, 726, 694, 726, 726, 426, 726, 342, 694, 342, 726, 342, 42, 342, 74, 1066, 234, 86, 534, 86, 234)
@@ -28,3 +31,12 @@ position = Vector2(891, 389)
 
 [node name="EnemyMarker4" type="Marker2D" parent="EnemySpawns" index="3"]
 position = Vector2(258, 385)
+
+[node name="9mm" parent="." index="7" instance=ExtResource("2_vrvpx")]
+position = Vector2(243, 385)
+
+[node name="HalfHeart" parent="." index="8" instance=ExtResource("3_h0d86")]
+position = Vector2(918, 381)
+
+[node name="FullHeart" parent="." index="9" instance=ExtResource("4_h0d86")]
+position = Vector2(575, 385)

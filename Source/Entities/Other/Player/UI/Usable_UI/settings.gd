@@ -8,6 +8,8 @@ signal closed
 @onready var controlsVBox: Node = $Control/Main/TabContainer/Controls/VBoxContainer
 @onready var videoVBox: Node = $Control/Main/TabContainer/Video/VBoxContainer
 
+var Gameplay_UI: Node
+
 const BUSES = {
 	"Master": "Master",
 	"Music": "Music",

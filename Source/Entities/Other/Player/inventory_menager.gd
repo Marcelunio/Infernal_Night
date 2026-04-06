@@ -27,11 +27,15 @@ var ammo_container: Dictionary
 var ammo_pick_up_check: bool = false
 var nearest_ammo: Node = null
 
+#coins
+var coins:int = 0
+
 #signal to weapon_display.gd
 signal UI_WeaponChanged(weapon)
 
-#signal to ammo_display.gd
+#signal to inventory_display.gd
 signal UI_InventoryAmmoChanged()
+signal UI_InventoryCoinChanged()
 
 #signal to reload_display.gd
 signal UI_Reload(weapon)
@@ -144,6 +148,7 @@ func reload(weapon) -> void:#przeladowanie broni
 		weapon.reloaded.connect(_on_reload)
 	else:
 		print("DEBUG - brak ammo")
+		reload_pending = false
 		return
 
 func is_ammo_full(ammo_box) -> void:

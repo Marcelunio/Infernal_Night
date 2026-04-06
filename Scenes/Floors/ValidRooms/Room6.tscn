@@ -1,6 +1,7 @@
-[gd_scene load_steps=3 format=4 uid="uid://d84cn36hw3cj"]
+[gd_scene load_steps=4 format=4 uid="uid://d84cn36hw3cj"]
 
 [ext_resource type="PackedScene" uid="uid://c1da6epqykshi" path="res://Scenes/Floors/ValidRooms/Room.tscn" id="1_f0gaf"]
+[ext_resource type="PackedScene" uid="uid://ddj8nnb145ov6" path="res://Scenes/PickUps/Hearts/FullHeart.tscn" id="2_e3bsy"]
 
 [sub_resource type="NavigationPolygon" id="NavigationPolygon_f0gaf"]
 vertices = PackedVector2Array(1110, 406, 918, 406, 1034, 362, 1078, 362, 950, 362, 918, 662, 874, 618, 874, 406, 662, 662, 662, 618, 1110, 362, 1078, 74, 1034, 118, 598, 74, 598, 118, 598, 266, 554, 266, 554, 118, 554, 74, 234, 406, 202, 362, 202, 330, 298, 330, 278, 406, 598, 470, 522, 438, 298, 298, 330, 298, 630, 438, 630, 470, 330, 266, 822, 266, 822, 298, 854, 298, 854, 330, 822, 406, 950, 330, 822, 438, 598, 522, 554, 522, 554, 470, 522, 470, 330, 438, 330, 406, 490, 618, 490, 554, 522, 554, 522, 522, 630, 522, 630, 554, 522, 694, 490, 662, 662, 554, 630, 694, 662, 694, 630, 726, 522, 726, 490, 694, 42, 406, 42, 362, 74, 362, 554, 42, 598, 42, 118, 118, 74, 74, 118, 362, 278, 618, 234, 662)
@@ -28,3 +29,6 @@ position = Vector2(1052, 101)
 
 [node name="EnemyMarker4" type="Marker2D" parent="EnemySpawns" index="3"]
 position = Vector2(253, 640)
+
+[node name="FullHeart" parent="." index="7" instance=ExtResource("2_e3bsy")]
+position = Vector2(577, 348)

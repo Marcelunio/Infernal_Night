@@ -1,6 +1,6 @@
 [gd_scene load_steps=11 format=3 uid="uid://danvskoqxmcpk"]
 
-[ext_resource type="Script" uid="uid://3xwbijw7ji6o" path="res://Source/PickUps/Ammo/ammo.gd" id="1_yfbxh"]
+[ext_resource type="Script" uid="uid://3xwbijw7ji6o" path="res://Source/PickUps/ammo.gd" id="1_yfbxh"]
 [ext_resource type="Texture2D" uid="uid://cjt7flcd0p01h" path="res://Assets/PickUps/Ammo/556_ammo_crate.png" id="2_yfbxh"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_7udy0"]

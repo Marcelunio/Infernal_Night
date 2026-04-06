@@ -9,10 +9,10 @@
 [ext_resource type="PackedScene" uid="uid://b6w2pptl8xqdv" path="res://Scenes/Entities/Other/Player/UI/Usable_UI/Escape.tscn" id="3_v3r2t"]
 [ext_resource type="PackedScene" uid="uid://u0dk1xi32pab" path="res://Scenes/Entities/Other/Player/UI/Usable_UI/DeathScreen.tscn" id="4_v3r2t"]
 [ext_resource type="PackedScene" uid="uid://da13ju133u04b" path="res://Scenes/Entities/Other/Player/UI/GameplayUI/ReloadDisplay.tscn" id="6_bu5at"]
-[ext_resource type="PackedScene" uid="uid://bkan3lqpflwny" path="res://Scenes/Entities/Other/Player/UI/GameplayUI/AmmoDisplay.tscn" id="7_ji22f"]
+[ext_resource type="Script" uid="uid://d2mobsnf08wlq" path="res://Source/Entities/Other/Player/UI/gameplay_ui.gd" id="6_yibyp"]
+[ext_resource type="PackedScene" uid="uid://bkan3lqpflwny" path="res://Scenes/Entities/Other/Player/UI/GameplayUI/InventoryDisplay.tscn" id="7_ji22f"]
 [ext_resource type="PackedScene" uid="uid://djrd7sn4dk6fx" path="res://Scenes/Entities/Other/Player/UI/GameplayUI/HealthBarDisplay.tscn" id="7_vt6jx"]
 [ext_resource type="PackedScene" uid="uid://c5nm3cqnf5jer" path="res://Scenes/Entities/Other/Player/UI/Usable_UI/Settings.tscn" id="7_xu3wr"]
-[ext_resource type="Script" uid="uid://daxygdt67700y" path="res://Source/Entities/Other/Player/UI/usable_ui.gd" id="10_kjs6a"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_q2x60"]
 radius = 12.0
@@ -75,6 +75,7 @@ layout_mode = 3
 anchors_preset = 0
 offset_right = 40.0
 offset_bottom = 40.0
+script = ExtResource("6_yibyp")
 metadata/_edit_use_anchors_ = true
 
 [node name="ReloadDisplay" parent="Gameplay_UI" instance=ExtResource("6_bu5at")]
@@ -89,7 +90,7 @@ metadata/_edit_use_anchors_ = true
 [node name="HealthBarDisplay" parent="Gameplay_UI/CanvasLayer" instance=ExtResource("7_vt6jx")]
 metadata/_edit_use_anchors_ = true
 
-[node name="AmmoDisplay" parent="Gameplay_UI/CanvasLayer" instance=ExtResource("7_ji22f")]
+[node name="ItemsDisplay" parent="Gameplay_UI/CanvasLayer" instance=ExtResource("7_ji22f")]
 metadata/_edit_use_anchors_ = true
 
 [node name="Usable_UI" type="Control" parent="."]
@@ -98,7 +99,6 @@ layout_mode = 3
 anchors_preset = 0
 offset_right = 40.0
 offset_bottom = 40.0
-script = ExtResource("10_kjs6a")
 metadata/_edit_use_anchors_ = true
 
 [node name="CanvasLayer" type="CanvasLayer" parent="Usable_UI"]
@@ -109,4 +109,4 @@ metadata/_edit_use_anchors_ = true
 [node name="Escape" parent="Usable_UI/CanvasLayer" instance=ExtResource("3_v3r2t")]
 metadata/_edit_use_anchors_ = true
 
-[node name="Settings" parent="Usable_UI/CanvasLayer" instance=ExtResource("7_xu3wr")]
+[node name="Settings" parent="Usable_UI" instance=ExtResource("7_xu3wr")]

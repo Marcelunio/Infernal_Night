@@ -2,8 +2,12 @@
 #Znane bugi: 0
 extends Control
 
+var Gameplay_UI: Node
+
 func _ready() -> void:
 	Settings.closed.connect(_on_settings_closed)
+	print("ASDASDASDASDADDASDAAAAAAAAAAAAAA", get_tree().get_first_node_in_group("player").get_node("Gameplay_UI"))
+	Gameplay_UI = get_tree().get_first_node_in_group("player").get_node("Gameplay_UI")
 	visible = false
 	
 func _input(event) -> void:
@@ -11,15 +15,18 @@ func _input(event) -> void:
 		if get_tree().paused and GameState.screen_stack.back() == "pause":
 			GameState.pop_screen()
 			get_tree().paused = false
+			Gameplay_UI._change(Gameplay_UI, true)
 			visible = false
 		elif not GameState.is_busy():
 			GameState.push_screen("pause")
+			Gameplay_UI._change(Gameplay_UI, false)
 			get_tree().paused = true
 			visible = true
 
 func _on_resume_pressed() -> void:
 	GameState.pop_screen()
 	get_tree().paused = false
+	Gameplay_UI._change(Gameplay_UI, true)
 	visible = false
 
 func _on_save_pressed() -> void:

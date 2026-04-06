@@ -51,7 +51,6 @@ metadata/_edit_group_ = true
 [node name="BulletAnimatedSprite" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_tneo2")
 animation = &"BANG"
-frame_progress = 0.17422855
 
 [node name="BulletCollision" type="CollisionShape2D" parent="."]
 shape = SubResource("RectangleShape2D_2b2rl")

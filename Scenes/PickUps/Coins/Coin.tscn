@@ -1,0 +1,20 @@
+[gd_scene load_steps=4 format=3 uid="uid://c2qitrutg26mu"]
+
+[ext_resource type="Script" uid="uid://bp5fqu66ksw1f" path="res://Source/PickUps/item.gd" id="1_bp6k1"]
+[ext_resource type="Texture2D" uid="uid://b4o6gcl4u348t" path="res://Assets/PickUps/Money/pieniazek.png" id="2_rtoom"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_acuav"]
+size = Vector2(31, 31.125)
+
+[node name="FullHeart" type="Area2D"]
+script = ExtResource("1_bp6k1")
+texture = ExtResource("2_rtoom")
+type = "coin"
+coin_value = 1
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_acuav")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]

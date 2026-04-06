@@ -1,4 +1,4 @@
-[gd_scene load_steps=19 format=3 uid="uid://ul478xcq3qqo"]
+[gd_scene load_steps=20 format=3 uid="uid://ul478xcq3qqo"]
 
 [ext_resource type="PackedScene" uid="uid://c1da6epqykshi" path="res://Scenes/Floors/ValidRooms/Room.tscn" id="1_014t1"]
 [ext_resource type="PackedScene" uid="uid://da1ap0hsfecta" path="res://Scenes/Weapons/Guns/9mmGuns/WeaponUzi.tscn" id="2_nclxc"]
@@ -17,6 +17,7 @@
 [ext_resource type="PackedScene" uid="uid://danvskoqxmcpk" path="res://Scenes/PickUps/Ammo/556mm.tscn" id="15_1h8pn"]
 [ext_resource type="PackedScene" uid="uid://dmxst7mpeirh7" path="res://Scenes/PickUps/Ammo/12gauge.tscn" id="16_8w2k2"]
 [ext_resource type="PackedScene" uid="uid://dm8yxhdv10dtk" path="res://Scenes/PickUps/Ammo/762mm.tscn" id="17_6u2e5"]
+[ext_resource type="PackedScene" uid="uid://c2qitrutg26mu" path="res://Scenes/PickUps/Coins/Coin.tscn" id="18_1mpoe"]
 
 [sub_resource type="NavigationPolygon" id="NavigationPolygon_nclxc"]
 vertices = PackedVector2Array(1110, 726, 42, 726, 42, 42, 1110, 42)
@@ -74,3 +75,6 @@ position = Vector2(397, 111)
 
 [node name="762mm" parent="." index="22" instance=ExtResource("17_6u2e5")]
 position = Vector2(401, 192)
+
+[node name="FullHeart3" parent="." index="23" instance=ExtResource("18_1mpoe")]
+position = Vector2(1072, 610)

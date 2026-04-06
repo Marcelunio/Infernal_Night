@@ -1,6 +1,8 @@
-[gd_scene load_steps=3 format=4 uid="uid://dsgo7ei1x4ifu"]
+[gd_scene load_steps=5 format=4 uid="uid://dsgo7ei1x4ifu"]
 
 [ext_resource type="PackedScene" uid="uid://c1da6epqykshi" path="res://Scenes/Floors/ValidRooms/Room.tscn" id="1_hr5f1"]
+[ext_resource type="PackedScene" uid="uid://dm8yxhdv10dtk" path="res://Scenes/PickUps/Ammo/762mm.tscn" id="2_xeist"]
+[ext_resource type="PackedScene" uid="uid://c2qitrutg26mu" path="res://Scenes/PickUps/Coins/Coin.tscn" id="3_2224o"]
 
 [sub_resource type="NavigationPolygon" id="NavigationPolygon_hr5f1"]
 vertices = PackedVector2Array(746, 362, 1110, 406, 790, 406, 650, 394, 694, 362, 746, 534, 598, 534, 554, 490, 598, 490, 650, 342, 694, 330, 598, 330, 534, 342, 554, 330, 458, 330, 458, 362, 534, 374, 502, 374, 502, 42, 502, 182, 490, 182, 490, 150, 42, 42, 438, 150, 42, 310, 406, 182, 438, 182, 406, 234, 310, 278, 554, 234, 554, 42, 598, 42, 598, 234, 746, 182, 650, 182, 650, 42, 1110, 42, 746, 234, 1110, 310, 842, 278, 842, 310, 790, 278, 790, 362, 1110, 362, 746, 278, 598, 278, 554, 278, 406, 278, 618, 426, 618, 394, 694, 406, 842, 490, 842, 458, 1110, 458, 1110, 726, 694, 438, 598, 438, 650, 726, 650, 586, 662, 586, 662, 618, 714, 618, 714, 586, 746, 586, 598, 726, 554, 726, 554, 534, 406, 490, 406, 534, 362, 490, 406, 586, 502, 586, 502, 726, 42, 726, 42, 458, 310, 490, 310, 458, 406, 406, 362, 406, 42, 406, 42, 362, 362, 362, 406, 362, 310, 310, 362, 278, 458, 406, 502, 426, 458, 438, 554, 438, 746, 490, 790, 490, 746, 406)
@@ -28,3 +30,9 @@ position = Vector2(459, 126)
 
 [node name="EnemyMarker5" type="Marker2D" parent="EnemySpawns" index="3"]
 position = Vector2(915, 176)
+
+[node name="762mm" parent="." index="7" instance=ExtResource("2_xeist")]
+position = Vector2(461, 701)
+
+[node name="FullHeart" parent="." index="8" instance=ExtResource("3_2224o")]
+position = Vector2(677, 67)
