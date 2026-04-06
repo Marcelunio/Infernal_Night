@@ -1,6 +1,6 @@
 [gd_scene load_steps=2 format=3 uid="uid://b6w2pptl8xqdv"]
 
-[ext_resource type="Script" uid="uid://cxk5l4wcfe618" path="res://Source/Entities/Other/Player/UI/escape.gd" id="1_bmfv2"]
+[ext_resource type="Script" uid="uid://cxk5l4wcfe618" path="res://Source/Entities/Other/Player/UI/Usable_UI/escape.gd" id="1_bmfv2"]
 
 [node name="Escape" type="Control"]
 process_mode = 3

@@ -1,0 +1,46 @@
+[gd_scene load_steps=11 format=3 uid="uid://dmxst7mpeirh7"]
+
+[ext_resource type="Script" uid="uid://3xwbijw7ji6o" path="res://Source/PickUps/Ammo/ammo.gd" id="1_784un"]
+[ext_resource type="Texture2D" uid="uid://dh33nhtbo8o4e" path="res://Assets/PickUps/Ammo/12_ammo_crate.png" id="2_784un"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_df2wp"]
+atlas = ExtResource("2_784un")
+region = Rect2(0, 0, 52, 0)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_uqy7s"]
+atlas = ExtResource("2_784un")
+region = Rect2(260, 0, 52, 0)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_7u5an"]
+atlas = ExtResource("2_784un")
+region = Rect2(52, 0, 52, 0)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_17le7"]
+atlas = ExtResource("2_784un")
+region = Rect2(104, 0, 52, 0)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_s6r7i"]
+atlas = ExtResource("2_784un")
+region = Rect2(156, 0, 52, 0)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_5xqfy"]
+atlas = ExtResource("2_784un")
+region = Rect2(208, 0, 52, 0)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_vbesi"]
+size = Vector2(52, 60)
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_s6b66"]
+
+[node name="12gauge" type="Area2D"]
+script = ExtResource("1_784un")
+ammo_type = "12gauge"
+ammo_count = 40
+textures = Array[Texture2D]([SubResource("AtlasTexture_df2wp"), SubResource("AtlasTexture_uqy7s"), SubResource("AtlasTexture_7u5an"), SubResource("AtlasTexture_17le7"), SubResource("AtlasTexture_s6r7i"), SubResource("AtlasTexture_5xqfy")])
+metadata/_edit_group_ = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_vbesi")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = SubResource("CompressedTexture2D_s6b66")

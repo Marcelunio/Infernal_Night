@@ -5,9 +5,14 @@ extends Area2D
 @export var ammo_type: String = ""
 @export var ammo_count: int
 @export var textures: Array[Texture2D] = []
+
+var current_textures: Array[Texture2D] = []
 var max_ammo_count: int
 
 func _ready() -> void:#connect body_entered|exited
+	current_textures.append(textures[0])
+	current_textures.append(textures[1])
+	$Sprite2D.texture = current_textures[0]
 	call_deferred("_connect_signals")
 	max_ammo_count = ammo_count
 
@@ -23,9 +28,9 @@ func _connect_signals() -> void:
 func _closest_to_player(item, closest):
 	if item == self:
 		if closest:
-			$Sprite2D.texture = textures[1]
+			$Sprite2D.texture = current_textures[1]
 		else:
-			$Sprite2D.texture = textures[0]
+			$Sprite2D.texture = current_textures[0]
 
 func _on_body_entered(body) -> void:#check
 	if body.name == "Player":
@@ -55,9 +60,11 @@ func sprite_change() -> void:#change of sprite:
 	var ammo_percentage = float(ammo_count) / max_ammo_count
 		
 	if ammo_percentage < 0.2:
-		pass #zmiana na sprite gdzie troche znknelo naboi
+		current_textures[0] = textures[2]
+		current_textures[1] = textures[3]
 	elif ammo_percentage < 0.5:
-		pass #zmina na sprite gdzienie ma praiwe wogole nabojow
+		current_textures[0] = textures[4]
+		current_textures[1] = textures[5]
 
 func die():#delete
 	print("DEBUG ammo.gd | Ammo sie skonczylo w ", self.name)

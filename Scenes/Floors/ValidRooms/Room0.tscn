@@ -1,12 +1,12 @@
-[gd_scene load_steps=16 format=3 uid="uid://ul478xcq3qqo"]
+[gd_scene load_steps=19 format=3 uid="uid://ul478xcq3qqo"]
 
 [ext_resource type="PackedScene" uid="uid://c1da6epqykshi" path="res://Scenes/Floors/ValidRooms/Room.tscn" id="1_014t1"]
-[ext_resource type="PackedScene" uid="uid://da1ap0hsfecta" path="res://Scenes/Weapons/Guns/WeaponUzi.tscn" id="2_nclxc"]
-[ext_resource type="PackedScene" uid="uid://kv6ej6j01fux" path="res://Scenes/Weapons/Guns/WeaponAk47.tscn" id="3_7vf17"]
-[ext_resource type="PackedScene" uid="uid://bxg5woeatx4uj" path="res://Scenes/Weapons/Guns/WeaponRevolver.tscn" id="4_cjroc"]
-[ext_resource type="PackedScene" uid="uid://b783hpp0owvai" path="res://Scenes/Weapons/Guns/WeaponDoubleBarrel.tscn" id="5_yvwe4"]
-[ext_resource type="PackedScene" uid="uid://t7ktbcl5debv" path="res://Scenes/Weapons/Guns/WeaponPistol.tscn" id="6_sgwhs"]
-[ext_resource type="PackedScene" uid="uid://do67sjc1c7h8g" path="res://Scenes/Weapons/Guns/WeaponShotgun.tscn" id="7_d7iit"]
+[ext_resource type="PackedScene" uid="uid://da1ap0hsfecta" path="res://Scenes/Weapons/Guns/9mmGuns/WeaponUzi.tscn" id="2_nclxc"]
+[ext_resource type="PackedScene" uid="uid://kv6ej6j01fux" path="res://Scenes/Weapons/Guns/762mmGuns/WeaponAk47.tscn" id="3_7vf17"]
+[ext_resource type="PackedScene" uid="uid://bxg5woeatx4uj" path="res://Scenes/Weapons/Guns/9mmGuns/WeaponRevolver.tscn" id="4_cjroc"]
+[ext_resource type="PackedScene" uid="uid://b783hpp0owvai" path="res://Scenes/Weapons/Guns/12gaugeGuns/WeaponDoubleBarrel.tscn" id="5_yvwe4"]
+[ext_resource type="PackedScene" uid="uid://t7ktbcl5debv" path="res://Scenes/Weapons/Guns/9mmGuns/WeaponPistol.tscn" id="6_sgwhs"]
+[ext_resource type="PackedScene" uid="uid://do67sjc1c7h8g" path="res://Scenes/Weapons/Guns/12gaugeGuns/WeaponShotgun.tscn" id="7_d7iit"]
 [ext_resource type="PackedScene" uid="uid://cotiiwrrpdkwu" path="res://Scenes/Weapons/Melee/WeaponBat.tscn" id="8_cw3ig"]
 [ext_resource type="PackedScene" uid="uid://dhj4hdoqpno23" path="res://Scenes/Weapons/Melee/WeaponKnife.tscn" id="9_1h8pn"]
 [ext_resource type="PackedScene" uid="uid://dnjuntixfdqq0" path="res://Scenes/Weapons/Throwable/WeaponHolyGranate.tscn" id="10_8w2k2"]
@@ -14,6 +14,9 @@
 [ext_resource type="PackedScene" uid="uid://bt2sjl85bpm3i" path="res://Scenes/PickUps/Ammo/9mm.tscn" id="12_sgwhs"]
 [ext_resource type="PackedScene" uid="uid://ddj8nnb145ov6" path="res://Scenes/PickUps/Hearts/FullHeart.tscn" id="13_d7iit"]
 [ext_resource type="PackedScene" uid="uid://pfh45psxmewy" path="res://Scenes/PickUps/Hearts/HalfHeart.tscn" id="14_cw3ig"]
+[ext_resource type="PackedScene" uid="uid://danvskoqxmcpk" path="res://Scenes/PickUps/Ammo/556mm.tscn" id="15_1h8pn"]
+[ext_resource type="PackedScene" uid="uid://dmxst7mpeirh7" path="res://Scenes/PickUps/Ammo/12gauge.tscn" id="16_8w2k2"]
+[ext_resource type="PackedScene" uid="uid://dm8yxhdv10dtk" path="res://Scenes/PickUps/Ammo/762mm.tscn" id="17_6u2e5"]
 
 [sub_resource type="NavigationPolygon" id="NavigationPolygon_nclxc"]
 vertices = PackedVector2Array(1110, 726, 42, 726, 42, 42, 1110, 42)
@@ -62,3 +65,12 @@ position = Vector2(920, 672)
 
 [node name="FullHeart2" parent="." index="19" instance=ExtResource("14_cw3ig")]
 position = Vector2(751, 677)
+
+[node name="556mm" parent="." index="20" instance=ExtResource("15_1h8pn")]
+position = Vector2(160, 205)
+
+[node name="12gauge" parent="." index="21" instance=ExtResource("16_8w2k2")]
+position = Vector2(397, 111)
+
+[node name="762mm" parent="." index="22" instance=ExtResource("17_6u2e5")]
+position = Vector2(401, 192)

@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://cc6x6bpmrhbpv"
-path="res://.godot/imported/9mm_bloody.png-6452ac381e74bb5d63c01a119d005700.ctex"
+uid="uid://dh33nhtbo8o4e"
+path="res://.godot/imported/12_ammo_crate.png-24263febf982c29f05cfa624cf4ca628.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/PickUps/Ammo/9mm_bloody.png"
-dest_files=["res://.godot/imported/9mm_bloody.png-6452ac381e74bb5d63c01a119d005700.ctex"]
+source_file="res://Assets/PickUps/Ammo/12_ammo_crate.png"
+dest_files=["res://.godot/imported/12_ammo_crate.png-24263febf982c29f05cfa624cf4ca628.ctex"]
 
 [params]
 

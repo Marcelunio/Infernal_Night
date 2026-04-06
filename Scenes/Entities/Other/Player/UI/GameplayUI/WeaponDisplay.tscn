@@ -1,6 +1,6 @@
 [gd_scene load_steps=2 format=3 uid="uid://e50scyaq600v"]
 
-[ext_resource type="Script" uid="uid://b8xfnbeecf7eh" path="res://Source/Entities/Other/Player/UI/weapon_display.gd" id="1_qmwa5"]
+[ext_resource type="Script" uid="uid://b8xfnbeecf7eh" path="res://Source/Entities/Other/Player/UI/Gameplay_UI/weapon_display.gd" id="1_qmwa5"]
 
 [node name="WeaponDisplay" type="Control"]
 layout_mode = 3

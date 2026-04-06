@@ -17,7 +17,7 @@ config/icon="uid://ci6co3vls48fx"
 
 [autoload]
 
-Settings="*res://Scenes/Entities/Other/Player/UI/Settings.tscn"
+Settings="*res://Scenes/Entities/Other/Player/UI/Usable_UI/Settings.tscn"
 GameState="*res://Source/GLOBAL/game_state.gd"
 
 [debug]

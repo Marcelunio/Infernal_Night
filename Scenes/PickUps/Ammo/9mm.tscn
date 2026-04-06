@@ -1,21 +1,46 @@
-[gd_scene load_steps=5 format=3 uid="uid://bt2sjl85bpm3i"]
+[gd_scene load_steps=11 format=3 uid="uid://bt2sjl85bpm3i"]
 
 [ext_resource type="Script" uid="uid://3xwbijw7ji6o" path="res://Source/PickUps/Ammo/ammo.gd" id="1_kboyt"]
-[ext_resource type="Texture2D" uid="uid://cc6x6bpmrhbpv" path="res://Assets/PickUps/Ammo/9mm_bloody.png" id="2_c542t"]
-[ext_resource type="Texture2D" uid="uid://hhr8hx07jakv" path="res://Assets/PickUps/Ammo/9mm_bloody_picking.png" id="3_c542t"]
+[ext_resource type="Texture2D" uid="uid://b1wmhiu2ntjx6" path="res://Assets/PickUps/Ammo/9mm_ammo_crate.png" id="2_kboyt"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_c542t"]
+atlas = ExtResource("2_kboyt")
+region = Rect2(2, 3, 61, 69)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_vbesi"]
+atlas = ExtResource("2_kboyt")
+region = Rect2(2, 75, 61, 69)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_lxkj1"]
+atlas = ExtResource("2_kboyt")
+region = Rect2(2, 148, 61, 69)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_vj6k8"]
+atlas = ExtResource("2_kboyt")
+region = Rect2(2, 220, 61, 69)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_2xnd3"]
+atlas = ExtResource("2_kboyt")
+region = Rect2(2, 292, 61, 69)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_te4xl"]
+atlas = ExtResource("2_kboyt")
+region = Rect2(2, 364, 61, 69)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_vbesi"]
 size = Vector2(68, 71)
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_s6b66"]
 
 [node name="9mm" type="Area2D"]
 script = ExtResource("1_kboyt")
 ammo_type = "9mm"
 ammo_count = 50
-textures = Array[Texture2D]([ExtResource("2_c542t"), ExtResource("3_c542t")])
+textures = Array[Texture2D]([SubResource("AtlasTexture_c542t"), SubResource("AtlasTexture_vbesi"), SubResource("AtlasTexture_lxkj1"), SubResource("AtlasTexture_vj6k8"), SubResource("AtlasTexture_2xnd3"), SubResource("AtlasTexture_te4xl")])
 metadata/_edit_group_ = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("RectangleShape2D_vbesi")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
-texture = ExtResource("2_c542t")
+texture = SubResource("CompressedTexture2D_s6b66")

@@ -43,20 +43,6 @@ var isOnVan: bool = false
 @onready var audio_player = $AudioStreamPlayer
 @export var walk_sounds: Array[AudioStreamWAV] = []
 
-const VAN_TILES_ORIGINAL = [
-	{"pos": Vector2i(16, 10), "atlas": Vector2i(0, 5)},
-	{"pos": Vector2i(17, 10), "atlas": Vector2i(1, 5)},
-	{"pos": Vector2i(18, 10), "atlas": Vector2i(2, 5)},
-	{"pos": Vector2i(19, 10), "atlas": Vector2i(3, 5)},
-]
-
-const VAN_TILES_NEW = [
-	Vector2i(0, 4),
-	Vector2i(1, 4),
-	Vector2i(2, 4),
-	Vector2i(3, 4),
-]
-
 #signal to health_bar_display.gd
 signal UI_HealthBarDisplay(max_hp, hp)
 
@@ -64,7 +50,7 @@ func _ready():
 	dungeon = get_parent()
 	hp = max_hp
 	
-	$CanvasLayer/WeaponDisplay.setup(inventory)
+	$"Gameplay_UI/CanvasLayer/WeaponDisplay".setup(inventory)
 	UI_HealthBarDisplay.emit.call_deferred(max_hp, hp)
 	
 
@@ -75,11 +61,6 @@ func _unhandled_input(event: InputEvent):#obsługa nie obsluzonych inputow
 				inventory.next_weapon()
 			if event.button_index == MOUSE_BUTTON_WHEEL_DOWN:
 				inventory.previous_weapon()
-
-func _input(event: InputEvent):
-	if vanInput:
-		if Input.is_action_just_pressed("interaction"):
-			pass
 
 func _physics_process(delta):#obsluga zdarzen co klatkowych
 	if not dashing:
@@ -221,26 +202,6 @@ func _handle_player_pick_up():#obslguje poczatkowy proces podnoszenia broni
 			if inventory.nearest_ammo != null:
 				inventory.nearest_ammo.ammo_pick_up(self)
 
-func _handle_tileMap_detection():
-	var tilePos = vanTilemap.local_to_map(global_position)
-	var tileData = vanTilemap.get_cell_tile_data(tilePos)
-	
-	if tileData and tileData.get_custom_data("vanInventory") == "detect":
-		if not isOnVan:
-			isOnVan = true
-			vanInput = true
-			_change_van_tiles(true)
-	elif isOnVan:
-		isOnVan = false
-		vanInput = false
-		_change_van_tiles(false)
-
-func _change_van_tiles(to_new: bool) -> void:
-	for i in VAN_TILES_ORIGINAL.size():
-		var pos = VAN_TILES_ORIGINAL[i]["pos"]
-		var atlas = VAN_TILES_NEW[i] if to_new else VAN_TILES_ORIGINAL[i]["atlas"]
-		vanTilemap.set_cell(pos, 3, atlas)
-
 func take_damage(amount: int):#obsluga damage'a
 	hp -= amount
 	emit_signal("UI_HealthBarDisplay", max_hp, hp)
@@ -249,7 +210,9 @@ func take_damage(amount: int):#obsluga damage'a
 		return
 
 func die() -> void:#obslguje smierc gracza oraz jej efekty
+	visible = false
 	GameState.push_screen("death")
+	GameState.dead()
 	emit_signal("death", enemy_deaths, shots_fired, grenades_thrown)
 
 func heal(amount_of_healing, body) -> void:

@@ -1,6 +1,6 @@
 [gd_scene load_steps=7 format=3 uid="uid://bkan3lqpflwny"]
 
-[ext_resource type="Script" uid="uid://b6vgg5t4dpf2t" path="res://Source/Entities/Other/Player/UI/ammo_display.gd" id="1_qmwa5"]
+[ext_resource type="Script" uid="uid://b6vgg5t4dpf2t" path="res://Source/Entities/Other/Player/UI/Gameplay_UI/ammo_display.gd" id="1_qmwa5"]
 [ext_resource type="Texture2D" uid="uid://cycdr646kmxth" path="res://Assets/UI/Icons/9mm.png" id="2_au5ml"]
 [ext_resource type="Texture2D" uid="uid://bgh5p5jl2yye4" path="res://Assets/UI/Icons/5_56mm.png" id="3_6nwr3"]
 [ext_resource type="Texture2D" uid="uid://cekmxxyuf316f" path="res://Assets/UI/Icons/12gauge.png" id="4_fpk5f"]
@@ -11,12 +11,12 @@ bg_color = Color(0.015686275, 0.015686275, 0.015686275, 0.34117648)
 corner_radius_top_right = 15
 expand_margin_right = 15.0
 
-[node name="PanelContainer" type="PanelContainer"]
+[node name="AmmoDisplay" type="PanelContainer"]
 anchors_preset = 2
 anchor_top = 1.0
 anchor_bottom = 1.0
 offset_top = -40.0
-offset_right = 40.0
+offset_right = 139.0
 grow_vertical = 0
 theme_override_styles/panel = SubResource("StyleBoxFlat_ektfd")
 script = ExtResource("1_qmwa5")

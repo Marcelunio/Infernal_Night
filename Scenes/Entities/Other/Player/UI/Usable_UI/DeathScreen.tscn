@@ -1,6 +1,6 @@
 [gd_scene load_steps=3 format=3 uid="uid://u0dk1xi32pab"]
 
-[ext_resource type="Script" uid="uid://d21wdrs4cyv84" path="res://Source/Entities/Other/Player/UI/death_screen.gd" id="1_f0biy"]
+[ext_resource type="Script" uid="uid://d21wdrs4cyv84" path="res://Source/Entities/Other/Player/UI/Usable_UI/death_screen.gd" id="1_f0biy"]
 [ext_resource type="Theme" uid="uid://dm5yxvoyhb3ra" path="res://Assets/UI/Menus/Main_menu.tres" id="1_pl2se"]
 
 [node name="DeathScreen" type="Control"]
