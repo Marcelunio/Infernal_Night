@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dnj5h08g6eltb"
-path="res://.godot/imported/carpets&stuff.png-da4e0f539b3b53a67efb0976997f705e.ctex"
+uid="uid://cgt0gfp4j3wbj"
+path="res://.godot/imported/Game_Title.png-e00a1db409294827ae4bdfade652d659.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/Tilesets/carpets&stuff.png"
-dest_files=["res://.godot/imported/carpets&stuff.png-da4e0f539b3b53a67efb0976997f705e.ctex"]
+source_file="res://Assets/UI/Menus/Game_Title.png"
+dest_files=["res://.godot/imported/Game_Title.png-e00a1db409294827ae4bdfade652d659.ctex"]
 
 [params]
 

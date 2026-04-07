@@ -278,3 +278,7 @@ func _on_reset_pressed() -> void:
 	DirAccess.remove_absolute(SAVE_PATH)
 	_on_resetKeyBinds_pressed()
 	_load_settings()
+
+
+func _on_control_resized() -> void:
+	$Control.theme.default_font_size = DisplayServer.window_get_size().y/36

@@ -4,11 +4,7 @@
 [ext_resource type="AudioStream" uid="uid://b6rrt8uf6kl3v" path="res://Sounds/Music/Main_menu.ogg" id="2_14r8h"]
 [ext_resource type="Theme" uid="uid://dm5yxvoyhb3ra" path="res://Assets/UI/Menus/Main_menu.tres" id="2_i3nvj"]
 [ext_resource type="PackedScene" uid="uid://dcb3ulrcsrnf1" path="res://Scenes/Floors/Main/Choice.tscn" id="3_ohoe0"]
-
-[sub_resource type="LabelSettings" id="LabelSettings_i3nvj"]
-font_color = Color(0.7736218, 0.33650252, 0.3069097, 1)
-outline_size = 12
-outline_color = Color(0.36078432, 0.17254902, 0.2627451, 1)
+[ext_resource type="Texture2D" uid="uid://cgt0gfp4j3wbj" path="res://Assets/UI/Menus/Game_Title.png" id="5_qsf8u"]
 
 [node name="MainMenu" type="Control"]
 process_mode = 3
@@ -29,48 +25,31 @@ grow_horizontal = 2
 grow_vertical = 2
 theme = ExtResource("2_i3nvj")
 
-[node name="Title" type="Label" parent="."]
-layout_mode = 1
-anchors_preset = -1
-anchor_left = 0.115
-anchor_top = 0.13100001
-anchor_right = 0.47800002
-anchor_bottom = 0.50600004
-offset_left = 0.19999695
-offset_top = 0.519989
-offset_right = -0.76000977
-offset_bottom = 0.5199585
-theme = ExtResource("2_i3nvj")
-text = "Infernal 
-Night"
-label_settings = SubResource("LabelSettings_i3nvj")
-metadata/_edit_use_anchors_ = true
-
 [node name="VBoxContainer" type="VBoxContainer" parent="."]
 layout_mode = 1
 anchors_preset = -1
-anchor_left = 0.611
-anchor_top = 0.633
-anchor_right = 0.874
-anchor_bottom = 0.873
-offset_left = 0.8800049
-offset_top = 0.35998535
-offset_right = -0.080078125
-offset_bottom = 0.15997314
+anchor_left = 0.642
+anchor_top = 0.587
+anchor_right = 0.892
+anchor_bottom = 0.75000006
+offset_left = 0.35998535
+offset_top = 0.039978027
+offset_right = -0.64001465
+offset_bottom = -6.1035156e-05
 grow_horizontal = 2
 grow_vertical = 2
 theme = ExtResource("2_i3nvj")
 theme_override_constants/separation = 20
 metadata/_edit_group_ = true
 
-[node name="new game" type="Button" parent="VBoxContainer" groups=["Buttons"]]
+[node name="new game" type="Button" parent="VBoxContainer"]
 layout_mode = 2
 focus_neighbor_bottom = NodePath("../load")
 focus_next = NodePath("../load")
 theme = ExtResource("2_i3nvj")
 text = "New game"
 
-[node name="load" type="Button" parent="VBoxContainer" groups=["Buttons"]]
+[node name="load" type="Button" parent="VBoxContainer"]
 layout_mode = 2
 focus_neighbor_top = NodePath("../new game")
 focus_neighbor_bottom = NodePath("../settings")
@@ -79,7 +58,7 @@ focus_previous = NodePath("../new game")
 theme = ExtResource("2_i3nvj")
 text = "Load"
 
-[node name="settings" type="Button" parent="VBoxContainer" groups=["Buttons"]]
+[node name="settings" type="Button" parent="VBoxContainer"]
 layout_mode = 2
 focus_neighbor_top = NodePath("../load")
 focus_neighbor_bottom = NodePath("../exit")
@@ -88,7 +67,7 @@ focus_previous = NodePath("../load")
 theme = ExtResource("2_i3nvj")
 text = "Settings"
 
-[node name="exit" type="Button" parent="VBoxContainer" groups=["Buttons"]]
+[node name="exit" type="Button" parent="VBoxContainer"]
 layout_mode = 2
 focus_neighbor_top = NodePath("../settings")
 focus_next = NodePath("../new game")
@@ -96,13 +75,7 @@ focus_previous = NodePath("../settings")
 theme = ExtResource("2_i3nvj")
 text = "Exit"
 
-[node name="Choice" parent="." instance=ExtResource("3_ohoe0")]
-visible = false
-layout_mode = 1
-
-[node name="Node" type="Node" parent="."]
-
-[node name="MainMenuMusic" type="AudioStreamPlayer" parent="Node"]
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("2_14r8h")
 autoplay = true
 bus = &"Music"
@@ -112,7 +85,24 @@ parameters/looping = true
 visible = false
 layout_mode = 1
 
-[connection signal="resized" from="." to="." method="_on_resized"]
+[node name="TextureRect" type="TextureRect" parent="."]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.10300001
+anchor_top = 0.15100001
+anchor_right = 0.45400003
+anchor_bottom = 0.47200003
+offset_left = -0.2894287
+offset_top = -0.08000183
+offset_right = -0.6212158
+offset_bottom = 0.23995972
+texture = ExtResource("5_qsf8u")
+
+[node name="TextureRect2" type="TextureRect" parent="."]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
 [connection signal="pressed" from="VBoxContainer/new game" to="." method="_on_new_game_pressed"]
 [connection signal="pressed" from="VBoxContainer/load" to="." method="_on_load_pressed"]
 [connection signal="pressed" from="VBoxContainer/settings" to="." method="_on_settings_pressed"]
