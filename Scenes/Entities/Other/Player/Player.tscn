@@ -1,4 +1,4 @@
-[gd_scene load_steps=58 format=3 uid="uid://dn2dpf0haseiq"]
+[gd_scene load_steps=61 format=3 uid="uid://dn2dpf0haseiq"]
 
 [ext_resource type="Script" uid="uid://3mc7lvum6rxd" path="res://Source/Entities/Other/Player/player.gd" id="1_nfgiu"]
 [ext_resource type="AudioStream" uid="uid://dnarg1ul4lk5n" path="res://Sounds/SFX/Player/Walk/wooden_floor_walk_high.wav" id="2_44eud"]
@@ -16,6 +16,18 @@
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_xinig"]
 radius = 12.0
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_3w1y7"]
+atlas = ExtResource("13_kjs6a")
+region = Rect2(48, 588, 48, 49)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_qqbxj"]
+atlas = ExtResource("13_kjs6a")
+region = Rect2(96, 588, 48, 49)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_w0kyu"]
+atlas = ExtResource("13_kjs6a")
+region = Rect2(144, 588, 48, 49)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_kjs6a"]
 atlas = ExtResource("13_kjs6a")
@@ -171,6 +183,20 @@ region = Rect2(96, 0, 48, 49)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_t1uql"]
 animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_3w1y7")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_qqbxj")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_w0kyu")
+}],
+"loop": false,
+"name": &"dash",
+"speed": 12.0
+}, {
 "frames": [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_kjs6a")
@@ -479,12 +505,10 @@ scale = Vector2(1.5, 1.5)
 [node name="top" type="AnimatedSprite2D" parent="animation"]
 z_index = 1
 sprite_frames = SubResource("SpriteFrames_t1uql")
-animation = &"swing_knife"
+animation = &"dash"
 offset = Vector2(0, -11)
 
 [node name="legs" type="AnimatedSprite2D" parent="animation"]
 sprite_frames = SubResource("SpriteFrames_3w1y7")
 animation = &"walk"
 offset = Vector2(0, -11)
-
-[connection signal="animation_finished" from="animation/top" to="." method="_on_top_animation_finished"]

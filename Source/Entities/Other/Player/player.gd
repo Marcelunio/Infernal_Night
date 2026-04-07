@@ -6,7 +6,7 @@ var dungeon: Node2D
 #movement
 @export var speed: float = 400
 @export var dash_speed: float = 1200
-@export var dash_duration: float = 0.2
+@export var dash_duration: float = 0.25
 @export var dash_cooldown: float = 0.5
 
 var dashing: bool = false
@@ -126,16 +126,26 @@ func dash():
 		var progress = dash_time / dash_duration
 		var current_speed = lerp(dash_speed, 0.0, progress)
 		velocity = dash_direction * current_speed
+		$animation/legs.visible=false
+		$animation/top.play("dash")
 		move_and_slide()
 		await get_tree().process_frame
-	
+		
 	dashing = false
+	$animation/legs.visible=true
+	if(inventory.current_weapon==null):
+		$animation/top.play("unarmed")
+	else:
+		if inventory.current_weapon.is_in_group("weapon-white-switch"):
+			$animation/top.play_backwards("swing_"+inventory.current_weapon.weapon_name+ ( "_left" if !attacking_from_left  else "_right") )
+		else: $animation/top.play_backwards("pickup_"+inventory.current_weapon.weapon_name)
+		$animation/top.pause()
 	velocity = Vector2.ZERO
 	set_collision_mask_value(7, true)
 	
 	await get_tree().create_timer(dash_cooldown).timeout
 	can_dash = true
-
+	
 func check_door_transition():
 	var current_room = dungeon.get_current_room()
 	if current_room == null:

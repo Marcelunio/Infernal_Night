@@ -7,7 +7,7 @@
 
 [sub_resource type="LabelSettings" id="LabelSettings_i3nvj"]
 font_size = 236
-font_color = Color(0.92, 0.41216, 0.2852, 1)
+font_color = Color(0.8693964, 0.31169686, 0.32710084, 1)
 
 [node name="MainMenu" type="Control"]
 process_mode = 3
@@ -31,14 +31,14 @@ theme = ExtResource("2_i3nvj")
 [node name="Label" type="Label" parent="."]
 layout_mode = 1
 anchors_preset = -1
-anchor_left = 0.35000002
-anchor_top = 0.372
-anchor_right = 0.35000002
-anchor_bottom = 0.372
-offset_left = -382.00006
-offset_top = -238.76001
-offset_right = 381.99994
-offset_bottom = 238.23999
+anchor_left = 0.15100001
+anchor_top = 0.15100001
+anchor_right = 0.549
+anchor_bottom = 0.59300005
+offset_left = 0.07998657
+offset_top = -0.08000183
+offset_right = -0.080078125
+offset_bottom = -0.44006348
 grow_horizontal = 2
 grow_vertical = 2
 theme = ExtResource("2_i3nvj")
