@@ -19,6 +19,11 @@ var is_cleared: bool = false
 var enemies_spawned: bool = false
 var enemy_counter: int = 0
 
+
+#SFX
+@onready var audio_player_door: AudioStreamPlayer = $Sounds/Door
+@export var door_sounds: Array[AudioStream] = []
+
 func setup(pos: Vector2i):
 	grid_position = pos
 	print(get_path())
@@ -32,6 +37,9 @@ func enter_room():
 			for door in doors.values():
 				door.set_collision_mask_value(1, true)
 				door.get_child(0).play("close")
+				if not audio_player_door.playing:
+					audio_player_door.stream = door_sounds.pick_random()
+					audio_player_door.play()
 
 func exit_room():
 	visible = false
@@ -72,6 +80,10 @@ func clear_room():
 	for door in doors.values():
 		door.set_collision_mask_value(1, false)
 		door.get_child(0).play("open")
+		
+	if not audio_player_door.playing:
+		audio_player_door.stream = door_sounds.pick_random()
+		audio_player_door.play()
 	emit_signal("room_cleared")
 
 func on_enemy_died():

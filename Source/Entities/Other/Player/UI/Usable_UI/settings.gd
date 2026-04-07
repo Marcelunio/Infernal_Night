@@ -13,7 +13,8 @@ var Gameplay_UI: Node
 const BUSES = {
 	"Master": "Master",
 	"Music": "Music",
-	"SFX": "SFX"
+	"SFX": "SFX",
+	"UI": "UI"
 }
 
 const KEY_BINDS = {
@@ -205,6 +206,7 @@ func _build_controls_list() -> void:
 		label.text = labelText
 		button.text = InputMap.action_get_events(keyBind)[0].as_text()
 		button.pressed.connect(_on_keyBind_pressed.bind(keyBind, button))
+		button.add_to_group("Buttons")
 		
 		buttonsArray.append(button)
 		hBox.add_child(label)

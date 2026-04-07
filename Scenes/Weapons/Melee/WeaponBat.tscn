@@ -23,7 +23,6 @@ swing_sounds = Array[AudioStreamWAV]([ExtResource("2_7mxlh"), ExtResource("3_6i4
 weapon_name = "bat"
 throw_force = 1050.0
 weapon_delay = 1.0
-weapon_damage = 5.0
 
 [node name="WeaponSprite" type="Sprite2D" parent="."]
 texture = ExtResource("2_nsli5")

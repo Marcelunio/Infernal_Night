@@ -18,6 +18,7 @@ func _ready() -> void:
 		button.text = "play"
 
 		button.pressed.connect(_pressed.bind(room))
+		button.add_to_group("Buttons")
 
 		v_box.add_child(label)
 		v_box.add_child(button)

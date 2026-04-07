@@ -321,8 +321,14 @@ func take_damage(amount: int, _hit_pause := 0.0) -> void:
 	if dead:
 		return
 	hp -= amount
+	
 	if hp <= 0:
 		die()
+	
+	if _hit_pause > 0.0:
+		frozen = true
+		await get_tree().create_timer(_hit_pause).timeout
+		frozen = false
 
 func die() -> void:
 	dead = true

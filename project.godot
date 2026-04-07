@@ -49,6 +49,7 @@ weapon-throwable-nongranate=""
 weapon-throwable=""
 weapon-ranged=""
 weapon-white-switch=""
+Buttons=""
 
 [input]
 

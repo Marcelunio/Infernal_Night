@@ -16,4 +16,5 @@ func _on_body_entered(body: Node2D) -> void:
 	elif type == "coin":
 		body.get_node("InventoryMenager").coins += coin_value
 		body.get_node("InventoryMenager").emit_signal("UI_InventoryCoinChanged")
+		body._audio_pick_up_play()
 		self.queue_free()

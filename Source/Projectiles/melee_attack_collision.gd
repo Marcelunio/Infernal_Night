@@ -55,6 +55,10 @@ func setup(setup_radius, setup_angle, setup_entity, effect_sprite, setup_throwab
 	if weapon_origin.is_in_group("weapon-white"):
 			var direction = get_global_mouse_position() - entity.global_position
 			rotation = direction.angle() + 0.5 * PI		
+			direction = direction.normalized()
+			
+			
+			$Sprite2D.global_position = entity.global_position + (direction * 40)
 	
 	var collision_shape = $"DetectCollision"
 	collision_shape.shape.radius = radius

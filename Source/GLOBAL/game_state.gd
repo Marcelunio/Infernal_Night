@@ -8,6 +8,14 @@ var room_number:int #przekazywane miedzy rootem mainmenu a main (choice.gd -> du
 
 var screen_stack: Array = [] #kontroluje nakladki i pauzy UI
 
+var audioClick: AudioStreamPlayer#dzwiek UI
+
+func _ready() -> void:
+	audioClick = AudioStreamPlayer.new()
+	audioClick.process_mode = Node.PROCESS_MODE_ALWAYS
+	audioClick.bus = "UI"
+	add_child(audioClick)
+
 func push_screen(screen_name: String):#screen_stack method
 	screen_stack.append(screen_name)
 	check_screen_stack()
@@ -39,3 +47,7 @@ func _set_gameplay_ui(visibility: bool) -> void:#helper function for screen_stac
 	if player:
 		var gameplay_UI = player.get_node("Gameplay_UI")
 		gameplay_UI._change(gameplay_UI, visibility)
+
+func _audio_click_UI(stream: AudioStream) -> void:#UI audio player
+	audioClick.stream = stream
+	audioClick.play()

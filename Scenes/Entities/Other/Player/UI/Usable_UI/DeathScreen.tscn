@@ -47,7 +47,7 @@ text = "Mortis"
 label_settings = SubResource("LabelSettings_6x73l")
 horizontal_alignment = 1
 
-[node name="Button" type="Button" parent="VBoxContainer"]
+[node name="Button" type="Button" parent="VBoxContainer" groups=["Buttons"]]
 layout_mode = 2
 text = "Main menu"
 

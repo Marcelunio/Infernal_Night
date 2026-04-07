@@ -1,10 +1,12 @@
-[gd_scene load_steps=8 format=3 uid="uid://bxg5woeatx4uj"]
+[gd_scene load_steps=10 format=3 uid="uid://bxg5woeatx4uj"]
 
 [ext_resource type="Script" uid="uid://bllmlfn3uam3l" path="res://Source/Weapons/Guns/weapon_single_fire.gd" id="1_ecfbt"]
 [ext_resource type="Texture2D" uid="uid://iihv6tgwjj5o" path="res://Assets/Weapons/Guns/revolver.png" id="2_ecfbt"]
-[ext_resource type="AudioStream" uid="uid://dytd6hdanbff1" path="res://Sounds/SFX/Guns/Revolver/revolver_shot_high.wav" id="2_xta7o"]
-[ext_resource type="AudioStream" uid="uid://cpvu42u36g7g4" path="res://Sounds/SFX/Guns/Revolver/revolver_shot_low.wav" id="3_08vjj"]
-[ext_resource type="AudioStream" uid="uid://dpobdld6bes7y" path="res://Sounds/SFX/Guns/Revolver/revolver_reload.wav" id="4_08vjj"]
+[ext_resource type="AudioStream" uid="uid://dytd6hdanbff1" path="res://Sounds/SFX/Guns/9mmGuns/Revolver/revolver_shot_high.wav" id="2_xta7o"]
+[ext_resource type="AudioStream" uid="uid://cpvu42u36g7g4" path="res://Sounds/SFX/Guns/9mmGuns/Revolver/revolver_shot_low.wav" id="3_08vjj"]
+[ext_resource type="AudioStream" uid="uid://dpobdld6bes7y" path="res://Sounds/SFX/Guns/9mmGuns/Revolver/revolver_reload.wav" id="4_08vjj"]
+[ext_resource type="AudioStream" uid="uid://c8b5r1kcwa8ev" path="res://Sounds/SFX/Guns/EmptyMagazine/empty_magazine_high.wav" id="5_jctpm"]
+[ext_resource type="AudioStream" uid="uid://ddhhntdigu5o2" path="res://Sounds/SFX/Guns/EmptyMagazine/empty_magazine_low.wav" id="6_4qsfj"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_phod8"]
 size = Vector2(65, 32)
@@ -20,6 +22,7 @@ linear_damp = 1.065
 script = ExtResource("1_ecfbt")
 shoot_sounds = Array[AudioStreamWAV]([ExtResource("2_xta7o"), ExtResource("3_08vjj")])
 reload_sounds = Array[AudioStreamWAV]([ExtResource("4_08vjj")])
+empty_sounds = Array[AudioStreamWAV]([ExtResource("5_jctpm"), ExtResource("6_4qsfj")])
 weapon_name = "revolver"
 throw_force = 950.0
 weapon_delay = 0.65

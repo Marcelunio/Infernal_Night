@@ -1,11 +1,13 @@
-[gd_scene load_steps=9 format=3 uid="uid://da1ap0hsfecta"]
+[gd_scene load_steps=11 format=3 uid="uid://da1ap0hsfecta"]
 
 [ext_resource type="Script" uid="uid://b72f2mdgd5on3" path="res://Source/Weapons/Guns/weapon_rifle.gd" id="1_aaf5g"]
 [ext_resource type="Texture2D" uid="uid://c46kl3pv4efvc" path="res://Assets/Weapons/Guns/uzi.png" id="2_aaf5g"]
-[ext_resource type="AudioStream" uid="uid://bistnbhcpw2o1" path="res://Sounds/SFX/Guns/Uzi/uzi_shot_high.wav" id="2_r2874"]
-[ext_resource type="AudioStream" uid="uid://bdkt5hlhlldt5" path="res://Sounds/SFX/Guns/Uzi/uzi_shot_low.wav" id="3_f1b70"]
-[ext_resource type="AudioStream" uid="uid://eg35epxx6peb" path="res://Sounds/SFX/Guns/Uzi/uzi_shot_mid.wav" id="4_eecgg"]
-[ext_resource type="AudioStream" uid="uid://cdc7tt82i48ae" path="res://Sounds/SFX/Guns/Uzi/uzi_reload.wav" id="5_srpdc"]
+[ext_resource type="AudioStream" uid="uid://bistnbhcpw2o1" path="res://Sounds/SFX/Guns/9mmGuns/Uzi/uzi_shot_high.wav" id="2_r2874"]
+[ext_resource type="AudioStream" uid="uid://bdkt5hlhlldt5" path="res://Sounds/SFX/Guns/9mmGuns/Uzi/uzi_shot_low.wav" id="3_f1b70"]
+[ext_resource type="AudioStream" uid="uid://eg35epxx6peb" path="res://Sounds/SFX/Guns/9mmGuns/Uzi/uzi_shot_mid.wav" id="4_eecgg"]
+[ext_resource type="AudioStream" uid="uid://cdc7tt82i48ae" path="res://Sounds/SFX/Guns/9mmGuns/Uzi/uzi_reload.wav" id="5_srpdc"]
+[ext_resource type="AudioStream" uid="uid://c8b5r1kcwa8ev" path="res://Sounds/SFX/Guns/EmptyMagazine/empty_magazine_high.wav" id="6_1an4v"]
+[ext_resource type="AudioStream" uid="uid://ddhhntdigu5o2" path="res://Sounds/SFX/Guns/EmptyMagazine/empty_magazine_low.wav" id="7_l846m"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_phod8"]
 size = Vector2(63, 48)
@@ -25,6 +27,7 @@ spread_increase = 1.5
 base_spread = 2.0
 shoot_sounds = Array[AudioStreamWAV]([ExtResource("2_r2874"), ExtResource("3_f1b70"), ExtResource("4_eecgg")])
 reload_sounds = Array[AudioStreamWAV]([ExtResource("5_srpdc")])
+empty_sounds = Array[AudioStreamWAV]([ExtResource("6_1an4v"), ExtResource("7_l846m")])
 weapon_name = "uzi"
 throw_force = 1000.0
 weapon_delay = 0.025

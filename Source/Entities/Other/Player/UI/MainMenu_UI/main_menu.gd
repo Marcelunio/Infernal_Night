@@ -4,6 +4,8 @@ extends Control
 
 func _ready() -> void:
 	Settings.closed.connect(_on_settings_closed)
+	for button in get_tree().get_nodes_in_group("Buttons"):
+		button.pressed.connect(_on_any_button_pressed)
 	
 func _on_new_game_pressed() -> void:
 	$Choice.start()
@@ -24,3 +26,6 @@ func _on_exit_pressed() -> void:
 
 func _on_settings_closed():
 	visible = true
+
+func _on_any_button_pressed() -> void:
+	GameState._audio_click_UI(load("res://Sounds/SFX/UI/button_click.wav"))

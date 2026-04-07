@@ -40,8 +40,16 @@ var vanInput:bool = false
 var isOnVan: bool = false
 
 #SFX
-@onready var audio_player = $AudioStreamPlayer
+@onready var audio_player_walk = $Sounds/Walk
+@onready var audio_player_dash = $Sounds/Dash
+@onready var audio_player_ambient = $Sounds/Ambient
+@onready var audio_player_pick_up = $Sounds/PickUp
+@onready var audio_player_throw = $Sounds/Throw
 @export var walk_sounds: Array[AudioStreamWAV] = []
+@export var dash_sounds: Array[AudioStreamWAV] = []
+@export var ambient_sounds: Array[AudioStreamWAV] = []
+@export var pick_up_sounds: Array[AudioStreamWAV] = []
+@export var throw_sounds: Array[AudioStreamWAV] = []
 
 #signal to health_bar_display.gd
 signal UI_HealthBarDisplay(max_hp, hp)
@@ -52,6 +60,7 @@ func _ready():
 	
 	$"Gameplay_UI/CanvasLayer/WeaponDisplay".setup(inventory)
 	UI_HealthBarDisplay.emit.call_deferred(max_hp, hp)
+	_start_ambient_timer()
 	
 
 func _unhandled_input(event: InputEvent):#obsługa nie obsluzonych inputow
@@ -104,9 +113,9 @@ func _handle_player_movement():#obsluguje ruch gracza
 	velocity = input_dir * speed
 	
 	if velocity != Vector2.ZERO:
-		if not audio_player.playing:
-			audio_player.stream = walk_sounds.pick_random()
-			audio_player.play()
+		if not audio_player_walk.playing:
+			audio_player_walk.stream = walk_sounds.pick_random()
+			audio_player_walk.play()
 		
 	move_and_slide()
 	
@@ -118,6 +127,9 @@ func dash():
 	can_dash = false
 	dash_direction = (get_global_mouse_position() - global_position).normalized()
 	set_collision_mask_value(7, false)
+	
+	audio_player_dash.stream = dash_sounds.pick_random()
+	audio_player_dash.play()
 	
 	var dash_time = 0.0
 	while dash_time < dash_duration:
@@ -188,6 +200,8 @@ func _handle_weapon_action():#obslugue wszelkie interakcje gracza
 			if Input.is_action_just_pressed("shoot"):
 				grenades_thrown += 1
 				inventory.throw(velocity,weapon)
+				audio_player_throw.stream = throw_sounds.pick_random()
+				audio_player_throw.play()
 				if(inventory.current_weapon!=null):
 					$animation/top.play("pickup_"+inventory.current_weapon.weapon_name)
 				else:
@@ -209,6 +223,8 @@ func _handle_weapon_action():#obslugue wszelkie interakcje gracza
 
 		if Input.is_action_just_pressed("throw"):
 			inventory.throw(velocity, weapon)
+			audio_player_throw.stream = throw_sounds.pick_random()
+			audio_player_throw.play()
 			if(inventory.current_weapon!=null):
 				$animation/top.play("pickup_"+inventory.current_weapon.weapon_name)
 			else:
@@ -236,9 +252,11 @@ func _handle_player_pick_up():#obslguje poczatkowy proces podnoszenia broni
 				inventory.nearest_weapon.pick_up(self)
 				var picked_up=inventory.current_weapon.weapon_name
 				$animation/top.play("pickup_"+picked_up)
+				_audio_pick_up_play()
 			
 			if inventory.nearest_ammo != null:
 				inventory.nearest_ammo.ammo_pick_up(self)
+				_audio_pick_up_play()
 
 func take_damage(amount: int):#obsluga damage'a
 	hp -= amount
@@ -261,6 +279,18 @@ func heal(amount_of_healing, body) -> void:
 	hp += calc_add
 	body.queue_free()
 	emit_signal("UI_HealthBarDisplay", max_hp, hp)
+	_audio_pick_up_play()
 
 func change_door_collision(mode: bool):
 	set_collision_mask_value(8, mode)
+
+func _start_ambient_timer() -> void:
+	await get_tree().create_timer(randf_range(10.0, 30.0)).timeout
+	audio_player_ambient.stream = ambient_sounds.pick_random()
+	audio_player_ambient.play()
+	await audio_player_ambient.finished
+	_start_ambient_timer()
+
+func _audio_pick_up_play() -> void:
+	audio_player_pick_up.stream = pick_up_sounds.pick_random()
+	audio_player_pick_up.play()

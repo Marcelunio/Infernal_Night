@@ -63,14 +63,14 @@ theme = ExtResource("2_i3nvj")
 theme_override_constants/separation = 20
 metadata/_edit_group_ = true
 
-[node name="new game" type="Button" parent="VBoxContainer"]
+[node name="new game" type="Button" parent="VBoxContainer" groups=["Buttons"]]
 layout_mode = 2
 focus_neighbor_bottom = NodePath("../load")
 focus_next = NodePath("../load")
 theme = ExtResource("2_i3nvj")
 text = "New game"
 
-[node name="load" type="Button" parent="VBoxContainer"]
+[node name="load" type="Button" parent="VBoxContainer" groups=["Buttons"]]
 layout_mode = 2
 focus_neighbor_top = NodePath("../new game")
 focus_neighbor_bottom = NodePath("../settings")
@@ -79,7 +79,7 @@ focus_previous = NodePath("../new game")
 theme = ExtResource("2_i3nvj")
 text = "Load"
 
-[node name="settings" type="Button" parent="VBoxContainer"]
+[node name="settings" type="Button" parent="VBoxContainer" groups=["Buttons"]]
 layout_mode = 2
 focus_neighbor_top = NodePath("../load")
 focus_neighbor_bottom = NodePath("../exit")
@@ -88,7 +88,7 @@ focus_previous = NodePath("../load")
 theme = ExtResource("2_i3nvj")
 text = "Settings"
 
-[node name="exit" type="Button" parent="VBoxContainer"]
+[node name="exit" type="Button" parent="VBoxContainer" groups=["Buttons"]]
 layout_mode = 2
 focus_neighbor_top = NodePath("../settings")
 focus_next = NodePath("../new game")
@@ -96,15 +96,17 @@ focus_previous = NodePath("../settings")
 theme = ExtResource("2_i3nvj")
 text = "Exit"
 
-[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+[node name="Choice" parent="." instance=ExtResource("3_ohoe0")]
+visible = false
+layout_mode = 1
+
+[node name="Node" type="Node" parent="."]
+
+[node name="MainMenuMusic" type="AudioStreamPlayer" parent="Node"]
 stream = ExtResource("2_14r8h")
 autoplay = true
 bus = &"Music"
 parameters/looping = true
-
-[node name="Choice" parent="." instance=ExtResource("3_ohoe0")]
-visible = false
-layout_mode = 1
 
 [connection signal="pressed" from="VBoxContainer/new game" to="." method="_on_new_game_pressed"]
 [connection signal="pressed" from="VBoxContainer/load" to="." method="_on_load_pressed"]

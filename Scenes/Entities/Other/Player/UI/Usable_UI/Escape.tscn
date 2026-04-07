@@ -41,19 +41,19 @@ theme_override_constants/separation = 20
 layout_mode = 2
 text = "Infernal Night"
 
-[node name="resume" type="Button" parent="VBoxContainer"]
+[node name="resume" type="Button" parent="VBoxContainer" groups=["Buttons"]]
 layout_mode = 2
 text = "Resume"
 
-[node name="save" type="Button" parent="VBoxContainer"]
+[node name="save" type="Button" parent="VBoxContainer" groups=["Buttons"]]
 layout_mode = 2
 text = "save"
 
-[node name="settings" type="Button" parent="VBoxContainer"]
+[node name="settings" type="Button" parent="VBoxContainer" groups=["Buttons"]]
 layout_mode = 2
 text = "Settings"
 
-[node name="main_menu" type="Button" parent="VBoxContainer"]
+[node name="main_menu" type="Button" parent="VBoxContainer" groups=["Buttons"]]
 layout_mode = 2
 text = "main menu"
 

@@ -1,11 +1,13 @@
-[gd_scene load_steps=4 format=4 uid="uid://c1da6epqykshi"]
+[gd_scene load_steps=5 format=4 uid="uid://c1da6epqykshi"]
 
 [ext_resource type="Script" uid="uid://fyr3lou5xcva" path="res://Source/Rooms/room.gd" id="1_cucqp"]
 [ext_resource type="TileSet" uid="uid://dwjq33gve6fks" path="res://TileSets/BaseTileset.tres" id="1_sxd1d"]
+[ext_resource type="AudioStream" uid="uid://dmrcdx0wvc776" path="res://Sounds/SFX/Dungeon/Doors/creaking_door_opening.wav" id="2_67t0s"]
 [ext_resource type="PackedScene" uid="uid://bew1thjsdo13d" path="res://Scenes/Miscellaneous/Door.tscn" id="3_o5osp"]
 
 [node name="Room" type="Node2D"]
 script = ExtResource("1_cucqp")
+door_sounds = Array[AudioStream]([ExtResource("2_67t0s")])
 
 [node name="NavigationRegion2D" type="NavigationRegion2D" parent="."]
 
@@ -32,3 +34,8 @@ position = Vector2(16, 384)
 [node name="DoorUp" parent="." instance=ExtResource("3_o5osp")]
 position = Vector2(576, 16)
 rotation = 1.5707964
+
+[node name="Sounds" type="Node" parent="."]
+
+[node name="Door" type="AudioStreamPlayer" parent="Sounds"]
+bus = &"SFX"

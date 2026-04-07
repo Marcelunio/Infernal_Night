@@ -1,6 +1,6 @@
 [gd_scene load_steps=4 format=3 uid="uid://c2qitrutg26mu"]
 
-[ext_resource type="Script" uid="uid://bp5fqu66ksw1f" path="res://Source/PickUps/item.gd" id="1_bp6k1"]
+[ext_resource type="Script" path="res://Source/PickUps/item.gd" id="1_bp6k1"]
 [ext_resource type="Texture2D" uid="uid://b4o6gcl4u348t" path="res://Assets/PickUps/Money/pieniazek.png" id="2_rtoom"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_acuav"]
