@@ -12,7 +12,7 @@ var dungeon: Node2D
 var dashing: bool = false
 var can_dash: bool = true
 var dash_direction: Vector2 = Vector2.ZERO
-
+var attacking_from_left=false
 #Death screen
 var enemy_deaths: int = 0
 var shots_fired: int = 0
@@ -59,8 +59,12 @@ func _unhandled_input(event: InputEvent):#obsługa nie obsluzonych inputow
 		if event is InputEventMouseButton and event.pressed:
 			if event.button_index == MOUSE_BUTTON_WHEEL_UP:
 				inventory.next_weapon()
+				$animation/top.play("pickup_"+inventory.current_weapon.weapon_name)
 			if event.button_index == MOUSE_BUTTON_WHEEL_DOWN:
 				inventory.previous_weapon()
+				$animation/top.play("pickup_"+inventory.current_weapon.weapon_name)
+		
+		
 
 func _physics_process(delta):#obsluga zdarzen co klatkowych
 	if not dashing:
@@ -74,6 +78,7 @@ func _physics_process(delta):#obsluga zdarzen co klatkowych
 		#_handle_tileMap_detection()
 
 func _handle_player_movement():#obsluguje ruch gracza
+	var weapon = inventory.current_weapon
 	var input_dir = Vector2.ZERO
 	if Input.is_action_pressed("move_up"):
 		input_dir.y -= 1
@@ -89,9 +94,13 @@ func _handle_player_movement():#obsluguje ruch gracza
 		
 	if input_dir != Vector2.ZERO:
 		input_dir = input_dir.normalized()
-		$PlayerSprites.play()
+		if(weapon==null):
+			$animation/top.play("unarmed")
+		$animation/legs.play()
 	else:
-		$PlayerSprites.stop()
+		if($animation/top.get_animation()=="unarmed"):
+			$animation/top.stop()
+		$animation/legs.stop()
 	
 	velocity = input_dir * speed
 	
@@ -153,6 +162,7 @@ func check_door_transition():
 func _handle_player_rotation():#obsluguje rotacje gracza
 	# Obrót w stronę kursora
 	rotation = (get_global_mouse_position() - global_position).angle() + 0.5*PI
+	$animation/legs.rotation=-rotation +get_position_delta().angle() + 0.5*PI
 
 func _handle_weapon_action():#obslugue wszelkie interakcje gracza
 	var weapon = inventory.current_weapon
@@ -169,7 +179,20 @@ func _handle_weapon_action():#obslugue wszelkie interakcje gracza
 			if Input.is_action_just_pressed("shoot"):
 				grenades_thrown += 1
 				inventory.throw(velocity,weapon)
-
+				if(inventory.current_weapon!=null):
+					$animation/top.play("pickup_"+inventory.current_weapon.weapon_name)
+				else:
+					$animation/top.play("unarmed")
+		elif weapon.is_in_group("weapon-white"):
+			if Input.is_action_just_pressed("shoot"):
+				shots_fired +=1
+				
+				if(weapon.shoot(global_position, self)):
+					if weapon.is_in_group("weapon-white-switch"):
+						$animation/top.play("swing_"+weapon.weapon_name+ ( "_left" if attacking_from_left  else "_right") )
+						attacking_from_left=!attacking_from_left
+					else:
+						$animation/top.play("swing_"+weapon.weapon_name)
 		else:
 			if Input.is_action_just_pressed("shoot"):
 				shots_fired +=1
@@ -177,6 +200,10 @@ func _handle_weapon_action():#obslugue wszelkie interakcje gracza
 
 		if Input.is_action_just_pressed("throw"):
 			inventory.throw(velocity, weapon)
+			if(inventory.current_weapon!=null):
+				$animation/top.play("pickup_"+inventory.current_weapon.weapon_name)
+			else:
+				$animation/top.play("unarmed")
 
 		if Input.is_action_pressed("reload"):
 			if weapon.is_in_group("weapon-ranged"):
@@ -198,6 +225,8 @@ func _handle_player_pick_up():#obslguje poczatkowy proces podnoszenia broni
 		if Input.is_action_just_pressed("pick_up"):
 			if inventory.nearest_weapon != null:
 				inventory.nearest_weapon.pick_up(self)
+				var picked_up=inventory.current_weapon.weapon_name
+				$animation/top.play("pickup_"+picked_up)
 			
 			if inventory.nearest_ammo != null:
 				inventory.nearest_ammo.ammo_pick_up(self)
