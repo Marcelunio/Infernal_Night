@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://cqx0ab10hyexx"
-path="res://.godot/imported/player_sprites (2).png-f7c78eb4cff8c611622a8ea82b5860f3.ctex"
+uid="uid://bbxnuh8tus8oi"
+path="res://.godot/imported/bat_swing.png-f10dcf6ebbc4ef10f7750d8a37ee78e1.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/Entities/Other/Player/player_sprites (2).png"
-dest_files=["res://.godot/imported/player_sprites (2).png-f7c78eb4cff8c611622a8ea82b5860f3.ctex"]
+source_file="res://Assets/Weapons/Projectiles/bat_swing.png"
+dest_files=["res://.godot/imported/bat_swing.png-f10dcf6ebbc4ef10f7750d8a37ee78e1.ctex"]
 
 [params]
 

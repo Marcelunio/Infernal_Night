@@ -1,9 +1,13 @@
-[gd_scene load_steps=5 format=3 uid="uid://ck3vvr01kg3mh"]
+[gd_scene load_steps=6 format=3 uid="uid://ck3vvr01kg3mh"]
 
 [ext_resource type="Script" uid="uid://dypo0x1s5k1jg" path="res://Source/Entities/Other/Player/UI/MainMenu_UI/main_menu.gd" id="1_db2sy"]
 [ext_resource type="AudioStream" uid="uid://b6rrt8uf6kl3v" path="res://Sounds/Music/Main_menu.ogg" id="2_14r8h"]
 [ext_resource type="Theme" uid="uid://dm5yxvoyhb3ra" path="res://Assets/UI/Menus/Main_menu.tres" id="2_i3nvj"]
 [ext_resource type="PackedScene" uid="uid://dcb3ulrcsrnf1" path="res://Scenes/Floors/Main/Choice.tscn" id="3_ohoe0"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_i3nvj"]
+font_size = 236
+font_color = Color(0.8693964, 0.31169686, 0.32710084, 1)
 
 [node name="MainMenu" type="Control"]
 process_mode = 3
@@ -27,32 +31,32 @@ theme = ExtResource("2_i3nvj")
 [node name="Label" type="Label" parent="."]
 layout_mode = 1
 anchors_preset = -1
-anchor_left = 0.293
-anchor_top = 0.32500002
-anchor_right = 0.293
-anchor_bottom = 0.32500002
-offset_left = -376.56
-offset_top = -235.00003
-offset_right = 376.44
-offset_bottom = 234.99997
+anchor_left = 0.15100001
+anchor_top = 0.15100001
+anchor_right = 0.549
+anchor_bottom = 0.59300005
+offset_left = 0.07998657
+offset_top = -0.08000183
+offset_right = -0.080078125
+offset_bottom = -0.44006348
 grow_horizontal = 2
 grow_vertical = 2
 theme = ExtResource("2_i3nvj")
-theme_type_variation = &"HeaderLarge"
 text = "Infernal
-  Night"
-visible_characters_behavior = 1
+Night"
+label_settings = SubResource("LabelSettings_i3nvj")
 
 [node name="VBoxContainer" type="VBoxContainer" parent="."]
 layout_mode = 1
 anchors_preset = -1
-anchor_left = 0.79300004
-anchor_top = 0.5
-anchor_right = 0.79300004
-anchor_bottom = 0.675
-offset_left = -240.56006
-offset_top = 16.0
-offset_right = 240.43994
+anchor_left = 0.73300004
+anchor_top = 0.587
+anchor_right = 0.8
+anchor_bottom = 0.75000006
+offset_left = -174.3601
+offset_top = 0.039978027
+offset_right = 178.0
+offset_bottom = -6.1035156e-05
 grow_horizontal = 2
 grow_vertical = 2
 theme = ExtResource("2_i3nvj")

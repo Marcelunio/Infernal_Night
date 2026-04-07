@@ -19,17 +19,16 @@ class_name Enemy
 
 # FORMACJA
 @export var formation_radius := 80.0
-@export var formation_refresh_time := 3.0
 
 # =========================
-# STATE MACHINE
+# STATE 
 # =========================
 enum State { APPROACH, STRAFE }
 
 var state: State = State.APPROACH
 
 # =========================
-# ZMIENNE 
+# ZMIENNE
 # =========================
 var hp: int
 var player: Node2D = null
@@ -49,20 +48,9 @@ var strafe_dir := 1
 var strafe_timer := 0.0
 var strafe_blend := 0.0
 
-# formacja
-var formation_offset := Vector2.ZERO
-var formation_refresh_timer := 0.0
-
-# stuck detection
-var stuck_timer := 0.0
-const STUCK_TIMEOUT := 1.5
-
 # debug
 var debug_rays: Array = []
 
-# =========================
-# NODY
-# =========================
 @onready var agent: NavigationAgent2D = $EnemyNavigation
 
 signal enemy_died
@@ -76,25 +64,23 @@ func _ready() -> void:
 	move_dir = Vector2.RIGHT.rotated(randf() * TAU)
 	face_dir = move_dir
 	strafe_dir = 1 if randf() > 0.5 else -1
+
+	agent.target_desired_distance = randf_range(20.0, formation_radius)
+	agent.path_desired_distance = randf_range(10.0, 30.0)
+
 	_find_player_async()
 
 func _find_player_async() -> void:
 	while player == null:
 		player = get_tree().get_first_node_in_group("player")
 		await get_tree().process_frame
-	await get_tree().process_frame
-	_randomize_formation_offset()
 
-# =========================
-# GŁÓWNA PĘTLA
-# =========================
 func _physics_process(delta: float) -> void:
 	if dead or frozen or player == null:
 		return
 
 	_update_shoot_timer(delta)
 	_update_state()
-	_update_formation(delta)
 	_process_state(delta)
 	_update_rotation(delta)
 
@@ -120,37 +106,6 @@ func _update_state() -> void:
 				state = State.APPROACH
 
 # =========================
-# FORMACJA
-# =========================
-func _randomize_formation_offset() -> void:
-	if player == null:
-		return
-
-	var map := agent.get_navigation_map()
-
-	for _i in 8:
-		var angle := randf() * TAU
-		var desired: Vector2 = Vector2(cos(angle), sin(angle)) * formation_radius
-		var target: Vector2 = player.global_position + desired
-		var closest: Vector2 = NavigationServer2D.map_get_closest_point(map, target)
-
-		if closest.distance_to(target) < 32.0:
-			formation_offset = closest - player.global_position
-			return
-
-	formation_offset = Vector2.ZERO
-
-func _update_formation(delta: float) -> void:
-	if state == State.STRAFE:
-		return
-	var dist := global_position.distance_to(player.global_position)
-	if dist > formation_radius * 1.5:
-		formation_refresh_timer -= delta
-		if formation_refresh_timer <= 0.0:
-			_randomize_formation_offset()
-			formation_refresh_timer = formation_refresh_time + randf_range(-0.5, 0.5)
-
-# =========================
 # PRZETWARZANIE STANU
 # =========================
 func _process_state(delta: float) -> void:
@@ -170,30 +125,28 @@ func _process_state(delta: float) -> void:
 # =========================
 func _do_approach(delta: float) -> void:
 	var dist := global_position.distance_to(player.global_position)
+
 	if dist < formation_radius * 0.8 and can_see_player_cone():
 		face_dir = (player.global_position - global_position).normalized()
 		velocity = Vector2.ZERO
-		stuck_timer = 0.0
 		move_and_slide()
 		return
 
-	agent.target_position = player.global_position + formation_offset
+	var map := agent.get_navigation_map()
+	var safe_target := NavigationServer2D.map_get_closest_point(map, player.global_position)
+	agent.target_position = safe_target
 
 	if agent.is_navigation_finished():
 		face_dir = (player.global_position - global_position).normalized()
 		velocity = Vector2.ZERO
-		stuck_timer += delta
-		if stuck_timer > STUCK_TIMEOUT:
-			stuck_timer = 0.0
-			_randomize_formation_offset()
-
 		move_and_slide()
 		return
 
-	stuck_timer = 0.0
-
 	var next_point := agent.get_next_path_position()
 	var desired_dir := (next_point - global_position).normalized()
+
+	desired_dir = desired_dir.rotated(randf_range(-0.15, 0.15))
+
 	move_dir = move_dir.slerp(desired_dir, turn_speed * delta).normalized()
 	face_dir = move_dir
 
@@ -222,15 +175,16 @@ func _do_strafe(delta: float) -> void:
 	velocity = perpendicular * strafe_speed
 	move_and_slide()
 
-# =========================
-# BLEND DO STRAFE
-# =========================
 func _do_blend_to_strafe(delta: float) -> void:
 	var nav_velocity := Vector2.ZERO
-	agent.target_position = player.global_position + formation_offset
+	var map := agent.get_navigation_map()
+	var safe_target := NavigationServer2D.map_get_closest_point(map, player.global_position)
+	agent.target_position = safe_target
+
 	if not agent.is_navigation_finished():
 		var next_point := agent.get_next_path_position()
 		var desired_dir := (next_point - global_position).normalized()
+		desired_dir = desired_dir.rotated(randf_range(-0.15, 0.15))
 		move_dir = move_dir.slerp(desired_dir, turn_speed * delta).normalized()
 		nav_velocity = move_dir * speed
 
@@ -244,7 +198,7 @@ func _do_blend_to_strafe(delta: float) -> void:
 	face_dir = move_dir.slerp(to_player, strafe_blend).normalized()
 
 # =========================
-# ROTACJA 
+# ROTACJA
 # =========================
 func _update_rotation(delta: float) -> void:
 	rotation = lerp_angle(rotation, face_dir.angle(), turn_speed * delta)
@@ -277,6 +231,17 @@ func can_see_player_cone() -> bool:
 		return false
 
 	var space_state := get_world_2d().direct_space_state
+	var pre_query := PhysicsRayQueryParameters2D.create(global_position, player.global_position)
+	pre_query.exclude = [self]
+	pre_query.collision_mask = 0xFFFFFFFF & ~(2 | 4)
+	var pre_result := space_state.intersect_ray(pre_query)
+
+	if not pre_result.is_empty() and pre_result["collider"] != player:
+		if debug_mode:
+			debug_rays.clear()
+			queue_redraw()
+		return false
+
 	var base_angle := rotation
 	var hit_player := false
 
@@ -335,6 +300,9 @@ func can_shoot() -> bool:
 	var result := space_state.intersect_ray(query)
 	if result.is_empty():
 		return true
+
+	if result["collider"].is_in_group("enemy"):
+		return false
 
 	return result["collider"] == player
 
