@@ -1,0 +1,18 @@
+[gd_scene load_steps=3 format=3 uid="uid://boehv7yomvaga"]
+
+[ext_resource type="Script" uid="uid://bwi8l7bdjbt4g" path="res://TEST/van_inventory_ui.gd" id="1_omb12"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_y1gts"]
+bg_color = Color(0.015686275, 0.015686275, 0.015686275, 0.34117648)
+
+[node name="VanInventoryUI" type="CanvasLayer"]
+process_mode = 3
+script = ExtResource("1_omb12")
+
+[node name="PanelContainer" type="PanelContainer" parent="."]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_y1gts")

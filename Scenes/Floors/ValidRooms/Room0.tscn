@@ -1,4 +1,4 @@
-[gd_scene load_steps=20 format=3 uid="uid://ul478xcq3qqo"]
+[gd_scene load_steps=21 format=3 uid="uid://ul478xcq3qqo"]
 
 [ext_resource type="PackedScene" uid="uid://c1da6epqykshi" path="res://Scenes/Floors/ValidRooms/Room.tscn" id="1_014t1"]
 [ext_resource type="PackedScene" uid="uid://da1ap0hsfecta" path="res://Scenes/Weapons/Guns/9mmGuns/WeaponUzi.tscn" id="2_nclxc"]
@@ -18,6 +18,7 @@
 [ext_resource type="PackedScene" uid="uid://dmxst7mpeirh7" path="res://Scenes/PickUps/Ammo/12gauge.tscn" id="16_8w2k2"]
 [ext_resource type="PackedScene" uid="uid://dm8yxhdv10dtk" path="res://Scenes/PickUps/Ammo/762mm.tscn" id="17_6u2e5"]
 [ext_resource type="PackedScene" uid="uid://c2qitrutg26mu" path="res://Scenes/PickUps/Coins/Coin.tscn" id="18_1mpoe"]
+[ext_resource type="PackedScene" uid="uid://coaebar6fg5hb" path="res://TEST/VanInventoryTest.tscn" id="19_wqx22"]
 
 [sub_resource type="NavigationPolygon" id="NavigationPolygon_nclxc"]
 vertices = PackedVector2Array(1110, 726, 42, 726, 42, 42, 1110, 42)
@@ -32,7 +33,7 @@ navigation_polygon = SubResource("NavigationPolygon_nclxc")
 position = Vector2(302, 113)
 
 [node name="WeaponAk47" parent="." index="4" instance=ExtResource("3_7vf17")]
-position = Vector2(808, 108)
+position = Vector2(215, 592)
 
 [node name="WeaponRevolver" parent="." index="5" instance=ExtResource("4_cjroc")]
 position = Vector2(533, 521)
@@ -50,13 +51,13 @@ position = Vector2(497, 111)
 position = Vector2(182, 390)
 
 [node name="WeaponKnife" parent="." index="10" instance=ExtResource("9_1h8pn")]
-position = Vector2(1004, 256)
+position = Vector2(128, 533)
 
 [node name="WeaponHolyGranate" parent="." index="11" instance=ExtResource("10_8w2k2")]
 position = Vector2(385, 586)
 
 [node name="WeaponHolyWater" parent="." index="12" instance=ExtResource("11_6u2e5")]
-position = Vector2(776, 300)
+position = Vector2(380, 288)
 
 [node name="9mm" parent="." index="13" instance=ExtResource("12_sgwhs")]
 position = Vector2(160, 119)
@@ -78,3 +79,6 @@ position = Vector2(401, 192)
 
 [node name="FullHeart3" parent="." index="23" instance=ExtResource("18_1mpoe")]
 position = Vector2(1072, 610)
+
+[node name="VanInventoryTEST" parent="." index="24" instance=ExtResource("19_wqx22")]
+position = Vector2(922, 142)

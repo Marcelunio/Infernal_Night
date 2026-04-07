@@ -1,0 +1,29 @@
+[gd_scene load_steps=5 format=3 uid="uid://coaebar6fg5hb"]
+
+[ext_resource type="TileSet" uid="uid://dwjq33gve6fks" path="res://TileSets/BaseTileset.tres" id="1_3a1y5"]
+[ext_resource type="Script" uid="uid://cacurh7i1f4td" path="res://TEST/van_inventory_test.gd" id="1_7wee7"]
+[ext_resource type="PackedScene" uid="uid://boehv7yomvaga" path="res://TEST/vanInventoryUI.tscn" id="3_vw7fi"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_7wee7"]
+size = Vector2(239, 102)
+
+[node name="VanInventoryTEST" type="Area2D"]
+process_mode = 3
+script = ExtResource("1_7wee7")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(64.5, 16)
+shape = SubResource("RectangleShape2D_7wee7")
+
+[node name="TileInactive" type="TileMapLayer" parent="."]
+tile_map_data = PackedByteArray(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 5, 0, 0, 0, 1, 0, 0, 0, 0, 0, 1, 0, 5, 0, 0, 0, 2, 0, 0, 0, 0, 0, 2, 0, 5, 0, 0, 0, 3, 0, 0, 0, 0, 0, 3, 0, 5, 0, 0, 0)
+tile_set = ExtResource("1_3a1y5")
+
+[node name="TileActive" type="TileMapLayer" parent="."]
+tile_map_data = PackedByteArray(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 4, 0, 0, 0, 1, 0, 0, 0, 0, 0, 1, 0, 4, 0, 0, 0, 2, 0, 0, 0, 0, 0, 2, 0, 4, 0, 0, 0, 3, 0, 0, 0, 0, 0, 3, 0, 4, 0, 0, 0)
+tile_set = ExtResource("1_3a1y5")
+
+[node name="VanInventoryUI" parent="." instance=ExtResource("3_vw7fi")]
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
+[connection signal="body_exited" from="." to="." method="_on_body_exited"]

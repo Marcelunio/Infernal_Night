@@ -102,6 +102,7 @@ offset_bottom = 40.0
 metadata/_edit_use_anchors_ = true
 
 [node name="CanvasLayer" type="CanvasLayer" parent="Usable_UI"]
+process_mode = 3
 
 [node name="DeathScreen" parent="Usable_UI/CanvasLayer" instance=ExtResource("4_v3r2t")]
 metadata/_edit_use_anchors_ = true

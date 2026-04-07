@@ -71,7 +71,6 @@ func _physics_process(delta):#obsluga zdarzen co klatkowych
 	
 	if dungeon.name == "Dungeon":
 		check_door_transition()
-		#_handle_tileMap_detection()
 
 func _handle_player_movement():#obsluguje ruch gracza
 	var input_dir = Vector2.ZERO
@@ -212,7 +211,7 @@ func take_damage(amount: int):#obsluga damage'a
 func die() -> void:#obslguje smierc gracza oraz jej efekty
 	visible = false
 	GameState.push_screen("death")
-	GameState.dead()
+	$Gameplay_UI._change($Gameplay_UI, false)
 	emit_signal("death", enemy_deaths, shots_fired, grenades_thrown)
 
 func heal(amount_of_healing, body) -> void:

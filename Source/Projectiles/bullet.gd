@@ -23,7 +23,7 @@ func _ready():
 
 func _physics_process(delta):
 	position += direction * bullet_speed * delta
-	rotation = direction.angle() - PI / 2 + PI
+	rotation = direction.angle() + PI / 2
 
 func _on_body_entered(body: Node) -> void:
 	if body == shooter:#sam caly czas sie w tym gubie... Shooter jest przypisywany w najniszej hierarchi klas weapon, jest on poto zeby zdefioniowac jakiedy strzela np. czy gracz czy przeciwnik ~~Kekls
