@@ -4,6 +4,10 @@ extends Control
 
 func _ready() -> void:
 	Settings.closed.connect(_on_settings_closed)
+	DisplayServer.window_get_size()
+	for button in $VBoxContainer.get_children():
+		button.add_theme_font_size_override("font_size",DisplayServer.window_get_size().y/24)
+	$Title.label_settings.font_size = DisplayServer.window_get_size().y/6
 	
 func _on_new_game_pressed() -> void:
 	$Choice.start()
@@ -19,8 +23,13 @@ func _on_settings_pressed() -> void:
 
 func _on_exit_pressed() -> void:
 	get_tree().quit()
-
 #=========obsługa sygnałów=========:
 
 func _on_settings_closed():
 	visible = true
+
+
+func _on_resized() -> void:
+	for button in $VBoxContainer.get_children():
+		button.add_theme_font_size_override("font_size",DisplayServer.window_get_size().y/24)
+	$Title.label_settings.font_size = DisplayServer.window_get_size().y/6

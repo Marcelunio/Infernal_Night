@@ -1,6 +1,7 @@
-[gd_scene load_steps=2 format=3 uid="uid://c5nm3cqnf5jer"]
+[gd_scene load_steps=3 format=3 uid="uid://c5nm3cqnf5jer"]
 
 [ext_resource type="Script" uid="uid://bxkwsjb0d2hia" path="res://Source/Entities/Other/Player/UI/Usable_UI/settings.gd" id="1_vm5wi"]
+[ext_resource type="Theme" uid="uid://dm5yxvoyhb3ra" path="res://Assets/UI/Menus/Main_menu.tres" id="2_gor46"]
 
 [node name="CanvasLayer" type="CanvasLayer"]
 process_mode = 3
@@ -13,6 +14,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+theme = ExtResource("2_gor46")
 metadata/_edit_group_ = true
 
 [node name="ColorRect" type="ColorRect" parent="Control"]
@@ -76,5 +78,6 @@ size_flags_horizontal = 4
 size_flags_vertical = 4
 text = "Return"
 
+[connection signal="resized" from="Control" to="." method="_on_control_resized"]
 [connection signal="pressed" from="Control/Main/Reset" to="." method="_on_reset_pressed"]
 [connection signal="pressed" from="Control/Main/Return" to="." method="_on_return_pressed"]

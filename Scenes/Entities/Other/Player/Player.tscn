@@ -506,7 +506,7 @@ scale = Vector2(1.5, 1.5)
 [node name="top" type="AnimatedSprite2D" parent="animation"]
 z_index = 1
 sprite_frames = SubResource("SpriteFrames_t1uql")
-animation = &"dash"
+animation = &"unarmed"
 offset = Vector2(0, -11)
 
 [node name="legs" type="AnimatedSprite2D" parent="animation"]
