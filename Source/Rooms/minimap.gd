@@ -4,15 +4,22 @@ const ROOM_SIZE: Vector2 = Vector2(40, 40)
 const ROOM_GAP: float = 8.0
 const DOOR_THICKNESS: float = 6.0
 
+
+@onready var Texture_unvisited = load("res://Assets/UI/Minimap/room_unvisited.png") 
+@onready var Texture_visited = load("res://Assets/UI/Minimap/room_visited.png") 
+@onready var Texture_player = load("res://Assets/UI/Minimap/player.png") 
+#@onready var Texture_door = load("res://Assets/UI/Minimap/door.png")
+@onready var Texture_current =load("res://Assets/UI/Minimap/room_current.png")
+
 const COLOR_UNVISITED = Color(0.16, 0.16, 0.16)
 const COLOR_VISITED = Color.WHITE
 const COLOR_CURRENT = Color(0.25, 0.66, 1.0)
 const COLOR_PLAYER = Color.GREEN
-const COLOR_DOOR = Color(0.5, 0.5, 0.5)
+const COLOR_DOOR = Color(0.573, 0.396, 0.353, 1.0)
 
 var dungeon: Node2D
 var room_rects := {}
-var player_marker: ColorRect
+var player_marker: Control
 
 func _ready():
 	print("Minimap ready!")
@@ -70,17 +77,25 @@ func calculate_center_offset() -> Vector2:
 	
 	return -Vector2(min_pos) * (ROOM_SIZE + Vector2(ROOM_GAP, ROOM_GAP))
 
-func create_room_square(room_pos: Vector2i, center_offset: Vector2) -> ColorRect:
-	var room_rect = ColorRect.new()
+func create_room_square(room_pos: Vector2i, center_offset: Vector2):
+	var room_rect
+	if(Texture_unvisited || Texture_visited):
+		room_rect = TextureRect.new()
+	else:
+		room_rect = ColorRect.new()
 	room_rect.size = ROOM_SIZE
 	
 	var map_pos = Vector2(room_pos) * (ROOM_SIZE + Vector2(ROOM_GAP, ROOM_GAP))
 	room_rect.position = map_pos + center_offset
-	room_rect.color = COLOR_UNVISITED
+	
+	if(Texture_unvisited || Texture_visited):
+		room_rect.texture = Texture_unvisited
+	else:
+		room_rect.color = COLOR_UNVISITED
 	
 	return room_rect
 
-func add_door_indicators(room_rect: ColorRect, room_pos: Vector2i):
+func add_door_indicators(room_rect: Control , room_pos: Vector2i):
 	if dungeon.room_positions.has(room_pos + Vector2i.UP):
 		var door = ColorRect.new()
 		door.size = Vector2(12, DOOR_THICKNESS)
@@ -99,7 +114,6 @@ func add_door_indicators(room_rect: ColorRect, room_pos: Vector2i):
 		var door = ColorRect.new()
 		door.size = Vector2(DOOR_THICKNESS, 12)
 		door.position = Vector2(-DOOR_THICKNESS, 14)
-		door.color = COLOR_DOOR
 		room_rect.add_child(door)
 	
 	if dungeon.room_positions.has(room_pos + Vector2i.RIGHT):
@@ -110,9 +124,15 @@ func add_door_indicators(room_rect: ColorRect, room_pos: Vector2i):
 		room_rect.add_child(door)
 
 func create_player_marker(center_offset: Vector2):
-	player_marker = ColorRect.new()
+	if(Texture_player):
+		player_marker= TextureRect.new()
+	else:
+		player_marker = ColorRect.new()
 	player_marker.size = Vector2(12, 12)
-	player_marker.color = COLOR_PLAYER
+	if(Texture_player):
+		player_marker.texture=Texture_player
+	else:
+		player_marker.Color = COLOR_PLAYER
 	
 	var start_pos = center_offset + (ROOM_SIZE / 2) - Vector2(6, 6)
 	player_marker.position = start_pos
@@ -131,8 +151,28 @@ func update_player_position(room_pos: Vector2i):
 func visit_room(room_pos: Vector2i):
 	for pos in room_rects:
 		if pos == room_pos:
-			room_rects[pos].color = COLOR_CURRENT
+			if(Texture_current):
+				room_rects[pos].texture = Texture_current
+			else:
+				room_rects[pos].color = COLOR_CURRENT
 		elif dungeon.visited_rooms.has(pos):
-			room_rects[pos].color = COLOR_VISITED
+			if(Texture_unvisited || Texture_visited):
+				room_rects[pos].texture = Texture_visited
+			else:
+				room_rects[pos].color = COLOR_VISITED
 		else:
-			room_rects[pos].color = COLOR_UNVISITED
+			if(Texture_unvisited || Texture_visited):
+				room_rects[pos].texture = Texture_unvisited
+			else:
+				room_rects[pos].color = COLOR_UNVISITED
+
+#
+#func _door_maker()->Control:
+	#var door
+	#if(Texture_door):
+		#door = TextureRect.new()
+		#door.texture=Texture_door
+	#else:
+		#door = ColorRect.new()
+		#door.color = COLOR_DOOR
+	#return door
