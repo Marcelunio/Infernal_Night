@@ -37,3 +37,9 @@ func _on_resized() -> void:
 	for button in $VBoxContainer.get_children():
 		button.add_theme_font_size_override("font_size",DisplayServer.window_get_size().y/24)
 	$Title.label_settings.font_size = DisplayServer.window_get_size().y/6
+
+
+func _on_title_draw() -> void:
+	for button in $VBoxContainer.get_children():
+		button.add_theme_font_size_override("font_size",DisplayServer.window_get_size().y/24)
+	$Title.label_settings.font_size = DisplayServer.window_get_size().y/6

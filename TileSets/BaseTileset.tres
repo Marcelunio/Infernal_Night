@@ -886,6 +886,20 @@ texture_region_size = Vector2i(32, 32)
 12:2/0 = 0
 12:3/0 = 0
 12:4/0 = 0
+4:6/0 = 0
+4:6/0/terrain_set = 0
+4:6/0/terrain = 0
+4:6/0/terrains_peering_bit/right_side = 0
+4:6/0/terrains_peering_bit/bottom_side = 0
+4:6/0/terrains_peering_bit/left_side = 0
+4:6/0/terrains_peering_bit/top_side = 0
+10:6/0 = 0
+10:6/0/terrain_set = 0
+10:6/0/terrain = 2
+10:6/0/terrains_peering_bit/right_side = 2
+10:6/0/terrains_peering_bit/bottom_side = 2
+10:6/0/terrains_peering_bit/left_side = 2
+10:6/0/terrains_peering_bit/top_side = 2
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_stlkj"]
 texture = ExtResource("2_f7yts")
