@@ -42,21 +42,21 @@ offset_right = -0.76000977
 offset_bottom = 0.5199585
 theme = ExtResource("2_i3nvj")
 text = "Infernal 
-Night"
+   Night"
 label_settings = SubResource("LabelSettings_i3nvj")
 metadata/_edit_use_anchors_ = true
 
 [node name="VBoxContainer" type="VBoxContainer" parent="."]
 layout_mode = 1
 anchors_preset = -1
-anchor_left = 0.611
-anchor_top = 0.633
-anchor_right = 0.874
-anchor_bottom = 0.873
-offset_left = 0.8800049
-offset_top = 0.35998535
-offset_right = -0.080078125
-offset_bottom = 0.15997314
+anchor_left = 0.048
+anchor_top = 0.54700005
+anchor_right = 0.40100002
+anchor_bottom = 0.84800005
+offset_left = -0.16000366
+offset_top = 0.2399292
+offset_right = -0.92004395
+offset_bottom = 14.159973
 grow_horizontal = 2
 grow_vertical = 2
 theme = ExtResource("2_i3nvj")
@@ -108,7 +108,7 @@ autoplay = true
 bus = &"Music"
 parameters/looping = true
 
-[node name="Choice" parent="." instance=ExtResource("3_ohoe0")]
+[node name="Choice2" parent="." instance=ExtResource("3_ohoe0")]
 visible = false
 layout_mode = 1
 
