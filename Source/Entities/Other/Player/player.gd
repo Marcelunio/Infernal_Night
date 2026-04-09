@@ -183,8 +183,10 @@ func check_door_transition():
 func _handle_player_rotation():#obsluguje rotacje gracza
 	# Obrót w stronę kursora
 	rotation = (get_global_mouse_position() - global_position).angle() + 0.5*PI
-	$animation/legs.rotation=-rotation +get_position_delta().angle() + 0.5*PI
-
+	if(get_position_delta()!=Vector2.ZERO):
+		$animation/legs.rotation=-rotation +get_position_delta().angle() + 0.5*PI
+	else:
+		$animation/legs.rotation=0
 func _handle_weapon_action():#obslugue wszelkie interakcje gracza
 	var weapon = inventory.current_weapon
 

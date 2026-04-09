@@ -26,6 +26,9 @@ func _ready() -> void:
 	
 func start() -> void:
 	visible = true
+	for Vbox in $HBoxContainer.get_children():
+		for control in Vbox.get_children():
+			control.add_theme_font_size_override("font_size",DisplayServer.window_get_size().y/36)
 	
 func _pressed(room) -> void:
 	GameState.room_number = ROOMS[room]

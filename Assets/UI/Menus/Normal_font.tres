@@ -1,11 +1,10 @@
-[gd_resource type="Theme" load_steps=12 format=3 uid="uid://dm5yxvoyhb3ra"]
+[gd_resource type="Theme" load_steps=11 format=3 uid="uid://rv6jgeq2gtee"]
 
-[ext_resource type="FontFile" uid="uid://blp8ks6ac3mrq" path="res://Assets/UI/Font/Jacquard_12/Jacquard12-Regular.ttf" id="1_yc2md"]
-[ext_resource type="Texture2D" uid="uid://b2me1nktqhjef" path="res://Assets/UI/Menus/button.png" id="2_tvk35"]
-[ext_resource type="Texture2D" uid="uid://dd3huerlav5fm" path="res://Assets/UI/Menus/title.png" id="3_tvk35"]
+[ext_resource type="Texture2D" uid="uid://b2me1nktqhjef" path="res://Assets/UI/Menus/button.png" id="2_7jpwe"]
+[ext_resource type="Texture2D" uid="uid://cxefrmmb1wm07" path="res://Assets/UI/Menus/level_select.png" id="2_f4hlb"]
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_qs4p0"]
-texture = ExtResource("2_tvk35")
+texture = ExtResource("2_7jpwe")
 texture_margin_left = 5.0
 texture_margin_top = 5.0
 texture_margin_right = 5.0
@@ -13,7 +12,7 @@ texture_margin_bottom = 5.0
 region_rect = Rect2(46, 0, 46, 16)
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_ivyrx"]
-texture = ExtResource("2_tvk35")
+texture = ExtResource("2_7jpwe")
 texture_margin_left = 5.0
 texture_margin_top = 5.0
 texture_margin_right = 5.0
@@ -21,7 +20,7 @@ texture_margin_bottom = 5.0
 region_rect = Rect2(138, 0, 46, 16)
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_h2fjo"]
-texture = ExtResource("2_tvk35")
+texture = ExtResource("2_7jpwe")
 texture_margin_left = 5.0
 texture_margin_top = 5.0
 texture_margin_right = 5.0
@@ -29,7 +28,7 @@ texture_margin_bottom = 5.0
 region_rect = Rect2(92, 0, 46, 16)
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_yx7uf"]
-texture = ExtResource("2_tvk35")
+texture = ExtResource("2_7jpwe")
 texture_margin_left = 6.0
 texture_margin_top = 6.0
 texture_margin_right = 6.0
@@ -67,14 +66,12 @@ expand_margin_bottom = 2.0
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_6vw7n"]
 
-[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_kg8vg"]
-texture = ExtResource("3_tvk35")
-region_rect = Rect2(0, 0, 1920, 1080)
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_0fvfa"]
+texture = ExtResource("2_f4hlb")
 
 [resource]
-default_font = ExtResource("1_yc2md")
 default_font_size = 16
-Button/colors/font_color = Color(0.66, 0, 0.19800013, 1)
+Button/colors/font_color = Color(0, 0, 0, 1)
 Button/colors/font_disabled_color = Color(0.875, 0.875, 0.875, 0.5)
 Button/colors/font_focus_color = Color(0.95, 0.95, 0.95, 1)
 Button/colors/font_hover_color = Color(0.95, 0.95, 0.95, 1)
@@ -91,8 +88,6 @@ Button/constants/align_to_largest_stylebox = 0
 Button/constants/h_separation = 4
 Button/constants/icon_max_width = 0
 Button/constants/outline_size = 0
-Button/font_sizes/font_size = 45
-Button/fonts/font = ExtResource("1_yc2md")
 Button/styles/disabled = SubResource("StyleBoxTexture_qs4p0")
 Button/styles/focus = SubResource("StyleBoxTexture_ivyrx")
 Button/styles/hover = SubResource("StyleBoxTexture_h2fjo")
@@ -105,8 +100,7 @@ HeaderLarge/constants/outline_size = 0
 HeaderLarge/constants/shadow_offset_x = 0
 HeaderLarge/constants/shadow_offset_y = 0
 HeaderLarge/constants/shadow_outline_size = 0
-HeaderLarge/font_sizes/font_size = 287
-HeaderLarge/fonts/font = ExtResource("1_yc2md")
+HeaderLarge/font_sizes/font_size = 230
 HeaderLarge/styles/focus = SubResource("StyleBoxFlat_tvk35")
 HeaderLarge/styles/normal = SubResource("StyleBoxFlat_tvk35")
 Label/colors/font_color = Color(1, 1, 1, 1)
@@ -117,8 +111,7 @@ Label/constants/outline_size = 0
 Label/constants/shadow_offset_x = 1
 Label/constants/shadow_offset_y = 1
 Label/constants/shadow_outline_size = 1
-Label/fonts/font = ExtResource("1_yc2md")
 Label/styles/focus = SubResource("StyleBoxFlat_smwgb")
 Label/styles/normal = SubResource("StyleBoxEmpty_6vw7n")
-Panel/styles/panel = SubResource("StyleBoxTexture_kg8vg")
+Panel/styles/panel = SubResource("StyleBoxTexture_0fvfa")
 VBoxContainer/constants/separation = 16
