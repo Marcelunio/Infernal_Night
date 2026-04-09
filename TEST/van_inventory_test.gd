@@ -24,6 +24,7 @@ func _connect_signals() -> void:
 	player = get_tree().get_first_node_in_group("player")
 	inventory = player.get_node("InventoryMenager")
 	gameplay_UI = player.get_node("Gameplay_UI")
+	player.get_node("Usable_UI").get_node("CanvasLayer").get_node("Escape").escape_closed.connect(_closed_escape)
 
 func _input(event) -> void:
 	if event.is_action_pressed("interaction") and can_open_inventory:
@@ -50,3 +51,5 @@ func _on_body_exited(body: Node2D) -> void:
 	tile_inactive.visible = true
 	can_open_inventory = false
 	
+func _closed_escape() -> void:
+	VanInventoryUI._open()

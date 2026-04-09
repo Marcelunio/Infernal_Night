@@ -4,6 +4,8 @@ extends Control
 
 var Gameplay_UI: Node
 
+signal escape_closed()
+
 func _ready() -> void:
 	Settings.closed.connect(_on_settings_closed)
 	Gameplay_UI = get_tree().get_first_node_in_group("player").get_node("Gameplay_UI")
@@ -12,6 +14,8 @@ func _ready() -> void:
 func _input(event) -> void:
 	if event.is_action_pressed("escape_menu"):
 		if get_tree().paused and GameState.screen_stack.back() == "pause":
+			print("sygnal esnt")
+			emit_signal("escape_closed")
 			GameState.pop_screen()
 			visible = false
 		elif GameState.screen_stack.is_empty() or GameState.screen_stack.back() != "settings":
@@ -20,6 +24,7 @@ func _input(event) -> void:
 
 func _on_resume_pressed() -> void:
 	GameState.pop_screen()
+	emit_signal("escape_closed")
 	visible = false
 
 func _on_save_pressed() -> void:

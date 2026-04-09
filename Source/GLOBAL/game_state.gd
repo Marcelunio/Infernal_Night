@@ -36,11 +36,17 @@ func check_screen_stack() -> void:#screen_stack method
 		get_tree().paused = false
 		_set_gameplay_ui(true)
 
-func clear_screen_stack(pause:bool) -> void:
+func clear_screen_stack(pause:bool) -> void:#screen_stack method
 	if screen_stack.size() > 0:
 		screen_stack.clear()
 	
 	get_tree().paused = pause
+
+func contains_screen_stack(screen: String) -> bool:#screen_stack method
+	if screen_stack.count(screen):
+		return true
+	else:
+		return false
 
 func _set_gameplay_ui(visibility: bool) -> void:#helper function for screen_stack method
 	var player = get_tree().get_first_node_in_group("player")
