@@ -52,4 +52,5 @@ func _on_body_exited(body: Node2D) -> void:
 	can_open_inventory = false
 	
 func _closed_escape() -> void:
-	VanInventoryUI._open()
+	if can_open_inventory and GameState.contains_screen_stack("vanInventory"):
+		VanInventoryUI._open()
