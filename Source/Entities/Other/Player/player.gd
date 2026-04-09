@@ -45,11 +45,13 @@ var isOnVan: bool = false
 @onready var audio_player_ambient = $Sounds/Ambient
 @onready var audio_player_pick_up = $Sounds/PickUp
 @onready var audio_player_throw = $Sounds/Throw
+@onready var audio_player_Music = $Sounds/Music
 @export var walk_sounds: Array[AudioStreamWAV] = []
 @export var dash_sounds: Array[AudioStreamWAV] = []
 @export var ambient_sounds: Array[AudioStreamWAV] = []
 @export var pick_up_sounds: Array[AudioStreamWAV] = []
 @export var throw_sounds: Array[AudioStreamWAV] = []
+@export var music_sounds: Array[AudioStreamOggVorbis] = []
 
 #signal to health_bar_display.gd
 signal UI_HealthBarDisplay(max_hp, hp)
@@ -61,6 +63,7 @@ func _ready():
 	$"Gameplay_UI/CanvasLayer/WeaponDisplay".setup(inventory)
 	UI_HealthBarDisplay.emit.call_deferred(max_hp, hp)
 	_start_ambient_timer()
+	_start_music_timer()
 	
 
 func _unhandled_input(event: InputEvent):#obsługa nie obsluzonych inputow
@@ -296,3 +299,11 @@ func _start_ambient_timer() -> void:
 func _audio_pick_up_play() -> void:
 	audio_player_pick_up.stream = pick_up_sounds.pick_random()
 	audio_player_pick_up.play()
+
+func _start_music_timer() -> void:
+	audio_player_Music.stream = music_sounds.pick_random()
+	audio_player_Music.play()
+	
+func _on_music_finished() -> void:
+	audio_player_Music.stream = music_sounds.pick_random()
+	audio_player_Music.play()
