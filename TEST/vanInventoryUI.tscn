@@ -1,6 +1,6 @@
-[gd_scene load_steps=3 format=3 uid="uid://boehv7yomvaga"]
+[gd_scene load_steps=3 format=3 uid="uid://c2odeaamy2wr1"]
 
-[ext_resource type="Script" uid="uid://bwi8l7bdjbt4g" path="res://TEST/van_inventory_ui.gd" id="1_omb12"]
+[ext_resource type="Script" path="res://TEST/van_inventory_ui.gd" id="1_omb12"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_y1gts"]
 bg_color = Color(0.015686275, 0.015686275, 0.015686275, 0.34117648)

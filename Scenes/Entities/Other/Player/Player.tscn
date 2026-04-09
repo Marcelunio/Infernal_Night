@@ -1,4 +1,4 @@
-[gd_scene load_steps=70 format=3 uid="uid://dn2dpf0haseiq"]
+[gd_scene load_steps=71 format=3 uid="uid://dn2dpf0haseiq"]
 
 [ext_resource type="Script" uid="uid://3mc7lvum6rxd" path="res://Source/Entities/Other/Player/player.gd" id="1_nfgiu"]
 [ext_resource type="AudioStream" uid="uid://dnarg1ul4lk5n" path="res://Sounds/SFX/Player/Walk/wooden_floor_walk_high.wav" id="2_44eud"]
@@ -20,6 +20,7 @@
 [ext_resource type="AudioStream" uid="uid://b18loali132tf" path="res://Sounds/SFX/Player/Throw/throw_high.wav" id="10_he03t"]
 [ext_resource type="Script" uid="uid://daxygdt67700y" path="res://Source/Entities/Other/Player/UI/usable_ui.gd" id="10_xinig"]
 [ext_resource type="AudioStream" uid="uid://63ymh03eoc15" path="res://Sounds/SFX/Player/Throw/throw_low.wav" id="11_fad8c"]
+[ext_resource type="AudioStream" uid="uid://c5e7t6kjqbnnf" path="res://Sounds/Music/Eyes-on-me.ogg" id="12_fad8c"]
 [ext_resource type="Texture2D" uid="uid://bangq7x48qpxr" path="res://Assets/Entities/Other/Player/player.png" id="13_kjs6a"]
 [ext_resource type="AudioStream" uid="uid://bgt868b0lcxbk" path="res://Sounds/SFX/Player/PickUp/pick_up.wav" id="20_hxydp"]
 
@@ -463,6 +464,7 @@ dash_sounds = Array[AudioStreamWAV]([ExtResource("4_xfm63"), ExtResource("5_k6kf
 ambient_sounds = Array[AudioStreamWAV]([ExtResource("7_6eds7"), ExtResource("8_hxydp")])
 pick_up_sounds = Array[AudioStreamWAV]([ExtResource("20_hxydp")])
 throw_sounds = Array[AudioStreamWAV]([ExtResource("10_he03t"), ExtResource("11_fad8c")])
+music_sounds = Array[AudioStreamOggVorbis]([ExtResource("12_fad8c")])
 
 [node name="PlayerCollision" type="CollisionShape2D" parent="." groups=["player"]]
 shape = SubResource("CircleShape2D_xinig")
@@ -503,6 +505,7 @@ metadata/_edit_use_anchors_ = true
 
 [node name="CanvasLayer" type="CanvasLayer" parent="Usable_UI"]
 process_mode = 3
+layer = 2
 
 [node name="DeathScreen" parent="Usable_UI/CanvasLayer" instance=ExtResource("4_v3r2t")]
 metadata/_edit_use_anchors_ = true
@@ -542,3 +545,9 @@ bus = &"SFX"
 
 [node name="Throw" type="AudioStreamPlayer" parent="Sounds"]
 bus = &"SFX"
+
+[node name="Music" type="AudioStreamPlayer" parent="Sounds"]
+process_mode = 3
+bus = &"Music"
+
+[connection signal="finished" from="Sounds/Music" to="." method="_on_music_finished"]

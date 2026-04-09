@@ -33,14 +33,6 @@ func _input(event) -> void:
 		elif not GameState.is_busy():
 			GameState.push_screen("vanInventory")
 			VanInventoryUI._open()
-	
-	if event.is_action_pressed("escape_menu") and can_open_inventory and GameState.is_busy():
-		if VanInventoryUI.open:
-			print("zamykam")
-			VanInventoryUI._close()
-		if not VanInventoryUI.open:
-			VanInventoryUI._open()
-			print("otwieram")
 
 func _on_body_entered(body: Node2D) -> void:
 	if not body == player:

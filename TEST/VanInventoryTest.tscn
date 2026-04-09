@@ -1,8 +1,8 @@
-[gd_scene load_steps=5 format=3 uid="uid://coaebar6fg5hb"]
+[gd_scene load_steps=5 format=3 uid="uid://u4uyiilyh07o"]
 
 [ext_resource type="TileSet" uid="uid://dwjq33gve6fks" path="res://TileSets/BaseTileset.tres" id="1_3a1y5"]
 [ext_resource type="Script" uid="uid://cacurh7i1f4td" path="res://TEST/van_inventory_test.gd" id="1_7wee7"]
-[ext_resource type="PackedScene" uid="uid://boehv7yomvaga" path="res://TEST/vanInventoryUI.tscn" id="3_vw7fi"]
+[ext_resource type="PackedScene" uid="uid://c2odeaamy2wr1" path="res://TEST/vanInventoryUI.tscn" id="3_vw7fi"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_7wee7"]
 size = Vector2(239, 102)
