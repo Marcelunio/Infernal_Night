@@ -10,7 +10,7 @@ signal room_changed(new_room_pos: Vector2i)
 
 const ROOM_SIZE: Vector2 = Vector2(1152, 768)
 const PLAYER: PackedScene = preload("res://Scenes/Entities/Other/Player/Player.tscn")
-const SPAWN_ROOM: PackedScene = preload("res://Scenes/Floors/ValidRooms/Room0.tscn")
+const SPAWN_ROOM: PackedScene = preload("res://Scenes/Floors/ValidRooms/test/StartingRoom.tscn")
 
 const DOOR_UP_ATLAS: Vector2i = Vector2i(12, 1)
 const DOOR_DOWN_ATLAS: Vector2i = Vector2i(12, 4)
@@ -72,8 +72,15 @@ func generate_floor():
 	room_positions.append(start_pos)
 	var visited_positions: Array[Vector2i] = [start_pos]
 	
+	# Positions that can never have a room placed
+	var forbidden: Array[Vector2i] = [
+		Vector2i(0, 1),   # down from start
+		Vector2i(-1, 0),  # left from start
+		Vector2i(1, 0),   # right from start
+	]
+	
 	var current_pos := start_pos
-	var target_rooms = floor(room_number*2/3)
+	var target_rooms = floor(room_number * 2 / 3)
 	var directions := [Vector2i.UP, Vector2i.DOWN, Vector2i.LEFT, Vector2i.RIGHT]
 	
 	while room_positions.size() < target_rooms:
@@ -83,7 +90,7 @@ func generate_floor():
 		for dir in directions:
 			var next_pos = current_pos + dir
 			
-			if not room_positions.has(next_pos) and is_valid_position(next_pos):
+			if not room_positions.has(next_pos) and not forbidden.has(next_pos) and is_valid_position(next_pos):
 				room_positions.append(next_pos)
 				visited_positions.append(next_pos)
 				current_pos = next_pos
@@ -96,10 +103,9 @@ func generate_floor():
 				current_pos = visited_positions[-1]
 	
 	var branch_count: int = room_number - target_rooms
-	add_branch_rooms(branch_count)
+	add_branch_rooms(branch_count, forbidden)
 	
 	print("Generated floor with ", room_positions.size(), " rooms")
-	
 	call_deferred("emit_signal", "floor_generated")
 
 func is_valid_position(pos: Vector2i) -> bool:
@@ -110,13 +116,13 @@ func is_valid_position(pos: Vector2i) -> bool:
 	
 	return neighbor_count <= 2
 
-func add_branch_rooms(branch_count: int):
+func add_branch_rooms(branch_count: int, forbidden: Array[Vector2i] = []):
 	var possible_positions: Array[Vector2i] = []
 	
 	for room_pos in room_positions:
 		for dir in [Vector2i.UP, Vector2i.DOWN, Vector2i.LEFT, Vector2i.RIGHT]:
 			var branch_pos = room_pos + dir
-			if not room_positions.has(branch_pos) and is_valid_position(branch_pos):
+			if not room_positions.has(branch_pos) and not forbidden.has(branch_pos) and is_valid_position(branch_pos):
 				if not possible_positions.has(branch_pos):
 					possible_positions.append(branch_pos)
 	
@@ -166,6 +172,12 @@ func setup_room_doors(room: Room, pos: Vector2i):
 	var has_down := room_positions.has(pos + Vector2i.DOWN)
 	var has_left := room_positions.has(pos + Vector2i.LEFT)
 	var has_right := room_positions.has(pos + Vector2i.RIGHT)
+	
+	if pos == Vector2i.ZERO:
+		if room_positions.has(pos + Vector2i.UP):
+			visible_layer.set_cell(DOOR_UP_POS_LEFT, 2, DOOR_UP_ATLAS)
+			visible_layer.set_cell(DOOR_UP_POS_RIGHT, 2, DOOR_UP_ATLAS)
+		return
 	
 	if has_up:
 		visible_layer.set_cell(DOOR_UP_POS_LEFT, 2, DOOR_UP_ATLAS)

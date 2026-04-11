@@ -5,12 +5,6 @@ signal room_entered
 signal room_cleared
 
 @onready var room_layout: TileMapLayer = $NavigationRegion2D/RoomLayout
-@onready var doors: Dictionary = {
-	"up": $DoorUp,
-	"right": $DoorRight,
-	"left": $DoorLeft,
-	"down": $DoorDown
-}
 
 const ENEMY: PackedScene = preload("res://Scenes/Entities/Enemies/Ghost/Ghost.tscn")
 
@@ -18,11 +12,24 @@ var grid_position: Vector2i = Vector2i.ZERO
 var is_cleared: bool = false
 var enemies_spawned: bool = false
 var enemy_counter: int = 0
-
+var doors: Dictionary = {}
 
 #SFX
 @onready var audio_player_door: AudioStreamPlayer = $Sounds/Door
 @export var door_sounds: Array[AudioStream] = []
+
+func _ready() -> void:
+	# Build doors dict from whichever door nodes actually exist
+	var door_map = {
+		"up": "DoorUp",
+		"down": "DoorDown",
+		"left": "DoorLeft",
+		"right": "DoorRight"
+	}
+	for key in door_map:
+		var node = get_node_or_null(door_map[key])
+		if node != null:
+			doors[key] = node
 
 func setup(pos: Vector2i):
 	grid_position = pos
@@ -50,7 +57,7 @@ func spawn_enemies():
 	
 	var spawn_markers = get_node_or_null("EnemySpawns")
 	
-	if spawn_markers.get_child_count() == 0:
+	if spawn_markers == null or spawn_markers.get_child_count() == 0:
 		is_cleared = true
 		for door in doors.values():
 			door.set_collision_mask_value(1, false)
