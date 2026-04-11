@@ -1,7 +1,6 @@
-[gd_scene load_steps=4 format=4 uid="uid://cpmc2ecbhysgj"]
+[gd_scene load_steps=3 format=4 uid="uid://cpmc2ecbhysgj"]
 
 [ext_resource type="PackedScene" uid="uid://c1da6epqykshi" path="res://Scenes/Floors/ValidRooms/Room.tscn" id="1_r6t65"]
-[ext_resource type="Texture2D" uid="uid://cva54ciuk85f0" path="res://Assets/light/gradient.tres" id="2_eak6d"]
 
 [sub_resource type="NavigationPolygon" id="NavigationPolygon_r6t65"]
 vertices = PackedVector2Array(1110, 42, 1110, 726, 746, 490, 746, 246, 714, 246, 714, 214, 682, 214, 682, 182, 406, 182, 406, 214, 342, 214, 42, 42, 342, 246, 310, 246, 310, 310, 278, 310, 278, 426, 310, 426, 310, 490, 42, 726, 374, 490, 374, 522, 406, 522, 406, 554, 650, 554, 650, 522, 714, 522, 714, 490)
@@ -20,23 +19,3 @@ position = Vector2(924, 594)
 
 [node name="EnemyMarker2" type="Marker2D" parent="EnemySpawns" index="1"]
 position = Vector2(194, 159)
-
-[node name="PointLight2D5" type="PointLight2D" parent="." index="10"]
-position = Vector2(846, 492)
-color = Color(0.86, 0.49880004, 0.25800002, 1)
-energy = 0.99
-range_item_cull_mask = 3
-shadow_enabled = true
-shadow_filter = 1
-texture = ExtResource("2_eak6d")
-texture_scale = 4.0
-
-[node name="PointLight2D5" type="PointLight2D" parent="PointLight2D5" index="0"]
-position = Vector2(-650, -376)
-color = Color(0.86, 0.49880004, 0.25800002, 1)
-energy = 0.99
-range_item_cull_mask = 3
-shadow_enabled = true
-shadow_filter = 1
-texture = ExtResource("2_eak6d")
-texture_scale = 4.0

@@ -1,4 +1,4 @@
-[gd_scene load_steps=72 format=3 uid="uid://dn2dpf0haseiq"]
+[gd_scene load_steps=73 format=3 uid="uid://dn2dpf0haseiq"]
 
 [ext_resource type="Script" uid="uid://3mc7lvum6rxd" path="res://Source/Entities/Other/Player/player.gd" id="1_nfgiu"]
 [ext_resource type="AudioStream" uid="uid://dnarg1ul4lk5n" path="res://Sounds/SFX/Player/Walk/wooden_floor_walk_high.wav" id="2_44eud"]
@@ -18,12 +18,11 @@
 [ext_resource type="AudioStream" uid="uid://dfsnp37bewn4m" path="res://Sounds/SFX/Ambient/floor_creacking2.wav" id="8_hxydp"]
 [ext_resource type="PackedScene" uid="uid://bkan3lqpflwny" path="res://Scenes/Entities/Other/Player/UI/GameplayUI/InventoryDisplay.tscn" id="9_yibyp"]
 [ext_resource type="AudioStream" uid="uid://b18loali132tf" path="res://Sounds/SFX/Player/Throw/throw_high.wav" id="10_he03t"]
-[ext_resource type="Script" path="res://Source/Entities/Other/Player/UI/usable_ui.gd" id="10_xinig"]
+[ext_resource type="Script" uid="uid://daxygdt67700y" path="res://Source/Entities/Other/Player/UI/usable_ui.gd" id="10_xinig"]
 [ext_resource type="AudioStream" uid="uid://63ymh03eoc15" path="res://Sounds/SFX/Player/Throw/throw_low.wav" id="11_fad8c"]
 [ext_resource type="AudioStream" uid="uid://c5e7t6kjqbnnf" path="res://Sounds/Music/Eyes-on-me.ogg" id="12_fad8c"]
 [ext_resource type="Texture2D" uid="uid://bangq7x48qpxr" path="res://Assets/Entities/Other/Player/player.png" id="13_kjs6a"]
 [ext_resource type="AudioStream" uid="uid://bgt868b0lcxbk" path="res://Sounds/SFX/Player/PickUp/pick_up.wav" id="20_hxydp"]
-[ext_resource type="Texture2D" uid="uid://cva54ciuk85f0" path="res://Assets/light/gradient.tres" id="24_ubqqd"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_xinig"]
 radius = 12.0
@@ -457,6 +456,18 @@ animations = [{
 "speed": 5.0
 }]
 
+[sub_resource type="Gradient" id="Gradient_wqx22"]
+interpolation_mode = 2
+offsets = PackedFloat32Array(0, 0.35342187, 0.66700715)
+colors = PackedColorArray(1, 1, 1, 1, 0.24, 0.24, 0.24, 1, 0, 0, 0, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_fad8c"]
+gradient = SubResource("Gradient_wqx22")
+width = 256
+height = 256
+fill = 1
+fill_from = Vector2(0.5, 0.5)
+
 [node name="Player" type="CharacterBody2D" groups=["player"]]
 collision_mask = 188
 script = ExtResource("1_nfgiu")
@@ -555,10 +566,8 @@ process_mode = 3
 bus = &"Music"
 
 [node name="PointLight2D" type="PointLight2D" parent="."]
-energy = 0.61
-range_item_cull_mask = 3
 shadow_enabled = true
 shadow_filter = 1
-texture = ExtResource("24_ubqqd")
+texture = SubResource("GradientTexture2D_fad8c")
 
 [connection signal="finished" from="Sounds/Music" to="." method="_on_music_finished"]

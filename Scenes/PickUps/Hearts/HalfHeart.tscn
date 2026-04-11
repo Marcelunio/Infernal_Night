@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" uid="uid://bp5fqu66ksw1f" path="res://Source/PickUps/item.gd" id="1_vlnrj"]
 [ext_resource type="Texture2D" uid="uid://bf0xycnepfyxb" path="res://Assets/PickUps/Hearts/heart_pick_up.png" id="2_spq3p"]
-[ext_resource type="Texture2D" uid="uid://cva54ciuk85f0" path="res://Assets/light/gradient.tres" id="3_spq3p"]
+[ext_resource type="Texture2D" uid="uid://b5t7d3s4k7j6d" path="res://Assets/light/gradient.tres" id="3_spq3p"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_bnfb6"]
 atlas = ExtResource("2_spq3p")
@@ -28,6 +28,6 @@ energy = 1.37
 blend_mode = 2
 shadow_enabled = true
 texture = ExtResource("3_spq3p")
-texture_scale = 0.3
+texture_scale = 1.7
 
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]

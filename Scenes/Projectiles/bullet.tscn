@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" uid="uid://bskud63qk2703" path="res://Source/Projectiles/bullet.gd" id="1_14k46"]
 [ext_resource type="Texture2D" uid="uid://c02l34qcbybd6" path="res://Assets/Weapons/Projectiles/bullet (2).png" id="2_qvus8"]
-[ext_resource type="Texture2D" uid="uid://cva54ciuk85f0" path="res://Assets/light/gradient.tres" id="3_t1vox"]
+[ext_resource type="Texture2D" uid="uid://b5t7d3s4k7j6d" path="res://Assets/light/gradient.tres" id="3_t1vox"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_3323x"]
 atlas = ExtResource("2_qvus8")
@@ -57,7 +57,7 @@ animation = &"BANG"
 shape = SubResource("RectangleShape2D_2b2rl")
 
 [node name="PointLight2D" type="PointLight2D" parent="."]
-color = Color(0.95, 0.65929997, 0.43699998, 1)
+color = Color(0.8330111, 0.5781515, 0.37401175, 1)
 energy = 1.45
 blend_mode = 2
 texture = ExtResource("3_t1vox")
