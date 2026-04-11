@@ -12,7 +12,7 @@
 [ext_resource type="PackedScene" uid="uid://dmxst7mpeirh7" path="res://Scenes/PickUps/Ammo/12gauge.tscn" id="16_8w2k2"]
 [ext_resource type="PackedScene" uid="uid://dm8yxhdv10dtk" path="res://Scenes/PickUps/Ammo/762mm.tscn" id="17_6u2e5"]
 [ext_resource type="PackedScene" uid="uid://c2qitrutg26mu" path="res://Scenes/PickUps/Coins/Coin.tscn" id="18_1mpoe"]
-[ext_resource type="PackedScene" uid="uid://u4uyiilyh07o" path="res://TEST/VanInventoryTest.tscn" id="19_wqx22"]
+[ext_resource type="PackedScene" uid="uid://u4uyiilyh07o" path="res://Scenes/Entities/Other/Van/VanInventory.tscn" id="19_wqx22"]
 
 [sub_resource type="NavigationPolygon" id="NavigationPolygon_nclxc"]
 vertices = PackedVector2Array(1110, 726, 42, 726, 42, 42, 1110, 42)

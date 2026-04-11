@@ -1,6 +1,6 @@
 [gd_scene load_steps=2 format=3 uid="uid://dgcn10k6j1fv0"]
 
-[ext_resource type="Script" uid="uid://bxsogo5syqnn4" path="res://TEST/dad_container.gd" id="1_isxlk"]
+[ext_resource type="Script" uid="uid://bxsogo5syqnn4" path="res://Source/Entities/Other/Player/Van/dad_container.gd" id="1_f8vkm"]
 
 [node name="DaDContainer" type="PanelContainer"]
 custom_minimum_size = Vector2(300, 300)
@@ -11,4 +11,4 @@ anchor_right = 0.5
 anchor_bottom = 0.5
 grow_horizontal = 2
 grow_vertical = 2
-script = ExtResource("1_isxlk")
+script = ExtResource("1_f8vkm")

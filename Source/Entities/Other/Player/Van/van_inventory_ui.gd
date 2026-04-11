@@ -16,7 +16,7 @@ var inventory: Node
 @export var weapon_scenes: Array[PackedScene] = []
 var dict_weapons: Dictionary = {}
 
-const DAD_SCENE = preload("res://TEST/DaDContainer.tscn")
+const DAD_SCENE = preload("res://Scenes/Entities/Other/Van/DaDContainer.tscn")
 
 func _ready() -> void:
 	visible = false
