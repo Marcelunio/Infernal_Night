@@ -1,6 +1,7 @@
-[gd_scene load_steps=2 format=4 uid="uid://b31woqstbu7qy"]
+[gd_scene load_steps=3 format=4 uid="uid://b31woqstbu7qy"]
 
 [ext_resource type="PackedScene" uid="uid://c1da6epqykshi" path="res://Scenes/Floors/ValidRooms/Room.tscn" id="1_f42jn"]
+[ext_resource type="PackedScene" uid="uid://u4uyiilyh07o" path="res://TEST/VanInventoryTest.tscn" id="2_60h1s"]
 
 [node name="Room" instance=ExtResource("1_f42jn")]
 
@@ -9,3 +10,6 @@ tile_map_data = PackedByteArray("AAAAAAAAAgAEAAAAAAABAAAAAgACAAAAAAACAAAAAgACAAA
 
 [node name="Decorations" parent="." index="1"]
 tile_map_data = PackedByteArray("AAAUAAkAAAABAAAAAAAVAAkAAAABAAAAAAAWAAkAAAABAAAAAAAXAAkAAAABAAAAAAAYAAkAAAABAAAAAAAUAA4AAAAEAAAAAAAVAA4AAAAEAAAAAAAWAA4AAAAEAAAAAAAXAA4AAAAEAAAAAAAYAA4AAAAEAAAAAAA=")
+
+[node name="VanInventoryTEST" parent="." index="8" instance=ExtResource("2_60h1s")]
+position = Vector2(672, 320)

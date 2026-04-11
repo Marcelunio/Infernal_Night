@@ -86,9 +86,24 @@ func add_weapon(weapon):#weapon.gd pick_up()
 	emit_signal("UI_WeaponChanged", current_weapon)
 	
 	# Użyj reparent - robi remove + add automatycznie!
-	weapon.reparent(NODE_weapon_container)
+	if weapon.get_parent() != null:
+		weapon.reparent(NODE_weapon_container)
+	else:
+		NODE_weapon_container.add_child(weapon)
+		weapon.visible = false
 	
 	return true
+
+func remove_weapon(weapon, van_inventory = false) -> void:
+	weapon_container.remove_at(selected_weapon)
+	weapon_container_ui_update()
+	
+	# Przenieś broń z powrotem do świata
+	var player = get_tree().get_first_node_in_group("player")
+	if van_inventory:
+		NODE_weapon_container.remove_child(weapon)
+	else:
+		weapon.reparent(player.current_room)
 
 func throw(velocity: Vector2, weapon):#player.gd _handle_weapon_action()
 	if weapon_container.is_empty():
@@ -104,12 +119,7 @@ func throw(velocity: Vector2, weapon):#player.gd _handle_weapon_action()
 	if weapon.is_in_group("weapon-throwable") and weapon.exploded.is_connected(_on_weapon_exploded_in_hand):
 		weapon.exploded.disconnect(_on_weapon_exploded_in_hand)
 	
-	weapon_container.remove_at(selected_weapon)
-	weapon_container_ui_update()
-	
-	# Przenieś broń z powrotem do świata
-	var player = get_tree().get_first_node_in_group("player")
-	weapon.reparent(player.current_room)
+	remove_weapon(weapon)
 	
 	weapon.throw(get_parent().global_position, velocity)
 

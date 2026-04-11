@@ -1,0 +1,14 @@
+[gd_scene load_steps=2 format=3 uid="uid://dgcn10k6j1fv0"]
+
+[ext_resource type="Script" uid="uid://bxsogo5syqnn4" path="res://TEST/dad_container.gd" id="1_isxlk"]
+
+[node name="DaDContainer" type="PanelContainer"]
+custom_minimum_size = Vector2(300, 300)
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_isxlk")

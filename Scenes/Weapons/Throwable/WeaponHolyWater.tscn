@@ -24,10 +24,10 @@ weapon_name = "waterGrenade"
 throw_force = 1050.0
 weapon_delay = 0.1
 weapon_damage = 1.5
+sprite = ExtResource("2_005lj")
 metadata/_edit_group_ = true
 
 [node name="WeaponSprite" type="Sprite2D" parent="."]
-texture = ExtResource("2_005lj")
 
 [node name="WeaponCollision" type="CollisionShape2D" parent="."]
 position = Vector2(0.5, 0.5)

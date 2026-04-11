@@ -1,6 +1,13 @@
-[gd_scene load_steps=3 format=3 uid="uid://c2odeaamy2wr1"]
+[gd_scene load_steps=10 format=3 uid="uid://c2odeaamy2wr1"]
 
-[ext_resource type="Script" path="res://TEST/van_inventory_ui.gd" id="1_omb12"]
+[ext_resource type="Script" uid="uid://bwi8l7bdjbt4g" path="res://TEST/van_inventory_ui.gd" id="1_omb12"]
+[ext_resource type="PackedScene" uid="uid://t7ktbcl5debv" path="res://Scenes/Weapons/Guns/9mmGuns/WeaponPistol.tscn" id="2_aeru5"]
+[ext_resource type="PackedScene" uid="uid://bxg5woeatx4uj" path="res://Scenes/Weapons/Guns/9mmGuns/WeaponRevolver.tscn" id="3_u1u77"]
+[ext_resource type="PackedScene" uid="uid://da1ap0hsfecta" path="res://Scenes/Weapons/Guns/9mmGuns/WeaponUzi.tscn" id="4_g3vdr"]
+[ext_resource type="PackedScene" uid="uid://b783hpp0owvai" path="res://Scenes/Weapons/Guns/12gaugeGuns/WeaponDoubleBarrel.tscn" id="5_lyud2"]
+[ext_resource type="PackedScene" uid="uid://do67sjc1c7h8g" path="res://Scenes/Weapons/Guns/12gaugeGuns/WeaponShotgun.tscn" id="6_ckouy"]
+[ext_resource type="PackedScene" uid="uid://1dgi4w3gt38e" path="res://Scenes/Weapons/Guns/556mmGuns/WeaponScar.tscn" id="7_0v086"]
+[ext_resource type="PackedScene" uid="uid://kv6ej6j01fux" path="res://Scenes/Weapons/Guns/762mmGuns/WeaponAk47.tscn" id="8_rlunp"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_y1gts"]
 bg_color = Color(0.015686275, 0.015686275, 0.015686275, 0.34117648)
@@ -8,6 +15,8 @@ bg_color = Color(0.015686275, 0.015686275, 0.015686275, 0.34117648)
 [node name="VanInventoryUI" type="CanvasLayer"]
 process_mode = 3
 script = ExtResource("1_omb12")
+van_columns = 3
+weapon_scenes = Array[PackedScene]([ExtResource("2_aeru5"), ExtResource("3_u1u77"), ExtResource("4_g3vdr"), ExtResource("5_lyud2"), ExtResource("6_ckouy"), ExtResource("7_0v086"), ExtResource("8_rlunp")])
 
 [node name="PanelContainer" type="PanelContainer" parent="."]
 anchors_preset = 15
@@ -16,3 +25,47 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 theme_override_styles/panel = SubResource("StyleBoxFlat_y1gts")
+
+[node name="MarginContainer" type="MarginContainer" parent="PanelContainer"]
+layout_mode = 2
+theme_override_constants/margin_left = 30
+theme_override_constants/margin_top = 30
+theme_override_constants/margin_right = 30
+theme_override_constants/margin_bottom = 30
+
+[node name="HBoxContainer" type="HBoxContainer" parent="PanelContainer/MarginContainer"]
+layout_mode = 2
+theme_override_constants/separation = 10
+
+[node name="VBoxContainer" type="VBoxContainer" parent="PanelContainer/MarginContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="Label" type="Label" parent="PanelContainer/MarginContainer/HBoxContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+text = "Van inventory"
+
+[node name="GridVan" type="GridContainer" parent="PanelContainer/MarginContainer/HBoxContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+
+[node name="VSeparator" type="VSeparator" parent="PanelContainer/MarginContainer/HBoxContainer"]
+layout_mode = 2
+
+[node name="VBoxContainer2" type="VBoxContainer" parent="PanelContainer/MarginContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="Label" type="Label" parent="PanelContainer/MarginContainer/HBoxContainer/VBoxContainer2"]
+layout_mode = 2
+size_flags_horizontal = 4
+text = "Player inventory"
+
+[node name="GridPlayer" type="GridContainer" parent="PanelContainer/MarginContainer/HBoxContainer/VBoxContainer2"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+
+[node name="WeaponContainer" type="Node2D" parent="."]

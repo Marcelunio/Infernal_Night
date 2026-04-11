@@ -28,6 +28,7 @@ weapon_name = "pistol"
 throw_force = 1000.0
 weapon_delay = 0.2
 weapon_damage = 120.0
+sprite = ExtResource("8_6hos1")
 weapon_ammo_type = "9mm"
 max_ammo = 17
 reload_time = 4.5
@@ -36,7 +37,6 @@ metadata/_edit_group_ = true
 [node name="WeaponSprite" type="Sprite2D" parent="."]
 position = Vector2(0.7500007, 0.49999952)
 scale = Vector2(0.71875, 0.71875)
-texture = ExtResource("8_6hos1")
 
 [node name="WeaponCollsion" type="CollisionShape2D" parent="."]
 shape = SubResource("RectangleShape2D_phod8")

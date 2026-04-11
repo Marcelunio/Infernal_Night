@@ -5,14 +5,14 @@
 [ext_resource type="PackedScene" uid="uid://c2odeaamy2wr1" path="res://TEST/vanInventoryUI.tscn" id="3_vw7fi"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_7wee7"]
-size = Vector2(239, 102)
+size = Vector2(160, 128)
 
 [node name="VanInventoryTEST" type="Area2D"]
 process_mode = 3
 script = ExtResource("1_7wee7")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(64.5, 16)
+position = Vector2(48, 64)
 shape = SubResource("RectangleShape2D_7wee7")
 
 [node name="TileInactive" type="TileMapLayer" parent="."]

@@ -29,6 +29,7 @@ weapon_name = "doubleBarrel"
 throw_force = 600.0
 weapon_delay = 0.9
 weapon_damage = 84.0
+sprite = ExtResource("2_0fmmj")
 weapon_ammo_type = "12gauge"
 max_ammo = 2
 reload_time = 1.0
@@ -36,7 +37,6 @@ metadata/_edit_group_ = true
 
 [node name="WeaponSprite" type="Sprite2D" parent="."]
 scale = Vector2(0.44200003, 0.5)
-texture = ExtResource("2_0fmmj")
 
 [node name="WeaponCollsion" type="CollisionShape2D" parent="."]
 shape = SubResource("RectangleShape2D_phod8")

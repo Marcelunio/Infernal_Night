@@ -25,10 +25,10 @@ weapon_name = "holyGrenade"
 throw_force = 1050.0
 weapon_delay = 0.1
 weapon_damage = 1.6
+sprite = ExtResource("1_8vdwt")
 metadata/_edit_group_ = true
 
 [node name="WeaponSprite" type="Sprite2D" parent="."]
-texture = ExtResource("1_8vdwt")
 
 [node name="WeaponCollision" type="CollisionShape2D" parent="."]
 position = Vector2(0, 0.5)

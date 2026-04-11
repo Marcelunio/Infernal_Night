@@ -9,7 +9,7 @@ extends RigidBody2D
 @export var throw_force: float
 @export var weapon_delay: float
 @export var weapon_damage: float
-var sprite: Texture2D
+@export var sprite: Texture2D
 
 const PLAYER_VELOCITY_TO_THROW_FORCE: float =0.6
 var is_picked_up: bool = false
@@ -32,7 +32,7 @@ func _ready():
 	else:
 		push_error("Brak WeaponArea w " + weapon_name + "! Nie będzie można podnieść.")
 	
-	sprite = sprite_node.texture
+	sprite_node.texture = sprite
 	#~~Kleks 19.10.2025
 	#Timer strzalu
 	timer = Timer.new()

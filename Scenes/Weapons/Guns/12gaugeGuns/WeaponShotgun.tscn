@@ -29,12 +29,12 @@ weapon_name = "shotgun"
 throw_force = 800.0
 weapon_delay = 0.8
 weapon_damage = 108.0
+sprite = ExtResource("2_83s6p")
 weapon_ammo_type = "12gauge"
 max_ammo = 6
 reload_time = 0.7
 
 [node name="WeaponSprite" type="Sprite2D" parent="."]
-texture = ExtResource("2_83s6p")
 
 [node name="WeaponCollsion" type="CollisionShape2D" parent="."]
 shape = SubResource("RectangleShape2D_phod8")

@@ -31,12 +31,12 @@ weapon_name = "ak47"
 throw_force = 900.0
 weapon_delay = 0.1
 weapon_damage = 180.0
+sprite = ExtResource("2_k27v1")
 weapon_ammo_type = "7.62mm"
 max_ammo = 30
 reload_time = 5.0
 
 [node name="WeaponSprite" type="Sprite2D" parent="."]
-texture = ExtResource("2_k27v1")
 
 [node name="WeaponCollsion" type="CollisionShape2D" parent="."]
 shape = SubResource("RectangleShape2D_phod8")

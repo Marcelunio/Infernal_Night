@@ -1,12 +1,6 @@
-[gd_scene load_steps=21 format=3 uid="uid://ul478xcq3qqo"]
+[gd_scene load_steps=15 format=3 uid="uid://ul478xcq3qqo"]
 
 [ext_resource type="PackedScene" uid="uid://c1da6epqykshi" path="res://Scenes/Floors/ValidRooms/Room.tscn" id="1_014t1"]
-[ext_resource type="PackedScene" uid="uid://da1ap0hsfecta" path="res://Scenes/Weapons/Guns/9mmGuns/WeaponUzi.tscn" id="2_nclxc"]
-[ext_resource type="PackedScene" uid="uid://kv6ej6j01fux" path="res://Scenes/Weapons/Guns/762mmGuns/WeaponAk47.tscn" id="3_7vf17"]
-[ext_resource type="PackedScene" uid="uid://bxg5woeatx4uj" path="res://Scenes/Weapons/Guns/9mmGuns/WeaponRevolver.tscn" id="4_cjroc"]
-[ext_resource type="PackedScene" uid="uid://b783hpp0owvai" path="res://Scenes/Weapons/Guns/12gaugeGuns/WeaponDoubleBarrel.tscn" id="5_yvwe4"]
-[ext_resource type="PackedScene" uid="uid://t7ktbcl5debv" path="res://Scenes/Weapons/Guns/9mmGuns/WeaponPistol.tscn" id="6_sgwhs"]
-[ext_resource type="PackedScene" uid="uid://do67sjc1c7h8g" path="res://Scenes/Weapons/Guns/12gaugeGuns/WeaponShotgun.tscn" id="7_d7iit"]
 [ext_resource type="PackedScene" uid="uid://cotiiwrrpdkwu" path="res://Scenes/Weapons/Melee/WeaponBat.tscn" id="8_cw3ig"]
 [ext_resource type="PackedScene" uid="uid://dhj4hdoqpno23" path="res://Scenes/Weapons/Melee/WeaponKnife.tscn" id="9_1h8pn"]
 [ext_resource type="PackedScene" uid="uid://dnjuntixfdqq0" path="res://Scenes/Weapons/Throwable/WeaponHolyGranate.tscn" id="10_8w2k2"]
@@ -18,7 +12,7 @@
 [ext_resource type="PackedScene" uid="uid://dmxst7mpeirh7" path="res://Scenes/PickUps/Ammo/12gauge.tscn" id="16_8w2k2"]
 [ext_resource type="PackedScene" uid="uid://dm8yxhdv10dtk" path="res://Scenes/PickUps/Ammo/762mm.tscn" id="17_6u2e5"]
 [ext_resource type="PackedScene" uid="uid://c2qitrutg26mu" path="res://Scenes/PickUps/Coins/Coin.tscn" id="18_1mpoe"]
-[ext_resource type="PackedScene" uid="uid://coaebar6fg5hb" path="res://TEST/VanInventoryTest.tscn" id="19_wqx22"]
+[ext_resource type="PackedScene" uid="uid://u4uyiilyh07o" path="res://TEST/VanInventoryTest.tscn" id="19_wqx22"]
 
 [sub_resource type="NavigationPolygon" id="NavigationPolygon_nclxc"]
 vertices = PackedVector2Array(1110, 726, 42, 726, 42, 42, 1110, 42)
@@ -29,56 +23,38 @@ polygons = Array[PackedInt32Array]([PackedInt32Array(0, 1, 2, 3)])
 [node name="NavigationRegion2D" parent="." index="0"]
 navigation_polygon = SubResource("NavigationPolygon_nclxc")
 
-[node name="WeaponUzi" parent="." index="3" instance=ExtResource("2_nclxc")]
-position = Vector2(302, 113)
-
-[node name="WeaponAk47" parent="." index="4" instance=ExtResource("3_7vf17")]
-position = Vector2(215, 592)
-
-[node name="WeaponRevolver" parent="." index="5" instance=ExtResource("4_cjroc")]
-position = Vector2(533, 521)
-
-[node name="WeaponDoubleBarrel" parent="." index="6" instance=ExtResource("5_yvwe4")]
-position = Vector2(184, 664)
-
-[node name="WeaponPistol" parent="." index="7" instance=ExtResource("6_sgwhs")]
-position = Vector2(1029, 683)
-
-[node name="WeaponShotgun" parent="." index="8" instance=ExtResource("7_d7iit")]
-position = Vector2(497, 111)
-
-[node name="WeaponBat" parent="." index="9" instance=ExtResource("8_cw3ig")]
+[node name="WeaponBat" parent="." index="3" instance=ExtResource("8_cw3ig")]
 position = Vector2(182, 390)
 
-[node name="WeaponKnife" parent="." index="10" instance=ExtResource("9_1h8pn")]
+[node name="WeaponKnife" parent="." index="4" instance=ExtResource("9_1h8pn")]
 position = Vector2(128, 533)
 
-[node name="WeaponHolyGranate" parent="." index="11" instance=ExtResource("10_8w2k2")]
+[node name="WeaponHolyGranate" parent="." index="5" instance=ExtResource("10_8w2k2")]
 position = Vector2(385, 586)
 
-[node name="WeaponHolyWater" parent="." index="12" instance=ExtResource("11_6u2e5")]
+[node name="WeaponHolyWater" parent="." index="6" instance=ExtResource("11_6u2e5")]
 position = Vector2(380, 288)
 
-[node name="9mm" parent="." index="13" instance=ExtResource("12_sgwhs")]
+[node name="9mm" parent="." index="7" instance=ExtResource("12_sgwhs")]
 position = Vector2(160, 119)
 
-[node name="FullHeart" parent="." index="18" instance=ExtResource("13_d7iit")]
+[node name="FullHeart" parent="." index="12" instance=ExtResource("13_d7iit")]
 position = Vector2(920, 672)
 
-[node name="FullHeart2" parent="." index="19" instance=ExtResource("14_cw3ig")]
+[node name="FullHeart2" parent="." index="13" instance=ExtResource("14_cw3ig")]
 position = Vector2(751, 677)
 
-[node name="556mm" parent="." index="20" instance=ExtResource("15_1h8pn")]
+[node name="556mm" parent="." index="14" instance=ExtResource("15_1h8pn")]
 position = Vector2(160, 205)
 
-[node name="12gauge" parent="." index="21" instance=ExtResource("16_8w2k2")]
+[node name="12gauge" parent="." index="15" instance=ExtResource("16_8w2k2")]
 position = Vector2(397, 111)
 
-[node name="762mm" parent="." index="22" instance=ExtResource("17_6u2e5")]
+[node name="762mm" parent="." index="16" instance=ExtResource("17_6u2e5")]
 position = Vector2(401, 192)
 
-[node name="FullHeart3" parent="." index="23" instance=ExtResource("18_1mpoe")]
+[node name="FullHeart3" parent="." index="17" instance=ExtResource("18_1mpoe")]
 position = Vector2(1072, 610)
 
-[node name="VanInventoryTEST" parent="." index="24" instance=ExtResource("19_wqx22")]
+[node name="VanInventoryTEST" parent="." index="18" instance=ExtResource("19_wqx22")]
 position = Vector2(922, 142)

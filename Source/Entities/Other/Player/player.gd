@@ -13,6 +13,7 @@ var dashing: bool = false
 var can_dash: bool = true
 var dash_direction: Vector2 = Vector2.ZERO
 var attacking_from_left=false
+
 #Death screen
 var enemy_deaths: int = 0
 var shots_fired: int = 0
@@ -33,11 +34,6 @@ var hp: int
 
 #inventory connector
 @onready var inventory = $InventoryMenager
-
-#van
-var vanTilemap: TileMapLayer = null
-var vanInput:bool = false
-var isOnVan: bool = false
 
 #SFX
 @onready var audio_player_walk = $Sounds/Walk
