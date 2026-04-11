@@ -1,7 +1,8 @@
-[gd_scene load_steps=5 format=3 uid="uid://ddj8nnb145ov6"]
+[gd_scene load_steps=6 format=3 uid="uid://ddj8nnb145ov6"]
 
 [ext_resource type="Script" uid="uid://bp5fqu66ksw1f" path="res://Source/PickUps/item.gd" id="1_8fk6t"]
 [ext_resource type="Texture2D" uid="uid://bf0xycnepfyxb" path="res://Assets/PickUps/Hearts/heart_pick_up.png" id="2_f6tbb"]
+[ext_resource type="Texture2D" uid="uid://b5t7d3s4k7j6d" path="res://Assets/light/gradient.tres" id="3_bnfb6"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_bnfb6"]
 atlas = ExtResource("2_f6tbb")
@@ -20,5 +21,13 @@ type = "heart"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("RectangleShape2D_acuav")
+
+[node name="PointLight2D" type="PointLight2D" parent="."]
+color = Color(0.67, 0.19430003, 0.19430003, 1)
+energy = 1.3
+blend_mode = 2
+shadow_enabled = true
+texture = ExtResource("3_bnfb6")
+texture_scale = 2.0
 
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]
