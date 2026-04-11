@@ -27,6 +27,7 @@ base_spread = 2.0
 shoot_sounds = Array[AudioStreamWAV]([ExtResource("2_5mmey"), ExtResource("3_mbh6v")])
 reload_sounds = Array[AudioStreamWAV]([ExtResource("4_0e5rj")])
 empty_sounds = Array[AudioStreamWAV]([ExtResource("5_ods8t"), ExtResource("6_x3yki")])
+offset = Vector2(10, -30)
 weapon_name = "ak47"
 throw_force = 900.0
 weapon_delay = 0.1

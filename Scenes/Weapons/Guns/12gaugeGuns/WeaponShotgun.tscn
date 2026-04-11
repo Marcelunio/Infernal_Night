@@ -25,6 +25,7 @@ bullet_count = 6
 shoot_sounds = Array[AudioStreamWAV]([ExtResource("2_cx7l7"), ExtResource("3_hdwdh")])
 reload_sounds = Array[AudioStreamWAV]([ExtResource("4_530ul")])
 empty_sounds = Array[AudioStreamWAV]([ExtResource("5_hv7t8"), ExtResource("6_ja12y")])
+offset = Vector2(10, -30)
 weapon_name = "shotgun"
 throw_force = 800.0
 weapon_delay = 0.8

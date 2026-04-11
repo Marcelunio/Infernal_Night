@@ -28,6 +28,7 @@ base_spread = 2.0
 shoot_sounds = Array[AudioStreamWAV]([ExtResource("2_r2874"), ExtResource("3_f1b70"), ExtResource("4_eecgg")])
 reload_sounds = Array[AudioStreamWAV]([ExtResource("5_srpdc")])
 empty_sounds = Array[AudioStreamWAV]([ExtResource("6_1an4v"), ExtResource("7_l846m")])
+offset = Vector2(10, -30)
 weapon_name = "uzi"
 throw_force = 1000.0
 weapon_delay = 0.025

@@ -16,7 +16,7 @@ func __shoot(spawn_pos: Vector2, player):
 		
 		var bullet = preload("res://Scenes/Projectiles/bullet.tscn").instantiate()
 		
-		bullet.global_position = spawn_pos
+		bullet.global_position = spawn_pos+offset.rotated(rotation)
 		
 		var angle_offset
 		if i < 3:
@@ -26,7 +26,7 @@ func __shoot(spawn_pos: Vector2, player):
 		else:
 			angle_offset = randf_range(-spread_angle,spread_angle)
 	
-		var shoot_direction = Vector2.RIGHT.rotated(player.rotation - deg_to_rad(90) + deg_to_rad(angle_offset))
+		var shoot_direction = Vector2.UP.rotated(player.rotation + deg_to_rad(angle_offset))
 		bullet.direction = shoot_direction
 		bullet.shooter = player
 		bullet.weapon_origin = self

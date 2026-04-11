@@ -3,7 +3,7 @@
 @abstract
 class_name Weapon
 extends RigidBody2D
-
+@export var offset: Vector2
 @export var weapon_name: String = ""
 @onready var sprite_node = $"WeaponSprite"
 @export var throw_force: float

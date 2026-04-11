@@ -4,7 +4,6 @@
 class_name RangedWeapon
 extends Weapon
 
-
 @export var bullet_speed: float = 1500
 
 #signal to ammo_display.gd
@@ -17,9 +16,10 @@ signal reloaded(weapon, amount)
 @export var shoot_sounds: Array[AudioStreamWAV] = []
 @export var reload_sounds: Array[AudioStreamWAV] = []
 @export var empty_sounds: Array[AudioStreamWAV] = []
-
-func shoot(spawn_pos: Vector2, entity): 
-	
+var rotation_transform:Transform2D
+func shoot(spawn_pos: Vector2, entity):
+	var direction = get_global_mouse_position() - entity.global_position 
+	rotation = direction.angle() + 0.5 * PI
 	if(current_ammo<1):
 		if not empty_sounds.is_empty():
 			audioPlayer.stream = empty_sounds.pick_random()

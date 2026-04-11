@@ -20,10 +20,10 @@ func __shoot(spawn_pos: Vector2, entity):
 	audio_player.stream = swing_sounds.pick_random()
 	audio_player.play()
 	var attack_area = preload("res://Scenes/Projectiles/MeleeAttackCollision.tscn").instantiate()
-		
+	
 	attack_area.global_position = spawn_pos
 	attack_area.weapon_origin = self
 
 	get_tree().current_scene.add_child(attack_area)
-	attack_area.setup(melee_range, melee_angle, entity, swing_sprite)
+	attack_area.setup(melee_range, melee_angle, entity, swing_sprite,false,offset)
 	

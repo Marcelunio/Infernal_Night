@@ -25,6 +25,7 @@ bullet_count = 28
 shoot_sounds = Array[AudioStreamWAV]([ExtResource("2_30wnn"), ExtResource("3_dmvn7")])
 reload_sounds = Array[AudioStreamWAV]([ExtResource("4_v1x1h")])
 empty_sounds = Array[AudioStreamWAV]([ExtResource("5_v1x1h"), ExtResource("6_ioh5i")])
+offset = Vector2(10, -30)
 weapon_name = "doubleBarrel"
 throw_force = 600.0
 weapon_delay = 0.9

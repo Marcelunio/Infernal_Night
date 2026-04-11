@@ -6,8 +6,8 @@ extends RangedWeapon
 func __shoot(spawn_pos: Vector2, entity):
 	print("DEBUG - oddano strzal")
 	var bullet = preload("res://Scenes/Projectiles/bullet.tscn").instantiate()
-	bullet.global_position = spawn_pos
-	var shoot_direction = Vector2.RIGHT.rotated(entity.rotation - deg_to_rad(90))
+	bullet.global_position = spawn_pos+offset.rotated(rotation)
+	var shoot_direction = Vector2.UP.rotated(entity.rotation)
 	
 	bullet.direction = shoot_direction
 	bullet.shooter = entity

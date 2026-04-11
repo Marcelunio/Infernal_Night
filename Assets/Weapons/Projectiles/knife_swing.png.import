@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dr7jaq30sgs2f"
-path="res://.godot/imported/TEMPswing.png-98597013dfb3f8fa8a4d914f902d25b7.ctex"
+uid="uid://drfl7hf73e5cj"
+path="res://.godot/imported/knife_swing.png-74b5e024cf27f7e28432b45f9ca9ef3e.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/Weapons/Projectiles/TEMPswing.png"
-dest_files=["res://.godot/imported/TEMPswing.png-98597013dfb3f8fa8a4d914f902d25b7.ctex"]
+source_file="res://Assets/Weapons/Projectiles/knife_swing.png"
+dest_files=["res://.godot/imported/knife_swing.png-74b5e024cf27f7e28432b45f9ca9ef3e.ctex"]
 
 [params]
 

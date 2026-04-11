@@ -4,7 +4,7 @@
 [ext_resource type="AudioStream" uid="uid://c1qox5nsbat8r" path="res://Sounds/SFX/WhiteWeapons/Bat/bat_swing_high.wav" id="2_7mxlh"]
 [ext_resource type="Texture2D" uid="uid://k0qtx3bdew3w" path="res://Assets/Weapons/Melee/bat.png" id="2_nsli5"]
 [ext_resource type="AudioStream" uid="uid://dvhbeapa48np7" path="res://Sounds/SFX/WhiteWeapons/Bat/bat_swing_low.wav" id="3_6i45i"]
-[ext_resource type="Texture2D" uid="uid://bbxnuh8tus8oi" path="res://Assets/Weapons/Projectiles/bat_swing.png" id="5_7mxlh"]
+[ext_resource type="Texture2D" uid="uid://cypryvu3ttr1v" path="res://Assets/Weapons/Projectiles/bat_swing.png" id="5_7mxlh"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_36jba"]
 size = Vector2(20, 87)
@@ -19,6 +19,7 @@ gravity_scale = 0.0
 script = ExtResource("1_oh6b4")
 melee_range = 150.0
 melee_angle = 90.0
+offset = Vector2(0, -50)
 swing_sounds = Array[AudioStreamWAV]([ExtResource("2_7mxlh"), ExtResource("3_6i45i")])
 weapon_name = "bat"
 throw_force = 1050.0

@@ -3,7 +3,7 @@
 [ext_resource type="Script" uid="uid://oibk6qjt3f2q" path="res://Source/Weapons/Melee/melee_weapon.gd" id="1_74jeq"]
 [ext_resource type="Texture2D" uid="uid://dc2oaphwvu3co" path="res://Assets/Weapons/Melee/knife.png" id="2_74jeq"]
 [ext_resource type="AudioStream" uid="uid://dtd8hoxcc8o7y" path="res://Sounds/SFX/WhiteWeapons/Knife/knife_slash_high.wav" id="2_ajpfp"]
-[ext_resource type="Texture2D" uid="uid://dr7jaq30sgs2f" path="res://Assets/Weapons/Projectiles/TEMPswing.png" id="3_vq6rc"]
+[ext_resource type="Texture2D" uid="uid://drfl7hf73e5cj" path="res://Assets/Weapons/Projectiles/knife_swing.png" id="3_vq6rc"]
 [ext_resource type="AudioStream" uid="uid://bp2miok7u64ax" path="res://Sounds/SFX/WhiteWeapons/Knife/knife_slash_low.wav" id="3_woxwq"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_36jba"]
@@ -19,6 +19,7 @@ gravity_scale = 0.0
 script = ExtResource("1_74jeq")
 melee_range = 100.0
 melee_angle = 60.0
+offset = Vector2(10, -50)
 swing_sounds = Array[AudioStreamWAV]([ExtResource("2_ajpfp"), ExtResource("3_woxwq")])
 weapon_name = "knife"
 throw_force = 1250.0

@@ -24,6 +24,7 @@ script = ExtResource("1_5xuog")
 shoot_sounds = Array[AudioStreamWAV]([ExtResource("2_lsxgv"), ExtResource("3_upye7"), ExtResource("4_dnrpu")])
 reload_sounds = Array[AudioStreamWAV]([ExtResource("5_2piei")])
 empty_sounds = Array[AudioStreamWAV]([ExtResource("6_6hos1"), ExtResource("7_kejba")])
+offset = Vector2(0, -20)
 weapon_name = "pistol"
 throw_force = 1000.0
 weapon_delay = 0.2

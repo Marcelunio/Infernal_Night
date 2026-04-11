@@ -42,7 +42,7 @@ func _physics_process(_delta: float) -> void:
 	else:
 		queue_free()
 
-func setup(setup_radius, setup_angle, setup_entity, effect_sprite, setup_throwable_lethal:bool = false) -> void:
+func setup(setup_radius, setup_angle, setup_entity, effect_sprite, setup_throwable_lethal:bool = false,setup_vector_offset:Vector2=Vector2.ZERO) -> void:
 	radius = setup_radius
 	angle = setup_angle
 	entity = setup_entity
@@ -55,10 +55,7 @@ func setup(setup_radius, setup_angle, setup_entity, effect_sprite, setup_throwab
 	if weapon_origin.is_in_group("weapon-white"):
 			var direction = get_global_mouse_position() - entity.global_position
 			rotation = direction.angle() + 0.5 * PI		
-			direction = direction.normalized()
-			
-			
-			$Sprite2D.global_position = entity.global_position + (direction * 40)
+			$Sprite2D.global_position = entity.global_position + setup_vector_offset.rotated(rotation)
 	
 	var collision_shape = $"DetectCollision"
 	collision_shape.shape.radius = radius
