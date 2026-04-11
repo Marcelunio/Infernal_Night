@@ -1,7 +1,8 @@
-[gd_scene load_steps=4 format=3 uid="uid://c2qitrutg26mu"]
+[gd_scene load_steps=5 format=3 uid="uid://c2qitrutg26mu"]
 
 [ext_resource type="Script" uid="uid://bp5fqu66ksw1f" path="res://Source/PickUps/item.gd" id="1_bp6k1"]
 [ext_resource type="Texture2D" uid="uid://b4o6gcl4u348t" path="res://Assets/PickUps/Money/pieniazek.png" id="2_rtoom"]
+[ext_resource type="Texture2D" uid="uid://cva54ciuk85f0" path="res://Assets/light/gradient.tres" id="3_rtoom"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_acuav"]
 size = Vector2(31, 31.125)
@@ -16,5 +17,13 @@ coin_value = 1
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("RectangleShape2D_acuav")
+
+[node name="PointLight2D" type="PointLight2D" parent="."]
+color = Color(0.67, 0.61450166, 0.19430003, 1)
+energy = 1.3
+blend_mode = 2
+shadow_enabled = true
+texture = ExtResource("3_rtoom")
+texture_scale = 0.25
 
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]

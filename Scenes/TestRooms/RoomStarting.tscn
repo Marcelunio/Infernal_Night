@@ -13,3 +13,5 @@ tile_map_data = PackedByteArray("AAAUAAkAAAABAAAAAAAVAAkAAAABAAAAAAAWAAkAAAABAAA
 
 [node name="VanInventoryTEST" parent="." index="8" instance=ExtResource("2_60h1s")]
 position = Vector2(672, 320)
+[node name="DirectionalLight2D" type="DirectionalLight2D" parent="." index="10"]
+energy = 0.54

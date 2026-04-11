@@ -35,6 +35,11 @@ position = Vector2(16, 384)
 position = Vector2(576, 16)
 rotation = 1.5707964
 
+[node name="CanvasModulate" type="CanvasModulate" parent="."]
+color = Color(0.5743278, 0.5743278, 0.5743278, 1)
+
+[node name="LightGroup" type="Node2D" parent="."]
+
 [node name="Sounds" type="Node" parent="."]
 
 [node name="Door" type="AudioStreamPlayer" parent="Sounds"]

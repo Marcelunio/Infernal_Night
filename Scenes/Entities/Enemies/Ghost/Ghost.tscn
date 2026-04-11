@@ -1,4 +1,4 @@
-[gd_scene load_steps=6 format=3 uid="uid://t0o0bmrjln2s"]
+[gd_scene load_steps=8 format=3 uid="uid://t0o0bmrjln2s"]
 
 [ext_resource type="PackedScene" uid="uid://cfusyie20hge6" path="res://Scenes/Entities/Enemies/Enemy.tscn" id="1_c3fwx"]
 [ext_resource type="Script" uid="uid://cvenf4uoe4sl2" path="res://Source/Entities/Enemies/Ghost/ghost.gd" id="2_la1fa"]
@@ -7,6 +7,17 @@
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_rhd2e"]
 radius = 12.0
+
+[sub_resource type="Gradient" id="Gradient_t1myd"]
+colors = PackedColorArray(1, 1, 1, 1, 1, 1, 1, 0)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_csf1d"]
+gradient = SubResource("Gradient_t1myd")
+width = 256
+height = 256
+fill = 1
+fill_from = Vector2(0.5, 0.5)
+fill_to = Vector2(0.5, 0)
 
 [node name="Enemy" groups=["enemy"] instance=ExtResource("1_c3fwx")]
 rotation = 1.5707964
@@ -34,3 +45,7 @@ texture = ExtResource("3_vt7ka")
 [node name="EnemyCollision" parent="." index="2"]
 rotation = 1.5707964
 shape = SubResource("CircleShape2D_rhd2e")
+
+[node name="PointLight2D" parent="." index="3"]
+blend_mode = 2
+texture = SubResource("GradientTexture2D_csf1d")
