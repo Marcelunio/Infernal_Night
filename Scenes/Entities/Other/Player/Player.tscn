@@ -1,4 +1,4 @@
-[gd_scene load_steps=72 format=3 uid="uid://dn2dpf0haseiq"]
+[gd_scene load_steps=76 format=3 uid="uid://dn2dpf0haseiq"]
 
 [ext_resource type="Script" uid="uid://3mc7lvum6rxd" path="res://Source/Entities/Other/Player/player.gd" id="1_nfgiu"]
 [ext_resource type="AudioStream" uid="uid://dnarg1ul4lk5n" path="res://Sounds/SFX/Player/Walk/wooden_floor_walk_high.wav" id="2_44eud"]
@@ -123,6 +123,22 @@ region = Rect2(48, 147, 48, 49)
 [sub_resource type="AtlasTexture" id="AtlasTexture_jt1s7"]
 atlas = ExtResource("13_kjs6a")
 region = Rect2(96, 147, 48, 49)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_xjd6m"]
+atlas = ExtResource("13_kjs6a")
+region = Rect2(96, 0, 48, 49)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_01cym"]
+atlas = ExtResource("13_kjs6a")
+region = Rect2(0, 49, 48, 49)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_s8qoi"]
+atlas = ExtResource("13_kjs6a")
+region = Rect2(0, 637, 48, 49)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_yu18r"]
+atlas = ExtResource("13_kjs6a")
+region = Rect2(48, 637, 48, 49)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_0wewo"]
 atlas = ExtResource("13_kjs6a")
@@ -304,6 +320,23 @@ animations = [{
 }],
 "loop": false,
 "name": &"pickup_revolver",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_xjd6m")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_01cym")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_s8qoi")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_yu18r")
+}],
+"loop": false,
+"name": &"pickup_scar",
 "speed": 5.0
 }, {
 "frames": [{
@@ -524,7 +557,7 @@ scale = Vector2(1.5, 1.5)
 light_mask = 2
 z_index = 1
 sprite_frames = SubResource("SpriteFrames_t1uql")
-animation = &"unarmed"
+animation = &"pickup_scar"
 offset = Vector2(0, -11)
 
 [node name="legs" type="AnimatedSprite2D" parent="animation"]
