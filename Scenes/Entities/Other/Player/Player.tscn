@@ -1,4 +1,4 @@
-[gd_scene load_steps=71 format=3 uid="uid://dn2dpf0haseiq"]
+[gd_scene load_steps=73 format=3 uid="uid://dn2dpf0haseiq"]
 
 [ext_resource type="Script" uid="uid://3mc7lvum6rxd" path="res://Source/Entities/Other/Player/player.gd" id="1_nfgiu"]
 [ext_resource type="AudioStream" uid="uid://dnarg1ul4lk5n" path="res://Sounds/SFX/Player/Walk/wooden_floor_walk_high.wav" id="2_44eud"]
@@ -456,6 +456,18 @@ animations = [{
 "speed": 5.0
 }]
 
+[sub_resource type="Gradient" id="Gradient_wqx22"]
+interpolation_mode = 2
+offsets = PackedFloat32Array(0, 0.35342187, 0.66700715)
+colors = PackedColorArray(1, 1, 1, 1, 0.24, 0.24, 0.24, 1, 0, 0, 0, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_fad8c"]
+gradient = SubResource("Gradient_wqx22")
+width = 256
+height = 256
+fill = 1
+fill_from = Vector2(0.5, 0.5)
+
 [node name="Player" type="CharacterBody2D" groups=["player"]]
 collision_mask = 188
 script = ExtResource("1_nfgiu")
@@ -516,15 +528,18 @@ metadata/_edit_use_anchors_ = true
 [node name="Settings" parent="Usable_UI" instance=ExtResource("7_xu3wr")]
 
 [node name="animation" type="CanvasGroup" parent="."]
+light_mask = 2
 scale = Vector2(1.5, 1.5)
 
 [node name="top" type="AnimatedSprite2D" parent="animation"]
+light_mask = 2
 z_index = 1
 sprite_frames = SubResource("SpriteFrames_t1uql")
 animation = &"unarmed"
 offset = Vector2(0, -11)
 
 [node name="legs" type="AnimatedSprite2D" parent="animation"]
+light_mask = 2
 sprite_frames = SubResource("SpriteFrames_3w1y7")
 animation = &"walk"
 offset = Vector2(0, -11)
@@ -549,5 +564,10 @@ bus = &"SFX"
 [node name="Music" type="AudioStreamPlayer" parent="Sounds"]
 process_mode = 3
 bus = &"Music"
+
+[node name="PointLight2D" type="PointLight2D" parent="."]
+shadow_enabled = true
+shadow_filter = 1
+texture = SubResource("GradientTexture2D_fad8c")
 
 [connection signal="finished" from="Sounds/Music" to="." method="_on_music_finished"]

@@ -113,6 +113,9 @@ interaction={
 
 [layer_names]
 
+2d_render/layer_2="player"
+2d_render/layer_3="enemies"
+2d_render/layer_4="enemy_projectiles"
 2d_physics/layer_1="Gracz"
 2d_physics/layer_2="Bron"
 2d_physics/layer_3="PickupBroni"
@@ -129,3 +132,4 @@ interaction={
 [rendering]
 
 textures/canvas_textures/default_texture_filter=0
+environment/defaults/default_clear_color=Color(0.24705882, 0.21960784, 0.21176471, 1)
