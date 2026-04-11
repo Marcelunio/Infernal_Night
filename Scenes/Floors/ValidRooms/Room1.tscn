@@ -1,8 +1,9 @@
-[gd_scene load_steps=5 format=4 uid="uid://3kkp85nvann"]
+[gd_scene load_steps=6 format=4 uid="uid://3kkp85nvann"]
 
 [ext_resource type="PackedScene" uid="uid://c1da6epqykshi" path="res://Scenes/Floors/ValidRooms/Room.tscn" id="1_eqxdy"]
 [ext_resource type="PackedScene" uid="uid://dmxst7mpeirh7" path="res://Scenes/PickUps/Ammo/12gauge.tscn" id="2_n044l"]
 [ext_resource type="PackedScene" uid="uid://c2qitrutg26mu" path="res://Scenes/PickUps/Coins/Coin.tscn" id="3_ifkh7"]
+[ext_resource type="Texture2D" uid="uid://cva54ciuk85f0" path="res://Assets/light/gradient.tres" id="4_ynq8o"]
 
 [sub_resource type="NavigationPolygon" id="NavigationPolygon_eqxdy"]
 vertices = PackedVector2Array(874, 598, 822, 598, 426, 554, 726, 554, 778, 554, 778, 214, 918, 502, 918, 554, 330, 170, 330, 42, 822, 42, 822, 170, 726, 214, 874, 170, 874, 42, 1110, 42, 1110, 214, 918, 214, 918, 266, 1110, 266, 1110, 502, 1110, 554, 1110, 726, 874, 726, 822, 726, 330, 726, 330, 598, 374, 554, 278, 598, 278, 726, 42, 726, 42, 554, 234, 554, 234, 502, 42, 502, 42, 266, 234, 266, 234, 214, 42, 214, 42, 42, 278, 42, 278, 170, 374, 214, 426, 214)
@@ -36,3 +37,69 @@ position = Vector2(247, 79)
 
 [node name="FullHeart" parent="." index="8" instance=ExtResource("3_ifkh7")]
 position = Vector2(1024, 698)
+
+[node name="PointLight2D5" type="PointLight2D" parent="LightGroup" index="0"]
+position = Vector2(854, 378)
+color = Color(0.86, 0.49880004, 0.25800002, 1)
+energy = 0.99
+range_item_cull_mask = 3
+shadow_enabled = true
+shadow_filter = 1
+texture = ExtResource("4_ynq8o")
+texture_scale = 4.0
+
+[node name="PointLight2D6" type="PointLight2D" parent="LightGroup" index="1"]
+position = Vector2(236, 384)
+color = Color(0.86, 0.49880004, 0.25800002, 1)
+energy = 0.99
+range_item_cull_mask = 3
+shadow_enabled = true
+shadow_filter = 1
+texture = ExtResource("4_ynq8o")
+texture_scale = 4.0
+
+[node name="PointLight2D7" type="PointLight2D" parent="LightGroup" index="2"]
+position = Vector2(591, 399)
+color = Color(0.86, 0.49880004, 0.25800002, 1)
+energy = 0.99
+range_item_cull_mask = 3
+shadow_enabled = true
+shadow_filter = 1
+texture = ExtResource("4_ynq8o")
+texture_scale = 4.0
+
+[node name="PointLight2D8" type="PointLight2D" parent="LightGroup" index="3"]
+position = Vector2(153, 650)
+color = Color(0.86, 0.49880004, 0.25800002, 1)
+energy = 0.5
+range_item_cull_mask = 3
+shadow_enabled = true
+shadow_filter = 1
+texture = ExtResource("4_ynq8o")
+
+[node name="PointLight2D9" type="PointLight2D" parent="LightGroup" index="4"]
+position = Vector2(1021, 644)
+color = Color(0.86, 0.49880004, 0.25800002, 1)
+energy = 0.5
+range_item_cull_mask = 3
+shadow_enabled = true
+shadow_filter = 1
+texture = ExtResource("4_ynq8o")
+
+[node name="PointLight2D10" type="PointLight2D" parent="LightGroup" index="5"]
+position = Vector2(148, 131)
+color = Color(0.86, 0.49880004, 0.25800002, 1)
+energy = 0.5
+range_item_cull_mask = 3
+shadow_enabled = true
+shadow_filter = 1
+texture = ExtResource("4_ynq8o")
+
+[node name="PointLight2D11" type="PointLight2D" parent="LightGroup" index="6"]
+position = Vector2(1018, 122)
+color = Color(0.86, 0.49880004, 0.25800002, 1)
+energy = 0.5
+range_item_cull_mask = 3
+shadow_enabled = true
+shadow_filter = 1
+texture = ExtResource("4_ynq8o")
