@@ -1,4 +1,4 @@
-[gd_scene load_steps=71 format=3 uid="uid://dn2dpf0haseiq"]
+[gd_scene load_steps=72 format=3 uid="uid://dn2dpf0haseiq"]
 
 [ext_resource type="Script" uid="uid://3mc7lvum6rxd" path="res://Source/Entities/Other/Player/player.gd" id="1_nfgiu"]
 [ext_resource type="AudioStream" uid="uid://dnarg1ul4lk5n" path="res://Sounds/SFX/Player/Walk/wooden_floor_walk_high.wav" id="2_44eud"]
@@ -18,11 +18,12 @@
 [ext_resource type="AudioStream" uid="uid://dfsnp37bewn4m" path="res://Sounds/SFX/Ambient/floor_creacking2.wav" id="8_hxydp"]
 [ext_resource type="PackedScene" uid="uid://bkan3lqpflwny" path="res://Scenes/Entities/Other/Player/UI/GameplayUI/InventoryDisplay.tscn" id="9_yibyp"]
 [ext_resource type="AudioStream" uid="uid://b18loali132tf" path="res://Sounds/SFX/Player/Throw/throw_high.wav" id="10_he03t"]
-[ext_resource type="Script" uid="uid://daxygdt67700y" path="res://Source/Entities/Other/Player/UI/usable_ui.gd" id="10_xinig"]
+[ext_resource type="Script" path="res://Source/Entities/Other/Player/UI/usable_ui.gd" id="10_xinig"]
 [ext_resource type="AudioStream" uid="uid://63ymh03eoc15" path="res://Sounds/SFX/Player/Throw/throw_low.wav" id="11_fad8c"]
 [ext_resource type="AudioStream" uid="uid://c5e7t6kjqbnnf" path="res://Sounds/Music/Eyes-on-me.ogg" id="12_fad8c"]
 [ext_resource type="Texture2D" uid="uid://bangq7x48qpxr" path="res://Assets/Entities/Other/Player/player.png" id="13_kjs6a"]
 [ext_resource type="AudioStream" uid="uid://bgt868b0lcxbk" path="res://Sounds/SFX/Player/PickUp/pick_up.wav" id="20_hxydp"]
+[ext_resource type="Texture2D" uid="uid://cva54ciuk85f0" path="res://Assets/light/gradient.tres" id="24_ubqqd"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_xinig"]
 radius = 12.0
@@ -516,15 +517,18 @@ metadata/_edit_use_anchors_ = true
 [node name="Settings" parent="Usable_UI" instance=ExtResource("7_xu3wr")]
 
 [node name="animation" type="CanvasGroup" parent="."]
+light_mask = 2
 scale = Vector2(1.5, 1.5)
 
 [node name="top" type="AnimatedSprite2D" parent="animation"]
+light_mask = 2
 z_index = 1
 sprite_frames = SubResource("SpriteFrames_t1uql")
 animation = &"unarmed"
 offset = Vector2(0, -11)
 
 [node name="legs" type="AnimatedSprite2D" parent="animation"]
+light_mask = 2
 sprite_frames = SubResource("SpriteFrames_3w1y7")
 animation = &"walk"
 offset = Vector2(0, -11)
@@ -549,5 +553,12 @@ bus = &"SFX"
 [node name="Music" type="AudioStreamPlayer" parent="Sounds"]
 process_mode = 3
 bus = &"Music"
+
+[node name="PointLight2D" type="PointLight2D" parent="."]
+energy = 0.61
+range_item_cull_mask = 3
+shadow_enabled = true
+shadow_filter = 1
+texture = ExtResource("24_ubqqd")
 
 [connection signal="finished" from="Sounds/Music" to="." method="_on_music_finished"]

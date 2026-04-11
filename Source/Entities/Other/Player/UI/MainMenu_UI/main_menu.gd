@@ -7,9 +7,6 @@ func _ready() -> void:
 	for button in get_tree().get_nodes_in_group("Buttons"):
 		button.pressed.connect(_on_any_button_pressed)
 	DisplayServer.window_get_size()
-	for button in $VBoxContainer.get_children():
-		button.add_theme_font_size_override("font_size",DisplayServer.window_get_size().y/24)
-	$Title.label_settings.font_size = DisplayServer.window_get_size().y/6
 	
 func _on_new_game_pressed() -> void:
 	$Choice.start()

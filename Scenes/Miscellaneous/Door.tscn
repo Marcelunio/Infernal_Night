@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=3 uid="uid://bew1thjsdo13d"]
+[gd_scene load_steps=15 format=3 uid="uid://bew1thjsdo13d"]
 
 [ext_resource type="Texture2D" uid="uid://bb2fvibep8eyx" path="res://Assets/Entities/door.png" id="1_571y1"]
 
@@ -88,6 +88,9 @@ animations = [{
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_1l5se"]
 size = Vector2(32, 64)
 
+[sub_resource type="OccluderPolygon2D" id="OccluderPolygon2D_571y1"]
+polygon = PackedVector2Array(12, -32, 12, 32, 16, 32, 16, -32)
+
 [node name="Door" type="StaticBody2D"]
 collision_layer = 128
 collision_mask = 78
@@ -98,3 +101,6 @@ animation = &"close"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("RectangleShape2D_1l5se")
+
+[node name="block_light" type="LightOccluder2D" parent="."]
+occluder = SubResource("OccluderPolygon2D_571y1")
