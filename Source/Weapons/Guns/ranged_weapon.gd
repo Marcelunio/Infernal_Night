@@ -8,7 +8,7 @@ extends Weapon
 @export var bullet_speed: float = 1500
 
 #signal to ammo_display.gd
-signal UI_AmmoChanged(current_ammo, max_ammo)
+signal UI_AmmoChanged(weapon_ammo_type, current_ammo, max_ammo)
 #signal to inventory_menager.gd
 signal reloaded(weapon, amount)
 
@@ -32,7 +32,7 @@ func shoot(spawn_pos: Vector2, entity):
 			audioPlayer.play()
 		
 		current_ammo-=1
-		emit_signal("UI_AmmoChanged",current_ammo, max_ammo)
+		emit_signal("UI_AmmoChanged",weapon_ammo_type, current_ammo, max_ammo)
 
 func _reload(amount_in_inventory):
 	await get_tree().create_timer(reload_time).timeout
@@ -49,7 +49,7 @@ func _reload(amount_in_inventory):
 			current_ammo = current_ammo + amount_in_inventory
 			emit_signal("reloaded", self, amount_in_inventory)
 	
-	emit_signal("UI_AmmoChanged",current_ammo, max_ammo)
+	emit_signal("UI_AmmoChanged",weapon_ammo_type, current_ammo, max_ammo)
 	if not reload_sounds.is_empty():
 			audioPlayer.stream = reload_sounds.pick_random()
 			audioPlayer.play()

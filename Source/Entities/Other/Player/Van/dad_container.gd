@@ -13,9 +13,17 @@ func _ready() -> void:
 	pass
 	
 func _create() -> void:
-	var style = StyleBoxTexture.new()
-	style.texture = texture
-	add_theme_stylebox_override("panel", style)
+	for child in get_children():
+		child.queue_free()
+	
+	if texture == null:
+		return
+		
+	var tex_rect = TextureRect.new()
+	tex_rect.texture = texture
+	tex_rect.stretch_mode = TextureRect.STRETCH_KEEP_ASPECT_CENTERED
+	tex_rect.set_anchors_and_offsets_preset(Control.PRESET_FULL_RECT)
+	add_child(tex_rect)
 
 func _get_drag_data(at_position: Vector2) -> Variant:
 	# co jest przeciągane
