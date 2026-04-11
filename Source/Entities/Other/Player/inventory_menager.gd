@@ -95,10 +95,12 @@ func add_weapon(weapon):#weapon.gd pick_up()
 	return true
 
 func remove_weapon(weapon, van_inventory = false) -> void:
-	weapon_container.remove_at(selected_weapon)
+	var index = weapon_container.find(weapon)  # ← znajdź po referencji
+	if index == -1:
+		return
+	weapon_container.remove_at(index)
 	weapon_container_ui_update()
 	
-	# Przenieś broń z powrotem do świata
 	var player = get_tree().get_first_node_in_group("player")
 	if van_inventory:
 		NODE_weapon_container.remove_child(weapon)

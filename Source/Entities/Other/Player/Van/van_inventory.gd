@@ -1,5 +1,4 @@
-#Meczy sie tu Kekls, wszelkie niepewności oraz pytania kierować do mnie...
-#Znane bugi: XDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDD
+#Meczył sie tu Kekls, wszelkie niepewności oraz pytania kierować do mnie...
 extends Area2D
 
 #tileSets

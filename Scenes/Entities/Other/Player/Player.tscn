@@ -18,7 +18,7 @@
 [ext_resource type="AudioStream" uid="uid://dfsnp37bewn4m" path="res://Sounds/SFX/Ambient/floor_creacking2.wav" id="8_hxydp"]
 [ext_resource type="PackedScene" uid="uid://bkan3lqpflwny" path="res://Scenes/Entities/Other/Player/UI/GameplayUI/InventoryDisplay.tscn" id="9_yibyp"]
 [ext_resource type="AudioStream" uid="uid://b18loali132tf" path="res://Sounds/SFX/Player/Throw/throw_high.wav" id="10_he03t"]
-[ext_resource type="Script" path="res://Source/Entities/Other/Player/UI/usable_ui.gd" id="10_xinig"]
+[ext_resource type="Script" uid="uid://daxygdt67700y" path="res://Source/Entities/Other/Player/UI/usable_ui.gd" id="10_xinig"]
 [ext_resource type="AudioStream" uid="uid://63ymh03eoc15" path="res://Sounds/SFX/Player/Throw/throw_low.wav" id="11_fad8c"]
 [ext_resource type="AudioStream" uid="uid://c5e7t6kjqbnnf" path="res://Sounds/Music/Eyes-on-me.ogg" id="12_fad8c"]
 [ext_resource type="Texture2D" uid="uid://bangq7x48qpxr" path="res://Assets/Entities/Other/Player/player.png" id="13_kjs6a"]

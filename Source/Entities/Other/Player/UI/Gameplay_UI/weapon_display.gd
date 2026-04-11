@@ -30,6 +30,6 @@ func _on_weapon_changed(weapon):
 		$VBoxContainer/AmmoCounter.text = "%s" % ["white weapon"]
 		
 func _on_ammo_changed(ammo_type, current_ammo, max_ammo):
-		$VBoxContainer/AmmoCounter.text = "%s : %d / %d" % [ammo_type, current_ammo, max_ammo]#%int %int [zmienne]
+		$VBoxContainer/AmmoCounter.text = "%s : %d / %d" % [ammo_type, current_ammo, max_ammo]
 
 	

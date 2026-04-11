@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=3 uid="uid://ul478xcq3qqo"]
+[gd_scene load_steps=16 format=3 uid="uid://ul478xcq3qqo"]
 
 [ext_resource type="PackedScene" uid="uid://c1da6epqykshi" path="res://Scenes/Floors/ValidRooms/Room.tscn" id="1_014t1"]
 [ext_resource type="PackedScene" uid="uid://cotiiwrrpdkwu" path="res://Scenes/Weapons/Melee/WeaponBat.tscn" id="8_cw3ig"]
@@ -7,6 +7,7 @@
 [ext_resource type="PackedScene" uid="uid://cltvr8ugr4leu" path="res://Scenes/Weapons/Throwable/WeaponHolyWater.tscn" id="11_6u2e5"]
 [ext_resource type="PackedScene" uid="uid://bt2sjl85bpm3i" path="res://Scenes/PickUps/Ammo/9mm.tscn" id="12_sgwhs"]
 [ext_resource type="PackedScene" uid="uid://ddj8nnb145ov6" path="res://Scenes/PickUps/Hearts/FullHeart.tscn" id="13_d7iit"]
+[ext_resource type="PackedScene" uid="uid://1dgi4w3gt38e" path="res://Scenes/Weapons/Guns/556mmGuns/WeaponScar.tscn" id="14_1h8pn"]
 [ext_resource type="PackedScene" uid="uid://pfh45psxmewy" path="res://Scenes/PickUps/Hearts/HalfHeart.tscn" id="14_cw3ig"]
 [ext_resource type="PackedScene" uid="uid://danvskoqxmcpk" path="res://Scenes/PickUps/Ammo/556mm.tscn" id="15_1h8pn"]
 [ext_resource type="PackedScene" uid="uid://dmxst7mpeirh7" path="res://Scenes/PickUps/Ammo/12gauge.tscn" id="16_8w2k2"]
@@ -58,3 +59,6 @@ position = Vector2(1072, 610)
 
 [node name="VanInventoryTEST" parent="." index="18" instance=ExtResource("19_wqx22")]
 position = Vector2(922, 142)
+
+[node name="WeaponScar" parent="." index="22" instance=ExtResource("14_1h8pn")]
+position = Vector2(937, 493)

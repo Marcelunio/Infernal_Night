@@ -86,6 +86,7 @@ func _refresh_player_inventory() -> void:
 		slot.weapon_name = ""
 		slot.texture = null
 		slot.weapon = null
+		slot.from = ""
 		slot._create()
 	
 	for i in range(inventory.weapon_container.size()):

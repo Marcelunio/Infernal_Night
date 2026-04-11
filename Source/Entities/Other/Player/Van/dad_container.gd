@@ -47,20 +47,20 @@ func _drop_data(at_position: Vector2, data: Variant) -> void:
 		from = "playerInventory"
 	else:
 		from = "vanInventory"
-		
 	
 	data["source"].weapon_name = ""
 	data["source"].texture = null
 	data["source"].weapon = null
 	data["source"]._create()
-	if player_inventory and from == "vanInventory":
+	
+	if from == "vanInventory" and player_inventory:
 		inventory.add_weapon(weapon)
-	elif from == "vanInventory":
+	elif from == "vanInventory" and not player_inventory:
 		pass
-	elif from == "playerInventory":
+	elif from == "playerInventory" and not player_inventory:
 		inventory.remove_weapon(weapon, true)
 		storage.add_child(weapon)
+	elif from == "playerInventory" and player_inventory:
+		pass
 	else:
 		print("DEBUG - SOMETHING WENT VERY WRONG IN dad_container.gd")
-		
-		
