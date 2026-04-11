@@ -1,8 +1,9 @@
-[gd_scene load_steps=5 format=4 uid="uid://dx1apgwess3tw"]
+[gd_scene load_steps=6 format=4 uid="uid://dx1apgwess3tw"]
 
 [ext_resource type="PackedScene" uid="uid://c1da6epqykshi" path="res://Scenes/Floors/ValidRooms/Room.tscn" id="1_6mtle"]
 [ext_resource type="PackedScene" uid="uid://danvskoqxmcpk" path="res://Scenes/PickUps/Ammo/556mm.tscn" id="2_35qx1"]
 [ext_resource type="PackedScene" uid="uid://c2qitrutg26mu" path="res://Scenes/PickUps/Coins/Coin.tscn" id="3_xfu66"]
+[ext_resource type="Texture2D" uid="uid://cva54ciuk85f0" path="res://Assets/light/gradient.tres" id="4_3pnml"]
 
 [sub_resource type="NavigationPolygon" id="NavigationPolygon_6mtle"]
 vertices = PackedVector2Array(918, 490, 1002, 490, 1046, 502, 1046, 566, 1014, 566, 778, 554, 778, 502, 982, 138, 1014, 202, 1002, 278, 918, 278, 778, 266, 778, 214, 918, 106, 406, 406, 406, 502, 374, 502, 234, 490, 234, 246, 374, 266, 1078, 438, 1078, 502, 1002, 438, 650, 426, 650, 342, 694, 406, 694, 502, 598, 502, 618, 458, 406, 182, 438, 74, 470, 74, 470, 106, 458, 182, 554, 106, 554, 42, 598, 42, 598, 106, 746, 182, 682, 106, 682, 74, 714, 74, 714, 42, 854, 42, 854, 74, 918, 74, 982, 106, 1014, 138, 1046, 202, 1046, 266, 1002, 330, 1078, 266, 1078, 330, 1110, 330, 1110, 438, 970, 438, 970, 330, 746, 214, 694, 182, 694, 214, 598, 214, 598, 266, 694, 266, 694, 362, 554, 266, 618, 310, 554, 214, 458, 214, 298, 74, 406, 214, 374, 214, 234, 106, 234, 74, 406, 266, 406, 362, 502, 342, 458, 362, 458, 266, 534, 310, 746, 362, 746, 266, 746, 502, 746, 406, 618, 342, 534, 342, 502, 426, 534, 426, 534, 458, 618, 426, 554, 502, 598, 554, 694, 554, 694, 586, 554, 554, 682, 662, 598, 662, 458, 502, 458, 406, 150, 298, 182, 298, 182, 438, 150, 438, 374, 554, 406, 554, 406, 586, 298, 694, 554, 662, 458, 586, 458, 554, 854, 694, 746, 586, 746, 554, 918, 662, 918, 694, 1014, 630, 982, 630, 982, 662, 854, 726, 714, 726, 714, 694, 682, 694, 598, 726, 554, 726, 470, 662, 470, 694, 438, 694, 438, 726, 298, 726, 234, 694, 234, 662, 170, 662, 170, 630, 138, 630, 138, 566, 150, 490, 106, 566, 106, 502, 74, 502, 74, 438, 42, 438, 42, 330, 74, 330, 74, 266, 106, 266, 106, 202, 138, 202, 150, 246, 138, 138, 170, 138, 170, 106, 298, 42, 438, 42)
@@ -36,3 +37,61 @@ position = Vector2(153, 367)
 
 [node name="FullHeart" parent="." index="8" instance=ExtResource("3_xfu66")]
 position = Vector2(982, 383)
+
+[node name="PointLight2D5" type="PointLight2D" parent="LightGroup" index="0"]
+position = Vector2(582, 134)
+color = Color(0.86, 0.49880004, 0.25800002, 1)
+energy = 0.99
+range_item_cull_mask = 3
+shadow_enabled = true
+shadow_filter = 1
+texture = ExtResource("4_3pnml")
+texture_scale = 2.0
+
+[node name="PointLight2D6" type="PointLight2D" parent="LightGroup" index="1"]
+position = Vector2(577, 585)
+color = Color(0.86, 0.49880004, 0.25800002, 1)
+energy = 0.99
+range_item_cull_mask = 3
+shadow_enabled = true
+shadow_filter = 1
+texture = ExtResource("4_3pnml")
+texture_scale = 2.0
+
+[node name="PointLight2D7" type="PointLight2D" parent="LightGroup" index="2"]
+position = Vector2(827, 381)
+color = Color(0.86, 0.49880004, 0.25800002, 1)
+energy = 0.99
+range_item_cull_mask = 3
+shadow_enabled = true
+shadow_filter = 1
+texture = ExtResource("4_3pnml")
+texture_scale = 2.0
+
+[node name="PointLight2D8" type="PointLight2D" parent="LightGroup" index="3"]
+position = Vector2(329, 374)
+color = Color(0.86, 0.49880004, 0.25800002, 1)
+energy = 0.99
+range_item_cull_mask = 3
+shadow_enabled = true
+shadow_filter = 1
+texture = ExtResource("4_3pnml")
+texture_scale = 2.0
+
+[node name="PointLight2D9" type="PointLight2D" parent="LightGroup" index="4"]
+position = Vector2(1040, 386)
+color = Color(0.86, 0.49880004, 0.25800002, 1)
+energy = 0.76
+range_item_cull_mask = 3
+shadow_enabled = true
+shadow_filter = 1
+texture = ExtResource("4_3pnml")
+
+[node name="PointLight2D10" type="PointLight2D" parent="LightGroup" index="5"]
+position = Vector2(114, 367)
+color = Color(0.86, 0.49880004, 0.25800002, 1)
+energy = 0.76
+range_item_cull_mask = 3
+shadow_enabled = true
+shadow_filter = 1
+texture = ExtResource("4_3pnml")

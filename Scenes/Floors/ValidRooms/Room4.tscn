@@ -1,7 +1,8 @@
-[gd_scene load_steps=4 format=4 uid="uid://dtcik8ig2rjuc"]
+[gd_scene load_steps=5 format=4 uid="uid://dtcik8ig2rjuc"]
 
 [ext_resource type="PackedScene" uid="uid://c1da6epqykshi" path="res://Scenes/Floors/ValidRooms/Room.tscn" id="1_05yht"]
 [ext_resource type="PackedScene" uid="uid://da1ap0hsfecta" path="res://Scenes/Weapons/Guns/9mmGuns/WeaponUzi.tscn" id="2_cpe6f"]
+[ext_resource type="Texture2D" uid="uid://cva54ciuk85f0" path="res://Assets/light/gradient.tres" id="3_l7tj2"]
 
 [sub_resource type="NavigationPolygon" id="NavigationPolygon_cpe6f"]
 vertices = PackedVector2Array(854, 534, 790, 534, 522, 522, 566, 522, 918, 470, 918, 502, 854, 502, 682, 490, 682, 406, 1034, 362, 1034, 278, 1110, 42, 1110, 726, 982, 406, 982, 438, 950, 438, 950, 470, 522, 298, 598, 362, 630, 406, 630, 438, 598, 438, 458, 362, 458, 298, 598, 470, 566, 470, 522, 438, 650, 522, 650, 490, 458, 438, 458, 406, 362, 534, 374, 458, 406, 458, 406, 490, 362, 566, 470, 490, 470, 522, 426, 566, 790, 566, 726, 566, 726, 598, 598, 598, 598, 630, 566, 630, 566, 682, 522, 682, 522, 630, 490, 598, 490, 630, 426, 598, 266, 534, 266, 502, 374, 406, 202, 502, 202, 438, 374, 362, 118, 490, 150, 490, 150, 554, 42, 726, 214, 554, 214, 586, 310, 586, 310, 618, 374, 618, 374, 650, 438, 650, 438, 682, 650, 682, 650, 650, 778, 650, 778, 618, 842, 618, 842, 586, 906, 586, 906, 554, 970, 554, 970, 522, 1002, 522, 1002, 490, 1034, 490, 1002, 278, 1002, 246, 970, 246, 970, 214, 938, 214, 938, 182, 906, 182, 906, 150, 842, 150, 842, 118, 746, 118, 746, 86, 598, 86, 598, 138, 566, 214, 554, 138, 554, 86, 438, 86, 438, 118, 374, 118, 42, 42, 374, 150, 278, 150, 278, 182, 246, 182, 246, 214, 182, 214, 182, 278, 150, 278, 150, 310, 118, 310, 170, 394, 170, 362, 202, 362, 202, 330, 234, 330, 234, 266, 298, 266, 374, 310, 298, 234, 330, 234, 406, 246, 406, 310, 330, 202, 426, 202, 470, 214, 470, 246, 426, 170, 490, 170, 522, 214, 490, 138, 650, 246, 694, 138, 694, 170, 682, 310, 790, 170, 790, 202, 854, 202, 854, 234, 886, 234, 886, 266, 682, 362, 918, 266, 918, 298, 950, 298, 950, 330, 982, 330, 982, 362, 650, 310, 618, 246, 618, 214, 566, 298, 598, 298, 118, 394, 1034, 406, 118, 438)
@@ -20,3 +21,13 @@ tile_map_data = PackedByteArray("AAAQAAsABQABAAEAAAAQAAwABQABAAEAAAARAAwABQABAAE
 
 [node name="WeaponUzi" parent="." index="2" instance=ExtResource("2_cpe6f")]
 position = Vector2(542, 383)
+
+[node name="PointLight2D8" type="PointLight2D" parent="." index="11"]
+position = Vector2(554, 377)
+color = Color(0.86, 0.49880004, 0.25800002, 1)
+energy = 2.0
+range_item_cull_mask = 3
+shadow_enabled = true
+shadow_filter = 1
+texture = ExtResource("3_l7tj2")
+texture_scale = 4.8
