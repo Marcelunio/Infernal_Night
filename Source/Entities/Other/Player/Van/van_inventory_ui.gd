@@ -43,6 +43,8 @@ func _build_UI() -> void:
 	GridPlayer.columns = 3
 	var storage = self.get_node("WeaponContainer")
 	
+	var van_containers_present = 0
+	
 	for key in dict_weapons.keys():
 		var x = DAD_SCENE.instantiate()
 		var instance = dict_weapons[key].instantiate()
@@ -56,6 +58,15 @@ func _build_UI() -> void:
 		x.storage = storage
 		GridVan.add_child(x)
 		x._create()
+		van_containers_present += 1
+	
+	for i in range(9 - van_containers_present):
+		var x = DAD_SCENE.instantiate()
+		x.player = player
+		x.inventory = inventory
+		x.storage = storage
+		GridVan.add_child(x)
+		
 		
 	for i in range(inventory.weapon_container_capacity):
 		var x = DAD_SCENE.instantiate()

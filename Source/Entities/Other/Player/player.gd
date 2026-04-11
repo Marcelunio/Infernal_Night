@@ -49,6 +49,9 @@ var hp: int
 @export var throw_sounds: Array[AudioStreamWAV] = []
 @export var music_sounds: Array[AudioStreamOggVorbis] = []
 
+#timer
+var timer: Node
+
 #signal to health_bar_display.gd
 signal UI_HealthBarDisplay(max_hp, hp)
 
@@ -132,14 +135,19 @@ func dash():
 	
 	var dash_time = 0.0
 	while dash_time < dash_duration:
-		dash_time += get_process_delta_time()
+		if get_tree().paused:
+			await get_tree().physics_frame
+			continue
+		dash_time += get_physics_process_delta_time()
+		
+		dash_time += get_physics_process_delta_time()
 		var progress = dash_time / dash_duration
 		var current_speed = lerp(dash_speed, 0.0, progress)
 		velocity = dash_direction * current_speed
 		$animation/legs.visible=false
 		$animation/top.play("dash")
 		move_and_slide()
-		await get_tree().process_frame
+		await get_tree().physics_frame
 		
 	dashing = false
 	$animation/legs.visible=true
@@ -153,7 +161,7 @@ func dash():
 	velocity = Vector2.ZERO
 	set_collision_mask_value(7, true)
 	
-	await get_tree().create_timer(dash_cooldown).timeout
+	await get_tree().create_timer(dash_cooldown, false).timeout
 	can_dash = true
 	
 func check_door_transition():
