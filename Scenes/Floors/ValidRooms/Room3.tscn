@@ -29,6 +29,18 @@ position = Vector2(335, 405)
 [node name="EnemyMarker3" type="Marker2D" parent="EnemySpawns" index="2"]
 position = Vector2(577, 378)
 
+[node name="DoorDown" parent="." index="3"]
+process_mode = 0
+
+[node name="DoorRight" parent="." index="4"]
+process_mode = 0
+
+[node name="DoorLeft" parent="." index="5"]
+process_mode = 0
+
+[node name="DoorUp" parent="." index="6"]
+process_mode = 0
+
 [node name="HalfHeart" parent="." index="7" instance=ExtResource("2_f7ady")]
 position = Vector2(420, 380)
 

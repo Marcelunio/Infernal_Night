@@ -10,7 +10,8 @@ signal room_changed(new_room_pos: Vector2i)
 
 const ROOM_SIZE: Vector2 = Vector2(1152, 768)
 const PLAYER: PackedScene = preload("res://Scenes/Entities/Other/Player/Player.tscn")
-const SPAWN_ROOM: PackedScene = preload("res://Scenes/Floors/ValidRooms/test/StartingRoom.tscn")
+const SPAWN_ROOM: PackedScene = preload("res://Scenes/Floors/StartingRooms/StartingRoom.tscn")
+const BOSS_ROOM: PackedScene = preload("res://Scenes/Floors/BossRooms/RoomBoss1.tscn")
 
 const DOOR_UP_ATLAS: Vector2i = Vector2i(12, 1)
 const DOOR_DOWN_ATLAS: Vector2i = Vector2i(12, 4)
@@ -32,6 +33,7 @@ var room_positions: Array[Vector2i] = []
 var current_room_pos: Vector2i = Vector2i.ZERO
 var player: Node2D
 var visited_rooms: Array[Vector2i] = [Vector2i.ZERO]
+var boss_room_pos: Vector2i
 
 var camera_target: Vector2 = ROOM_SIZE / 2
 
@@ -105,6 +107,25 @@ func generate_floor():
 	var branch_count: int = room_number - target_rooms
 	add_branch_rooms(branch_count, forbidden)
 	
+	var farthest_room := room_positions[0]
+	for room in room_positions:
+		if Vector2i(0,0).distance_to(room) > Vector2i(0,0).distance_to(farthest_room):
+			farthest_room = room
+	var angle := Vector2(farthest_room.x, farthest_room.y).angle()
+	var side = floor(2*angle/PI)
+	if side == 0:
+		boss_room_pos = farthest_room + Vector2i.RIGHT
+		room_positions.append(boss_room_pos)
+	elif side == 1:
+		boss_room_pos = farthest_room + Vector2i.DOWN
+		room_positions.append(boss_room_pos)
+	elif side == 2:
+		boss_room_pos = farthest_room + Vector2i.LEFT
+		room_positions.append(boss_room_pos)
+	else:
+		boss_room_pos = farthest_room + Vector2i.UP
+		room_positions.append(boss_room_pos)
+
 	print("Generated floor with ", room_positions.size(), " rooms")
 	call_deferred("emit_signal", "floor_generated")
 
@@ -143,12 +164,13 @@ func spawn_all_rooms():
 		
 		if room_pos == Vector2i(0, 0):
 			room_instance = SPAWN_ROOM.instantiate()
+		elif room_pos == boss_room_pos:
+			room_instance = BOSS_ROOM.instantiate()
 		else:
 			room_instance = room_scenes.pick_random().instantiate()
 		
 		add_child(room_instance)
 		room_instance.position = Vector2(room_pos) * ROOM_SIZE
-		
 		room_instance.setup(room_pos)
 		
 		room_instances[room_pos] = room_instance
@@ -164,6 +186,7 @@ func spawn_all_rooms():
 func setup_room_doors(room: Room, pos: Vector2i):
 	var visible_layer: TileMapLayer = room.get_node_or_null("NavigationRegion2D/RoomLayout")
 	
+	print(room.scene_file_path)
 	if visible_layer == null:
 		push_warning("Room at " + str(pos) + " has no RoomLayout TileMapLayer")
 		return
@@ -172,6 +195,8 @@ func setup_room_doors(room: Room, pos: Vector2i):
 	var has_down := room_positions.has(pos + Vector2i.DOWN)
 	var has_left := room_positions.has(pos + Vector2i.LEFT)
 	var has_right := room_positions.has(pos + Vector2i.RIGHT)
+	
+	print(room.doors)
 	
 	if pos == Vector2i.ZERO:
 		if room_positions.has(pos + Vector2i.UP):

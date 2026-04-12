@@ -7,6 +7,7 @@ signal room_cleared
 @onready var room_layout: TileMapLayer = $NavigationRegion2D/RoomLayout
 
 const ENEMY: PackedScene = preload("res://Scenes/Entities/Enemies/Ghost/Ghost.tscn")
+const BOSS: PackedScene = preload("res://Scenes/Entities/Enemies/Ghost/Ghost.tscn") # TU DAM BOSSA
 
 var grid_position: Vector2i = Vector2i.ZERO
 var is_cleared: bool = false
@@ -69,7 +70,11 @@ func spawn_enemies():
 	for marker in spawn_markers.get_children():
 		if marker is Marker2D:
 			enemy_counter += 1
-			var enemy_instance = ENEMY.instantiate()
+			var enemy_instance: Node
+			if marker.name.begins_with("Boss"):
+				enemy_instance = BOSS.instantiate()
+			else: 
+				enemy_instance = ENEMY.instantiate()
 			add_child(enemy_instance)
 			enemy_instance.position = marker.position
 			enemy_instance.frozen = true

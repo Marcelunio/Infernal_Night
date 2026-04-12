@@ -6,7 +6,7 @@ var dungeon: Node2D
 #movement
 @export var speed: float = 400
 @export var dash_speed: float = 1200
-@export var dash_duration: float = 0.25
+@export var dash_duration: float = 0.75
 @export var dash_cooldown: float = 0.5
 
 var dashing: bool = false
