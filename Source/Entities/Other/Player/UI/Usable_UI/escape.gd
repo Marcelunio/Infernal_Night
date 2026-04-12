@@ -38,7 +38,7 @@ func _on_main_menu_pressed() -> void:
 	get_tree().paused = false
 	visible = false
 	GameState.clear_screen_stack(false)
-	get_tree().change_scene_to_file("res://Scenes/floors/Main/MainMenu.tscn")
+	get_tree().change_scene_to_file("res://Scenes/Floors/Main/MainMenu.tscn")
 
 #=========obsługa sygnałów=========:
 

@@ -2,3 +2,5 @@
 .godot/
 /android/
 *.tmp
+/Builds/*.exe
+/Builds/*.x86_64
