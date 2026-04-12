@@ -72,6 +72,7 @@ func explode():
 	var attack_area = preload("res://Scenes/Projectiles/MeleeAttackCollision.tscn").instantiate()
 	attack_area.global_position = global_position
 	attack_area.weapon_origin = self
+	#attack_area.material=load("res://Assets/Weapons/Throwable/holy_water.gdshader");
 	get_tree().current_scene.add_child(attack_area)
 	attack_area.setup(radius, angle, Entity, explosion_sprite, throwable_lethal)
 	self.hide()

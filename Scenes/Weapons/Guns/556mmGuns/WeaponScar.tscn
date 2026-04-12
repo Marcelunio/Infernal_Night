@@ -1,9 +1,15 @@
-[gd_scene load_steps=7 format=3 uid="uid://1dgi4w3gt38e"]
+[gd_scene load_steps=9 format=3 uid="uid://1dgi4w3gt38e"]
 
 [ext_resource type="Script" uid="uid://b72f2mdgd5on3" path="res://Source/Weapons/Guns/weapon_rifle.gd" id="1_metip"]
 [ext_resource type="Texture2D" uid="uid://bqxhu8ykse884" path="res://Assets/Weapons/Guns/scar.png" id="4_8be21"]
 [ext_resource type="AudioStream" uid="uid://c8b5r1kcwa8ev" path="res://Sounds/SFX/Guns/EmptyMagazine/empty_magazine_high.wav" id="5_1pg7t"]
+[ext_resource type="Shader" uid="uid://b1vjsupylo1em" path="res://Assets/Weapons/outline.gdshader" id="5_55ds7"]
 [ext_resource type="AudioStream" uid="uid://ddhhntdigu5o2" path="res://Sounds/SFX/Guns/EmptyMagazine/empty_magazine_low.wav" id="6_pgos3"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_cd0ox"]
+shader = ExtResource("5_55ds7")
+shader_parameter/thickness = 5.0
+shader_parameter/has_outline = false
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_phod8"]
 size = Vector2(94, 28)
@@ -33,6 +39,7 @@ max_ammo = 30
 reload_time = 6.0
 
 [node name="WeaponSprite" type="Sprite2D" parent="."]
+material = SubResource("ShaderMaterial_cd0ox")
 
 [node name="WeaponCollsion" type="CollisionShape2D" parent="."]
 shape = SubResource("RectangleShape2D_phod8")

@@ -66,11 +66,14 @@ func is_full(weapon):#weapon.gd _on_body_entered()
 	else:
 		pick_up_check = true 
 		nearest_weapon = weapon
+		emit_signal("UI_NearestItemChanged", nearest_weapon,true)
 
 func body_exit(weapon):#weapon.gd _on_body_exited()
 	if nearest_weapon == weapon:
+		emit_signal("UI_NearestItemChanged", nearest_weapon,false)
 		pick_up_check = false
 		nearest_weapon = null
+
 
 func add_weapon(weapon):#weapon.gd pick_up()
 	if weapon_container.size() >= weapon_container_capacity:
@@ -176,6 +179,8 @@ func ammo_exit(ammo_box) -> void:
 		nearest_ammo = null
 		ammo_pick_up_check = false
 		emit_signal("UI_NearestItemChanged", ammo_box, false)
+
+
 
 func debug_print_ammo() -> void:
 	print("=== AMMO DEBUG ===")

@@ -24,7 +24,7 @@ var timer: Timer
 @export var reload_time: float 
 
 func _ready():
-	
+	call_deferred("_connect_signals")
 	var area = get_node_or_null("WeaponArea")
 	if area:
 		area.connect("body_entered", Callable(self, "_on_body_entered"))
@@ -32,7 +32,7 @@ func _ready():
 	else:
 		push_error("Brak WeaponArea w " + weapon_name + "! Nie będzie można podnieść.")
 	
-	sprite_node.texture = sprite
+	sprite_node.texture = add_padding(sprite,5)
 	#~~Kleks 19.10.2025
 	#Timer strzalu
 	timer = Timer.new()
@@ -107,3 +107,32 @@ func shoot(spawn_pos: Vector2, entity)->bool:
 	timer.start()
 	__shoot(spawn_pos, entity)
 	return true
+
+func add_padding(texture:Texture2D,padding:int):
+	var original_image=texture.get_image()
+	if(original_image.is_compressed()):
+		original_image.decompress()
+	if original_image.get_format() !=Image.FORMAT_RGBA8:
+		original_image.convert(Image.FORMAT_RGBA8)
+	
+	var new_width=original_image.get_width()+padding*2
+	var new_height =original_image.get_height()+padding*2
+	
+	var padded_image=Image.create(new_width,new_height,false,Image.FORMAT_RGBA8)
+	padded_image.fill(Color(0,0,0,0))
+	padded_image.blit_rect(
+		original_image,
+		Rect2(0,0,original_image.get_width(),original_image.get_height()),
+		Vector2(padding,padding)
+		)
+	return ImageTexture.create_from_image(padded_image)
+func _connect_signals():
+	var player = get_tree().get_first_node_in_group("player")
+	var inventory = player.get_node("InventoryMenager")
+	inventory.UI_NearestItemChanged.connect(_closest_to_player)
+func _closest_to_player(item, closest):
+	if item == self:
+		if closest:
+			item.get_node("WeaponSprite").material.set_shader_parameter("has_outline",true)
+		else:
+			item.get_node("WeaponSprite").material.set_shader_parameter("has_outline",false)
