@@ -1,22 +1,15 @@
-[gd_scene load_steps=12 format=3 uid="uid://cltvr8ugr4leu"]
+[gd_scene load_steps=9 format=3 uid="uid://cltvr8ugr4leu"]
 
 [ext_resource type="Script" uid="uid://f6vagumq5irb" path="res://Source/Weapons/Throwable/throwable.gd" id="1_005lj"]
-[ext_resource type="Shader" uid="uid://b1vjsupylo1em" path="res://Assets/Weapons/outline.gdshader" id="1_ct0s6"]
 [ext_resource type="Texture2D" uid="uid://dk6pou814uqhc" path="res://Assets/Weapons/Throwable/HolyWater.png" id="2_005lj"]
 [ext_resource type="AudioStream" uid="uid://tfb3j7f0af0n" path="res://Sounds/SFX/Throwable/HolyWater/holy_water_high.wav" id="2_mo6kq"]
 [ext_resource type="Texture2D" uid="uid://cbt3jebae38sy" path="res://Assets/Weapons/Projectiles/HolyBagnoTEMP.png" id="3_005lj"]
 [ext_resource type="AudioStream" uid="uid://cygyomsht5jbi" path="res://Sounds/SFX/Throwable/HolyWater/holy_water_low.wav" id="3_ct0s6"]
-[ext_resource type="Shader" uid="uid://dj8tl0mj041ma" path="res://Assets/Weapons/Throwable/holy_water.gdshader" id="6_sv6mf"]
-
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_ct0s6"]
-shader = ExtResource("1_ct0s6")
-shader_parameter/has_outline = false
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_36jba"]
 size = Vector2(37, 43)
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_548my"]
-shader = ExtResource("6_sv6mf")
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_7mxlh"]
 size = Vector2(37, 43)
@@ -37,7 +30,6 @@ sprite = ExtResource("2_005lj")
 metadata/_edit_group_ = true
 
 [node name="WeaponSprite" type="Sprite2D" parent="."]
-material = SubResource("ShaderMaterial_ct0s6")
 
 [node name="WeaponCollision" type="CollisionShape2D" parent="."]
 position = Vector2(0.5, 0.5)
