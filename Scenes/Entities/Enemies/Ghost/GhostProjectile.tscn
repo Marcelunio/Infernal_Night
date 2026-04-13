@@ -16,9 +16,8 @@ fill = 1
 fill_from = Vector2(0.5, 0.5)
 
 [node name="EnemyProjectile" instance=ExtResource("1_j56yw")]
+collision_mask = 241
 script = ExtResource("2_wl1ya")
-speed = 400.0
-damage = 1
 
 [node name="Sprite2D" parent="." index="1"]
 texture = ExtResource("3_1fhes")

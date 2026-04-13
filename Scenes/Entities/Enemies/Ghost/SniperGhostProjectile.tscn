@@ -1,0 +1,19 @@
+[gd_scene load_steps=4 format=3 uid="uid://detsplentfwev"]
+
+[ext_resource type="Texture2D" uid="uid://b4rpw3ghoyqgn" path="res://Assets/Entities/Enemies/Ghost/GhostProjectile2.png" id="1_4ok43"]
+[ext_resource type="Script" uid="uid://g76ojbjgwdw2" path="res://Source/Entities/Enemies/Ghost/ghost_projectile2.gd" id="1_lpwk2"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_lpwk2"]
+radius = 8.0
+
+[node name="GhostProjectile2" type="CharacterBody2D"]
+collision_layer = 256
+script = ExtResource("1_lpwk2")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_lpwk2")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("1_4ok43")
+
+[node name="PointLight2D" type="PointLight2D" parent="."]

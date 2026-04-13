@@ -6,7 +6,8 @@ signal room_cleared
 
 @onready var room_layout: TileMapLayer = $NavigationRegion2D/RoomLayout
 
-const ENEMY: PackedScene = preload("res://Scenes/Entities/Enemies/Ghost/Ghost.tscn")
+const ENEMY: PackedScene = preload("res://Scenes/Entities/Enemies/Ghost/SniperGhost.tscn")
+#const ENEMY: PackedScene = preload("res://Scenes/Entities/Enemies/Ghost/Ghost.tscn")
 const BOSS: PackedScene = preload("res://Scenes/Entities/Enemies/Ghost/Ghost.tscn") # TU DAM BOSSA
 
 var grid_position: Vector2i = Vector2i.ZERO

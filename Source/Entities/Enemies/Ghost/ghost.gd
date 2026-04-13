@@ -145,3 +145,4 @@ func _spawn_bullet(dir: Vector2) -> void:
 	get_tree().current_scene.add_child(bullet)
 	bullet.global_position = global_position + dir * 20.0
 	bullet.direction = dir
+	print("bullet type: ", bullet.get_class(), " script: ", bullet.get_script())
