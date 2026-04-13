@@ -30,6 +30,7 @@ func _input(event) -> void:
 		if get_tree().paused and GameState.screen_stack.back() == "vanInventory":
 			GameState.pop_screen()
 			VanInventoryUI._close()
+			player.get_node("animation/top").play("pickup_"+inventory.current_weapon.weapon_name)
 		elif not GameState.is_busy():
 			GameState.push_screen("vanInventory")
 			VanInventoryUI._open()
