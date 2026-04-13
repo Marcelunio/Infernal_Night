@@ -17,4 +17,4 @@ func _on_button_pressed() -> void:
 	visible = false
 	get_tree().paused = false
 	GameState.pop_screen()
-	get_tree().change_scene_to_file("res://Scenes/floors/Main/MainMenu.tscn")
+	get_tree().change_scene_to_file("res://Scenes/Floors/Main/MainMenu.tscn")
