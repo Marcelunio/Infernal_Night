@@ -10,25 +10,6 @@ func _ready() -> void:
 	super._ready()
 	collision_layer = 0
 	collision_mask = 0
-	await get_tree().process_frame
-	var room := get_tree().get_first_node_in_group("room_area") as Area2D
-	if room:
-		var shape := room.get_node("CollisionShape2D") as CollisionShape2D
-		if shape and shape.shape is RectangleShape2D:
-			var rect := shape.shape as RectangleShape2D
-			var shape_global_pos := shape.global_position
-			_room_bounds = Rect2(
-				shape_global_pos - rect.size / 2,
-				rect.size
-			)
-			print("room bounds: ", _room_bounds)
-			print("spawn pos: ", global_position)
-			print("contains spawn: ", _room_bounds.has_point(global_position))
-		else:
-			print("brak RectangleShape2D!")
-	else:
-		print("brak room_area!")
-		_room_bounds = Rect2(-10000, -10000, 20000, 20000)
 
 func _physics_process(delta: float) -> void:
 	if is_instance_valid(target):
@@ -39,7 +20,7 @@ func _physics_process(delta: float) -> void:
 
 	var next_pos := global_position + direction * speed * delta
 
-	if not _room_bounds.has_point(next_pos):
+	if _room_bounds != Rect2() and not _room_bounds.has_point(next_pos):
 		queue_free()
 		return
 
