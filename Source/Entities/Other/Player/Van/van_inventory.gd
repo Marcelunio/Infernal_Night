@@ -14,6 +14,7 @@ var gameplay_UI: Node
 @onready var VanInventoryUI: Node = $VanInventoryUI
 
 var can_open_inventory: bool = false
+var can_leave: bool = false
 
 func _ready() -> void:
 	tile_active.visible = false
@@ -46,6 +47,9 @@ func _on_body_entered(body: Node2D) -> void:
 	tile_inactive.visible = false
 	tile_active.visible = true
 	can_open_inventory = true
+	
+	if can_leave:
+		print("MOZNA UCIEKAC") #tymon - KLEKS ZAIMPLEMENTUJ TO
 
 func _on_body_exited(body: Node2D) -> void:
 	if not body == player:

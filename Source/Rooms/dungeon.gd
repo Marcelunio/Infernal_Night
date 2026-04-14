@@ -164,14 +164,20 @@ func spawn_all_rooms():
 		
 		if room_pos == Vector2i(0, 0):
 			room_instance = SPAWN_ROOM.instantiate()
+			add_child(room_instance)
+			room_instance.position = Vector2(room_pos) * ROOM_SIZE
+			room_instance.setup(room_pos, "spawn")
 		elif room_pos == boss_room_pos:
 			room_instance = BOSS_ROOM.instantiate()
+			add_child(room_instance)
+			room_instance.position = Vector2(room_pos) * ROOM_SIZE
+			room_instance.setup(room_pos, "boss")
+			room_instance.boss_defeated.connect(boss_defeated)
 		else:
 			room_instance = room_scenes.pick_random().instantiate()
-		
-		add_child(room_instance)
-		room_instance.position = Vector2(room_pos) * ROOM_SIZE
-		room_instance.setup(room_pos)
+			add_child(room_instance)
+			room_instance.position = Vector2(room_pos) * ROOM_SIZE
+			room_instance.setup(room_pos, "")
 		
 		room_instances[room_pos] = room_instance
 		setup_room_doors(room_instance, room_pos)
@@ -261,7 +267,7 @@ func transition_to_room(direction: Vector2):
 	var offset = direction * 64
 	player.position = player.position + offset
 	
-	player.current_room = next_room#Kleks
+	player.current_room = next_room
 	
 	if not visited_rooms.has(next_pos):
 		visited_rooms.append(next_pos)
@@ -269,6 +275,13 @@ func transition_to_room(direction: Vector2):
 	camera_target = Vector2(next_pos) * ROOM_SIZE + (ROOM_SIZE / 2)
 	
 	room_changed.emit(next_pos)
+
+func boss_defeated():
+	var bomba = room_instances[Vector2i(0,0)].get_node_or_null("VanInventoryTEST")
+	if bomba == null:
+		print("Brak VanInventoryTEST")
+	else:
+		bomba.can_leave = true
 
 func get_current_room() -> Room:
 	return room_instances.get(current_room_pos)

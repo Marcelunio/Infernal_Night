@@ -3,6 +3,7 @@ extends Node2D
 
 signal room_entered
 signal room_cleared
+signal boss_defeated
 
 @onready var room_layout: TileMapLayer = $NavigationRegion2D/RoomLayout
 
@@ -11,10 +12,17 @@ const ENEMY: PackedScene = preload("res://Scenes/Entities/Enemies/Ghost/SniperGh
 const BOSS: PackedScene = preload("res://Scenes/Entities/Enemies/Ghost/Ghost.tscn") # TU DAM BOSSA
 
 var grid_position: Vector2i = Vector2i.ZERO
+var room_type: String = ""
 var is_cleared: bool = false
 var enemies_spawned: bool = false
 var enemy_counter: int = 0
 var doors: Dictionary = {}
+var door_map = {
+		"up": "DoorUp",
+		"down": "DoorDown",
+		"left": "DoorLeft",
+		"right": "DoorRight"
+	}
 
 #SFX
 @onready var audio_player_door: AudioStreamPlayer = $Sounds/Door
@@ -22,19 +30,14 @@ var doors: Dictionary = {}
 
 func _ready() -> void:
 	# Build doors dict from whichever door nodes actually exist
-	var door_map = {
-		"up": "DoorUp",
-		"down": "DoorDown",
-		"left": "DoorLeft",
-		"right": "DoorRight"
-	}
 	for key in door_map:
 		var node = get_node_or_null(door_map[key])
 		if node != null:
 			doors[key] = node
 
-func setup(pos: Vector2i):
+func setup(pos: Vector2i, type: String):
 	grid_position = pos
+	room_type = type
 	print(get_path())
 
 func enter_room():
@@ -64,6 +67,8 @@ func spawn_enemies():
 		for door in doors.values():
 			door.set_collision_mask_value(1, false)
 		emit_signal("room_cleared")
+		if room_type == "boss":
+			emit_signal("boss_defeated")
 		return
 	
 	var spawned_enemies: Array = []
@@ -98,6 +103,9 @@ func clear_room():
 		audio_player_door.stream = door_sounds.pick_random()
 		audio_player_door.play()
 	emit_signal("room_cleared")
+	
+	if room_type == "boss":
+		emit_signal("boss_defeated")
 
 func on_enemy_died():
 	enemy_counter -= 1
