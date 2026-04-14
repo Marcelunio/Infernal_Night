@@ -277,11 +277,11 @@ func transition_to_room(direction: Vector2):
 	room_changed.emit(next_pos)
 
 func boss_defeated():
-	var bomba = room_instances[Vector2i(0,0)].get_node_or_null("VanInventoryTEST")
-	if bomba == null:
+	var van_inventory = room_instances[Vector2i(0,0)].get_node_or_null("VanInventoryTEST")
+	if van_inventory == null:
 		print("Brak VanInventoryTEST")
 	else:
-		bomba.can_leave = true
+		van_inventory.can_leave = true
 
 func get_current_room() -> Room:
 	return room_instances.get(current_room_pos)
