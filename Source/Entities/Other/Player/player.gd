@@ -52,10 +52,14 @@ var hp: int
 #timer
 var timer: Node
 
+#fade
+var scene_change_lock: bool = false
+
 #signal to health_bar_display.gd
 signal UI_HealthBarDisplay(max_hp, hp)
 
 func _ready():
+	_fade(false)
 	dungeon = get_parent()
 	hp = max_hp
 	
@@ -78,11 +82,12 @@ func _unhandled_input(event: InputEvent):#obsługa nie obsluzonych inputow
 		
 
 func _physics_process(delta):#obsluga zdarzen co klatkowych
-	if not dashing:
-		_handle_player_rotation()
-		_handle_player_movement()
-	_handle_weapon_action()
-	_handle_player_pick_up()
+	if not scene_change_lock:
+		if not dashing:
+			_handle_player_rotation()
+			_handle_player_movement()
+		_handle_weapon_action()
+		_handle_player_pick_up()
 	
 	if dungeon.name == "Dungeon":
 		check_door_transition()
@@ -311,3 +316,12 @@ func _start_music_timer() -> void:
 func _on_music_finished() -> void:
 	audio_player_Music.stream = music_sounds.pick_random()
 	audio_player_Music.play()
+
+func _fade(out: bool, scene_change: bool = false) -> void:
+	if scene_change:
+		scene_change_lock = true
+	
+	if out:
+		await $Gameplay_UI/CanvasLayer/Fade.fade_out()
+	else:
+		await $Gameplay_UI/CanvasLayer/Fade.fade_in()

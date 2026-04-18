@@ -1,4 +1,8 @@
+#Zrobił to Kekls, wszelkie niepewności oraz pytania kierować do mnie...
+#Znane bugi: 0
 extends Control
+
+var from_main_menu: bool = false
 
 const ROOMS = {
 	"easy": 8,
@@ -7,7 +11,17 @@ const ROOMS = {
 }
 
 func _ready() -> void:
-	visible = false
+	await get_tree().physics_frame
+	if not from_main_menu:
+		var audio_node = AudioStreamPlayer.new()
+		audio_node.stream = load("res://Sounds/Music/Main_menu.ogg")
+		audio_node.autoplay = true
+		audio_node.bus = "Music"
+		add_child(audio_node)
+		audio_node.play()
+	else:
+		visible = false
+		
 	
 	for room in ROOMS:
 		var label = Label.new()
@@ -32,4 +46,4 @@ func start() -> void:
 	
 func _pressed(room) -> void:
 	GameState.room_number = ROOMS[room]
-	get_tree().change_scene_to_file("res://Scenes/Floors/Main/Main.tscn")
+	GameState._CHANGE_ROOT("res://Scenes/Floors/Main/Main.tscn")

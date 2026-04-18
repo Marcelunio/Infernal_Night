@@ -43,7 +43,7 @@ func _ready():
 	generate_floor()
 	spawn_all_rooms()
 	spawn_player()
-	#call_deferred("boss_defeated")#~~Kleks Do testowania
+	call_deferred("boss_defeated")#~~Kleks Do testowania
 
 func _process(delta):
 	camera.position = lerp(camera.position, camera_target, 5.0 * delta)

@@ -1,5 +1,6 @@
 #Zrobił to Kekls, wszelkie niepewności oraz pytania kierować do mnie...
-#Ten plik sluzy glownie do przekazywania zmiennych pomiedzy plikami 
+#ten plik jest uzywany glownie do wyznaczaniow stanu gry typu czy gra jest zapauzowana oraz ile jest na sobie nalozonych roznych okienek UI
+#dodatkowo tez ten plik sluzy tez do przekazywania zmiennych pomiedzy plikami 
 #jezeli bylo by to bardzo i to bardzo ciezkie / upierdliwe do zrobienia po przez sygnaly czy referencje
 #lub po prostu nie mozliwe ze wzgledu na np. to ze znajduja sie w dwoch roznych rootach scen...
 extends Node
@@ -57,3 +58,7 @@ func _set_gameplay_ui(visibility: bool) -> void:#helper function for screen_stac
 func _audio_click_UI(stream: AudioStream) -> void:#UI audio player
 	audioClick.stream = stream
 	audioClick.play()
+
+#---ROOT CHANGING---
+func _CHANGE_ROOT(Path: String) -> void:
+	get_tree().change_scene_to_file.call_deferred(Path)

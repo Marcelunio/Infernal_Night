@@ -4,6 +4,7 @@ extends Control
 
 func _ready() -> void:
 	Settings.closed.connect(_on_settings_closed)
+	$Choice.from_main_menu = true
 	for button in get_tree().get_nodes_in_group("Buttons"):
 		button.pressed.connect(_on_any_button_pressed)
 	DisplayServer.window_get_size()

@@ -37,8 +37,11 @@ func _on_door_detect_body_exited(body: Node2D) -> void:
 func _on_inside_detect_body_entered(body: Node2D) -> void:
 	if body.is_in_group("player"):
 		get_tree().get_first_node_in_group("player").visible = false
+		await body._fade(true, true)
+		GameState._CHANGE_ROOT("res://Scenes/Floors/Main/shop.tscn")
 		print("DEBUG - CarDoor - Odjechales")
 
 func _on_inside_detect_body_exited(body: Node2D) -> void:
 	if body.is_in_group("player"):
 		get_tree().get_first_node_in_group("player").visible = true
+		body._fade(false)

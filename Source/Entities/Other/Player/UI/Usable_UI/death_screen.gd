@@ -1,3 +1,5 @@
+#Zrobił to Kekls, wszelkie niepewności oraz pytania kierować do mnie...
+#Znane bugi: 0
 extends Control
 
 var player: Node = null
@@ -17,4 +19,5 @@ func _on_button_pressed() -> void:
 	visible = false
 	get_tree().paused = false
 	GameState.pop_screen()
-	get_tree().change_scene_to_file("res://Scenes/Floors/Main/MainMenu.tscn")
+	await player._fade(true)
+	GameState._CHANGE_ROOT("res://Scenes/Floors/Main/MainMenu.tscn")

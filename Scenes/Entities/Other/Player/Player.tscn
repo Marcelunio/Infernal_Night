@@ -1,4 +1,4 @@
-[gd_scene load_steps=76 format=3 uid="uid://dn2dpf0haseiq"]
+[gd_scene load_steps=77 format=3 uid="uid://dn2dpf0haseiq"]
 
 [ext_resource type="Script" uid="uid://3mc7lvum6rxd" path="res://Source/Entities/Other/Player/player.gd" id="1_nfgiu"]
 [ext_resource type="AudioStream" uid="uid://dnarg1ul4lk5n" path="res://Sounds/SFX/Player/Walk/wooden_floor_walk_high.wav" id="2_44eud"]
@@ -22,6 +22,7 @@
 [ext_resource type="AudioStream" uid="uid://63ymh03eoc15" path="res://Sounds/SFX/Player/Throw/throw_low.wav" id="11_fad8c"]
 [ext_resource type="AudioStream" uid="uid://c5e7t6kjqbnnf" path="res://Sounds/Music/Eyes-on-me.ogg" id="12_fad8c"]
 [ext_resource type="Texture2D" uid="uid://bangq7x48qpxr" path="res://Assets/Entities/Other/Player/player.png" id="13_kjs6a"]
+[ext_resource type="PackedScene" uid="uid://barw81mxmqlfv" path="res://Scenes/Entities/Other/Player/UI/GameplayUI/Fade.tscn" id="19_jt1s7"]
 [ext_resource type="AudioStream" uid="uid://bgt868b0lcxbk" path="res://Sounds/SFX/Player/PickUp/pick_up.wav" id="20_hxydp"]
 [ext_resource type="Texture2D" uid="uid://cva54ciuk85f0" path="res://Assets/light/gradient.tres" id="24_ubqqd"]
 
@@ -493,6 +494,11 @@ animations = [{
 [node name="Player" type="CharacterBody2D" groups=["player"]]
 collision_mask = 188
 script = ExtResource("1_nfgiu")
+speed = null
+dash_speed = null
+dash_duration = null
+dash_cooldown = null
+max_hp = null
 walk_sounds = Array[AudioStreamWAV]([ExtResource("2_44eud"), ExtResource("3_ji22f")])
 dash_sounds = Array[AudioStreamWAV]([ExtResource("4_xfm63"), ExtResource("5_k6kfc"), ExtResource("6_6eds7")])
 ambient_sounds = Array[AudioStreamWAV]([ExtResource("7_6eds7"), ExtResource("8_hxydp")])
@@ -527,6 +533,8 @@ metadata/_edit_use_anchors_ = true
 
 [node name="ItemsDisplay" parent="Gameplay_UI/CanvasLayer" instance=ExtResource("9_yibyp")]
 metadata/_edit_use_anchors_ = true
+
+[node name="Fade" parent="Gameplay_UI/CanvasLayer" instance=ExtResource("19_jt1s7")]
 
 [node name="Usable_UI" type="Control" parent="."]
 process_mode = 3
