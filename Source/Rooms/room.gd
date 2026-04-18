@@ -29,7 +29,6 @@ var door_map = {
 @export var door_sounds: Array[AudioStream] = []
 
 func _ready() -> void:
-	# Build doors dict from whichever door nodes actually exist
 	for key in door_map:
 		var node = get_node_or_null(door_map[key])
 		if node != null:
