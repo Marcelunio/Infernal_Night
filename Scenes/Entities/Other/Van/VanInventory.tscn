@@ -1,6 +1,6 @@
 [gd_scene load_steps=5 format=3 uid="uid://u4uyiilyh07o"]
 
-[ext_resource type="Script" uid="uid://cacurh7i1f4td" path="res://Source/Entities/Other/Player/Van/van_inventory.gd" id="1_41a5g"]
+[ext_resource type="Script" uid="uid://cacurh7i1f4td" path="res://Source/Entities/Other/Van/van_inventory.gd" id="1_41a5g"]
 [ext_resource type="TileSet" uid="uid://dwjq33gve6fks" path="res://TileSets/BaseTileset.tres" id="2_c8ffk"]
 [ext_resource type="PackedScene" uid="uid://c2odeaamy2wr1" path="res://Scenes/Entities/Other/Van/VanInventoryUI.tscn" id="3_cbgfa"]
 

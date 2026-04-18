@@ -1,6 +1,6 @@
 [gd_scene load_steps=2 format=3 uid="uid://dgcn10k6j1fv0"]
 
-[ext_resource type="Script" uid="uid://bxsogo5syqnn4" path="res://Source/Entities/Other/Player/Van/dad_container.gd" id="1_f8vkm"]
+[ext_resource type="Script" uid="uid://bxsogo5syqnn4" path="res://Source/Entities/Other/Van/dad_container.gd" id="1_f8vkm"]
 
 [node name="DaDContainer" type="PanelContainer"]
 custom_minimum_size = Vector2(300, 300)

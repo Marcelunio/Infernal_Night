@@ -1,6 +1,6 @@
 [gd_scene load_steps=11 format=3 uid="uid://c2odeaamy2wr1"]
 
-[ext_resource type="Script" uid="uid://bwi8l7bdjbt4g" path="res://Source/Entities/Other/Player/Van/van_inventory_ui.gd" id="1_8fmj8"]
+[ext_resource type="Script" uid="uid://bwi8l7bdjbt4g" path="res://Source/Entities/Other/Van/van_inventory_ui.gd" id="1_8fmj8"]
 [ext_resource type="PackedScene" uid="uid://t7ktbcl5debv" path="res://Scenes/Weapons/Guns/9mmGuns/WeaponPistol.tscn" id="2_ckybq"]
 [ext_resource type="PackedScene" uid="uid://bxg5woeatx4uj" path="res://Scenes/Weapons/Guns/9mmGuns/WeaponRevolver.tscn" id="3_mx0ic"]
 [ext_resource type="PackedScene" uid="uid://da1ap0hsfecta" path="res://Scenes/Weapons/Guns/9mmGuns/WeaponUzi.tscn" id="4_6xdx2"]

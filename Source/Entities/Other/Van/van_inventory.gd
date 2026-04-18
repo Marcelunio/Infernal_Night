@@ -47,9 +47,6 @@ func _on_body_entered(body: Node2D) -> void:
 	tile_inactive.visible = false
 	tile_active.visible = true
 	can_open_inventory = true
-	
-	if can_leave:
-		print("MOZNA UCIEKAC") #tymon - KLEKS ZAIMPLEMENTUJ TO
 
 func _on_body_exited(body: Node2D) -> void:
 	if not body == player:

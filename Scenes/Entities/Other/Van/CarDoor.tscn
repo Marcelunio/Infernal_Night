@@ -1,0 +1,47 @@
+[gd_scene load_steps=5 format=3 uid="uid://cc1dy80s3yd0y"]
+
+[ext_resource type="Script" uid="uid://7dimup4bi1ii" path="res://Source/Entities/Other/Van/car_door.gd" id="1_3gn0y"]
+[ext_resource type="Texture2D" uid="uid://co7o8x0nnokg2" path="res://TEST/CarDoorTEMP.png" id="2_q41fh"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_3gn0y"]
+size = Vector2(32, 56)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_q41fh"]
+size = Vector2(32, 8)
+
+[node name="CarDoor" type="Node2D"]
+script = ExtResource("1_3gn0y")
+
+[node name="DoorDetect" type="Area2D" parent="."]
+collision_layer = 0
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="DoorDetect"]
+position = Vector2(0, -7)
+polygon = PackedVector2Array(16, 0, 16, 72, -16, 72, -16, -1, -82, -1, -82, -59, 63, -59, 63, -1, 16, -1)
+
+[node name="InsideDetect" type="Area2D" parent="."]
+collision_layer = 0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="InsideDetect"]
+position = Vector2(0, 37)
+shape = SubResource("RectangleShape2D_3gn0y")
+debug_color = Color(0.8966021, 0.00020041644, 0.77621657, 0.41960785)
+
+[node name="Door" type="AnimatableBody2D" parent="."]
+position = Vector2(16, 0)
+collision_layer = 16
+collision_mask = 0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Door"]
+position = Vector2(-16, -4)
+shape = SubResource("RectangleShape2D_q41fh")
+debug_color = Color(0.58500636, 0.55032045, 0, 0.41960785)
+
+[node name="Sprite2D" type="Sprite2D" parent="Door"]
+position = Vector2(-16, -7)
+texture = ExtResource("2_q41fh")
+
+[connection signal="body_entered" from="DoorDetect" to="." method="_on_door_detect_body_entered"]
+[connection signal="body_exited" from="DoorDetect" to="." method="_on_door_detect_body_exited"]
+[connection signal="body_entered" from="InsideDetect" to="." method="_on_inside_detect_body_entered"]
+[connection signal="body_exited" from="InsideDetect" to="." method="_on_inside_detect_body_exited"]

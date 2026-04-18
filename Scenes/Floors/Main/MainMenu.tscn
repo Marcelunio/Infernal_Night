@@ -110,10 +110,6 @@ autoplay = true
 bus = &"Music"
 parameters/looping = true
 
-[node name="Choice2" parent="." instance=ExtResource("3_ohoe0")]
-visible = false
-layout_mode = 1
-
 [connection signal="pressed" from="VBoxContainer/new game" to="." method="_on_new_game_pressed"]
 [connection signal="pressed" from="VBoxContainer/load" to="." method="_on_load_pressed"]
 [connection signal="pressed" from="VBoxContainer/settings" to="." method="_on_settings_pressed"]

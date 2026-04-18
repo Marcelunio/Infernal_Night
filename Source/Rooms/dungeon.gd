@@ -43,6 +43,7 @@ func _ready():
 	generate_floor()
 	spawn_all_rooms()
 	spawn_player()
+	call_deferred("boss_defeated")#~~Kleks Do testowania
 
 func _process(delta):
 	camera.position = lerp(camera.position, camera_target, 5.0 * delta)
@@ -277,11 +278,11 @@ func transition_to_room(direction: Vector2):
 	room_changed.emit(next_pos)
 
 func boss_defeated():
-	var van_inventory = room_instances[Vector2i(0,0)].get_node_or_null("VanInventoryTEST")
-	if van_inventory == null:
-		print("Brak VanInventoryTEST")
+	var carDoor = room_instances[Vector2i(0,0)].get_node_or_null("CarDoor")
+	if carDoor == null:
+		print("Brak carDoor")
 	else:
-		van_inventory.can_leave = true
+		carDoor.can_leave = true
 
 func get_current_room() -> Room:
 	return room_instances.get(current_room_pos)
