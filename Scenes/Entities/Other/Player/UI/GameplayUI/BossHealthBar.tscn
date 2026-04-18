@@ -1,0 +1,44 @@
+[gd_scene load_steps=6 format=3 uid="uid://bch1h4olax71q"]
+
+[ext_resource type="Shader" uid="uid://b1vjsupylo1em" path="res://Assets/Weapons/outline.gdshader" id="1_i8g86"]
+[ext_resource type="Texture2D" uid="uid://bq02vs2r650sb" path="res://Assets/Entities/Enemies/Boss/BossHealthFull.png" id="3_ewvlj"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_j2n7f"]
+shader = ExtResource("1_i8g86")
+shader_parameter/has_outline = true
+
+[sub_resource type="ViewportTexture" id="ViewportTexture_bqf5s"]
+viewport_path = NodePath("SubViewport")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_16xwh"]
+shader = ExtResource("1_i8g86")
+shader_parameter/has_outline = false
+
+[node name="BossHealthBar" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="TextureRect" type="TextureRect" parent="."]
+material = SubResource("ShaderMaterial_j2n7f")
+layout_mode = 0
+offset_right = 94.0
+offset_bottom = 30.0
+texture = SubResource("ViewportTexture_bqf5s")
+
+[node name="SubViewport" type="SubViewport" parent="."]
+size = Vector2i(104, 40)
+
+[node name="HealthBar" type="TextureRect" parent="SubViewport"]
+material = SubResource("ShaderMaterial_16xwh")
+anchors_preset = -1
+offset_left = 5.0
+offset_top = 5.0
+offset_right = 99.0
+offset_bottom = 35.0
+size_flags_horizontal = 4
+size_flags_vertical = 4
+texture = ExtResource("3_ewvlj")
