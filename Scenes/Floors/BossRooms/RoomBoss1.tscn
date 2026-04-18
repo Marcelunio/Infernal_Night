@@ -81,3 +81,6 @@ shadow_enabled = true
 shadow_filter = 1
 texture = ExtResource("2_wolu2")
 texture_scale = 2.0
+
+[node name="BossMarker" type="Marker2D" parent="." index="11"]
+position = Vector2(581, 415)
