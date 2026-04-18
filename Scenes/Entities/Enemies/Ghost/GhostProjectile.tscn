@@ -1,28 +1,19 @@
-[gd_scene load_steps=6 format=3 uid="uid://4lel7x6umvoj"]
+[gd_scene load_steps=5 format=3 uid="uid://4lel7x6umvoj"]
 
 [ext_resource type="PackedScene" uid="uid://uc6nloqrnmpn" path="res://Scenes/Entities/Enemies/EnemyProjectile.tscn" id="1_j56yw"]
 [ext_resource type="Script" uid="uid://by6f15ujwxl5p" path="res://Source/Entities/Enemies/Ghost/ghost_projectile.gd" id="2_wl1ya"]
 [ext_resource type="Texture2D" uid="uid://c3ajutjra0kil" path="res://Assets/Entities/Enemies/Ghost/GhostProjectile.png" id="3_1fhes"]
-
-[sub_resource type="Gradient" id="Gradient_oleda"]
-offsets = PackedFloat32Array(0, 0.5688889)
-colors = PackedColorArray(1, 1, 1, 1, 0, 0, 0, 1)
-
-[sub_resource type="GradientTexture2D" id="GradientTexture2D_epl85"]
-gradient = SubResource("Gradient_oleda")
-width = 32
-height = 32
-fill = 1
-fill_from = Vector2(0.5, 0.5)
+[ext_resource type="Texture2D" uid="uid://cva54ciuk85f0" path="res://Assets/light/gradient.tres" id="4_epl85"]
 
 [node name="EnemyProjectile" instance=ExtResource("1_j56yw")]
-collision_mask = 241
 script = ExtResource("2_wl1ya")
 
 [node name="Sprite2D" parent="." index="1"]
 texture = ExtResource("3_1fhes")
 
-[node name="PointLight2D" parent="." index="2"]
-color = Color(1, 0, 0, 1)
-energy = 1.5
-texture = SubResource("GradientTexture2D_epl85")
+[node name="PointLight2D" type="PointLight2D" parent="." index="2"]
+scale = Vector2(0.19921875, 0.19921875)
+color = Color(1, 0.45241642, 0.38395938, 1)
+energy = 0.99
+blend_mode = 2
+texture = ExtResource("4_epl85")

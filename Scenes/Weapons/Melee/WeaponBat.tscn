@@ -1,16 +1,10 @@
-[gd_scene load_steps=10 format=3 uid="uid://cotiiwrrpdkwu"]
+[gd_scene load_steps=8 format=3 uid="uid://cotiiwrrpdkwu"]
 
 [ext_resource type="Script" uid="uid://oibk6qjt3f2q" path="res://Source/Weapons/Melee/melee_weapon.gd" id="1_oh6b4"]
 [ext_resource type="AudioStream" uid="uid://c1qox5nsbat8r" path="res://Sounds/SFX/WhiteWeapons/Bat/bat_swing_high.wav" id="2_7mxlh"]
 [ext_resource type="Texture2D" uid="uid://k0qtx3bdew3w" path="res://Assets/Weapons/Melee/bat.png" id="2_nsli5"]
 [ext_resource type="AudioStream" uid="uid://dvhbeapa48np7" path="res://Sounds/SFX/WhiteWeapons/Bat/bat_swing_low.wav" id="3_6i45i"]
-[ext_resource type="Shader" uid="uid://b1vjsupylo1em" path="res://Assets/Weapons/outline.gdshader" id="5_6i45i"]
 [ext_resource type="Texture2D" uid="uid://cypryvu3ttr1v" path="res://Assets/Weapons/Projectiles/bat_swing.png" id="5_7mxlh"]
-
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_5ol4b"]
-shader = ExtResource("5_6i45i")
-shader_parameter/thickness = 5.0
-shader_parameter/has_outline = false
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_36jba"]
 size = Vector2(20, 87)
@@ -33,7 +27,6 @@ weapon_delay = 1.0
 sprite = ExtResource("2_nsli5")
 
 [node name="WeaponSprite" type="Sprite2D" parent="."]
-material = SubResource("ShaderMaterial_5ol4b")
 
 [node name="WeaponCollision" type="CollisionShape2D" parent="."]
 position = Vector2(-2, 2.5)

@@ -1,15 +1,10 @@
-[gd_scene load_steps=10 format=3 uid="uid://dnjuntixfdqq0"]
+[gd_scene load_steps=8 format=3 uid="uid://dnjuntixfdqq0"]
 
 [ext_resource type="Script" uid="uid://f6vagumq5irb" path="res://Source/Weapons/Throwable/throwable.gd" id="1_4glms"]
 [ext_resource type="Texture2D" uid="uid://dn3x3dwrbgrh2" path="res://Assets/Weapons/Throwable/holyGranate.png" id="1_8vdwt"]
 [ext_resource type="AudioStream" uid="uid://cp4kca16fcxvl" path="res://Sounds/SFX/Throwable/Granede/grenade_high.wav" id="2_3t4gl"]
 [ext_resource type="Texture2D" uid="uid://cn8c0d1tqbpp1" path="res://Assets/Weapons/Projectiles/HolyGranateExplosion.png" id="3_5vmhu"]
 [ext_resource type="AudioStream" uid="uid://cx7fek6as06pr" path="res://Sounds/SFX/Throwable/Granede/grenade_low.wav" id="3_ecps6"]
-[ext_resource type="Shader" uid="uid://b1vjsupylo1em" path="res://Assets/Weapons/outline.gdshader" id="5_ecps6"]
-
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_k4j7m"]
-shader = ExtResource("5_ecps6")
-shader_parameter/has_outline = false
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_36jba"]
 size = Vector2(36, 43)
@@ -34,7 +29,6 @@ sprite = ExtResource("1_8vdwt")
 metadata/_edit_group_ = true
 
 [node name="WeaponSprite" type="Sprite2D" parent="."]
-material = SubResource("ShaderMaterial_k4j7m")
 
 [node name="WeaponCollision" type="CollisionShape2D" parent="."]
 position = Vector2(0, 0.5)

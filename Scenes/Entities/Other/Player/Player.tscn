@@ -24,7 +24,7 @@
 [ext_resource type="Texture2D" uid="uid://bangq7x48qpxr" path="res://Assets/Entities/Other/Player/player.png" id="13_kjs6a"]
 [ext_resource type="PackedScene" uid="uid://barw81mxmqlfv" path="res://Scenes/Entities/Other/Player/UI/GameplayUI/Fade.tscn" id="19_jt1s7"]
 [ext_resource type="AudioStream" uid="uid://bgt868b0lcxbk" path="res://Sounds/SFX/Player/PickUp/pick_up.wav" id="20_hxydp"]
-[ext_resource type="Texture2D" uid="uid://cva54ciuk85f0" path="res://Assets/light/gradient.tres" id="24_ubqqd"]
+[ext_resource type="Texture2D" uid="uid://ctfqec6kc458b" path="res://Assets/light/player_gradient.png" id="24_ubqqd"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_xinig"]
 radius = 12.0
@@ -492,7 +492,7 @@ animations = [{
 }]
 
 [node name="Player" type="CharacterBody2D" groups=["player"]]
-collision_mask = 188
+collision_mask = 508
 script = ExtResource("1_nfgiu")
 walk_sounds = Array[AudioStreamWAV]([ExtResource("2_44eud"), ExtResource("3_ji22f")])
 dash_sounds = Array[AudioStreamWAV]([ExtResource("4_xfm63"), ExtResource("5_k6kfc"), ExtResource("6_6eds7")])
@@ -591,10 +591,20 @@ process_mode = 3
 bus = &"Music"
 
 [node name="PointLight2D" type="PointLight2D" parent="."]
+position = Vector2(2, -8)
 energy = 0.61
 range_item_cull_mask = 3
 shadow_enabled = true
 shadow_filter = 1
 texture = ExtResource("24_ubqqd")
 
+[node name="IFrames" type="Timer" parent="."]
+wait_time = 2.0
+one_shot = true
+
+[node name="FlickerTimer" type="Timer" parent="."]
+wait_time = 0.1
+
 [connection signal="finished" from="Sounds/Music" to="." method="_on_music_finished"]
+[connection signal="timeout" from="IFrames" to="." method="_on_i_frames_timeout"]
+[connection signal="timeout" from="FlickerTimer" to="." method="_on_flicker_timer_timeout"]

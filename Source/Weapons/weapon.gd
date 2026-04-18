@@ -11,6 +11,7 @@ extends RigidBody2D
 @export var weapon_damage: float
 @export var sprite: Texture2D
 
+var outline:Material =load("res://Assets/Weapons/weapon_outline.tres");
 const PLAYER_VELOCITY_TO_THROW_FORCE: float =0.6
 var is_picked_up: bool = false
 var is_thrown: bool = false
@@ -135,6 +136,6 @@ func _connect_signals():
 func _closest_to_player(item, closest):
 	if item == self:
 		if closest:
-			item.get_node("WeaponSprite").material.set_shader_parameter("has_outline",true)
+			item.get_node("WeaponSprite").material=outline;
 		else:
-			item.get_node("WeaponSprite").material.set_shader_parameter("has_outline",false)
+			item.get_node("WeaponSprite").material=null;

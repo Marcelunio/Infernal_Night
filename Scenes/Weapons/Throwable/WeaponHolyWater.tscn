@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=3 uid="uid://cltvr8ugr4leu"]
+[gd_scene load_steps=10 format=3 uid="uid://cltvr8ugr4leu"]
 
 [ext_resource type="Script" uid="uid://f6vagumq5irb" path="res://Source/Weapons/Throwable/throwable.gd" id="1_005lj"]
 [ext_resource type="Shader" uid="uid://b1vjsupylo1em" path="res://Assets/Weapons/outline.gdshader" id="1_ct0s6"]
@@ -9,12 +9,9 @@
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_ct0s6"]
 shader = ExtResource("1_ct0s6")
-shader_parameter/has_outline = false
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_36jba"]
 size = Vector2(37, 43)
-
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_548my"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_7mxlh"]
 size = Vector2(37, 43)
@@ -42,7 +39,6 @@ position = Vector2(0.5, 0.5)
 shape = SubResource("RectangleShape2D_36jba")
 
 [node name="WeaponArea" type="Area2D" parent="."]
-material = SubResource("ShaderMaterial_548my")
 collision_layer = 4
 
 [node name="WeaponAreaShape" type="CollisionShape2D" parent="WeaponArea"]

@@ -42,6 +42,8 @@ var hp: int = PlayerData.hp
 @onready var audio_player_pick_up = $Sounds/PickUp
 @onready var audio_player_throw = $Sounds/Throw
 @onready var audio_player_Music = $Sounds/Music
+@onready var iframe_timer = $IFrames
+@onready var flicker_timer = $FlickerTimer
 @export var walk_sounds: Array[AudioStreamWAV] = []
 @export var dash_sounds: Array[AudioStreamWAV] = []
 @export var ambient_sounds: Array[AudioStreamWAV] = []
@@ -181,7 +183,10 @@ func check_door_transition():
 	var tile_pos = visible_layer.local_to_map(local_pos)
 	
 	var atlas_coords = visible_layer.get_cell_atlas_coords(tile_pos)
+	var source = visible_layer.get_cell_source_id(tile_pos)
 	
+	if source != 2:
+		return
 	if atlas_coords == dungeon.DOOR_UP_ATLAS:
 		dungeon.transition_to_room(Vector2.UP)
 	elif atlas_coords == dungeon.DOOR_DOWN_ATLAS:
@@ -272,11 +277,19 @@ func _handle_player_pick_up():#obslguje poczatkowy proces podnoszenia broni
 				_audio_pick_up_play()
 
 func take_damage(amount: int):#obsluga damage'a
-	hp -= amount
-	emit_signal("UI_HealthBarDisplay", max_hp, hp)
-	if hp <= 0:
-		die()
-		return
+	if iframe_timer.is_stopped():
+		print("Taking damage...")
+		hp -= amount
+		emit_signal("UI_HealthBarDisplay", max_hp, hp)
+		if hp <= 0:
+			die()
+			return
+		iframe_timer.start()
+		flicker_timer.start()
+		set_collision_mask_value(7, false)
+	else:
+		print("Not taking damage...")
+		
 
 func die() -> void:#obslguje smierc gracza oraz jej efekty
 	visible = false
@@ -324,3 +337,13 @@ func _fade(out: bool, scene_change: bool = false) -> void:
 		await $Gameplay_UI/CanvasLayer/Fade.fade_out()
 	else:
 		await $Gameplay_UI/CanvasLayer/Fade.fade_in()
+
+
+func _on_i_frames_timeout() -> void:
+	if not dashing:
+		set_collision_mask_value(7, true)
+	flicker_timer.stop()
+	visible = true
+
+func _on_flicker_timer_timeout() -> void:
+	visible = not visible

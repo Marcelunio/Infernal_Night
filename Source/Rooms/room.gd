@@ -9,7 +9,7 @@ signal boss_defeated
 
 const SNIPER: PackedScene = preload("res://Scenes/Entities/Enemies/Ghost/SniperGhost.tscn")
 const ENEMY: PackedScene = preload("res://Scenes/Entities/Enemies/Ghost/Ghost.tscn")
-const BOSS: PackedScene = preload("res://Scenes/Entities/Enemies/Ghost/Ghost.tscn") # TU DAM BOSSA
+const BOSS: PackedScene = preload("res://Scenes/Entities/Enemies/Ghost/GhostBoss.tscn") # TU DAM BOSSA
 
 var grid_position: Vector2i = Vector2i.ZERO
 var room_type: String = ""
@@ -29,7 +29,6 @@ var door_map = {
 @export var door_sounds: Array[AudioStream] = []
 
 func _ready() -> void:
-	# Build doors dict from whichever door nodes actually exist
 	for key in door_map:
 		var node = get_node_or_null(door_map[key])
 		if node != null:

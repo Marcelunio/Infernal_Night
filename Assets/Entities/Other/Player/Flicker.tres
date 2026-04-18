@@ -1,0 +1,8 @@
+[gd_resource type="ShaderMaterial" load_steps=2 format=3 uid="uid://wrbhl14c632c"]
+
+[ext_resource type="Shader" uid="uid://bi4vdvyxkc018" path="res://Assets/flicker.gdshader" id="1_prujj"]
+
+[resource]
+shader = ExtResource("1_prujj")
+shader_parameter/max_flicker = 0.0
+shader_parameter/flicker_duration = 0.0

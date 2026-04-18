@@ -47,5 +47,4 @@ rotation = 1.5707964
 shape = SubResource("CircleShape2D_rhd2e")
 
 [node name="PointLight2D" parent="." index="3"]
-blend_mode = 2
 texture = SubResource("GradientTexture2D_csf1d")

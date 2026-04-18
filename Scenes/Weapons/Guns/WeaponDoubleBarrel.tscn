@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=3 uid="uid://b783hpp0owvai"]
+[gd_scene load_steps=10 format=3 uid="uid://b783hpp0owvai"]
 
 [ext_resource type="Script" uid="uid://1vqkoax4on8c" path="res://Source/Weapons/Guns/weapon_shotgun.gd" id="1_8tfbl"]
 [ext_resource type="Texture2D" uid="uid://cx01h0tlqh5xm" path="res://Assets/Weapons/Guns/doubleBarrel.png" id="2_0fmmj"]
@@ -7,12 +7,6 @@
 [ext_resource type="AudioStream" uid="uid://ckcfkq8iexog5" path="res://Sounds/SFX/Guns/12gaugeGuns/DoubleBarrel/double_barrel_reload.wav" id="4_v1x1h"]
 [ext_resource type="AudioStream" uid="uid://c8b5r1kcwa8ev" path="res://Sounds/SFX/Guns/EmptyMagazine/empty_magazine_high.wav" id="5_v1x1h"]
 [ext_resource type="AudioStream" uid="uid://ddhhntdigu5o2" path="res://Sounds/SFX/Guns/EmptyMagazine/empty_magazine_low.wav" id="6_ioh5i"]
-[ext_resource type="Shader" uid="uid://b1vjsupylo1em" path="res://Assets/Weapons/outline.gdshader" id="8_ioh5i"]
-
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_t46lw"]
-shader = ExtResource("8_ioh5i")
-shader_parameter/thickness = 5.0
-shader_parameter/has_outline = false
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_phod8"]
 size = Vector2(147, 23)
@@ -43,7 +37,9 @@ reload_time = 1.0
 metadata/_edit_group_ = true
 
 [node name="WeaponSprite" type="Sprite2D" parent="."]
-material = SubResource("ShaderMaterial_t46lw")
+scale = Vector2(0.44200003, 0.5)
+
+[node name="WeaponSprite2" type="Sprite2D" parent="."]
 scale = Vector2(0.44200003, 0.5)
 
 [node name="WeaponCollsion" type="CollisionShape2D" parent="."]

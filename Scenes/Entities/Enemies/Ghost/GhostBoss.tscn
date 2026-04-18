@@ -1,0 +1,37 @@
+[gd_scene load_steps=5 format=3 uid="uid://bedswcqwv477p"]
+
+[ext_resource type="PackedScene" uid="uid://4lel7x6umvoj" path="res://Scenes/Entities/Enemies/Ghost/GhostProjectile.tscn" id="2_h0bq8"]
+[ext_resource type="Script" uid="uid://cl546yk0jmpyo" path="res://Source/Entities/Enemies/Ghost/ghost_boss.gd" id="2_w5c1t"]
+[ext_resource type="Texture2D" uid="uid://dvmjuml647xa5" path="res://Assets/Entities/Enemies/Ghost/BossGhost.png" id="3_h0bq8"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_xslkb"]
+radius = 32.0
+
+[node name="Enemy" type="CharacterBody2D" groups=["enemy"]]
+collision_layer = 64
+collision_mask = 240
+motion_mode = 1
+wall_min_slide_angle = 0.0
+safe_margin = 3.0
+script = ExtResource("2_w5c1t")
+projectile_scene = ExtResource("2_h0bq8")
+formation_radius = 150.0
+
+[node name="EnemyNavigation" type="NavigationAgent2D" parent="."]
+path_desired_distance = 8.0
+path_max_distance = 4096.0
+radius = 16.0
+neighbor_distance = 160.0
+max_neighbors = 1
+
+[node name="EnemySprite" type="Sprite2D" parent="."]
+texture = ExtResource("3_h0bq8")
+
+[node name="EnemyCollision" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_xslkb")
+
+[node name="PointLight2D" type="PointLight2D" parent="."]
+energy = 1.7
+blend_mode = 2
+shadow_enabled = true
+shadow_filter = 1
