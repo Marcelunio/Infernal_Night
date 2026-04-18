@@ -13,13 +13,17 @@ var player: Node
 var inventory: Node
 
 #weapons
-@export var weapon_scenes: Array[PackedScene] = []
+var weapon_scenes: Array[PackedScene] = []
 var dict_weapons: Dictionary = {}
 
 const DAD_SCENE = preload("res://Scenes/Entities/Other/Van/DaDContainer.tscn")
 
 func _ready() -> void:
 	visible = false
+	
+	for name in PlayerData.van_weapons:
+		if name != "empty":
+			weapon_scenes.append(load("res://Scenes/Weapons/Guns/Weapon" + name.capitalize() + ".tscn"))
 	
 	for x in weapon_scenes:
 		var instance = x.instantiate()

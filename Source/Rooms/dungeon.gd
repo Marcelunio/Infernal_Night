@@ -37,14 +37,27 @@ var boss_room_pos: Vector2i
 
 var camera_target: Vector2 = ROOM_SIZE / 2
 
+#seed
+var current_seed: int = 0
+
+var cleared_rooms: Array[Vector2i] = []
+
 func _ready():
-	randomize()
+	if PlayerData.dungeon_seed == 0:
+		current_seed = randi()
+		PlayerData.dungeon_seed = current_seed
+	else:
+		current_seed = PlayerData.dungeon_seed
+	seed(current_seed)
+	PlayerData.floor_stage = "Dungeon"
+	print("SEED: ", current_seed)
 	colorize()
 	preload_rooms()
 	generate_floor()
 	spawn_all_rooms()
 	spawn_player()
 	call_deferred("boss_defeated")#~~Kleks Do testowania
+	PlayerData.call_deferred("_save")
 
 func _process(delta):
 	camera.position = lerp(camera.position, camera_target, 5.0 * delta)
@@ -301,3 +314,5 @@ func reveal_all_rooms():
 		
 func clear_room():
 	player.set_collision_mask_value(8, false)
+	cleared_rooms.append(current_room_pos)
+	

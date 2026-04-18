@@ -29,8 +29,8 @@ var current_room: Node = null
 #var camera_offset_limit: float = 0.5
 
 #hp
-@export var max_hp:int = 6
-var hp: int
+var max_hp:int = PlayerData.max_hp
+var hp: int = PlayerData.hp
 
 #inventory connector
 @onready var inventory = $InventoryMenager
@@ -61,7 +61,6 @@ signal UI_HealthBarDisplay(max_hp, hp)
 func _ready():
 	_fade(false)
 	dungeon = get_parent()
-	hp = max_hp
 	
 	$"Gameplay_UI/CanvasLayer/WeaponDisplay".setup(inventory)
 	UI_HealthBarDisplay.emit.call_deferred(max_hp, hp)

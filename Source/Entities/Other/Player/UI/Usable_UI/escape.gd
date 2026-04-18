@@ -28,7 +28,7 @@ func _on_resume_pressed() -> void:
 	visible = false
 
 func _on_save_pressed() -> void:
-	pass 
+	PlayerData._save()
 
 func _on_settings_pressed() -> void:
 	visible = false

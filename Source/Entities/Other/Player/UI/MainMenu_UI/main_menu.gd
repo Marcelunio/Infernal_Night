@@ -10,12 +10,12 @@ func _ready() -> void:
 	DisplayServer.window_get_size()
 	
 func _on_new_game_pressed() -> void:
+	PlayerData._new_game()
 	$Choice.start()
 	#get_tree().change_scene_to_file("res://Scenes/TestRooms/Main.tscn")
 
 func _on_load_pressed() -> void:
-	pass
-	#mysle nad prostym system ktory by zapisywal w notatniczku typu level1 = 1 level2 = 1 level3 = 0 itd....
+	PlayerData._load()
 
 func _on_settings_pressed() -> void:
 	visible = false

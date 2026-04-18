@@ -126,10 +126,12 @@ func add_padding(texture:Texture2D,padding:int):
 		Vector2(padding,padding)
 		)
 	return ImageTexture.create_from_image(padded_image)
+	
 func _connect_signals():
 	var player = get_tree().get_first_node_in_group("player")
 	var inventory = player.get_node("InventoryMenager")
 	inventory.UI_NearestItemChanged.connect(_closest_to_player)
+	
 func _closest_to_player(item, closest):
 	if item == self:
 		if closest:

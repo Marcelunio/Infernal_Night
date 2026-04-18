@@ -494,11 +494,6 @@ animations = [{
 [node name="Player" type="CharacterBody2D" groups=["player"]]
 collision_mask = 188
 script = ExtResource("1_nfgiu")
-speed = null
-dash_speed = null
-dash_duration = null
-dash_cooldown = null
-max_hp = null
 walk_sounds = Array[AudioStreamWAV]([ExtResource("2_44eud"), ExtResource("3_ji22f")])
 dash_sounds = Array[AudioStreamWAV]([ExtResource("4_xfm63"), ExtResource("5_k6kfc"), ExtResource("6_6eds7")])
 ambient_sounds = Array[AudioStreamWAV]([ExtResource("7_6eds7"), ExtResource("8_hxydp")])

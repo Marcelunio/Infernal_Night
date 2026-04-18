@@ -13,6 +13,7 @@ const ROOMS = {
 func _ready() -> void:
 	await get_tree().physics_frame
 	if not from_main_menu:
+		PlayerData.floor_stage = "Choice"
 		var audio_node = AudioStreamPlayer.new()
 		audio_node.stream = load("res://Sounds/Music/Main_menu.ogg")
 		audio_node.autoplay = true
@@ -46,4 +47,6 @@ func start() -> void:
 	
 func _pressed(room) -> void:
 	GameState.room_number = ROOMS[room]
+	PlayerData.max_rooms = ROOMS[room]
+	PlayerData.level += 1
 	GameState._CHANGE_ROOT("res://Scenes/Floors/Main/Main.tscn")

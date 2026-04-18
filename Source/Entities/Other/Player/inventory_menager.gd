@@ -3,7 +3,7 @@
 extends Node2D
 
 #invetnory capacity
-@export var weapon_container_capacity: int = 3
+var weapon_container_capacity: int = PlayerData.inventory_size
 var weapon_container: Array[Node] = []
 
 #weapon holding
@@ -19,16 +19,12 @@ var nearest_weapon: Node = null
 
 #weapon reloading
 var reload_pending: bool = false
-@export var max_9mm: int
-@export var max_5_56mm: int
-@export var max_12gauge: int
-@export var max_7_62mm: int
 var ammo_container: Dictionary 
 var ammo_pick_up_check: bool = false
 var nearest_ammo: Node = null
 
 #coins
-var coins:int = 0
+var coins:int = PlayerData.coins
 
 #signal to weapon_display.gd
 signal UI_WeaponChanged(weapon)
@@ -45,11 +41,27 @@ signal UI_NearestItemChanged(item: Node, is_nearest: bool)
 
 func _ready() -> void:
 	ammo_container = {
-	"9mm": {"current": max_9mm, "max": max_9mm},             # Pistolety, SMG (UZI, MP5, Glock)
-	"5.56mm": {"current": max_5_56mm, "max": max_5_56mm},    # Karabiny szturmowe (M16, AK-47, M4)
-	"12gauge": {"current": max_12gauge, "max": max_12gauge}, # Shotguny
-	"7.62mm": {"current": max_7_62mm, "max": max_7_62mm}     # Snajperki, heavy MG
+	"9mm": {"current": PlayerData.ammo_container["9mm"]["current"], "max": PlayerData.ammo_container["9mm"]["max"]},             # Pistolety, SMG (UZI, MP5, Glock)
+	"5.56mm": {"current": PlayerData.ammo_container["5.56mm"]["current"], "max":PlayerData.ammo_container["5.56mm"]["max"]},    # Karabiny szturmowe (M16, AK-47, M4)
+	"12gauge": {"current": PlayerData.ammo_container["12gauge"]["current"], "max": PlayerData.ammo_container["12gauge"]["max"]}, # Shotguny
+	"7.62mm": {"current": PlayerData.ammo_container["7.62mm"]["current"], "max": PlayerData.ammo_container["7.62mm"]["max"]}     # Snajperki, heavy MG
 	}
+	
+	
+	for name in PlayerData.inventory_weapons:
+		if name != "empty":
+			var instance = load("res://Scenes/Weapons/Guns/Weapon" + name.capitalize() + ".tscn").instantiate()
+			NODE_weapon_container.add_child(instance)
+			weapon_container.append(instance)
+			instance.hide()
+			instance.is_picked_up = true
+			instance.set_collision_layer_value(1, false)
+			instance.set_collision_mask_value(1, false)
+			instance.position = Vector2.ZERO
+	
+	if !weapon_container.is_empty():
+		call_deferred("change_weapon", weapon_container.size() - 1)
+	
 	debug_print_ammo()
 
 func next_weapon():#player.gd _unhandled_input()

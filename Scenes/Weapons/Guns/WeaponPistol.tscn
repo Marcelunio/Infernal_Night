@@ -12,7 +12,6 @@
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_kejba"]
 shader = ExtResource("1_kejba")
-shader_parameter/thickness = 20.0
 shader_parameter/has_outline = false
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_phod8"]

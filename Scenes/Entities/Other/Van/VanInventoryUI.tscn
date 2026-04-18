@@ -1,14 +1,6 @@
-[gd_scene load_steps=11 format=3 uid="uid://c2odeaamy2wr1"]
+[gd_scene load_steps=3 format=3 uid="uid://c2odeaamy2wr1"]
 
 [ext_resource type="Script" uid="uid://bwi8l7bdjbt4g" path="res://Source/Entities/Other/Van/van_inventory_ui.gd" id="1_8fmj8"]
-[ext_resource type="PackedScene" uid="uid://t7ktbcl5debv" path="res://Scenes/Weapons/Guns/9mmGuns/WeaponPistol.tscn" id="2_ckybq"]
-[ext_resource type="PackedScene" uid="uid://bxg5woeatx4uj" path="res://Scenes/Weapons/Guns/9mmGuns/WeaponRevolver.tscn" id="3_mx0ic"]
-[ext_resource type="PackedScene" uid="uid://da1ap0hsfecta" path="res://Scenes/Weapons/Guns/9mmGuns/WeaponUzi.tscn" id="4_6xdx2"]
-[ext_resource type="PackedScene" uid="uid://b783hpp0owvai" path="res://Scenes/Weapons/Guns/12gaugeGuns/WeaponDoubleBarrel.tscn" id="5_hdnib"]
-[ext_resource type="PackedScene" uid="uid://do67sjc1c7h8g" path="res://Scenes/Weapons/Guns/12gaugeGuns/WeaponShotgun.tscn" id="6_ita5t"]
-[ext_resource type="PackedScene" uid="uid://1dgi4w3gt38e" path="res://Scenes/Weapons/Guns/556mmGuns/WeaponScar.tscn" id="7_rtvg4"]
-[ext_resource type="PackedScene" uid="uid://kv6ej6j01fux" path="res://Scenes/Weapons/Guns/762mmGuns/WeaponAk47.tscn" id="8_hrtc0"]
-[ext_resource type="PackedScene" uid="uid://cotiiwrrpdkwu" path="res://Scenes/Weapons/Melee/WeaponBat.tscn" id="9_ckybq"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_y1gts"]
 bg_color = Color(0.015686275, 0.015686275, 0.015686275, 0.34117648)
@@ -17,7 +9,6 @@ bg_color = Color(0.015686275, 0.015686275, 0.015686275, 0.34117648)
 process_mode = 3
 script = ExtResource("1_8fmj8")
 van_columns = 3
-weapon_scenes = Array[PackedScene]([ExtResource("2_ckybq"), ExtResource("3_mx0ic"), ExtResource("4_6xdx2"), ExtResource("5_hdnib"), ExtResource("6_ita5t"), ExtResource("7_rtvg4"), ExtResource("8_hrtc0"), ExtResource("9_ckybq")])
 
 [node name="PanelContainer" type="PanelContainer" parent="."]
 anchors_preset = 15
@@ -69,4 +60,4 @@ layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 4
 
-[node name="WeaponContainer" type="Node2D" parent="."]
+[node name="WeaponContainer" type="Node2D" parent="." groups=["VanStorage"]]

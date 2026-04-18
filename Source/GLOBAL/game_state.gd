@@ -62,3 +62,14 @@ func _audio_click_UI(stream: AudioStream) -> void:#UI audio player
 #---ROOT CHANGING---
 func _CHANGE_ROOT(Path: String) -> void:
 	get_tree().change_scene_to_file.call_deferred(Path)
+
+func _continue_game() -> void:
+	match PlayerData.floor_stage:
+		"Dungeon":
+			_CHANGE_ROOT("res://Scenes/Floors/Main/Main.tscn")
+		"Shop":
+			_CHANGE_ROOT("res://Scenes/Floors/Main/shop.tscn")
+		"Choice":
+			_CHANGE_ROOT("res://Scenes/Floors/Main/Choice.tscn")
+		"Start", _:
+			_CHANGE_ROOT("res://Scenes/Floors/Main/Choice.tscn")

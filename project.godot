@@ -19,7 +19,8 @@ config/icon="uid://ci6co3vls48fx"
 [autoload]
 
 Settings="*res://Scenes/Entities/Other/Player/UI/Usable_UI/Settings.tscn"
-GameState="*res://Source/GLOBAL/game_state.gd"
+GameState="*res://Source/GLOBAL/GAME_STATE.gd"
+PlayerData="*res://Source/GLOBAL/PLAYER_DATA.gd"
 
 [debug]
 
@@ -59,6 +60,8 @@ weapon-white-switch=""
 Buttons=""
 nav_region=""
 tilemap=""
+VanStorage=""
+dungeon=""
 
 [input]
 

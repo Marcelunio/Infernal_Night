@@ -1,7 +1,7 @@
 [gd_scene load_steps=5 format=4 uid="uid://dtcik8ig2rjuc"]
 
 [ext_resource type="PackedScene" uid="uid://c1da6epqykshi" path="res://Scenes/Floors/ValidRooms/Room.tscn" id="1_05yht"]
-[ext_resource type="PackedScene" uid="uid://da1ap0hsfecta" path="res://Scenes/Weapons/Guns/9mmGuns/WeaponUzi.tscn" id="2_cpe6f"]
+[ext_resource type="PackedScene" uid="uid://da1ap0hsfecta" path="res://Scenes/Weapons/Guns/WeaponUzi.tscn" id="2_cpe6f"]
 [ext_resource type="Texture2D" uid="uid://cva54ciuk85f0" path="res://Assets/light/gradient.tres" id="3_l7tj2"]
 
 [sub_resource type="NavigationPolygon" id="NavigationPolygon_cpe6f"]
