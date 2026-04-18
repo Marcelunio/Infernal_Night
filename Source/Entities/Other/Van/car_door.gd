@@ -4,7 +4,7 @@ extends Node2D
 
 var can_leave: bool = false
 
-const ROTATION_SPEED = 560.0
+const ROTATION_SPEED = 600.0
 
 var door_state: int = 0 #0 = closed ; 1 = opening ; 2 = open
 var target_rotation = 0.0
@@ -23,13 +23,13 @@ func _process(delta: float) -> void:
 				door_state = 0  # zamknięty
 
 func _on_door_detect_body_entered(body: Node2D) -> void:
-	if body.is_in_group("player"):
+	if body.is_in_group("player") and can_leave:
 		if door_state == 0:
 			target_rotation = 90.0
 			door_state = 1
 
 func _on_door_detect_body_exited(body: Node2D) -> void:
-	if body.is_in_group("player"):
+	if body.is_in_group("player") and can_leave:
 		if door_state == 2:
 			target_rotation = 0
 			door_state = 1
