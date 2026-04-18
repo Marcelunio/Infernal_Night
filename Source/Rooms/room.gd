@@ -7,8 +7,8 @@ signal boss_defeated
 
 @onready var room_layout: TileMapLayer = $NavigationRegion2D/RoomLayout
 
-const ENEMY: PackedScene = preload("res://Scenes/Entities/Enemies/Ghost/SniperGhost.tscn")
-#const ENEMY: PackedScene = preload("res://Scenes/Entities/Enemies/Ghost/Ghost.tscn")
+const SNIPER: PackedScene = preload("res://Scenes/Entities/Enemies/Ghost/SniperGhost.tscn")
+const ENEMY: PackedScene = preload("res://Scenes/Entities/Enemies/Ghost/Ghost.tscn")
 const BOSS: PackedScene = preload("res://Scenes/Entities/Enemies/Ghost/Ghost.tscn") # TU DAM BOSSA
 
 var grid_position: Vector2i = Vector2i.ZERO
@@ -80,7 +80,10 @@ func spawn_enemies():
 			if marker.name.begins_with("Boss"):
 				enemy_instance = BOSS.instantiate()
 			else: 
-				enemy_instance = ENEMY.instantiate()
+				if randi_range(0,1) == 0:
+					enemy_instance = ENEMY.instantiate()
+				else:
+					enemy_instance = SNIPER.instantiate()
 			add_child(enemy_instance)
 			enemy_instance.position = marker.position
 			enemy_instance.frozen = true
