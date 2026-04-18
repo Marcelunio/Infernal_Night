@@ -1,30 +1,41 @@
 [gd_scene load_steps=6 format=3 uid="uid://bw6vg4xywbcuo"]
 
-[ext_resource type="PackedScene" uid="uid://cfusyie20hge6" path="res://Scenes/Entities/Enemies/Enemy.tscn" id="1_wx45n"]
 [ext_resource type="Texture2D" uid="uid://si3gy38yein7" path="res://Assets/Entities/Enemies/Ghost/SniperGhost.png" id="2_8538w"]
 [ext_resource type="Script" uid="uid://dd7yaprl4r8le" path="res://Source/Entities/Enemies/Ghost/sniper_ghost.gd" id="2_v4pe8"]
 [ext_resource type="PackedScene" uid="uid://detsplentfwev" path="res://Scenes/Entities/Enemies/Ghost/SniperGhostProjectile.tscn" id="3_oeynm"]
 [ext_resource type="Texture2D" uid="uid://cva54ciuk85f0" path="res://Assets/light/gradient.tres" id="5_k4ojv"]
 
-[node name="Enemy" instance=ExtResource("1_wx45n")]
+[sub_resource type="CircleShape2D" id="CircleShape2D_oeynm"]
+
+[node name="Enemy" type="CharacterBody2D" groups=["enemy"]]
+collision_layer = 64
+collision_mask = 240
+motion_mode = 1
+wall_min_slide_angle = 0.0
+safe_margin = 3.0
 script = ExtResource("2_v4pe8")
 projectile_scene = ExtResource("3_oeynm")
-bullet_speed = 800.0
-bullet_turn_rate = 1.2
 shoot_cooldown = 2.5
-formation_radius = 80.0
 
-[node name="EnemyNavigation" parent="." index="0"]
+[node name="EnemyNavigation" type="NavigationAgent2D" parent="."]
+path_desired_distance = 8.0
+path_max_distance = 4096.0
 avoidance_enabled = true
 radius = 12.0
-max_neighbors = 10
+neighbor_distance = 160.0
 max_speed = 0.01
 
-[node name="EnemySprite" parent="." index="1"]
+[node name="EnemySprite" type="Sprite2D" parent="."]
 rotation = 1.5707964
 texture = ExtResource("2_8538w")
 
-[node name="PointLight2D" parent="." index="3"]
+[node name="EnemyCollision" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_oeynm")
+
+[node name="PointLight2D" type="PointLight2D" parent="."]
 energy = 1.4
+blend_mode = 2
+shadow_enabled = true
+shadow_filter = 1
 texture = ExtResource("5_k4ojv")
 texture_scale = 0.3
