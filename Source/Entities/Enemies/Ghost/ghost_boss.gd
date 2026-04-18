@@ -49,7 +49,6 @@ func _physics_process(delta: float) -> void:
 		return
 
 	_check_phase2()
-	_contact_damage_timer -= delta
 	_check_contact_damage()
 	_update_boss_state(delta)
 	_update_rotation(delta)
