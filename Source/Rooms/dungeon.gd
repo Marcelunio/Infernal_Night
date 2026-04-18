@@ -39,6 +39,7 @@ var camera_target: Vector2 = ROOM_SIZE / 2
 
 func _ready():
 	randomize()
+	colorize()
 	preload_rooms()
 	generate_floor()
 	spawn_all_rooms()
@@ -47,6 +48,13 @@ func _ready():
 
 func _process(delta):
 	camera.position = lerp(camera.position, camera_target, 5.0 * delta)
+
+func colorize():
+	var room_shader=load("res://Assets/Tilesets/room_hue_shift.material");
+	var d_HSV=Vector3(randi()%61-30,randi()%200-100,randi()%40-20);
+	room_shader.set_shader_parameter("d_HSV", d_HSV)
+	print(d_HSV)
+	return
 
 func preload_rooms():
 	var dir := DirAccess.open(room_folder_path)
