@@ -22,7 +22,6 @@ class_name Enemy
 
 # CONTACT DAMAGE
 @export var contact_damage := 1
-@export var contact_damage_cooldown := 0.5
 @export var contact_damage_radius := 32.0
 
 # =========================
@@ -53,8 +52,6 @@ var strafe_dir := 1
 var strafe_timer := 0.0
 var strafe_blend := 0.0
 
-# contact damage
-var _contact_damage_timer := 0.0
 # debug
 var debug_rays: Array = []
 
@@ -93,15 +90,12 @@ func _physics_process(delta: float) -> void:
 	_check_contact_damage()
 	
 func _check_contact_damage() -> void:
-	if _contact_damage_timer > 0.0:
-		return
 	if player == null:
 		return
 	var dist := global_position.distance_to(player.global_position)
 	if dist < contact_damage_radius:
 		if player.has_method("take_damage"):
 			player.take_damage(contact_damage)
-			_contact_damage_timer = contact_damage_cooldown
 
 
 # =========================
