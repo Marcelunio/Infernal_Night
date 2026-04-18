@@ -14,5 +14,3 @@ script = ExtResource("1_ak2yf")
 shape = SubResource("CircleShape2D_jaobb")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
-
-[node name="PointLight2D" type="PointLight2D" parent="."]

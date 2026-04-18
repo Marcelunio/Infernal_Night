@@ -1,7 +1,6 @@
-[gd_scene load_steps=13 format=3 uid="uid://t7ktbcl5debv"]
+[gd_scene load_steps=11 format=3 uid="uid://t7ktbcl5debv"]
 
 [ext_resource type="Script" uid="uid://bllmlfn3uam3l" path="res://Source/Weapons/Guns/weapon_single_fire.gd" id="1_5xuog"]
-[ext_resource type="Shader" uid="uid://b1vjsupylo1em" path="res://Assets/Weapons/outline.gdshader" id="1_kejba"]
 [ext_resource type="AudioStream" uid="uid://cyxyuj5sc8l4l" path="res://Sounds/SFX/Guns/9mmGuns/Glock/glock_shot_high.wav" id="2_lsxgv"]
 [ext_resource type="AudioStream" uid="uid://vbgj44d8xaha" path="res://Sounds/SFX/Guns/9mmGuns/Glock/glock_shot_low.wav" id="3_upye7"]
 [ext_resource type="AudioStream" uid="uid://bmirv00ojdue1" path="res://Sounds/SFX/Guns/9mmGuns/Glock/glock_shot_mid.wav" id="4_dnrpu"]
@@ -9,11 +8,6 @@
 [ext_resource type="AudioStream" uid="uid://c8b5r1kcwa8ev" path="res://Sounds/SFX/Guns/EmptyMagazine/empty_magazine_high.wav" id="6_6hos1"]
 [ext_resource type="AudioStream" uid="uid://ddhhntdigu5o2" path="res://Sounds/SFX/Guns/EmptyMagazine/empty_magazine_low.wav" id="7_kejba"]
 [ext_resource type="Texture2D" uid="uid://djwpisrbxq33w" path="res://Assets/Weapons/Guns/gun.png" id="8_6hos1"]
-
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_kejba"]
-shader = ExtResource("1_kejba")
-shader_parameter/thickness = 20.0
-shader_parameter/has_outline = false
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_phod8"]
 size = Vector2(32, 22)
@@ -42,7 +36,6 @@ reload_time = 4.5
 metadata/_edit_group_ = true
 
 [node name="WeaponSprite" type="Sprite2D" parent="."]
-material = SubResource("ShaderMaterial_kejba")
 position = Vector2(0.7500007, 0.49999952)
 scale = Vector2(0.71875, 0.71875)
 

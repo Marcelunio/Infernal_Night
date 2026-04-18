@@ -11,6 +11,7 @@ extends RigidBody2D
 @export var weapon_damage: float
 @export var sprite: Texture2D
 
+var outline:Material =load("res://Assets/Weapons/weapon_outline.tres");
 const PLAYER_VELOCITY_TO_THROW_FORCE: float =0.6
 var is_picked_up: bool = false
 var is_thrown: bool = false
@@ -126,13 +127,15 @@ func add_padding(texture:Texture2D,padding:int):
 		Vector2(padding,padding)
 		)
 	return ImageTexture.create_from_image(padded_image)
+	
 func _connect_signals():
 	var player = get_tree().get_first_node_in_group("player")
 	var inventory = player.get_node("InventoryMenager")
 	inventory.UI_NearestItemChanged.connect(_closest_to_player)
+	
 func _closest_to_player(item, closest):
 	if item == self:
 		if closest:
-			item.get_node("WeaponSprite").material.set_shader_parameter("has_outline",true)
+			item.get_node("WeaponSprite").material=outline;
 		else:
-			item.get_node("WeaponSprite").material.set_shader_parameter("has_outline",false)
+			item.get_node("WeaponSprite").material=null;

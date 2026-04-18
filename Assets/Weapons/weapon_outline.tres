@@ -1,0 +1,6 @@
+[gd_resource type="ShaderMaterial" load_steps=2 format=3 uid="uid://dhd66rwgpmyj5"]
+
+[ext_resource type="Shader" uid="uid://b1vjsupylo1em" path="res://Assets/Weapons/outline.gdshader" id="1_aafdf"]
+
+[resource]
+shader = ExtResource("1_aafdf")
