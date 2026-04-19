@@ -1,0 +1,24 @@
+[gd_scene load_steps=4 format=3 uid="uid://ss5c2ogwyblj"]
+
+[ext_resource type="Shader" uid="uid://d1sipag8nk0w0" path="res://Assets/Effects/camera.gdshader" id="1_v16nj"]
+[ext_resource type="Script" uid="uid://m5yv0mmqe1bg" path="res://Source/Effects/camera_effect.gd" id="2_w672p"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_vnsaq"]
+shader = ExtResource("1_v16nj")
+shader_parameter/scanline_strength = 0.010000000475
+shader_parameter/vignette_strength = 0.250000011875
+shader_parameter/snow_strength = 0.10000000475
+shader_parameter/time = 0.0
+
+[node name="CameraEffect" type="ColorRect"]
+process_mode = 3
+z_index = 2500
+material = SubResource("ShaderMaterial_vnsaq")
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+color = Color(1, 1, 1, 0)
+script = ExtResource("2_w672p")

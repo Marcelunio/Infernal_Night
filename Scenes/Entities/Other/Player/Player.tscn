@@ -1,4 +1,4 @@
-[gd_scene load_steps=77 format=3 uid="uid://dn2dpf0haseiq"]
+[gd_scene load_steps=80 format=3 uid="uid://dn2dpf0haseiq"]
 
 [ext_resource type="Script" uid="uid://3mc7lvum6rxd" path="res://Source/Entities/Other/Player/player.gd" id="1_nfgiu"]
 [ext_resource type="AudioStream" uid="uid://dnarg1ul4lk5n" path="res://Sounds/SFX/Player/Walk/wooden_floor_walk_high.wav" id="2_44eud"]
@@ -22,7 +22,10 @@
 [ext_resource type="AudioStream" uid="uid://63ymh03eoc15" path="res://Sounds/SFX/Player/Throw/throw_low.wav" id="11_fad8c"]
 [ext_resource type="AudioStream" uid="uid://c5e7t6kjqbnnf" path="res://Sounds/Music/Eyes-on-me.ogg" id="12_fad8c"]
 [ext_resource type="Texture2D" uid="uid://bangq7x48qpxr" path="res://Assets/Entities/Other/Player/player.png" id="13_kjs6a"]
+[ext_resource type="Script" uid="uid://dicuhuv8sq0ic" path="res://Source/Rooms/minimap.gd" id="16_4rffi"]
 [ext_resource type="PackedScene" uid="uid://barw81mxmqlfv" path="res://Scenes/Entities/Other/Player/UI/GameplayUI/Fade.tscn" id="19_jt1s7"]
+[ext_resource type="PackedScene" uid="uid://ss5c2ogwyblj" path="res://Scenes/Effects/CameraEffect.tscn" id="20_0wewo"]
+[ext_resource type="PackedScene" uid="uid://dh13urtwuqqnc" path="res://TEST/camera_timer.tscn" id="20_4qg2e"]
 [ext_resource type="AudioStream" uid="uid://bgt868b0lcxbk" path="res://Sounds/SFX/Player/PickUp/pick_up.wav" id="20_hxydp"]
 [ext_resource type="Texture2D" uid="uid://ctfqec6kc458b" path="res://Assets/light/player_gradient.png" id="24_ubqqd"]
 
@@ -520,6 +523,16 @@ metadata/_edit_use_anchors_ = true
 
 [node name="CanvasLayer" type="CanvasLayer" parent="Gameplay_UI"]
 
+[node name="Minimap" type="Control" parent="Gameplay_UI/CanvasLayer"]
+layout_mode = 3
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -250.0
+offset_bottom = 250.0
+grow_horizontal = 0
+script = ExtResource("16_4rffi")
+
 [node name="WeaponDisplay" parent="Gameplay_UI/CanvasLayer" instance=ExtResource("2_r657a")]
 metadata/_edit_use_anchors_ = true
 
@@ -528,6 +541,10 @@ metadata/_edit_use_anchors_ = true
 
 [node name="ItemsDisplay" parent="Gameplay_UI/CanvasLayer" instance=ExtResource("9_yibyp")]
 metadata/_edit_use_anchors_ = true
+
+[node name="CameraTimer" parent="Gameplay_UI/CanvasLayer" instance=ExtResource("20_4qg2e")]
+offset_left = -23.5
+offset_right = 23.5
 
 [node name="Fade" parent="Gameplay_UI/CanvasLayer" instance=ExtResource("19_jt1s7")]
 
@@ -551,6 +568,11 @@ metadata/_edit_use_anchors_ = true
 metadata/_edit_use_anchors_ = true
 
 [node name="Settings" parent="Usable_UI" instance=ExtResource("7_xu3wr")]
+
+[node name="Effects" type="CanvasLayer" parent="."]
+layer = 999
+
+[node name="CameraEffect" parent="Effects" instance=ExtResource("20_0wewo")]
 
 [node name="animation" type="CanvasGroup" parent="."]
 light_mask = 2

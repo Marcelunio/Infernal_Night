@@ -1,0 +1,25 @@
+[gd_scene load_steps=2 format=3 uid="uid://dh13urtwuqqnc"]
+
+[ext_resource type="Script" uid="uid://6nfuatbigr7s" path="res://TEST/camera_timer.gd" id="1_jd3i5"]
+
+[node name="CameraTimer" type="HBoxContainer"]
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -20.0
+offset_right = 20.0
+offset_bottom = 40.0
+grow_horizontal = 2
+script = ExtResource("1_jd3i5")
+
+[node name="RecDot" type="Label" parent="."]
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 0, 0, 1)
+text = "●"
+
+[node name="Rec" type="Label" parent="."]
+layout_mode = 2
+text = "Rec"
+
+[node name="TimeLabel" type="Label" parent="."]
+layout_mode = 2

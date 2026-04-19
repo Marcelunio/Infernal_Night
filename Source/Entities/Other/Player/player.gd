@@ -15,9 +15,9 @@ var dash_direction: Vector2 = Vector2.ZERO
 var attacking_from_left=false
 
 #Death screen
-var enemy_deaths: int = 0
-var shots_fired: int = 0
-var grenades_thrown: int = 0
+var enemy_deaths: int = PlayerData.enemy_deaths
+var shots_fired: int = PlayerData.shots_fired
+var grenades_thrown: int = PlayerData.grenades_thrown
 signal death(enemy_deaths, shots_fired, grenades_thrown)
 
 #weapon location tracker
@@ -292,6 +292,7 @@ func take_damage(amount: int):#obsluga damage'a
 		
 
 func die() -> void:#obslguje smierc gracza oraz jej efekty
+	PlayerData._die()
 	visible = false
 	GameState.push_screen("death")
 	$Gameplay_UI._change($Gameplay_UI, false)

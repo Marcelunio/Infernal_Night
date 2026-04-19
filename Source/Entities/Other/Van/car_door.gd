@@ -4,7 +4,7 @@ extends Node2D
 
 var can_leave: bool = false
 
-const ROTATION_SPEED = 600.0
+const ROTATION_SPEED = 1200.0
 
 var door_state: int = 0 #0 = closed ; 1 = opening ; 2 = open
 var target_rotation = 0.0

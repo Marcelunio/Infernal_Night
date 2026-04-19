@@ -5,7 +5,7 @@ signal room_changed(new_room_pos: Vector2i)
 
 @onready var camera: Camera2D = get_node("/root/Main/Camera")
 
-@export var room_number: int = GameState.room_number #Kleks GLOBAL skrypt game_state.gd
+@export var room_number: int = PlayerData.max_rooms #Kleks GLOBAL skrypt game_state.gd
 @export var room_folder_path: String = "res://Scenes/Floors/ValidRooms"
 
 const ROOM_SIZE: Vector2 = Vector2(1152, 768)
@@ -106,6 +106,9 @@ func generate_floor():
 	var current_pos := start_pos
 	var target_rooms = floor(room_number * 2 / 3)
 	var directions := [Vector2i.UP, Vector2i.DOWN, Vector2i.LEFT, Vector2i.RIGHT]
+	
+	print("target_rooms", target_rooms)
+	print("room_positions.size()", room_positions.size())
 	
 	while room_positions.size() < target_rooms:
 		directions.shuffle()

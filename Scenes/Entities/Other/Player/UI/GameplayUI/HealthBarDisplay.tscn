@@ -6,8 +6,6 @@
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_hkcsn"]
 bg_color = Color(0.015686275, 0.015686275, 0.015686275, 0.34117648)
 corner_radius_bottom_right = 15
-expand_margin_right = 15.0
-expand_margin_bottom = 15.0
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_f80ul"]
 atlas = ExtResource("2_3o1bs")
@@ -29,5 +27,12 @@ texture_full = SubResource("AtlasTexture_f80ul")
 texture_half = SubResource("AtlasTexture_hir7m")
 texture_empty = SubResource("AtlasTexture_wke8m")
 
-[node name="HBoxContainer" type="HBoxContainer" parent="."]
+[node name="MarginContainer" type="MarginContainer" parent="."]
+layout_mode = 2
+theme_override_constants/margin_left = 15
+theme_override_constants/margin_top = 15
+theme_override_constants/margin_right = 15
+theme_override_constants/margin_bottom = 15
+
+[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer"]
 layout_mode = 2

@@ -46,7 +46,7 @@ func start() -> void:
 			control.add_theme_font_size_override("font_size",DisplayServer.window_get_size().y/36)
 	
 func _pressed(room) -> void:
-	GameState.room_number = ROOMS[room]
 	PlayerData.max_rooms = ROOMS[room]
 	PlayerData.level += 1
+	PlayerData.floor_time = 0
 	GameState._CHANGE_ROOT("res://Scenes/Floors/Main/Main.tscn")

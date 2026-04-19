@@ -3,7 +3,7 @@
 extends PanelContainer
 
 var player: Node
-@onready var h_box = $HBoxContainer
+@onready var h_box = $MarginContainer/HBoxContainer
 
 @export var texture_full: Texture2D
 @export var texture_half: Texture2D

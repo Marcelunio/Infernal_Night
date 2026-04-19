@@ -12,10 +12,17 @@ var screen_stack: Array = [] #kontroluje nakladki i pauzy UI
 var audioClick: AudioStreamPlayer#dzwiek UI
 
 func _ready() -> void:
+	process_mode = PROCESS_MODE_ALWAYS
+	get_tree().auto_accept_quit = false
 	audioClick = AudioStreamPlayer.new()
 	audioClick.process_mode = Node.PROCESS_MODE_ALWAYS
 	audioClick.bus = "UI"
 	add_child(audioClick)
+
+func _process(delta: float) -> void:
+	PlayerData.play_time += delta
+	if not screen_stack.size() > 0:
+		PlayerData.floor_time += delta
 
 func push_screen(screen_name: String):#screen_stack method
 	screen_stack.append(screen_name)
@@ -73,3 +80,9 @@ func _continue_game() -> void:
 			_CHANGE_ROOT("res://Scenes/Floors/Main/Choice.tscn")
 		"Start", _:
 			_CHANGE_ROOT("res://Scenes/Floors/Main/Choice.tscn")
+
+func _notification(what: int) -> void:
+	if what == NOTIFICATION_WM_CLOSE_REQUEST:
+		if not PlayerData._check_save_file():
+			PlayerData._save()
+		get_tree().quit()

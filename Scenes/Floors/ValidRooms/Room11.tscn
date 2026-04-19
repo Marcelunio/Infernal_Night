@@ -1,4 +1,4 @@
-[gd_scene load_steps=4 format=4 uid="uid://bq6sevt2fb4ji"]
+[gd_scene load_steps=4 format=4 uid="uid://c3lekt4qxuq4d"]
 
 [ext_resource type="PackedScene" uid="uid://c1da6epqykshi" path="res://Scenes/Floors/ValidRooms/Room.tscn" id="1_gcait"]
 [ext_resource type="Texture2D" uid="uid://cva54ciuk85f0" path="res://Assets/light/gradient.tres" id="2_2y1ld"]

@@ -5,7 +5,7 @@ extends Control
 var current_weapon
 func _ready():
 	visible = false
-	$VBoxContainer/WeaponSprite.set_anchors_and_offsets_preset(Control.PRESET_FULL_RECT)
+	$MarginContainer/VBoxContainer/WeaponSprite.set_anchors_and_offsets_preset(Control.PRESET_FULL_RECT)
 	
 func setup(inventory):
 	inventory.UI_WeaponChanged.connect(_on_weapon_changed)
@@ -20,16 +20,16 @@ func _on_weapon_changed(weapon):
 		visible = false
 	else:
 		visible = true
-		$VBoxContainer/WeaponSprite.texture = weapon.sprite
+		$MarginContainer/VBoxContainer/WeaponSprite.texture = weapon.sprite
 		
 		current_weapon=weapon
 	if weapon is RangedWeapon:
-		$VBoxContainer/AmmoCounter.text = "%s : %d / %d" % [weapon.weapon_ammo_type, weapon.current_ammo, weapon.max_ammo]
+		$MarginContainer/VBoxContainer/AmmoCounter.text = "%s : %d / %d" % [weapon.weapon_ammo_type, weapon.current_ammo, weapon.max_ammo]
 		weapon.UI_AmmoChanged.connect(_on_ammo_changed)
 	else:
 		$VBoxContainer/AmmoCounter.text = "%s" % ["white weapon"]
 		
 func _on_ammo_changed(ammo_type, current_ammo, max_ammo):
-		$VBoxContainer/AmmoCounter.text = "%s : %d / %d" % [ammo_type, current_ammo, max_ammo]
+		$MarginContainer/VBoxContainer/AmmoCounter.text = "%s : %d / %d" % [ammo_type, current_ammo, max_ammo]
 
 	

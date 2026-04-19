@@ -67,26 +67,26 @@ metadata/_edit_group_ = true
 
 [node name="new game" type="Button" parent="VBoxContainer" groups=["Buttons"]]
 layout_mode = 2
-focus_neighbor_bottom = NodePath("../load")
-focus_next = NodePath("../load")
+focus_neighbor_bottom = NodePath("../continue")
+focus_next = NodePath("../continue")
 theme = ExtResource("2_i3nvj")
 text = "New game"
 
-[node name="load" type="Button" parent="VBoxContainer" groups=["Buttons"]]
+[node name="continue" type="Button" parent="VBoxContainer" groups=["Buttons"]]
 layout_mode = 2
 focus_neighbor_top = NodePath("../new game")
 focus_neighbor_bottom = NodePath("../settings")
 focus_next = NodePath("../settings")
 focus_previous = NodePath("../new game")
 theme = ExtResource("2_i3nvj")
-text = "Load"
+text = "Continue"
 
 [node name="settings" type="Button" parent="VBoxContainer" groups=["Buttons"]]
 layout_mode = 2
-focus_neighbor_top = NodePath("../load")
+focus_neighbor_top = NodePath("../continue")
 focus_neighbor_bottom = NodePath("../exit")
 focus_next = NodePath("../exit")
-focus_previous = NodePath("../load")
+focus_previous = NodePath("../continue")
 theme = ExtResource("2_i3nvj")
 text = "Settings"
 
@@ -111,6 +111,6 @@ bus = &"Music"
 parameters/looping = true
 
 [connection signal="pressed" from="VBoxContainer/new game" to="." method="_on_new_game_pressed"]
-[connection signal="pressed" from="VBoxContainer/load" to="." method="_on_load_pressed"]
+[connection signal="pressed" from="VBoxContainer/continue" to="." method="_on_continue_pressed"]
 [connection signal="pressed" from="VBoxContainer/settings" to="." method="_on_settings_pressed"]
 [connection signal="pressed" from="VBoxContainer/exit" to="." method="_on_exit_pressed"]

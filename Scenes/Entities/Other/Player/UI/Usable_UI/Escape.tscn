@@ -41,6 +41,9 @@ theme_override_constants/separation = 20
 layout_mode = 2
 text = "Infernal Night"
 
+[node name="PlayTime" type="Label" parent="VBoxContainer"]
+layout_mode = 2
+
 [node name="resume" type="Button" parent="VBoxContainer" groups=["Buttons"]]
 layout_mode = 2
 text = "Resume"

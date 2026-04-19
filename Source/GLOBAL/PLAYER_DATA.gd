@@ -5,10 +5,13 @@ extends Node
 #------SAVE------
 const SAVE_PATH = "user://data.cfg"
 var config = ConfigFile.new()
+var play_time: float = 0.0
+var runs: int = 0 
 
 #------DUNGEON------
 var dungeon_seed: int = 0
 var floor_stage: String = "Start"
+var floor_time: float = 0
 var level: int = 0
 var max_rooms: int = 0
 
@@ -25,18 +28,25 @@ var ammo_container: Dictionary = {
 	"7.62mm": {"max": 200, "current": 200}
 }
 
+#------STATS------
+var enemy_deaths: int = 0
+var shots_fired: int = 0
+var grenades_thrown: int = 0
+
 #------VAN------
 var van_weapons: Array = ["pistol"]
 
-#------DUNGEON------
-var current_room_pos_x
-var current_room_pos_y
-var cleared_rooms
-var visited_rooms
+func _ready() -> void:
+	process_mode = PROCESS_MODE_ALWAYS
 
 func _save() -> void:
 	await get_tree().process_frame
 	await get_tree().process_frame
+	
+	config.set_value("Current-Save", "play_time", play_time)
+	config.set_value("Overall", "runs", runs)
+	
+	
 	if get_tree().get_first_node_in_group("player"):
 		var player = get_tree().get_first_node_in_group("player")
 		var inventory = player.get_node("InventoryMenager")
@@ -46,9 +56,16 @@ func _save() -> void:
 		coins = inventory.coins
 		ammo_container = inventory.ammo_container.duplicate(true)
 		inventory_size = inventory.weapon_container_capacity
+		enemy_deaths = player.enemy_deaths
+		shots_fired = player.shots_fired
+		grenades_thrown = player.grenades_thrown
 		
 		config.set_value("Player", "max_hp", max_hp)
 		config.set_value("Player", "hp", hp)
+		
+		config.set_value("Stats", "enemy_deaths", enemy_deaths)
+		config.set_value("Stats", "shots_fired", shots_fired)
+		config.set_value("Stats", "grenades_thrown", grenades_thrown)
 		
 		config.set_value("Player-Inventory", "coins", coins)
 		config.set_value("Player-Inventory", "inventory_size", inventory_size)
@@ -83,23 +100,33 @@ func _save() -> void:
 	config.set_value("Floor", "max_rooms", max_rooms)
 	config.set_value("Floor", "seed", dungeon_seed)
 	
-	var dungeon = get_tree().get_first_node_in_group("dungeon")
-	if dungeon:
-		config.set_value("Floor", "room_x", dungeon.current_room_pos.x)
-		config.set_value("Floor", "room_y", dungeon.current_room_pos.y)
-		config.set_value("Floor", "cleared_rooms", var_to_str(dungeon.cleared_rooms))
-		config.set_value("Floor", "visited_rooms", var_to_str(dungeon.visited_rooms))
 	
 	config.save(SAVE_PATH)
 	
+func _check_save_file() -> bool:
+	var err = config.load(SAVE_PATH)
+	if err != OK:
+		print("Brak pliku cfg, zostaną użyte domyślne wartości")
+		return true
+	return false
+
 func _load() -> void:
 	var err = config.load(SAVE_PATH)
 	if err != OK:
 		print("Brak pliku cfg, zostaną użyte domyślne wartości")
+		_new_game()
 		return
+	print("Wczytywanie savefile")
 	
+	play_time = config.get_value("Current-Save", "play_time", play_time)
+	runs = config.get_value("Overall", "runs", runs)
+		
 	max_hp = config.get_value("Player", "max_hp", max_hp)
 	hp = config.get_value("Player", "hp", hp)
+	
+	enemy_deaths = config.get_value("Stats", "enemy_deaths", enemy_deaths)
+	shots_fired = config.get_value("Stats", "shots_fired", shots_fired)
+	grenades_thrown = config.get_value("Stats", "grenades_thrown", grenades_thrown)
 	
 	coins = config.get_value("Player-Inventory", "coins", coins)
 	inventory_size = config.get_value("Player-Inventory", "inventory_size", inventory_size)
@@ -126,12 +153,7 @@ func _load() -> void:
 	max_rooms = config.get_value("Floor", "max_rooms", max_rooms)
 	dungeon_seed = config.get_value("Floor", "seed", dungeon_seed)
 	
-	if floor_stage == "Dungeon":
-		current_room_pos_x = config.get_value("Floor", "room_x", 0)
-		current_room_pos_y = config.get_value("Floor", "room_y", 0)
-		cleared_rooms = str_to_var(config.get_value("Floor", "cleared_rooms", "Array[Vector2i]([])"))
-		visited_rooms = str_to_var(config.get_value("Floor", "visited_rooms", "Array[Vector2i]([])"))
-	
+	floor_time = 0
 	GameState._continue_game()
 
 	
@@ -153,5 +175,13 @@ func _new_game() -> void:
 	}
 	van_weapons = ["pistol"]
 	inventory_weapons = []
+	runs += 1
+	play_time = 0
+	enemy_deaths = 0
+	shots_fired = 0
+	grenades_thrown = 0
 	
 	_save()
+
+func _die():
+	DirAccess.remove_absolute(SAVE_PATH)

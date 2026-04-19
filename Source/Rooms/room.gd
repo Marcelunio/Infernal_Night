@@ -56,6 +56,9 @@ func exit_room():
 	visible = false
 
 func spawn_enemies():
+	var rng = RandomNumberGenerator.new()
+	rng.seed = PlayerData.dungeon_seed + grid_position.x * 1000 + grid_position.y
+	
 	enemies_spawned = true
 	enemy_counter = 0
 	
@@ -79,7 +82,7 @@ func spawn_enemies():
 			if marker.name.begins_with("Boss"):
 				enemy_instance = BOSS.instantiate()
 			else: 
-				if randi_range(0,1) == 0:
+				if rng.randi_range(0,1) == 0:
 					enemy_instance = ENEMY.instantiate()
 				else:
 					enemy_instance = SNIPER.instantiate()

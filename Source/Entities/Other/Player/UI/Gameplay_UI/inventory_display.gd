@@ -6,7 +6,7 @@ extends PanelContainer
 
 var inventory: Node = null
 var ammo: Dictionary
-@onready var v_box:Node = $VBoxContainer
+@onready var v_box:Node = $MarginContainer/VBoxContainer
 @onready var label_list: Array[Node] = []
 
 # Called when the node enters the scene tree for the first time.

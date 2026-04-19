@@ -2,6 +2,8 @@
 #Znane bugi: 0
 extends Control
 
+@onready var play_time: Node = $VBoxContainer/PlayTime
+
 var Gameplay_UI: Node
 
 signal escape_closed()
@@ -10,7 +12,11 @@ func _ready() -> void:
 	Settings.closed.connect(_on_settings_closed)
 	Gameplay_UI = get_tree().get_first_node_in_group("player").get_node("Gameplay_UI")
 	visible = false
-	
+
+func _process(delta: float) -> void:
+	if visible == true:
+		calculate_play_time()
+
 func _input(event) -> void:
 	if event.is_action_pressed("escape_menu"):
 		if get_tree().paused and GameState.screen_stack.back() == "pause":
@@ -21,6 +27,12 @@ func _input(event) -> void:
 		elif GameState.screen_stack.is_empty() or GameState.screen_stack.back() != "settings":
 			GameState.push_screen("pause")
 			visible = true
+
+func calculate_play_time() -> void:
+	var hours = int(PlayerData.play_time / 3600)
+	var minutes = int(fmod(PlayerData.play_time, 3600) / 60)
+	var seconds = int(fmod(PlayerData.play_time, 60))
+	play_time.text = "Play time: %02d:%02d:%02d" % [hours, minutes, seconds]
 
 func _on_resume_pressed() -> void:
 	GameState.pop_screen()
