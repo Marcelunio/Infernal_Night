@@ -3,14 +3,15 @@ shader_type canvas_item;
 uniform vec3 d_HSV;
 
 
-vec3 RGB_HSV(vec3 RGB,)
+vec3 RGB_HSV(vec3 RGB)
 {
 	float Cmin=min(RGB.r,min(RGB.b,RGB.g));
 	float V=max(RGB.r,max(RGB.b,RGB.g));
 	float delta= V - Cmin;
 	float H=    delta==0. ? 0.:
 				RGB.r == V ? (mod((RGB.g-RGB.b),6.)/delta):
-				RGB.b== V ?((2.+(RGB.b-RGB.r))/delta ): ((4.+(RGB.r-RGB.g))/delta );
+				RGB.g== V ?((2.+(RGB.b-RGB.r))/delta ): 
+				((4.+(RGB.r-RGB.g))/delta );
 	float S= delta/V;
 	return vec3(H,S,V);
 }
@@ -29,14 +30,6 @@ vec3 HSV_RGB(vec3 HSV) {
 	tRGB = (position	==0) ? vec3(parity,0) : vec3(0,parity);
 	return tRGB+m;
 }
-//
-//void vertex()
-//{
-	//float timescale= TIME*PI*2.;
-	//mat2 rotate=mat2(vec2(sin(timescale),-cos(timescale)),vec2(cos(timescale),sin(timescale)));
-	//VERTEX=VERTEX* rotate;
-//}
-
 void fragment() {
  	vec3 HSV= RGB_HSV(COLOR.rgb);
 	HSV.x=abs(mod(HSV.x+d_HSV.x/60.,6.));

@@ -64,7 +64,7 @@ func _process(delta):
 
 func colorize():
 	var room_shader=load("res://Assets/Tilesets/room_hue_shift.material");
-	var d_HSV=Vector3(randi()%61-30,randi()%200-100,randi()%40-20);
+	var d_HSV=Vector3(randi()%361,randi()%200-100,randi()%40-20);
 	room_shader.set_shader_parameter("d_HSV", d_HSV)
 	print(d_HSV)
 	return
