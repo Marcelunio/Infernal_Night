@@ -13,6 +13,7 @@ var dashing: bool = false
 var can_dash: bool = true
 var dash_direction: Vector2 = Vector2.ZERO
 var attacking_from_left=false
+var invincible: bool = false
 
 #Death screen
 var enemy_deaths: int = PlayerData.enemy_deaths
@@ -130,7 +131,8 @@ func _handle_player_movement():#obsluguje ruch gracza
 func dash():
 	if not can_dash or dashing:
 		return
-	
+		
+	invincible = true
 	dashing = true
 	can_dash = false
 	dash_direction = (get_global_mouse_position() - global_position).normalized()
@@ -169,6 +171,7 @@ func dash():
 	
 	await get_tree().create_timer(dash_cooldown, false).timeout
 	can_dash = true
+	invincible = false
 	
 func check_door_transition():
 	var current_room = dungeon.get_current_room()
@@ -277,6 +280,9 @@ func _handle_player_pick_up():#obslguje poczatkowy proces podnoszenia broni
 				_audio_pick_up_play()
 
 func take_damage(amount: int):#obsluga damage'a
+	if invincible:
+		return
+	
 	if iframe_timer.is_stopped():
 		print("Taking damage...")
 		hp -= amount

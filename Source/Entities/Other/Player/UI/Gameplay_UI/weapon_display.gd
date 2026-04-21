@@ -27,7 +27,7 @@ func _on_weapon_changed(weapon):
 		$MarginContainer/VBoxContainer/AmmoCounter.text = "%s : %d / %d" % [weapon.weapon_ammo_type, weapon.current_ammo, weapon.max_ammo]
 		weapon.UI_AmmoChanged.connect(_on_ammo_changed)
 	else:
-		$VBoxContainer/AmmoCounter.text = "%s" % ["white weapon"]
+		$MarginContainer/VBoxContainer/AmmoCounter.text = "%s" % ["white weapon"]
 		
 func _on_ammo_changed(ammo_type, current_ammo, max_ammo):
 		$MarginContainer/VBoxContainer/AmmoCounter.text = "%s : %d / %d" % [ammo_type, current_ammo, max_ammo]
