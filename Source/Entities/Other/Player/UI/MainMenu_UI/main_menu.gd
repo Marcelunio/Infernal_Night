@@ -3,6 +3,7 @@
 extends Control
 
 @onready var continue_button: Node  = $VBoxContainer/continue
+signal seed_generate
 
 func _ready() -> void:
 	Settings.closed.connect(_on_settings_closed)
@@ -14,9 +15,11 @@ func _ready() -> void:
 	
 func _on_new_game_pressed() -> void:
 	PlayerData._new_game()
+	emit_signal("seed_generate")
 	$Choice.start()
 
 func _on_continue_pressed() -> void:
+	emit_signal("seed_generate")
 	PlayerData._load()
 
 func _on_settings_pressed() -> void:

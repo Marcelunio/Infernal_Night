@@ -12,8 +12,10 @@ var runs: int = 0
 var dungeon_seed: int = 0
 var floor_stage: String = "Start"
 var floor_time: float = 0
+var floor_max_time: float = 0
 var level: int = 0
 var max_rooms: int = 0
+var bonus: int = 0
 
 #------PLAYER------
 var max_hp: int = 6
@@ -99,6 +101,8 @@ func _save() -> void:
 	config.set_value("Floor", "level", level)
 	config.set_value("Floor", "max_rooms", max_rooms)
 	config.set_value("Floor", "seed", dungeon_seed)
+	config.set_value("Floor", "floor_max_time", floor_max_time)
+	config.set_value("Floor", "bonus", bonus)
 	
 	
 	config.save(SAVE_PATH)
@@ -152,6 +156,8 @@ func _load() -> void:
 	level = config.get_value("Floor", "level", level)
 	max_rooms = config.get_value("Floor", "max_rooms", max_rooms)
 	dungeon_seed = config.get_value("Floor", "seed", dungeon_seed)
+	floor_max_time = config.get_value("Floor", "floor_max_time", floor_max_time)
+	bonus = config.get_value("Floor", "bonus", bonus)
 	
 	floor_time = 0
 	GameState._continue_game()
@@ -159,12 +165,21 @@ func _load() -> void:
 	
 func _new_game() -> void:
 	DirAccess.remove_absolute(SAVE_PATH)
+	print("NEW GAME WYWOLANE - STACK: ", get_stack())
+	
+	runs += 1
+	play_time = 0
 	
 	dungeon_seed = 0
 	floor_stage = "Start"
+	floor_time = 0
+	floor_max_time = 0
 	level = 0
 	max_rooms = 0
+	bonus = 0
+	
 	max_hp = 6
+	hp = max_hp
 	coins = 0
 	inventory_size = 3
 	ammo_container = {
@@ -173,13 +188,13 @@ func _new_game() -> void:
 		"12gauge": {"max": 40, "current": 40},
 		"7.62mm": {"max": 200, "current": 200}
 	}
-	van_weapons = ["pistol"]
 	inventory_weapons = []
-	runs += 1
-	play_time = 0
+	
 	enemy_deaths = 0
 	shots_fired = 0
 	grenades_thrown = 0
+	
+	van_weapons = ["pistol"]
 	
 	_save()
 

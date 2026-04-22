@@ -37,20 +37,12 @@ var boss_room_pos: Vector2i
 
 var camera_target: Vector2 = ROOM_SIZE / 2
 
-#seed
-var current_seed: int = 0
-
 var cleared_rooms: Array[Vector2i] = []
 
 func _ready():
-	if PlayerData.dungeon_seed == 0:
-		current_seed = randi()
-		PlayerData.dungeon_seed = current_seed
-	else:
-		current_seed = PlayerData.dungeon_seed
-	seed(current_seed)
+	seed(PlayerData.dungeon_seed + PlayerData.level - 1)
+	print("UGA BUGA" + str(PlayerData.dungeon_seed + PlayerData.level - 1))
 	PlayerData.floor_stage = "Dungeon"
-	print("SEED: ", current_seed)
 	colorize()
 	preload_rooms()
 	generate_floor()
