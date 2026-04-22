@@ -3,6 +3,7 @@ extends Node2D
 
 signal room_entered
 signal room_cleared
+signal boss_spawned
 signal boss_defeated
 
 @onready var room_layout: TileMapLayer = $NavigationRegion2D/RoomLayout
@@ -44,6 +45,8 @@ func enter_room():
 	emit_signal("room_entered")
 	if not is_cleared:
 		spawn_enemies()
+		if room_type=="boss":
+			emit_signal("boss_spawned")
 		if not is_cleared:
 			for door in doors.values():
 				door.set_collision_mask_value(1, true)

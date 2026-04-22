@@ -1,13 +1,36 @@
-[gd_scene load_steps=5 format=3 uid="uid://bch1h4olax71q"]
+[gd_scene load_steps=9 format=3 uid="uid://d3wfuhtvi7c8y"]
 
 [ext_resource type="Shader" uid="uid://b1vjsupylo1em" path="res://Assets/Weapons/outline.gdshader" id="1_i8g86"]
-[ext_resource type="Texture2D" uid="uid://bq02vs2r650sb" path="res://Assets/Entities/Enemies/Boss/BossHealthFull.png" id="3_ewvlj"]
+[ext_resource type="Shader" uid="uid://d3vik7tkp18h8" path="res://Assets/Entities/Enemies/Boss/BossHealthBar._texture_swapgdshader.gdshader" id="3_j2n7f"]
+[ext_resource type="Texture2D" uid="uid://54rvu0qlqn4i" path="res://Assets/UI/Boss/boss_health_depleted.png" id="4_bqf5s"]
+[ext_resource type="Texture2D" uid="uid://d2yw1lgj5p6as" path="res://Assets/UI/Boss/boss_health_full .png" id="5_16xwh"]
+
+[sub_resource type="GDScript" id="GDScript_g1tmr"]
+script/source = "extends Control
+
+
+# Called when the node enters the scene tree for the first time.
+func _ready() -> void:
+	pass # Replace with function body.
+
+
+# Called every frame. 'delta' is the elapsed time since the previous frame.
+func _process(delta: float) -> void:
+	pass
+"
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_j2n7f"]
 shader = ExtResource("1_i8g86")
+shader_parameter/uni_color = Color(0.048486684, 0.036399998, 0.14, 1)
+shader_parameter/width = 10
 
-[sub_resource type="ViewportTexture" id="ViewportTexture_bqf5s"]
+[sub_resource type="ViewportTexture" id="ViewportTexture_55nar"]
 viewport_path = NodePath("SubViewport")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_6mel2"]
+shader = ExtResource("3_j2n7f")
+shader_parameter/fill_in = 1.0
+shader_parameter/broken = ExtResource("4_bqf5s")
 
 [node name="BossHealthBar" type="Control"]
 layout_mode = 3
@@ -16,23 +39,34 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+script = SubResource("GDScript_g1tmr")
 
 [node name="TextureRect" type="TextureRect" parent="."]
 material = SubResource("ShaderMaterial_j2n7f")
-layout_mode = 0
-offset_right = 94.0
-offset_bottom = 30.0
-texture = SubResource("ViewportTexture_bqf5s")
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.50078124
+anchor_top = 0.9537037
+anchor_right = 0.50078124
+anchor_bottom = 0.9537037
+offset_left = -458.5
+offset_top = -140.0
+offset_right = 458.5
+grow_horizontal = 2
+grow_vertical = 0
+texture = SubResource("ViewportTexture_55nar")
+metadata/_edit_use_anchors_ = true
 
 [node name="SubViewport" type="SubViewport" parent="."]
 transparent_bg = true
-size = Vector2i(104, 40)
+size = Vector2i(917, 140)
 
 [node name="HealthBar" type="TextureRect" parent="SubViewport"]
-offset_left = 5.0
-offset_top = 5.0
-offset_right = 99.0
-offset_bottom = 35.0
+material = SubResource("ShaderMaterial_6mel2")
+offset_left = 10.0
+offset_top = 10.0
+offset_right = 906.0
+offset_bottom = 130.0
 size_flags_horizontal = 4
 size_flags_vertical = 4
-texture = ExtResource("3_ewvlj")
+texture = ExtResource("5_16xwh")

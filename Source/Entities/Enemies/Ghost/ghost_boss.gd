@@ -34,7 +34,10 @@ var _dash_cooldown_shoot_timer := 0.0
 var _phase2 := false
 var _dash_dir := Vector2.ZERO
 var _dash_damage_timer := 0.0
-
+# =========================
+# SYGNAŁY
+# =========================
+signal BossDamaged(amount:int)
 # =========================
 # INIT
 # =========================
@@ -238,6 +241,10 @@ func can_shoot() -> bool:
 	if result.is_empty():
 		return true
 	return result["collider"] == player
+	
+func take_damage(amount: int, _hit_pause := 0.0) -> void:
+	emit_signal("BossDamaged",amount);
+	super.take_damage(amount,_hit_pause)
 
 func shoot() -> void:
 	pass

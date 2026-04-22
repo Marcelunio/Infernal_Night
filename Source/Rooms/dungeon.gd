@@ -4,7 +4,7 @@ signal floor_generated
 signal room_changed(new_room_pos: Vector2i)
 
 @onready var camera: Camera2D = get_node("/root/Main/Camera")
-
+@onready var boss_health =preload("res://Scenes/Entities/Other/Player/UI/GameplayUI/BossHealthBarDisplay.tscn")
 @export var room_number: int = PlayerData.max_rooms #Kleks GLOBAL skrypt game_state.gd
 @export var room_folder_path: String = "res://Scenes/Floors/ValidRooms"
 
@@ -188,6 +188,7 @@ func spawn_all_rooms():
 			add_child(room_instance)
 			room_instance.position = Vector2(room_pos) * ROOM_SIZE
 			room_instance.setup(room_pos, "boss")
+			room_instance.boss_spawned.connect(boss_spawned)
 			room_instance.boss_defeated.connect(boss_defeated)
 		else:
 			room_instance = room_scenes.pick_random().instantiate()
@@ -292,12 +293,20 @@ func transition_to_room(direction: Vector2):
 	
 	room_changed.emit(next_pos)
 
+func boss_spawned():
+	player.get_node("Gameplay_UI/CanvasLayer").add_child(boss_health.instantiate())
+
 func boss_defeated():
+	var boss_health_bar=player.get_node_or_null("Gameplay_UI/CanvasLayer/BossHealthBar");
+	if boss_health_bar!=null:
+		boss_health_bar.queue_free()
 	var carDoor = room_instances[Vector2i(0,0)].get_node_or_null("CarDoor")
 	if carDoor == null:
 		print("Brak carDoor")
 	else:
 		carDoor.can_leave = true
+
+
 
 func get_current_room() -> Room:
 	return room_instances.get(current_room_pos)
