@@ -200,3 +200,4 @@ func _new_game() -> void:
 
 func _die():
 	DirAccess.remove_absolute(SAVE_PATH)
+	print("PLIK GRY USUNUNIETY")

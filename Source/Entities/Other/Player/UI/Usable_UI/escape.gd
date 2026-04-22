@@ -3,6 +3,7 @@
 extends Control
 
 @onready var play_time: Node = $VBoxContainer/PlayTime
+@onready var save_button: Node = $VBoxContainer/save
 
 var Gameplay_UI: Node
 
@@ -24,8 +25,9 @@ func _input(event) -> void:
 			emit_signal("escape_closed")
 			GameState.pop_screen()
 			visible = false
-		elif GameState.screen_stack.is_empty() or GameState.screen_stack.back() != "settings":
+		elif GameState.screen_stack.is_empty() or GameState.screen_stack.back() != "settings":# or GameState.screen_stack.back() != "death":
 			GameState.push_screen("pause")
+			save_button.disabled = PlayerData._check_save_file()
 			visible = true
 
 func calculate_play_time() -> void:
