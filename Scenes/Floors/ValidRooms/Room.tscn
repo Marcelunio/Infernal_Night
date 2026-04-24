@@ -42,7 +42,7 @@ position = Vector2(576, 16)
 rotation = 1.5707964
 
 [node name="CanvasModulate" type="CanvasModulate" parent="."]
-color = Color(0.17402828, 0.17402822, 0.1740284, 1)
+color = Color(0.38549232, 0.38549256, 0.3854924, 1)
 
 [node name="LightGroup" type="Node2D" parent="."]
 

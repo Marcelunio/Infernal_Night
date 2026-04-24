@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dn5fs70gb142w"
-path="res://.godot/imported/BossHealthDepleted.png-84b9209fd047488685fb96dc0e424ea6.ctex"
+uid="uid://ctfqec6kc458b"
+path="res://.godot/imported/player_gradient.png-f32b275d2ac041e7c34db9e8325c82b8.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/Entities/Enemies/Boss/BossHealthDepleted.png"
-dest_files=["res://.godot/imported/BossHealthDepleted.png-84b9209fd047488685fb96dc0e424ea6.ctex"]
+source_file="res://Assets/Light/player_gradient.png"
+dest_files=["res://.godot/imported/player_gradient.png-f32b275d2ac041e7c34db9e8325c82b8.ctex"]
 
 [params]
 

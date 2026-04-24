@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=3 uid="uid://d3wfuhtvi7c8y"]
+[gd_scene load_steps=9 format=3 uid="uid://bch1h4olax71q"]
 
 [ext_resource type="Shader" uid="uid://b1vjsupylo1em" path="res://Assets/Weapons/outline.gdshader" id="1_i8g86"]
 [ext_resource type="Shader" uid="uid://d3vik7tkp18h8" path="res://Assets/Entities/Enemies/Boss/BossHealthBar._texture_swapgdshader.gdshader" id="3_j2n7f"]

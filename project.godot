@@ -14,7 +14,10 @@ config/name="Infernal Night"
 config/version="0.1"
 run/main_scene="uid://ck3vvr01kg3mh"
 config/features=PackedStringArray("4.5", "Forward Plus")
-config/icon="uid://ci6co3vls48fx"
+boot_splash/bg_color=Color(0.05490196, 0.08627451, 0.15686275, 1)
+boot_splash/image="uid://bqdn18mg2cfy7"
+config/icon="uid://de1sw7421mh18"
+config/windows_native_icon="res://icon.ico"
 
 [autoload]
 

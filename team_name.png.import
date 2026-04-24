@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bq02vs2r650sb"
-path="res://.godot/imported/BossHealthFull.png-33900aee4b60d80e9c3a71ca435349eb.ctex"
+uid="uid://bqdn18mg2cfy7"
+path="res://.godot/imported/team_name.png-d12c4a82b2f4fd3962361ecffb33310b.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/Entities/Enemies/Boss/BossHealthFull.png"
-dest_files=["res://.godot/imported/BossHealthFull.png-33900aee4b60d80e9c3a71ca435349eb.ctex"]
+source_file="res://team_name.png"
+dest_files=["res://.godot/imported/team_name.png-d12c4a82b2f4fd3962361ecffb33310b.ctex"]
 
 [params]
 

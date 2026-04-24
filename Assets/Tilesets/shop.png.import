@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dmhr1ey6iarwj"
-path="res://.godot/imported/BossHealthBarBackdrop.png-8460a7dc7624a17113ac96e7516311bb.ctex"
+uid="uid://l8m207mk34o"
+path="res://.godot/imported/shop.png-9b17febd061f754ae65659512644a700.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/Entities/Enemies/Boss/BossHealthBarBackdrop.png"
-dest_files=["res://.godot/imported/BossHealthBarBackdrop.png-8460a7dc7624a17113ac96e7516311bb.ctex"]
+source_file="res://Assets/Tilesets/shop.png"
+dest_files=["res://.godot/imported/shop.png-9b17febd061f754ae65659512644a700.ctex"]
 
 [params]
 

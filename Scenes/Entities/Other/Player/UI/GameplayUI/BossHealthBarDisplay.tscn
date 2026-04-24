@@ -1,4 +1,4 @@
-[gd_scene load_steps=7 format=3 uid="uid://bch1h4olax71q"]
+[gd_scene load_steps=7 format=3 uid="uid://b52mp2oquwb70"]
 
 [ext_resource type="Script" uid="uid://cfyw4ae6ccm04" path="res://Source/Entities/Other/Player/UI/Gameplay_UI/boss_health_bar_display.gd" id="1_0bw53"]
 [ext_resource type="Shader" uid="uid://b1vjsupylo1em" path="res://Assets/Weapons/outline.gdshader" id="1_7w671"]
