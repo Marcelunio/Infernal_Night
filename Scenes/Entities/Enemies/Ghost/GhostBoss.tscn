@@ -25,6 +25,7 @@ neighbor_distance = 160.0
 max_neighbors = 1
 
 [node name="EnemySprite" type="Sprite2D" parent="."]
+rotation = 1.5707964
 texture = ExtResource("3_h0bq8")
 
 [node name="EnemyCollision" type="CollisionShape2D" parent="."]
