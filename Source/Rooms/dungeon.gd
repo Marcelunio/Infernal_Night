@@ -2,6 +2,8 @@ extends Node2D
 
 signal floor_generated
 signal room_changed(new_room_pos: Vector2i)
+signal _on_boss_defeated
+signal _on_boss_spawned
 
 @onready var camera: Camera2D = get_node("/root/Main/Camera")
 @onready var boss_health =preload("res://Scenes/Entities/Other/Player/UI/GameplayUI/BossHealthBarDisplay.tscn")
@@ -48,7 +50,6 @@ func _ready():
 	generate_floor()
 	spawn_all_rooms()
 	spawn_player()
-	call_deferred("boss_defeated")#~~Kleks Do testowania
 	PlayerData.call_deferred("_save")
 
 func _process(delta):
@@ -174,9 +175,11 @@ func spawn_all_rooms():
 	
 	room_instances.clear()
 	
+	var used_instances := [Room]
 	for i in range(room_positions.size()):
 		var room_pos = room_positions[i]
 		var room_instance: Room
+		var last_room: Room = null
 		
 		if room_pos == Vector2i(0, 0):
 			room_instance = SPAWN_ROOM.instantiate()
@@ -192,6 +195,13 @@ func spawn_all_rooms():
 			room_instance.boss_defeated.connect(boss_defeated)
 		else:
 			room_instance = room_scenes.pick_random().instantiate()
+			if(used_instances.size() == room_scenes.size() - 2):
+				used_instances.clear()
+			while(used_instances.has(room_instance) or room_instance == last_room):
+				room_instance = room_scenes.pick_random().instantiate()
+			last_room = room_instance
+			used_instances.append(room_instance)
+			
 			add_child(room_instance)
 			room_instance.position = Vector2(room_pos) * ROOM_SIZE
 			room_instance.setup(room_pos, "")
@@ -295,16 +305,18 @@ func transition_to_room(direction: Vector2):
 
 func boss_spawned():
 	player.get_node("Gameplay_UI/CanvasLayer").add_child(boss_health.instantiate())
+	emit_signal("_on_boss_spawned")
 
 func boss_defeated():
 	var boss_health_bar=player.get_node_or_null("Gameplay_UI/CanvasLayer/BossHealthBar");
 	if boss_health_bar!=null:
 		boss_health_bar.queue_free()
-	var carDoor = room_instances[Vector2i(0,0)].get_node_or_null("CarDoor")
-	if carDoor == null:
-		print("Brak carDoor")
+	var car_door = room_instances[Vector2i(0,0)].get_node_or_null("CarDoor")
+	if car_door == null:
+		print("Brak car_door")
 	else:
-		carDoor.can_leave = true
+		car_door.can_leave = true
+	emit_signal("_on_boss_defeated")
 
 
 

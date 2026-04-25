@@ -42,7 +42,8 @@ var hp: int = PlayerData.hp
 @onready var audio_player_ambient = $Sounds/Ambient
 @onready var audio_player_pick_up = $Sounds/PickUp
 @onready var audio_player_throw = $Sounds/Throw
-@onready var audio_player_Music = $Sounds/Music
+@onready var audio_player_music = $Sounds/Music
+@onready var audio_player_boss = $Sounds/Boss
 @onready var iframe_timer = $IFrames
 @onready var flicker_timer = $FlickerTimer
 @export var walk_sounds: Array[AudioStreamWAV] = []
@@ -51,6 +52,7 @@ var hp: int = PlayerData.hp
 @export var pick_up_sounds: Array[AudioStreamWAV] = []
 @export var throw_sounds: Array[AudioStreamWAV] = []
 @export var music_sounds: Array[AudioStreamOggVorbis] = []
+@export var boss_sounds: Array[AudioStreamOggVorbis] = []
 
 #timer
 var timer: Node
@@ -64,6 +66,8 @@ signal UI_HealthBarDisplay(max_hp, hp)
 func _ready():
 	_fade(false)
 	dungeon = get_parent()
+	dungeon.connect("_on_boss_spawned", boss_music_start)
+	dungeon.connect("_on_boss_defeated", boss_music_stop)
 	
 	$"Gameplay_UI/CanvasLayer/WeaponDisplay".setup(inventory)
 	UI_HealthBarDisplay.emit.call_deferred(max_hp, hp)
@@ -168,10 +172,10 @@ func dash():
 		$animation/top.pause()
 	velocity = Vector2.ZERO
 	set_collision_mask_value(7, true)
+	invincible = false
 	
 	await get_tree().create_timer(dash_cooldown, false).timeout
 	can_dash = true
-	invincible = false
 	
 func check_door_transition():
 	var current_room = dungeon.get_current_room()
@@ -329,12 +333,29 @@ func _audio_pick_up_play() -> void:
 	audio_player_pick_up.play()
 
 func _start_music_timer() -> void:
-	audio_player_Music.stream = music_sounds.pick_random()
-	audio_player_Music.play()
+	audio_player_music.stream = music_sounds.pick_random()
+	audio_player_music.play()
+	var tw = audio_player_music.create_tween()
+	audio_player_music.volume_db = -20.0
+	tw.tween_property(audio_player_music, "volume_db", 0.0, 1.5)
+	await tw.finished
 	
 func _on_music_finished() -> void:
-	audio_player_Music.stream = music_sounds.pick_random()
-	audio_player_Music.play()
+	audio_player_music.stream = music_sounds.pick_random()
+	audio_player_music.play()
+
+func boss_music_start() -> void:
+	print("boss music start")
+	audio_player_music.stop()
+	audio_player_boss.stream = boss_sounds[0]
+	audio_player_boss.play()
+	await audio_player_boss.finished
+	audio_player_boss.stream = boss_sounds[1]
+	audio_player_boss.play()
+
+func boss_music_stop() -> void:
+	audio_player_boss.stop()
+	_on_music_finished()
 
 func _fade(out: bool, scene_change: bool = false) -> void:
 	if scene_change:
