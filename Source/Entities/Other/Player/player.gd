@@ -260,7 +260,7 @@ func _handle_weapon_action():#obslugue wszelkie interakcje gracza
 				if not inventory.reload_pending:
 					inventory.reload(weapon)
 			else:
-				print("DEBUG - bron nie ranged false reload")
+				print("Player.gd - bron nie ranged false reload")
 
 #func _handle_player_camera(delta, direction):#obsluguje wszelkie nie naturalne zachowania kamery gracza
 #	if  Input.is_action_pressed("control_camera"):
@@ -288,7 +288,6 @@ func take_damage(amount: int):#obsluga damage'a
 		return
 	
 	if iframe_timer.is_stopped():
-		print("Taking damage...")
 		hp -= amount
 		emit_signal("UI_HealthBarDisplay", max_hp, hp)
 		if hp <= 0:
@@ -297,9 +296,6 @@ func take_damage(amount: int):#obsluga damage'a
 		iframe_timer.start()
 		flicker_timer.start()
 		set_collision_mask_value(7, false)
-	else:
-		print("Not taking damage...")
-		
 
 func die() -> void:#obslguje smierc gracza oraz jej efekty
 	PlayerData._die()
@@ -345,7 +341,6 @@ func _on_music_finished() -> void:
 	audio_player_music.play()
 
 func boss_music_start() -> void:
-	print("boss music start")
 	audio_player_music.stop()
 	audio_player_boss.stream = boss_sounds[0]
 	audio_player_boss.play()

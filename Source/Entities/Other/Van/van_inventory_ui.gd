@@ -23,7 +23,9 @@ func _ready() -> void:
 	
 	for name in PlayerData.van_weapons:
 		if name != "empty":
-			weapon_scenes.append(load("res://Scenes/Weapons/Guns/Weapon" + name.capitalize() + ".tscn"))
+			name = name.capitalize()
+			name = name.replace(" ", "")
+			weapon_scenes.append(load("res://Scenes/Weapons/Weapon" + name.capitalize() + ".tscn"))
 	
 	for x in weapon_scenes:
 		var instance = x.instantiate()

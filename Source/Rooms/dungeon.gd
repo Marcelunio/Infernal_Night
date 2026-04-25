@@ -43,14 +43,13 @@ var cleared_rooms: Array[Vector2i] = []
 
 func _ready():
 	seed(PlayerData.dungeon_seed + PlayerData.level - 1)
-	print("UGA BUGA" + str(PlayerData.dungeon_seed + PlayerData.level - 1))
 	PlayerData.floor_stage = "Dungeon"
 	colorize()
 	preload_rooms()
 	generate_floor()
 	spawn_all_rooms()
 	spawn_player()
-	PlayerData.call_deferred("_save")
+	#PlayerData.call_deferred("_save")
 
 func _process(delta):
 	camera.position = lerp(camera.position, camera_target, 5.0 * delta)
@@ -64,7 +63,7 @@ func colorize():
 func preload_rooms():
 	var dir := DirAccess.open(room_folder_path)
 	if dir == null:
-		push_error("Could not open room folder: " + room_folder_path)
+		push_error("Dungeon.gd - Could not open room folder: " + room_folder_path)
 		return
 	
 	for file_name in dir.get_files():
@@ -73,10 +72,10 @@ func preload_rooms():
 			var scene = load(full_path)
 			if scene is PackedScene:
 				room_scenes.append(scene)
-				print("Loaded room scene:", full_path)
+				print("Dungeon.gd - Loaded room scene:", full_path)
 	
 	if room_scenes.is_empty():
-		push_error("No room scenes found in " + room_folder_path)
+		push_error("Dungeon.gd - No room scenes found in " + room_folder_path)
 
 func generate_floor():
 	if room_scenes.is_empty():
@@ -99,8 +98,8 @@ func generate_floor():
 	var target_rooms = floor(room_number * 2 / 3)
 	var directions := [Vector2i.UP, Vector2i.DOWN, Vector2i.LEFT, Vector2i.RIGHT]
 	
-	print("target_rooms", target_rooms)
-	print("room_positions.size()", room_positions.size())
+	print("Dungeon.gd - target_rooms", target_rooms)
+	print("Dungeon.gd - room_positions.size()", room_positions.size())
 	
 	while room_positions.size() < target_rooms:
 		directions.shuffle()
@@ -143,7 +142,7 @@ func generate_floor():
 		boss_room_pos = farthest_room + Vector2i.UP
 		room_positions.append(boss_room_pos)
 
-	print("Generated floor with ", room_positions.size(), " rooms")
+	print("Dungeon.gd - Generated floor with ", room_positions.size(), " rooms")
 	call_deferred("emit_signal", "floor_generated")
 
 func is_valid_position(pos: Vector2i) -> bool:
@@ -219,7 +218,7 @@ func spawn_all_rooms():
 func setup_room_doors(room: Room, pos: Vector2i):
 	var visible_layer: TileMapLayer = room.get_node_or_null("NavigationRegion2D/RoomLayout")
 	
-	print(room.scene_file_path)
+	print("Dungeon.gd - ", room.scene_file_path)
 	if visible_layer == null:
 		push_warning("Room at " + str(pos) + " has no RoomLayout TileMapLayer")
 		return
@@ -229,7 +228,7 @@ func setup_room_doors(room: Room, pos: Vector2i):
 	var has_left := room_positions.has(pos + Vector2i.LEFT)
 	var has_right := room_positions.has(pos + Vector2i.RIGHT)
 	
-	print(room.doors)
+	print("Dungeon.gd - ", room.doors)
 	
 	if pos == Vector2i.ZERO:
 		if room_positions.has(pos + Vector2i.UP):
@@ -313,7 +312,7 @@ func boss_defeated():
 		boss_health_bar.queue_free()
 	var car_door = room_instances[Vector2i(0,0)].get_node_or_null("CarDoor")
 	if car_door == null:
-		print("Brak car_door")
+		print("Dungeon.gd - Brak car_door")
 	else:
 		car_door.can_leave = true
 	emit_signal("_on_boss_defeated")

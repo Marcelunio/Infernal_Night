@@ -72,10 +72,12 @@ func _save() -> void:
 		config.set_value("Player-Inventory", "coins", coins)
 		config.set_value("Player-Inventory", "inventory_size", inventory_size)
 		
+		inventory_weapons.clear()
 		for i in range(inventory_size):
 			var children = inventory.get_node("WeaponContainer").get_children()
 			if i < children.size() and children[i] != null:
 				config.set_value("Player-Inventory-Weapons", "slot%d" % i, children[i].weapon_name)
+				inventory_weapons.append(children[i].weapon_name)
 			else:
 				config.set_value("Player-Inventory-Weapons", "slot%d" % i, "empty")
 		
@@ -91,9 +93,12 @@ func _save() -> void:
 	if get_tree().get_first_node_in_group("VanStorage"):
 		var van = get_tree().get_first_node_in_group("VanStorage")
 		var children = van.get_children()
+		
+		van_weapons.clear()
 		for i in range(9):
 			if i < children.size() and children[i] != null:
 				config.set_value("Van", "slot%d" % i, children[i].weapon_name)
+				van_weapons.append(children[i].weapon_name)
 			else:
 				config.set_value("Van", "slot%d" % i, "empty")
 	
@@ -110,17 +115,17 @@ func _save() -> void:
 func _check_save_file() -> bool:
 	var err = config.load(SAVE_PATH)
 	if err != OK:
-		print("Brak pliku cfg, zostaną użyte domyślne wartości")
+		print("PLAYER_DATA - Brak pliku cfg, zostaną użyte domyślne wartości")
 		return true
 	return false
 
 func _load() -> void:
 	var err = config.load(SAVE_PATH)
 	if err != OK:
-		print("Brak pliku cfg, zostaną użyte domyślne wartości")
+		print("PLAYER_DATA - Brak pliku cfg, zostaną użyte domyślne wartości")
 		_new_game()
 		return
-	print("Wczytywanie savefile")
+	print("PLAYER_DATA - Wczytywanie savefile")
 	
 	play_time = config.get_value("Current-Save", "play_time", play_time)
 	runs = config.get_value("Overall", "runs", runs)
@@ -165,7 +170,7 @@ func _load() -> void:
 	
 func _new_game() -> void:
 	DirAccess.remove_absolute(SAVE_PATH)
-	print("NEW GAME WYWOLANE - STACK: ", get_stack())
+	print("PLAYER_DATA - NEW GAME WYWOLANE - STACK: ", get_stack())
 	
 	runs += 1
 	play_time = 0
@@ -200,4 +205,4 @@ func _new_game() -> void:
 
 func _die():
 	DirAccess.remove_absolute(SAVE_PATH)
-	print("PLIK GRY USUNUNIETY")
+	print("PLAYER_DATA - PLIK GRY USUNUNIETY")

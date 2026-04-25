@@ -96,7 +96,5 @@ func calculate_time(difficulty: int, rooms: int) -> int:
 func seed_generate() -> void:
 	if PlayerData.dungeon_seed == 0:
 		PlayerData.dungeon_seed = randi()
-		print("wibly wobly" + str(PlayerData.dungeon_seed))
 	
 	seed(PlayerData.dungeon_seed + PlayerData.level)
-	print("DOBLY DOBLY" + str(PlayerData.dungeon_seed + PlayerData.level))

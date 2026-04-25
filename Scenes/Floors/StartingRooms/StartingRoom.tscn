@@ -5,8 +5,8 @@
 [ext_resource type="PackedScene" uid="uid://bew1thjsdo13d" path="res://Scenes/Miscellaneous/Door.tscn" id="3_hl16v"]
 [ext_resource type="PackedScene" uid="uid://u4uyiilyh07o" path="res://Scenes/Entities/Other/Van/VanInventory.tscn" id="4_fqgoq"]
 [ext_resource type="PackedScene" uid="uid://cc1dy80s3yd0y" path="res://Scenes/Entities/Other/Van/CarDoor.tscn" id="5_c74b3"]
-[ext_resource type="PackedScene" uid="uid://dhj4hdoqpno23" path="res://Scenes/Weapons/Melee/WeaponKnife.tscn" id="6_hl16v"]
-[ext_resource type="PackedScene" uid="uid://cbhovhwvub8t" path="res://Scenes/Weapons/Melee/WeaponDebugStick.tscn" id="7_fqgoq"]
+[ext_resource type="PackedScene" uid="uid://dhj4hdoqpno23" path="res://Scenes/Weapons/WeaponKnife.tscn" id="6_hl16v"]
+[ext_resource type="PackedScene" uid="uid://cbhovhwvub8t" path="res://Scenes/Weapons/WeaponDebugStick.tscn" id="7_fqgoq"]
 
 [node name="StartingRoom" type="Node2D"]
 script = ExtResource("1_oqcml")

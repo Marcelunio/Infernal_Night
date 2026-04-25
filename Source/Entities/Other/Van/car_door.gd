@@ -2,7 +2,7 @@
 extends Node2D
 @onready var door = $Door
 
-var can_leave: bool = false
+var can_leave: bool = true
 
 const ROTATION_SPEED = 1200.0
 
@@ -53,7 +53,6 @@ func _on_inside_detect_body_entered(body: Node2D) -> void:
 		elif floor_time < 0.6 * max_time:
 			bonus = ceili(PlayerData.bonus * 1.5)
 		
-		print(str(bonus) + "bonusig")
 		PlayerData.coins += bonus
 		
 		GameState._CHANGE_ROOT("res://Scenes/Floors/Main/shop.tscn")

@@ -47,10 +47,12 @@ func _ready() -> void:
 	"7.62mm": {"current": PlayerData.ammo_container["7.62mm"]["current"], "max": PlayerData.ammo_container["7.62mm"]["max"]}     # Snajperki, heavy MG
 	}
 	
-	
 	for name in PlayerData.inventory_weapons:
+		
 		if name != "empty":
-			var instance = load("res://Scenes/Weapons/Guns/Weapon" + name.capitalize() + ".tscn").instantiate()
+			name = name.capitalize()
+			name = name.replace(" ","")
+			var instance = load("res://Scenes/Weapons/Weapon" + name.capitalize() + ".tscn").instantiate()
 			NODE_weapon_container.add_child(instance)
 			weapon_container.append(instance)
 			instance.hide()
@@ -174,7 +176,6 @@ func reload(weapon) -> void:#przeladowanie broni
 		emit_signal("UI_Reload", current_weapon)
 		weapon.reloaded.connect(_on_reload)
 	else:
-		print("DEBUG - brak ammo")
 		reload_pending = false
 		return
 
@@ -218,12 +219,10 @@ func _on_weapon_exploded_in_hand(weapon):#specjalny przypadek do obslugi nie typ
 	weapon_container_ui_update()
 
 func _on_reload(weapon, amount) -> void:#zabiera amunicje
-	print("reload finish")
 	ammo_container[weapon.weapon_ammo_type]["current"] = ammo_container[weapon.weapon_ammo_type]["current"] - amount
 	reload_pending = false
 	
 	if weapon.reloaded.is_connected(_on_reload):
 		weapon.reloaded.disconnect(_on_reload)
 		
-	print(ammo_container[weapon.weapon_ammo_type]["current"])
 	emit_signal("UI_InventoryAmmoChanged")

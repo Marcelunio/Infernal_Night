@@ -36,7 +36,7 @@ func is_busy() -> bool:#screen_stack method
 	return screen_stack.size() > 0
 
 func check_screen_stack() -> void:#screen_stack method
-	print(screen_stack)
+	print("GAMESTATE - check_screen_stack: ", screen_stack)
 	if screen_stack.size() > 0:
 		get_tree().paused = true
 		_set_gameplay_ui(false)
