@@ -1,11 +1,92 @@
-[gd_scene load_steps=6 format=3 uid="uid://bw6vg4xywbcuo"]
+[gd_scene load_steps=17 format=3 uid="uid://bw6vg4xywbcuo"]
 
 [ext_resource type="Texture2D" uid="uid://si3gy38yein7" path="res://Assets/Entities/Enemies/Ghost/SniperGhost.png" id="2_8538w"]
 [ext_resource type="Script" uid="uid://dd7yaprl4r8le" path="res://Source/Entities/Enemies/Ghost/sniper_ghost.gd" id="2_v4pe8"]
 [ext_resource type="PackedScene" uid="uid://detsplentfwev" path="res://Scenes/Entities/Enemies/Ghost/SniperGhostProjectile.tscn" id="3_oeynm"]
-[ext_resource type="Texture2D" uid="uid://cva54ciuk85f0" path="res://Assets/light/gradient.tres" id="5_k4ojv"]
+[ext_resource type="Texture2D" uid="uid://cva54ciuk85f0" path="res://Assets/Light/gradient.tres" id="5_k4ojv"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_oeynm"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_oeynm"]
+atlas = ExtResource("2_8538w")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_k4ojv"]
+atlas = ExtResource("2_8538w")
+region = Rect2(32, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_nht04"]
+atlas = ExtResource("2_8538w")
+region = Rect2(64, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_uqlrk"]
+atlas = ExtResource("2_8538w")
+region = Rect2(96, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_14bmd"]
+atlas = ExtResource("2_8538w")
+region = Rect2(128, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_p4sqn"]
+atlas = ExtResource("2_8538w")
+region = Rect2(160, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_uooth"]
+atlas = ExtResource("2_8538w")
+region = Rect2(192, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_tlbhi"]
+atlas = ExtResource("2_8538w")
+region = Rect2(224, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_3tdfi"]
+atlas = ExtResource("2_8538w")
+region = Rect2(256, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_x13kl"]
+atlas = ExtResource("2_8538w")
+region = Rect2(288, 0, 32, 32)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_uiqd0"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_oeynm")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_k4ojv")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_nht04")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_uqlrk")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_14bmd")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_p4sqn")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_uooth")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_tlbhi")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_3tdfi")
+}, {
+"duration": 4.0,
+"texture": SubResource("AtlasTexture_x13kl")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_oeynm")
+}],
+"loop": false,
+"name": &"default",
+"speed": 12.0
+}]
 
 [node name="Enemy" type="CharacterBody2D" groups=["enemy"]]
 collision_layer = 64
@@ -15,7 +96,7 @@ wall_min_slide_angle = 0.0
 safe_margin = 3.0
 script = ExtResource("2_v4pe8")
 projectile_scene = ExtResource("3_oeynm")
-shoot_cooldown = 2.5
+wind_up = 0.5
 
 [node name="EnemyNavigation" type="NavigationAgent2D" parent="."]
 path_desired_distance = 8.0
@@ -24,10 +105,6 @@ avoidance_enabled = true
 radius = 12.0
 neighbor_distance = 160.0
 max_speed = 0.01
-
-[node name="EnemySprite" type="Sprite2D" parent="."]
-rotation = 1.5707964
-texture = ExtResource("2_8538w")
 
 [node name="EnemyCollision" type="CollisionShape2D" parent="."]
 shape = SubResource("CircleShape2D_oeynm")
@@ -39,3 +116,8 @@ shadow_enabled = true
 shadow_filter = 1
 texture = ExtResource("5_k4ojv")
 texture_scale = 0.3
+
+[node name="Enemysprite" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_uiqd0")
+frame = 9
+frame_progress = 1.0

@@ -5,6 +5,7 @@ class_name SniperGhost
 @export var projectile_scene: PackedScene
 @export var bullet_speed := 800.0
 @export var bullet_turn_rate := 1.2
+@export var wind_up: float =1
 
 var _room_bounds: Rect2
 
@@ -12,6 +13,7 @@ func _ready() -> void:
 	super._ready()
 	# Pobierz bounds pokoju w którym jest sniper
 	await get_tree().process_frame
+	$Enemysprite.speed_scale=1/wind_up
 	var rooms := get_tree().get_nodes_in_group("room_area")
 	for room in rooms:
 		var shape := room.get_node_or_null("CollisionShape2D") as CollisionShape2D
@@ -50,6 +52,8 @@ func shoot() -> void:
 		return
 	is_shooting = true
 	var dir := (player.global_position - global_position).normalized()
+	$Enemysprite.play()
+	await get_tree().create_timer(wind_up).timeout
 	_spawn_bullet(dir)
 	await get_tree().create_timer(0.05).timeout
 	if is_instance_valid(self):
