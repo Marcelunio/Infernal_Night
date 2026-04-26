@@ -124,5 +124,3 @@ texture_scale = 0.3
 [node name="Enemysprite" type="AnimatedSprite2D" parent="."]
 rotation = 1.5707964
 sprite_frames = SubResource("SpriteFrames_uiqd0")
-frame = 9
-frame_progress = 1.0

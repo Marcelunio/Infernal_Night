@@ -1,9 +1,11 @@
-[gd_resource type="TileSet" load_steps=15 format=3 uid="uid://dwjq33gve6fks"]
+[gd_resource type="TileSet" load_steps=19 format=3 uid="uid://dwjq33gve6fks"]
 
 [ext_resource type="Texture2D" uid="uid://dwvb8gat6kfti" path="res://Assets/Tilesets/van2.png" id="1_stlkj"]
 [ext_resource type="Texture2D" uid="uid://d0fyw2g2wv2ds" path="res://Assets/Tilesets/carpetsstuff.png" id="2_f7yts"]
 [ext_resource type="Texture2D" uid="uid://dcjaftvnq1yoq" path="res://Assets/Tilesets/tileset.png" id="2_stlkj"]
 [ext_resource type="Texture2D" uid="uid://l8m207mk34o" path="res://Assets/Tilesets/shop.png" id="2_tqkpo"]
+[ext_resource type="Texture2D" uid="uid://bhq2i0qomawoh" path="res://Assets/Tilesets/store_decor.png" id="4_jpss1"]
+[ext_resource type="Texture2D" uid="uid://sleibykco7jx" path="res://Assets/Tilesets/weapon_shelf.png" id="6_pgiks"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_tmq46"]
 resource_name = "Outside"
@@ -44,18 +46,10 @@ texture_region_size = Vector2i(32, 32)
 5:3/0/physics_layer_0/polygon_0/points = PackedVector2Array(-16, -16, 16, -16, 16, 16, -16, 16)
 6:3/0 = 0
 6:3/0/physics_layer_0/polygon_0/points = PackedVector2Array(-16, -16, 16, -16, 16, 16, -16, 16)
-0:4/0 = 0
-1:4/0 = 0
-2:4/0 = 0
-3:4/0 = 0
 5:4/0 = 0
 5:4/0/physics_layer_0/polygon_0/points = PackedVector2Array(-16, -16, 16, -16, 16, 16, -16, 16)
 6:4/0 = 0
 6:4/0/physics_layer_0/polygon_0/points = PackedVector2Array(-16, -16, 16, -16, 16, 16, -16, 16)
-0:5/0 = 0
-1:5/0 = 0
-2:5/0 = 0
-3:5/0 = 0
 5:5/0 = 0
 5:5/0/physics_layer_0/polygon_0/points = PackedVector2Array(-16, -8.093643, 16, -7.913784, 16, -16, -16, -16)
 6:5/0 = 0
@@ -438,6 +432,22 @@ texture_region_size = Vector2i(32, 32)
 13:4/0/terrain_set = 2
 13:3/0 = 0
 13:3/0/terrain_set = 2
+0:8/0 = 0
+1:8/0 = 0
+2:8/0 = 0
+2:9/0 = 0
+3:9/0 = 0
+4:9/0 = 0
+4:8/0 = 0
+3:8/0 = 0
+5:9/0 = 0
+5:8/0 = 0
+1:9/0 = 0
+0:9/0 = 0
+12:5/0 = 0
+12:6/0 = 0
+13:6/0 = 0
+13:5/0 = 0
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_jpss1"]
 resource_name = "Shop"
@@ -1416,6 +1426,21 @@ texture_region_size = Vector2i(32, 32)
 10:6/0/terrains_peering_bit/left_side = 2
 10:6/0/terrains_peering_bit/top_side = 2
 
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_r836e"]
+texture = ExtResource("4_jpss1")
+texture_region_size = Vector2i(32, 32)
+0:0/0 = 0
+1:0/0 = 0
+2:0/0 = 0
+3:0/0 = 0
+0:1/0 = 0
+1:1/0 = 0
+2:1/0 = 0
+3:1/0 = 0
+1:2/0 = 0
+3:2/0 = 0
+1:3/0 = 0
+
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_stlkj"]
 resource_name = "Decor"
 texture = ExtResource("2_f7yts")
@@ -1682,6 +1707,18 @@ texture_region_size = Vector2i(32, 32)
 6:4/0/terrains_peering_bit/top_side = 1
 6:4/0/terrains_peering_bit/top_right_corner = 1
 
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_3uuj4"]
+texture = ExtResource("6_pgiks")
+texture_region_size = Vector2i(32, 32)
+0:0/0 = 0
+1:0/0 = 0
+2:0/0 = 0
+3:0/0 = 0
+0:1/0 = 0
+1:1/0 = 0
+2:1/0 = 0
+3:1/0 = 0
+
 [resource]
 tile_size = Vector2i(32, 32)
 uv_clipping = true
@@ -1717,3 +1754,5 @@ sources/2 = SubResource("TileSetAtlasSource_tqkpo")
 sources/5 = SubResource("TileSetAtlasSource_stlkj")
 sources/0 = SubResource("TileSetAtlasSource_tmq46")
 sources/1 = SubResource("TileSetAtlasSource_jpss1")
+sources/4 = SubResource("TileSetAtlasSource_r836e")
+sources/6 = SubResource("TileSetAtlasSource_3uuj4")

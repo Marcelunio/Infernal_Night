@@ -16,11 +16,11 @@ position = Vector2(48, 64)
 shape = SubResource("RectangleShape2D_7wee7")
 
 [node name="TileInactive" type="TileMapLayer" parent="."]
-tile_map_data = PackedByteArray(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 5, 0, 0, 0, 1, 0, 0, 0, 0, 0, 1, 0, 5, 0, 0, 0, 2, 0, 0, 0, 0, 0, 2, 0, 5, 0, 0, 0, 3, 0, 0, 0, 0, 0, 3, 0, 5, 0, 0, 0)
+tile_map_data = PackedByteArray(0, 0, 0, 0, 0, 0, 6, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0, 6, 0, 1, 0, 1, 0, 0, 0, 2, 0, 0, 0, 6, 0, 2, 0, 1, 0, 0, 0, 3, 0, 0, 0, 6, 0, 3, 0, 1, 0, 0, 0)
 tile_set = ExtResource("2_c8ffk")
 
 [node name="TileActive" type="TileMapLayer" parent="."]
-tile_map_data = PackedByteArray(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 4, 0, 0, 0, 1, 0, 0, 0, 0, 0, 1, 0, 4, 0, 0, 0, 2, 0, 0, 0, 0, 0, 2, 0, 4, 0, 0, 0, 3, 0, 0, 0, 0, 0, 3, 0, 4, 0, 0, 0)
+tile_map_data = PackedByteArray(0, 0, 0, 0, 0, 0, 6, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 6, 0, 1, 0, 0, 0, 0, 0, 2, 0, 0, 0, 6, 0, 2, 0, 0, 0, 0, 0, 3, 0, 0, 0, 6, 0, 3, 0, 0, 0, 0, 0)
 tile_set = ExtResource("2_c8ffk")
 
 [node name="VanInventoryUI" parent="." instance=ExtResource("3_cbgfa")]
