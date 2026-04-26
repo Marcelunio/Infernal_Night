@@ -96,7 +96,11 @@ wall_min_slide_angle = 0.0
 safe_margin = 3.0
 script = ExtResource("2_v4pe8")
 projectile_scene = ExtResource("3_oeynm")
+bullet_speed = 1800.0
 wind_up = 0.5
+max_hp = 200
+shoot_cooldown = 2.5
+vision_distance = 1200.0
 
 [node name="EnemyNavigation" type="NavigationAgent2D" parent="."]
 path_desired_distance = 8.0
@@ -118,6 +122,7 @@ texture = ExtResource("5_k4ojv")
 texture_scale = 0.3
 
 [node name="Enemysprite" type="AnimatedSprite2D" parent="."]
+rotation = 1.5707964
 sprite_frames = SubResource("SpriteFrames_uiqd0")
 frame = 9
 frame_progress = 1.0

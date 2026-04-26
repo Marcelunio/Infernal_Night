@@ -5,7 +5,7 @@ class_name Boss
 # EKSPORT
 # =========================
 @export var projectile_scene: PackedScene
-@export var bullet_speed := 500.0
+@export var bullet_speed := 600.0
 
 # BURST
 @export var burst_count := 10
@@ -13,10 +13,10 @@ class_name Boss
 @export var burst_cooldown := 2.0
 
 # DASH
-@export var dash_speed := 800.0
-@export var dash_damage := 25
-@export var dash_cooldown := 4.0
-@export var dash_distance := 200.0
+@export var dash_speed := 1500.0
+@export var dash_damage := 1
+@export var dash_cooldown := 1.0
+@export var dash_distance := 400.0
 @export var dash_cooldown_duration := 2.0
 
 # =========================
@@ -34,10 +34,13 @@ var _dash_cooldown_shoot_timer := 0.0
 var _phase2 := false
 var _dash_dir := Vector2.ZERO
 var _dash_damage_timer := 0.0
+var _dash_start_pos := Vector2.ZERO
+
 # =========================
 # SYGNAŁY
 # =========================
-signal BossDamaged(amount:int)
+signal BossDamaged(amount: int)
+
 # =========================
 # INIT
 # =========================
@@ -89,6 +92,7 @@ func _update_boss_state(delta: float) -> void:
 		BossState.DASH_COOLDOWN:
 			_do_dash_cooldown(delta)
 
+	# Dash tylko w fazie 2
 	if _phase2 and boss_state == BossState.APPROACH:
 		_dash_cooldown_timer -= delta
 		if _dash_cooldown_timer <= 0.0:
@@ -151,8 +155,9 @@ func _start_teleport() -> void:
 	if not is_instance_valid(self):
 		return
 
-	boss_state = BossState.DASH
+	_dash_start_pos = global_position
 	_dash_dir = (player.global_position - global_position).normalized()
+	boss_state = BossState.DASH
 
 func _get_teleport_position() -> Vector2:
 	if player == null:
@@ -198,14 +203,14 @@ func _do_dash(delta: float) -> void:
 					body.take_damage(dash_damage)
 				_dash_damage_timer = 0.2
 
-	var dist := global_position.distance_to(player.global_position)
+	var dist_from_start := global_position.distance_to(_dash_start_pos)
 	var has_wall_collision := false
 	for i in get_slide_collision_count():
 		var body := get_slide_collision(i).get_collider()
 		if body and not body.is_in_group("player"):
 			has_wall_collision = true
 
-	if has_wall_collision or dist > dash_distance * 2.0:
+	if has_wall_collision or dist_from_start > dash_distance * 2.0:
 		boss_state = BossState.DASH_COOLDOWN
 		_dash_cooldown_shoot_timer = dash_cooldown_duration
 		_dash_cooldown_timer = dash_cooldown
@@ -241,10 +246,10 @@ func can_shoot() -> bool:
 	if result.is_empty():
 		return true
 	return result["collider"] == player
-	
+
 func take_damage(amount: int, _hit_pause := 0.0) -> void:
-	emit_signal("BossDamaged",amount);
-	super.take_damage(amount,_hit_pause)
+	emit_signal("BossDamaged", amount)
+	super.take_damage(amount, _hit_pause)
 
 func shoot() -> void:
 	pass

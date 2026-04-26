@@ -15,6 +15,8 @@ wall_min_slide_angle = 0.0
 safe_margin = 3.0
 script = ExtResource("2_w5c1t")
 projectile_scene = ExtResource("2_h0bq8")
+max_hp = 5000
+speed = 250.0
 formation_radius = 150.0
 
 [node name="EnemyNavigation" type="NavigationAgent2D" parent="."]

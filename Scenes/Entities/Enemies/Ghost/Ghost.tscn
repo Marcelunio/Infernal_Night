@@ -28,7 +28,6 @@ teleport_distance = 300.0
 blink_duration = 0.3
 max_hp = 200
 speed = 300.0
-debug_mode = true
 formation_radius = 75.0
 
 [node name="EnemyNavigation" parent="." index="0"]
