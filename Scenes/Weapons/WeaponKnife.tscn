@@ -15,7 +15,6 @@ size = Vector2(40, 12)
 [node name="WeaponKnife" type="RigidBody2D" groups=["weapon-white"]]
 collision_layer = 2
 collision_mask = 208
-mass = 0.001
 gravity_scale = 0.0
 script = ExtResource("1_74jeq")
 melee_range = 100.0
@@ -23,7 +22,7 @@ melee_angle = 60.0
 swing_sounds = Array[AudioStreamWAV]([ExtResource("2_ajpfp"), ExtResource("3_woxwq")])
 offset = Vector2(10, -50)
 weapon_name = "knife"
-throw_force = 2000000.0
+throw_force = 1200.0
 weapon_delay = 0.2
 weapon_damage = 360.0
 sprite = ExtResource("2_74jeq")
