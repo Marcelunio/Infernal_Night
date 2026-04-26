@@ -59,7 +59,7 @@ func _ready() -> void:
 		label.text = str(difficulty) + ":\nRooms: " + str(rooms) + "\nMax time for bonus: " + str(time_text) + "\nMax  coin bonus: " + str(bonus)
 		button.text = "play"
 
-		button.pressed.connect(_pressed.bind(difficulty))
+		button.pressed.connect(_pressed.bind(rooms, time, bonus))
 		button.add_to_group("Buttons")
 
 		v_box.add_child(label)
@@ -72,10 +72,10 @@ func start() -> void:
 		for control in Vbox.get_children():
 			control.add_theme_font_size_override("font_size",DisplayServer.window_get_size().y/36)
 	
-func _pressed(difficulty) -> void:
-	PlayerData.max_rooms = calculate_rooms(DIFFICULTIES[difficulty])
-	PlayerData.floor_max_time = calculate_time(DIFFICULTIES[difficulty], PlayerData.max_rooms)
-	PlayerData.bonus = ceili(6 * BONUS_MULTIPLIER[DIFFICULTIES[difficulty] -1])
+func _pressed(rooms, time, bonus) -> void:
+	PlayerData.max_rooms = rooms
+	PlayerData.floor_max_time = time
+	PlayerData.bonus = bonus
 	PlayerData.level += 1
 	PlayerData.floor_time = 0
 	GameState._CHANGE_ROOT("res://Scenes/Floors/Main/Main.tscn")
