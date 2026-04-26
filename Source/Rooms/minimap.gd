@@ -22,6 +22,12 @@ var room_rects := {}
 var player_marker: Control
 
 func _ready():
+	print("NIGGERSGGERS" , PlayerData.floor_stage)
+	if PlayerData.floor_stage == "Shop":
+		visible = false
+		process_mode = Node.PROCESS_MODE_DISABLED
+		return 
+	
 	print("Minimap ready!")
 	
 	dungeon = get_node("/root/Main/Dungeon")

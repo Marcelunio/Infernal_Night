@@ -66,8 +66,9 @@ signal UI_HealthBarDisplay(max_hp, hp)
 func _ready():
 	_fade(false)
 	dungeon = get_parent()
-	dungeon.connect("_on_boss_spawned", boss_music_start)
-	dungeon.connect("_on_boss_defeated", boss_music_stop)
+	if not PlayerData.floor_stage == "Shop":
+		dungeon.connect("_on_boss_spawned", boss_music_start)
+		dungeon.connect("_on_boss_defeated", boss_music_stop)
 	
 	$"Gameplay_UI/CanvasLayer/WeaponDisplay".setup(inventory)
 	UI_HealthBarDisplay.emit.call_deferred(max_hp, hp)

@@ -55,8 +55,11 @@ func _on_inside_detect_body_entered(body: Node2D) -> void:
 		
 		PlayerData.coins += bonus
 		
-		GameState._CHANGE_ROOT("res://Scenes/Floors/Main/shop.tscn")
-		print("DEBUG - CarDoor - Odjechales")
+		if PlayerData.floor_stage == "Dungeon":
+			GameState._CHANGE_ROOT("res://Scenes/Floors/Main/shop.tscn")
+			PlayerData.floor_stage = "Shop"
+		elif PlayerData.floor_stage == "Shop":
+			GameState._CHANGE_ROOT("res://Scenes/Floors/Main/Choice.tscn")
 
 func _on_inside_detect_body_exited(body: Node2D) -> void:
 	if body.is_in_group("player"):
