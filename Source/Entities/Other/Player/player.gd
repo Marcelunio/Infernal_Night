@@ -198,6 +198,7 @@ func check_door_transition():
 		dungeon.transition_to_room(Vector2.LEFT)
 	elif atlas_coords == dungeon.DOOR_RIGHT_ATLAS:
 		dungeon.transition_to_room(Vector2.RIGHT)
+	
 
 func _handle_player_rotation():#obsluguje rotacje gracza
 	# Obrót w stronę kursora
@@ -318,8 +319,8 @@ func _start_music_timer() -> void:
 	audio_player_music.stream = music_sounds.pick_random()
 	audio_player_music.play()
 	var tw = audio_player_music.create_tween()
-	audio_player_music.volume_db = -20.0
-	tw.tween_property(audio_player_music, "volume_db", 0.0, 1.5)
+	audio_player_music.volume_db = -30.0
+	tw.tween_property(audio_player_music, "volume_db", 0.0, 3)
 	await tw.finished
 	
 func _on_music_finished() -> void:
@@ -335,8 +336,11 @@ func boss_music_start() -> void:
 	audio_player_boss.play()
 
 func boss_music_stop() -> void:
+	audio_player_boss.stream = boss_sounds[2]
+	audio_player_boss.play()
+	await audio_player_boss.finished
 	audio_player_boss.stop()
-	_on_music_finished()
+	_start_music_timer()
 
 func _fade(out: bool, scene_change: bool = false) -> void:
 	if scene_change:
