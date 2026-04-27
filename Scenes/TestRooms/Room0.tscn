@@ -3,7 +3,7 @@
 [ext_resource type="PackedScene" uid="uid://c1da6epqykshi" path="res://Scenes/Floors/ValidRooms/Room.tscn" id="1_014t1"]
 [ext_resource type="PackedScene" uid="uid://cotiiwrrpdkwu" path="res://Scenes/Weapons/WeaponBat.tscn" id="8_cw3ig"]
 [ext_resource type="PackedScene" uid="uid://dhj4hdoqpno23" path="res://Scenes/Weapons/WeaponKnife.tscn" id="9_1h8pn"]
-[ext_resource type="PackedScene" uid="uid://dnjuntixfdqq0" path="res://Scenes/Weapons/WeaponHolyGranate.tscn" id="10_8w2k2"]
+[ext_resource type="PackedScene" uid="uid://dnjuntixfdqq0" path="res://Scenes/Weapons/WeaponHolyGrenade.tscn" id="10_8w2k2"]
 [ext_resource type="PackedScene" uid="uid://cltvr8ugr4leu" path="res://Scenes/Weapons/WeaponHolyWater.tscn" id="11_6u2e5"]
 [ext_resource type="PackedScene" uid="uid://bt2sjl85bpm3i" path="res://Scenes/PickUps/Ammo/9mm.tscn" id="12_sgwhs"]
 [ext_resource type="PackedScene" uid="uid://ddj8nnb145ov6" path="res://Scenes/PickUps/Hearts/FullHeart.tscn" id="13_d7iit"]

@@ -23,14 +23,7 @@ func _ready() -> void:
 	
 	for name in PlayerData.van_weapons:
 		if name != "empty":
-			name = name.capitalize()
-			name = name.replace(" ", "")
-			weapon_scenes.append(load("res://Scenes/Weapons/Weapon" + name.capitalize() + ".tscn"))
-	
-	for x in weapon_scenes:
-		var instance = x.instantiate()
-		dict_weapons[instance.weapon_name] = x
-		instance.free()
+			weapon_scenes.append(load("res://Scenes/Weapons/Weapon" + GameState.to_pascal_case(name) + ".tscn"))
 	
 	call_deferred("_create")
 
@@ -51,13 +44,13 @@ func _build_UI() -> void:
 	
 	var van_containers_present = 0
 	
-	for key in dict_weapons.keys():
+	for scene in weapon_scenes:
 		var x = DAD_SCENE.instantiate()
-		var instance = dict_weapons[key].instantiate()
+		var instance = scene.instantiate()
 		instance.visible = false
 		storage.add_child(instance)
 		x.texture = instance.sprite
-		x.weapon_name = key
+		x.weapon_name = instance.weapon_name
 		x.weapon = instance
 		x.player = player
 		x.inventory = inventory
@@ -97,6 +90,14 @@ func _count_player_columns(capacity) -> int:
 	else:
 		return capacity / 3
 
+func _add_player_container() -> void:
+	var storage = self.get_node("WeaponContainer")
+	var x = DAD_SCENE.instantiate()
+	x.player_inventory = true
+	x.player = player
+	x.inventory = inventory
+	x.storage = storage
+	GridPlayer.add_child(x)
 
 func _refresh_player_inventory() -> void:
 	for slot in GridPlayer.get_children():

@@ -22,7 +22,7 @@ func _connect_signals() -> void:
 
 func _reload_start(weapon) -> void:
 	visible = true
-	animation.speed_scale = 1.0/weapon.reload_time
+	animation.speed_scale = 1.0/(weapon.reload_time * PlayerData.reload_speed_multiplier)
 	animation.play("reload")
 
 func _on_animated_sprite_2d_animation_finished() -> void:

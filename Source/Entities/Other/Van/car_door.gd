@@ -40,24 +40,24 @@ func _on_inside_detect_body_entered(body: Node2D) -> void:
 		PlayerData._save()
 		await body._fade(true, true)
 		
-		var floor_time = PlayerData.floor_time
-		var max_time = PlayerData.floor_max_time
-		var bonus = 0
-		
-		if floor_time > max_time:
-			bonus = 0
-		elif floor_time >= 0.8 * max_time:
-			bonus = PlayerData.bonus
-		elif floor_time >= 0.6 * max_time:
-			bonus = ceili(PlayerData.bonus * 1.2)
-		elif floor_time < 0.6 * max_time:
-			bonus = ceili(PlayerData.bonus * 1.5)
-		
-		PlayerData.coins += bonus
-		
 		if PlayerData.floor_stage == "Dungeon":
-			GameState._CHANGE_ROOT("res://Scenes/Floors/Main/shop.tscn")
+			var floor_time = PlayerData.floor_time
+			var max_time = PlayerData.floor_max_time
+			var bonus = 0
+			
+			if floor_time > max_time:
+				bonus = 0
+			elif floor_time >= 0.8 * max_time:
+				bonus = PlayerData.bonus
+			elif floor_time >= 0.6 * max_time:
+				bonus = ceili(PlayerData.bonus * 1.2)
+			elif floor_time < 0.6 * max_time:
+				bonus = ceili(PlayerData.bonus * 1.5)
+				
+			PlayerData.coins += bonus
 			PlayerData.floor_stage = "Shop"
+			GameState._CHANGE_ROOT("res://Scenes/Floors/Main/shop.tscn")
+			
 		elif PlayerData.floor_stage == "Shop":
 			GameState._CHANGE_ROOT("res://Scenes/Floors/Main/Choice.tscn")
 

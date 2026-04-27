@@ -26,6 +26,7 @@ throw_force = 1250.0
 weapon_delay = 0.2
 weapon_damage = 360.0
 sprite = ExtResource("2_74jeq")
+price = 10
 metadata/_edit_group_ = true
 
 [node name="WeaponSprite" type="Sprite2D" parent="."]

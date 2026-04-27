@@ -98,3 +98,4 @@ func seed_generate() -> void:
 		PlayerData.dungeon_seed = randi()
 	
 	seed(PlayerData.dungeon_seed + PlayerData.level)
+	PlayerData.dungeon_seed += PlayerData.level

@@ -21,6 +21,8 @@ var bonus: int = 0
 var max_hp: int = 6
 var hp:int = 6
 var coins: int = 0
+var speed: float = 400
+var reload_speed_multiplier:float = 1.0
 var inventory_size:int = 3
 var inventory_weapons: Array = []
 var ammo_container: Dictionary = {
@@ -61,9 +63,12 @@ func _save() -> void:
 		enemy_deaths = player.enemy_deaths
 		shots_fired = player.shots_fired
 		grenades_thrown = player.grenades_thrown
+		speed = player.speed
 		
 		config.set_value("Player", "max_hp", max_hp)
 		config.set_value("Player", "hp", hp)
+		config.set_value("Player", "speed", speed)
+		config.set_value("Player", "reload_speed_multiplier", reload_speed_multiplier)
 		
 		config.set_value("Stats", "enemy_deaths", enemy_deaths)
 		config.set_value("Stats", "shots_fired", shots_fired)
@@ -132,6 +137,8 @@ func _load() -> void:
 		
 	max_hp = config.get_value("Player", "max_hp", max_hp)
 	hp = config.get_value("Player", "hp", hp)
+	speed = config.get_value("Player", "speed", speed)
+	reload_speed_multiplier = config.get_value("Player", "reload_speed_multiplier", reload_speed_multiplier)
 	
 	enemy_deaths = config.get_value("Stats", "enemy_deaths", enemy_deaths)
 	shots_fired = config.get_value("Stats", "shots_fired", shots_fired)
@@ -185,6 +192,8 @@ func _new_game() -> void:
 	
 	max_hp = 6
 	hp = max_hp
+	speed= 400
+	reload_speed_multiplier = 1.0
 	coins = 0
 	inventory_size = 3
 	ammo_container = {

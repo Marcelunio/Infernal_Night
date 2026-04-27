@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://cm7fxghrox53f"
-path="res://.godot/imported/clerk.png-e88f6757586a8f653aaf054d1c37038a.ctex"
+uid="uid://6vfc0t2weefw"
+path="res://.godot/imported/ThePaletaTEMP.png-443bc1d15c3e1dfd4ed46c2548f67c46.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/Entities/Other/ShopGuy/clerk.png"
-dest_files=["res://.godot/imported/clerk.png-e88f6757586a8f653aaf054d1c37038a.ctex"]
+source_file="res://TEST/ThePaletaTEMP.png"
+dest_files=["res://.godot/imported/ThePaletaTEMP.png-443bc1d15c3e1dfd4ed46c2548f67c46.ctex"]
 
 [params]
 

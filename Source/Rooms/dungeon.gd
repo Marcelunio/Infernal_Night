@@ -49,7 +49,7 @@ func _ready():
 	generate_floor()
 	spawn_all_rooms()
 	spawn_player()
-	#PlayerData.call_deferred("_save")
+	PlayerData.call_deferred("_save")
 
 func _process(delta):
 	camera.position = lerp(camera.position, camera_target, 5.0 * delta)

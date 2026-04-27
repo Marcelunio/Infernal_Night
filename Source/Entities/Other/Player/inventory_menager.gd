@@ -50,9 +50,7 @@ func _ready() -> void:
 	for name in PlayerData.inventory_weapons:
 		
 		if name != "empty":
-			name = name.capitalize()
-			name = name.replace(" ","")
-			var instance = load("res://Scenes/Weapons/Weapon" + name.capitalize() + ".tscn").instantiate()
+			var instance = load("res://Scenes/Weapons/Weapon" + GameState.to_pascal_case(name) + ".tscn").instantiate()
 			NODE_weapon_container.add_child(instance)
 			weapon_container.append(instance)
 			instance.hide()
@@ -121,8 +119,10 @@ func remove_weapon(weapon, van_inventory = false) -> void:
 	var player = get_tree().get_first_node_in_group("player")
 	if van_inventory:
 		NODE_weapon_container.remove_child(weapon)
-	else:
+	elif PlayerData.floor_stage == "Dungeon":
 		weapon.reparent(player.current_room)
+	elif PlayerData.floor_stage == "Shop":
+		weapon.reparent(get_tree().current_scene)
 
 func throw(velocity: Vector2, weapon):#player.gd _handle_weapon_action()
 	if weapon_container.is_empty():

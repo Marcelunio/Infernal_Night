@@ -35,6 +35,7 @@ func shoot(spawn_pos: Vector2, entity):
 		emit_signal("UI_AmmoChanged",weapon_ammo_type, current_ammo, max_ammo)
 
 func _reload(amount_in_inventory):
+	reload_time = reload_time * PlayerData.reload_speed_multiplier
 	await get_tree().create_timer(reload_time, false).timeout
 	var amount_reloaded
 	if self.is_in_group("weapon-shotguns"):

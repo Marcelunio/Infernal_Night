@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" uid="uid://bp5fqu66ksw1f" path="res://Source/PickUps/item.gd" id="1_bp6k1"]
 [ext_resource type="Texture2D" uid="uid://b4o6gcl4u348t" path="res://Assets/PickUps/Money/pieniazek.png" id="2_rtoom"]
-[ext_resource type="Texture2D" uid="uid://cva54ciuk85f0" path="res://Assets/light/gradient.tres" id="3_rtoom"]
+[ext_resource type="Texture2D" uid="uid://cva54ciuk85f0" path="res://Assets/Light/gradient.tres" id="3_rtoom"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_acuav"]
 size = Vector2(31, 31.125)

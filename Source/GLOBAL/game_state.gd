@@ -86,3 +86,16 @@ func _notification(what: int) -> void:
 		if not PlayerData._check_save_file():
 			PlayerData._save()
 		get_tree().quit()
+
+func to_pascal_case(text: String) -> String:
+	var spaced = ""
+	for c in text:
+		if c == c.to_upper() and c != c.to_lower():
+			spaced += " " + c
+		else:
+			spaced += c
+	
+	var result = ""
+	for word in spaced.split(" "):
+		result += word.capitalize()
+	return result

@@ -9,6 +9,8 @@
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_ct0s6"]
 shader = ExtResource("1_ct0s6")
+shader_parameter/uni_color = Color(1, 1, 1, 1)
+shader_parameter/width = 2
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_36jba"]
 size = Vector2(37, 43)
@@ -29,6 +31,7 @@ throw_force = 1050.0
 weapon_delay = 0.1
 weapon_damage = 1.5
 sprite = ExtResource("2_005lj")
+price = 5
 metadata/_edit_group_ = true
 
 [node name="WeaponSprite" type="Sprite2D" parent="."]

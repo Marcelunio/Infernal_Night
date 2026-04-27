@@ -1,6 +1,6 @@
 [gd_scene load_steps=2 format=3 uid="uid://dh13urtwuqqnc"]
 
-[ext_resource type="Script" uid="uid://6nfuatbigr7s" path="res://TEST/camera_timer.gd" id="1_jd3i5"]
+[ext_resource type="Script" uid="uid://6nfuatbigr7s" path="res://Source/Entities/Other/Player/UI/Gameplay_UI/camera_timer.gd" id="1_hyhdi"]
 
 [node name="CameraTimer" type="HBoxContainer"]
 anchors_preset = 5
@@ -10,7 +10,7 @@ offset_left = -20.0
 offset_right = 20.0
 offset_bottom = 40.0
 grow_horizontal = 2
-script = ExtResource("1_jd3i5")
+script = ExtResource("1_hyhdi")
 
 [node name="RecDot" type="Label" parent="."]
 layout_mode = 2

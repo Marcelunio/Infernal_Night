@@ -1,10 +1,10 @@
 [gd_scene load_steps=8 format=3 uid="uid://dnjuntixfdqq0"]
 
-[ext_resource type="Script" uid="uid://f6vagumq5irb" path="res://Source/Weapons/Throwable/throwable.gd" id="1_4glms"]
-[ext_resource type="Texture2D" uid="uid://dn3x3dwrbgrh2" path="res://Assets/Weapons/Throwable/holyGranate.png" id="1_8vdwt"]
-[ext_resource type="AudioStream" uid="uid://cp4kca16fcxvl" path="res://Sounds/SFX/Throwable/Granede/grenade_high.wav" id="2_3t4gl"]
-[ext_resource type="Texture2D" uid="uid://cn8c0d1tqbpp1" path="res://Assets/Weapons/Projectiles/HolyGranateExplosion.png" id="3_5vmhu"]
-[ext_resource type="AudioStream" uid="uid://cx7fek6as06pr" path="res://Sounds/SFX/Throwable/Granede/grenade_low.wav" id="3_ecps6"]
+[ext_resource type="Script" uid="uid://f6vagumq5irb" path="res://Source/Weapons/Throwable/throwable.gd" id="1_w03jt"]
+[ext_resource type="AudioStream" uid="uid://cp4kca16fcxvl" path="res://Sounds/SFX/Throwable/Granede/grenade_high.wav" id="2_7bypy"]
+[ext_resource type="AudioStream" uid="uid://cx7fek6as06pr" path="res://Sounds/SFX/Throwable/Granede/grenade_low.wav" id="3_3m5yc"]
+[ext_resource type="Texture2D" uid="uid://dn3x3dwrbgrh2" path="res://Assets/Weapons/Throwable/holyGranate.png" id="4_o661n"]
+[ext_resource type="Texture2D" uid="uid://cn8c0d1tqbpp1" path="res://Assets/Weapons/Projectiles/HolyGranateExplosion.png" id="5_rdu1l"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_36jba"]
 size = Vector2(36, 43)
@@ -16,16 +16,16 @@ size = Vector2(37, 43)
 collision_layer = 2
 collision_mask = 208
 gravity_scale = 0.0
-script = ExtResource("1_4glms")
+script = ExtResource("1_w03jt")
 granade_familly = true
 radius = 200.0
 angle = 360.0
-explode_sounds = Array[AudioStreamWAV]([ExtResource("2_3t4gl"), ExtResource("3_ecps6")])
+explode_sounds = Array[AudioStreamWAV]([ExtResource("2_7bypy"), ExtResource("3_3m5yc")])
 weapon_name = "holyGrenade"
 throw_force = 1050.0
 weapon_delay = 0.1
 weapon_damage = 1.6
-sprite = ExtResource("1_8vdwt")
+sprite = ExtResource("4_o661n")
 metadata/_edit_group_ = true
 
 [node name="WeaponSprite" type="Sprite2D" parent="."]
@@ -47,6 +47,6 @@ wait_time = 3.0
 one_shot = true
 
 [node name="ExplosionSprite" type="Sprite2D" parent="."]
-texture = ExtResource("3_5vmhu")
+texture = ExtResource("5_rdu1l")
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]

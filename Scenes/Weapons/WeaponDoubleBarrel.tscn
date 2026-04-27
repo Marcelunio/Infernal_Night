@@ -31,6 +31,7 @@ throw_force = 600.0
 weapon_delay = 0.9
 weapon_damage = 84.0
 sprite = ExtResource("2_0fmmj")
+price = 10
 weapon_ammo_type = "12gauge"
 max_ammo = 2
 reload_time = 1.0

@@ -27,7 +27,7 @@
 [ext_resource type="Script" uid="uid://dicuhuv8sq0ic" path="res://Source/Rooms/minimap.gd" id="16_4rffi"]
 [ext_resource type="PackedScene" uid="uid://barw81mxmqlfv" path="res://Scenes/Entities/Other/Player/UI/GameplayUI/Fade.tscn" id="19_jt1s7"]
 [ext_resource type="PackedScene" uid="uid://ss5c2ogwyblj" path="res://Scenes/Effects/CameraEffect.tscn" id="20_0wewo"]
-[ext_resource type="PackedScene" uid="uid://dh13urtwuqqnc" path="res://TEST/camera_timer.tscn" id="20_4qg2e"]
+[ext_resource type="PackedScene" uid="uid://dh13urtwuqqnc" path="res://Scenes/Entities/Other/Player/UI/GameplayUI/camera_timer.tscn" id="20_4qg2e"]
 [ext_resource type="AudioStream" uid="uid://bgt868b0lcxbk" path="res://Sounds/SFX/Player/PickUp/pick_up.wav" id="20_hxydp"]
 [ext_resource type="Texture2D" uid="uid://ctfqec6kc458b" path="res://Assets/Light/player_gradient.png" id="24_ubqqd"]
 

@@ -1,0 +1,42 @@
+[gd_scene load_steps=6 format=3 uid="uid://bi21al0n6cot4"]
+
+[ext_resource type="Texture2D" uid="uid://bgpp0tiurb0n3" path="res://Assets/Entities/Other/ShopGuy/clerk.png" id="1_qc1hr"]
+[ext_resource type="Script" uid="uid://cyoa0d6p0oy3o" path="res://Source/Entities/Other/ShopGuy/shop_guy.gd" id="1_t58yl"]
+[ext_resource type="PackedScene" uid="uid://b8hw3xn06r27i" path="res://Scenes/Entities/Other/ShopGuy/ShopUI.tscn" id="3_6rd54"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_t58yl"]
+size = Vector2(126, 310)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_e1p0v"]
+size = Vector2(754, 390)
+
+[node name="ShopGuy" type="Node2D"]
+process_mode = 3
+script = ExtResource("1_t58yl")
+
+[node name="Clerk" type="Sprite2D" parent="."]
+position = Vector2(-1, 1)
+rotation = 1.5707964
+scale = Vector2(1.5, 1.5)
+texture = ExtResource("1_qc1hr")
+
+[node name="InteractArea" type="Area2D" parent="."]
+
+[node name="Interact" type="CollisionShape2D" parent="InteractArea"]
+position = Vector2(53, -6)
+shape = SubResource("RectangleShape2D_t58yl")
+debug_color = Color(0.8852833, 0.00030726672, 0.8097139, 0.41960785)
+
+[node name="RotateArea" type="Area2D" parent="."]
+
+[node name="Rotate" type="CollisionShape2D" parent="RotateArea"]
+position = Vector2(194, -46)
+shape = SubResource("RectangleShape2D_e1p0v")
+
+[node name="ShopUI" parent="." instance=ExtResource("3_6rd54")]
+process_mode = 3
+
+[connection signal="body_entered" from="InteractArea" to="." method="_on_interact_area_body_entered"]
+[connection signal="body_exited" from="InteractArea" to="." method="_on_interact_area_body_exited"]
+[connection signal="body_entered" from="RotateArea" to="." method="_on_rotate_area_body_entered"]
+[connection signal="body_exited" from="RotateArea" to="." method="_on_rotate_area_body_exited"]

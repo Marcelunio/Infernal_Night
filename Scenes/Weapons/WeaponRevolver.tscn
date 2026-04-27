@@ -29,6 +29,7 @@ throw_force = 950.0
 weapon_delay = 0.65
 weapon_damage = 360.0
 sprite = ExtResource("2_ecfbt")
+price = 10
 weapon_ammo_type = "9mm"
 max_ammo = 6
 reload_time = 8.75
