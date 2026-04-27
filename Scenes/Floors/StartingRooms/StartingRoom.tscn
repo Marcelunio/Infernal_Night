@@ -1,12 +1,10 @@
-[gd_scene load_steps=8 format=4 uid="uid://dpr3fwa2l5ecb"]
+[gd_scene load_steps=6 format=4 uid="uid://dpr3fwa2l5ecb"]
 
 [ext_resource type="Script" uid="uid://fyr3lou5xcva" path="res://Source/Rooms/room.gd" id="1_oqcml"]
 [ext_resource type="TileSet" uid="uid://dwjq33gve6fks" path="res://TileSets/BaseTileset.tres" id="2_c74b3"]
 [ext_resource type="PackedScene" uid="uid://bew1thjsdo13d" path="res://Scenes/Miscellaneous/Door.tscn" id="3_hl16v"]
 [ext_resource type="PackedScene" uid="uid://u4uyiilyh07o" path="res://Scenes/Entities/Other/Van/VanInventory.tscn" id="4_fqgoq"]
 [ext_resource type="PackedScene" uid="uid://cc1dy80s3yd0y" path="res://Scenes/Entities/Other/Van/CarDoor.tscn" id="5_c74b3"]
-[ext_resource type="PackedScene" uid="uid://dhj4hdoqpno23" path="res://Scenes/Weapons/WeaponKnife.tscn" id="6_hl16v"]
-[ext_resource type="PackedScene" uid="uid://cbhovhwvub8t" path="res://TEST/WeaponDebugStick.tscn" id="7_fqgoq"]
 
 [node name="StartingRoom" type="Node2D"]
 script = ExtResource("1_oqcml")
@@ -50,9 +48,3 @@ bus = &"SFX"
 
 [node name="CarDoor" parent="." instance=ExtResource("5_c74b3")]
 position = Vector2(816, 320)
-
-[node name="WeaponKnife" parent="." instance=ExtResource("6_hl16v")]
-position = Vector2(526, 384)
-
-[node name="WeaponBat" parent="." instance=ExtResource("7_fqgoq")]
-position = Vector2(328, 427)

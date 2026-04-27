@@ -11,6 +11,8 @@ var screen_stack: Array = [] #kontroluje nakladki i pauzy UI
 
 var audioClick: AudioStreamPlayer#dzwiek UI
 
+var next_scene: String = ""
+
 func _ready() -> void:
 	process_mode = PROCESS_MODE_ALWAYS
 	get_tree().auto_accept_quit = false
@@ -68,7 +70,8 @@ func _audio_click_UI(stream: AudioStream) -> void:#UI audio player
 
 #---ROOT CHANGING---
 func _CHANGE_ROOT(Path: String) -> void:
-	get_tree().change_scene_to_file.call_deferred(Path)
+	next_scene = Path
+	get_tree().change_scene_to_file.call_deferred("res://Scenes/Floors/Main/Loading.tscn")
 
 func _continue_game() -> void:
 	match PlayerData.floor_stage:

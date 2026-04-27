@@ -38,7 +38,7 @@ var shots_fired: int = 0
 var grenades_thrown: int = 0
 
 #------VAN------
-var van_weapons: Array = ["pistol"]
+var van_weapons: Array = ["pistol", "knife"]
 
 func _ready() -> void:
 	process_mode = PROCESS_MODE_ALWAYS
@@ -208,7 +208,7 @@ func _new_game() -> void:
 	shots_fired = 0
 	grenades_thrown = 0
 	
-	van_weapons = ["pistol"]
+	van_weapons = ["pistol", "knife"]
 	
 	_save()
 
