@@ -2,7 +2,7 @@
 extends Node2D
 @onready var door = $Door
 
-var can_leave: bool = true
+var can_leave: bool = false
 
 const ROTATION_SPEED = 1200.0
 
@@ -10,7 +10,8 @@ var door_state: int = 0 #0 = closed ; 1 = opening ; 2 = open
 var target_rotation = 0.0
 
 func _ready() -> void:
-	pass
+	if PlayerData.floor_stage == "Shop":
+		can_leave = true
 
 func _process(delta: float) -> void:
 	if door_state == 1:

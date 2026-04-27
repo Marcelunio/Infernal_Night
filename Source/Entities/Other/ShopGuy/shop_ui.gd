@@ -22,7 +22,7 @@ const WEAPON_INFO = {
 	"bat" : ["Thanks to your new shining bat you can feel like a true baseball player and leave your fans stunned!", 5],
 	"doubleBarrel" : ["Now you can really start hunting!", 10],
 	"holyGrenade" : ["Bombard your enemies with holy light!", 8],
-	"waterGrenade" : ["Baptise your enemies with a little violence!", 8],
+	"HolyWater" : ["Baptise your enemies with a little violence!", 8],
 	"knife" : ["Silent and deadly. Gets the job done up close and personal.", 10],
 	"pistol" : ["Classic, reliable, never lets you down. Sometimes that's all you need!", 5],
 	"revolver" : ["With it you can give your enemies old heavy western punch!", 10],

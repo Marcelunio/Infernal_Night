@@ -3,13 +3,13 @@
 [ext_resource type="Script" uid="uid://btqwtwtvatjsc" path="res://Source/Entities/Other/ShopGuy/shop_ui.gd" id="1_7p73v"]
 [ext_resource type="Texture2D" uid="uid://dpdgudq4c1blb" path="res://Assets/UI/Icons/speed_up.png" id="2_365ri"]
 [ext_resource type="Texture2D" uid="uid://be3b1gxk8khh5" path="res://Assets/UI/Icons/health_up.png" id="3_0v5t3"]
-[ext_resource type="Texture2D" uid="uid://c02l34qcbybd6" path="res://Assets/Weapons/Projectiles/bullet (2).png" id="3_x4e84"]
 [ext_resource type="Texture2D" uid="uid://cycdr646kmxth" path="res://Assets/UI/Icons/9mm.png" id="4_00jdg"]
 [ext_resource type="Texture2D" uid="uid://cekmxxyuf316f" path="res://Assets/UI/Icons/12gauge.png" id="5_7glsf"]
 [ext_resource type="Texture2D" uid="uid://bgh5p5jl2yye4" path="res://Assets/UI/Icons/5_56mm.png" id="6_pfq53"]
 [ext_resource type="Texture2D" uid="uid://s64o8prgu13t" path="res://Assets/UI/Icons/7_62mm.png" id="7_k7457"]
 [ext_resource type="Texture2D" uid="uid://dv36fo0d84itm" path="res://Assets/UI/Icons/inventory_up.png" id="8_5trdk"]
 [ext_resource type="Texture2D" uid="uid://d4nsja3i4hi6b" path="res://Assets/UI/Icons/reload_up.png" id="9_0v5t3"]
+[ext_resource type="Texture2D" uid="uid://c8lndar3w68ub" path="res://Assets/UI/Icons/sold_out.png" id="10_0v5t3"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_7p73v"]
 bg_color = Color(0.015686275, 0.015686275, 0.015686275, 0.34117648)
@@ -17,7 +17,7 @@ bg_color = Color(0.015686275, 0.015686275, 0.015686275, 0.34117648)
 [node name="ShopUI" type="CanvasLayer"]
 script = ExtResource("1_7p73v")
 STAT_ICONS = Array[Texture2D]([ExtResource("2_365ri"), ExtResource("3_0v5t3"), ExtResource("4_00jdg"), ExtResource("5_7glsf"), ExtResource("6_pfq53"), ExtResource("7_k7457"), ExtResource("8_5trdk"), ExtResource("9_0v5t3")])
-sold_out = ExtResource("3_x4e84")
+sold_out = ExtResource("10_0v5t3")
 
 [node name="PanelContainer" type="PanelContainer" parent="."]
 process_mode = 3

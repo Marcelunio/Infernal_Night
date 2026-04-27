@@ -100,5 +100,6 @@ func to_pascal_case(text: String) -> String:
 	
 	var result = ""
 	for word in spaced.split(" "):
-		result += word.capitalize()
+		if word.length() > 0:
+			result += word[0].to_upper() + word.substr(1)
 	return result

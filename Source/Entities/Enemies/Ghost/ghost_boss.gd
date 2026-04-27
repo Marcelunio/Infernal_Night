@@ -46,6 +46,8 @@ signal BossDamaged(amount: int)
 # =========================
 func _ready() -> void:
 	super._ready()
+	max_hp = max_hp * PlayerData.level/2
+	hp = max_hp
 
 # =========================
 # GŁÓWNA PĘTLA
