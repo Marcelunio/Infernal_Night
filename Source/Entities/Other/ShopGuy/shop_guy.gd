@@ -42,10 +42,13 @@ func _input(event) -> void:
 func _on_interact_area_body_entered(body: Node2D) -> void:
 	if body == player:
 		can_open_shop_UI = true
+		clerk_sprite.material.set_shader_parameter("width",2)
+		
 
 func _on_interact_area_body_exited(body: Node2D) -> void:
 	if body == player:
 		can_open_shop_UI = false
+		clerk_sprite.material.set_shader_parameter("width",0)
 
 func _on_rotate_area_body_entered(body: Node2D) -> void:
 	if body == player:

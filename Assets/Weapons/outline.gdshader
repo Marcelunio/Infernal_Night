@@ -3,6 +3,8 @@ uniform vec4 uni_color: source_color = vec4(1,1,1,1);
 uniform int width=2;
 
 void fragment() {
+	if(width!=0)
+	{
 	vec4 color= texture(TEXTURE,UV);
 	vec2 size = TEXTURE_PIXEL_SIZE*float(width);
 	float outline=color.a;
@@ -16,4 +18,5 @@ void fragment() {
 	}
 	outline=min(outline,1.);
 	COLOR= mix(color,vec4(1.,1.,1.,1.),(outline-color.a)*uni_color);
+	}
 }

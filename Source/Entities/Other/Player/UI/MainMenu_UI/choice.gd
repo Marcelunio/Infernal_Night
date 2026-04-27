@@ -65,12 +65,13 @@ func _ready() -> void:
 		v_box.add_child(label)
 		v_box.add_child(button)
 		$HBoxContainer.add_child(v_box)
+		for Vbox in $HBoxContainer.get_children():
+			for control in Vbox.get_children():
+				control.add_theme_font_size_override("font_size",DisplayServer.window_get_size().y/36)
 	
 func start() -> void:
 	visible = true
-	for Vbox in $HBoxContainer.get_children():
-		for control in Vbox.get_children():
-			control.add_theme_font_size_override("font_size",DisplayServer.window_get_size().y/36)
+	
 	
 func _pressed(rooms, time, bonus) -> void:
 	PlayerData.max_rooms = rooms
