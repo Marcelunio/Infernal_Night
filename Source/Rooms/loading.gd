@@ -20,4 +20,4 @@ func _process(delta):
 		var scene = ResourceLoader.load_threaded_get(next_scene_path)
 		get_tree().change_scene_to_packed(scene)
 	elif status == ResourceLoader.THREAD_LOAD_FAILED:
-		push_error("LOADING.GD - Błąd ładowania!")
+		push_error("Loading.gd - Błąd ładowania!")

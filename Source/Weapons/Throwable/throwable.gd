@@ -48,14 +48,12 @@ func _physics_process(_delta):
 		explode()
 
 func __shoot(_spawn_pos: Vector2, entity) -> void:
-	print(entity)
 	Entity = entity
-	print("DEBUG: Throwable używa shoot tylko do przypisaia entity! Użyj throw() do wykonania akcji.")
+	print("Throwable.gd - DEBUG: Throwable używa shoot tylko do przypisaia entity! Użyj throw() do wykonania akcji.")
 	return
 	
 func pin():
 	if !timer_started:
-		print("TIMER START")
 		timer_started = true
 		pin_timer.start()
 	

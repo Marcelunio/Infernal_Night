@@ -38,7 +38,7 @@ func is_busy() -> bool:#screen_stack method
 	return screen_stack.size() > 0
 
 func check_screen_stack() -> void:#screen_stack method
-	print("GAMESTATE - check_screen_stack: ", screen_stack)
+	print("GAMESTATE | check_screen_stack() - ", screen_stack)
 	if screen_stack.size() > 0:
 		get_tree().paused = true
 		_set_gameplay_ui(false)
@@ -86,8 +86,9 @@ func _continue_game() -> void:
 
 func _notification(what: int) -> void:
 	if what == NOTIFICATION_WM_CLOSE_REQUEST:
+		get_tree().set_auto_accept_quit(false)
 		if not PlayerData._check_save_file():
-			PlayerData._save()
+			await PlayerData._save()
 		get_tree().quit()
 
 func to_pascal_case(text: String) -> String:

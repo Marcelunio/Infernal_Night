@@ -1,3 +1,6 @@
+#Zrobił to Kekls, wszelkie niepewności oraz pytania kierować do mnie...
+#Znane bugi: 0
+
 extends PanelContainer
 
 var texture: Texture2D
@@ -63,4 +66,4 @@ func _drop_data(at_position: Vector2, data: Variant) -> void:
 	elif from == "playerInventory" and player_inventory:
 		pass
 	else:
-		print("DEBUG - SOMETHING WENT VERY WRONG IN dad_container.gd")
+		push_error("DEBUG - SOMETHING WENT VERY WRONG IN dad_container.gd")

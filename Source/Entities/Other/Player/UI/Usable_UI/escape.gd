@@ -21,7 +21,6 @@ func _process(delta: float) -> void:
 func _input(event) -> void:
 	if event.is_action_pressed("escape_menu"):
 		if get_tree().paused and GameState.screen_stack.back() == "pause":
-			print("sygnal esnt")
 			emit_signal("escape_closed")
 			GameState.pop_screen()
 			visible = false

@@ -67,6 +67,5 @@ func sprite_change() -> void:#change of sprite:
 		current_textures[1] = textures[5]
 
 func die():#delete
-	print("DEBUG ammo.gd | Ammo sie skonczylo w ", self.name)
 	queue_free()
 	

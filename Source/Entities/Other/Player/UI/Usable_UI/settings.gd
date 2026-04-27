@@ -100,7 +100,7 @@ func _input(event) -> void:
 func _load_settings():
 	var err = config.load(SAVE_PATH)
 	if err != OK:
-		print("Brak pliku cfg, zostaną użyte domyślne wartości")
+		push_warning("settings.gd - Brak pliku cfg, zostaną użyte domyślne wartości")
 		
 	for bus_label in BUSES.values():
 		var currentValue = db_to_linear(AudioServer.get_bus_volume_db(

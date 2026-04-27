@@ -31,7 +31,7 @@ func _ready() -> void:
 		else:
 			stun_timer = 1.2
 	else:
-		print("DEBUG - weapon_origin jest null!")
+		push_error("Melee_attack_collision.gd - weapon_origin jest null!")
 
 func _physics_process(_delta: float) -> void:
 	if not weapon_origin.is_in_group("weapon-throwable-nongranate"):
@@ -117,7 +117,6 @@ func take_damage(body, real_damage, player_effect: bool = false):
 		if body.is_in_group("player"):
 			if body.has_method("take_damage"):
 				body.take_damage(real_damage) 
-				print("damage broni: TKP " , real_damage)
 		
 	if body.is_in_group("enemy"):
 		if body.has_method("take_damage"):

@@ -16,7 +16,7 @@ func _ready():
 	if weapon_origin:
 		damage = weapon_origin.weapon_damage
 	else:
-		print("DEBUG - weapon_origin jest null!")
+		push_error("Bullet.gd - weapon_origin jest null!")
 		
 	$BulletAnimatedSprite.animation = "BANG"
 	$BulletAnimatedSprite.play()
@@ -32,16 +32,13 @@ func _on_body_entered(body: Node) -> void:
 	if body.is_in_group("enemy"):
 		if body.has_method("take_damage"):
 			body.take_damage(damage, 0.12) 
-			print("damage broni: TK " , damage)
 			  
 		elif body.has_method("_take_damage"):
 			body._take_damage(damage, 0.12)
-			print("damage broni: _TK " , damage)
 			
 	if body.is_in_group("player"):
 		if body.has_method("take_damage"):
 			body.take_damage(damage)
-			print("gracz dostał:", damage, "-hp")
 			
 	$BulletAnimatedSprite.stop()
 	queue_free()

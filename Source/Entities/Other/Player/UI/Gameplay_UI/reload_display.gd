@@ -18,7 +18,6 @@ func _process(delta: float) -> void:
 
 func _connect_signals() -> void:
 	inventory.UI_Reload.connect(_reload_start)
-	print("DEBUG LACZY")
 
 func _reload_start(weapon) -> void:
 	visible = true

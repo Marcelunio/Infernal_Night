@@ -38,7 +38,6 @@ func _ready() -> void:
 func setup(pos: Vector2i, type: String):
 	grid_position = pos
 	room_type = type
-	print(get_path())
 
 func enter_room():
 	visible = true
@@ -117,6 +116,5 @@ func clear_room():
 
 func on_enemy_died():
 	enemy_counter -= 1
-	print(enemy_counter)
 	if enemy_counter == 0:
 		clear_room()

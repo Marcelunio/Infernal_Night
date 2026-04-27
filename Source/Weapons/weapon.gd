@@ -67,10 +67,8 @@ func pick_up(body):
 	is_picked_up = true
 	
 	if not body.inventory.add_weapon(self):
-		print("Ekwipunek pelny")
 		is_picked_up = false
 		return
-	print("Podniosłeś: ", weapon_name)
 		
 	# Ukryj broń ale nie usuwaj jej
 	hide()
@@ -79,7 +77,6 @@ func pick_up(body):
 	position = Vector2.ZERO
 
 func throw(spawn_pos: Vector2, velocity_player):
-	print("Broń wyrzucona: ", weapon_name)
 	is_picked_up = false
 	
 	# Usuwa z gracza i dodaje z powrotem do sceny

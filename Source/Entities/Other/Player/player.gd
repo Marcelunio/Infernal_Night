@@ -23,11 +23,6 @@ signal death(enemy_deaths, shots_fired, grenades_thrown)
 
 #weapon location tracker
 var current_room: Node = null 
-	
-#camera
-#@export var camera_speed: float = 4
-#var camera_direction: Vector2 = Vector2.ZERO
-#var camera_offset_limit: float = 0.5
 
 #hp
 var max_hp:int = PlayerData.max_hp
@@ -260,16 +255,6 @@ func _handle_weapon_action():#obslugue wszelkie interakcje gracza
 			if weapon.is_in_group("weapon-ranged"):
 				if not inventory.reload_pending:
 					inventory.reload(weapon)
-			else:
-				print("Player.gd - bron nie ranged false reload")
-
-#func _handle_player_camera(delta, direction):#obsluguje wszelkie nie naturalne zachowania kamery gracza
-#	if  Input.is_action_pressed("control_camera"):
-#		camera_direction=lerp(camera_direction,(direction-$Camera.get_offset())*camera_offset_limit*$Camera.zoom,camera_speed*delta)
-#		$Camera.set_offset(camera_direction)
-#	else:
-#		camera_direction=lerp(camera_direction,Vector2.ZERO,camera_speed*delta)
-#		$Camera.set_offset(camera_direction)
 
 func _handle_player_pick_up():#obslguje poczatkowy proces podnoszenia broni
 	if inventory.pick_up_check or inventory.ammo_pick_up_check:

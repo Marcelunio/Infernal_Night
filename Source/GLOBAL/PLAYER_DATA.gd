@@ -120,17 +120,16 @@ func _save() -> void:
 func _check_save_file() -> bool:
 	var err = config.load(SAVE_PATH)
 	if err != OK:
-		print("PLAYER_DATA - Brak pliku cfg, zostaną użyte domyślne wartości")
+		push_warning("PLAYER_DATA | _check_save_file() - Brak pliku cfg, zostaną użyte domyślne wartości")
 		return true
 	return false
 
 func _load() -> void:
 	var err = config.load(SAVE_PATH)
 	if err != OK:
-		print("PLAYER_DATA - Brak pliku cfg, zostaną użyte domyślne wartości")
+		push_warning("PLAYER_DATA | _load() - Brak pliku cfg, zostaną użyte domyślne wartości")
 		_new_game()
 		return
-	print("PLAYER_DATA - Wczytywanie savefile")
 	
 	play_time = config.get_value("Current-Save", "play_time", play_time)
 	runs = config.get_value("Overall", "runs", runs)
@@ -214,4 +213,4 @@ func _new_game() -> void:
 
 func _die():
 	DirAccess.remove_absolute(SAVE_PATH)
-	print("PLAYER_DATA - PLIK GRY USUNUNIETY")
+	print("PLAYER_DATA - PLIK GRY USUNIETY")
