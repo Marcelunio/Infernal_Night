@@ -18,9 +18,15 @@ class_name Boss
 @export var dash_cooldown := 1.0
 @export var dash_distance := 400.0
 @export var dash_cooldown_duration := 2.0
+@export var dash_combo_count := 3
+
+# TELEPORT DO GRACZA (gdy nie widzi)
+@export var lost_sight_teleport_cooldown := 1.5
+@export var lost_sight_teleport_distance := 150.0
+@export var lost_sight_blink_duration := 0.6
 
 # =========================
-# STATE MACHINE BOSSA
+# STATE MACHINE 
 # =========================
 enum BossState { APPROACH, BURST_SHOOT, TELEPORT, DASH, DASH_COOLDOWN }
 
@@ -35,6 +41,11 @@ var _phase2 := false
 var _dash_dir := Vector2.ZERO
 var _dash_damage_timer := 0.0
 var _dash_start_pos := Vector2.ZERO
+var _dash_combo_remaining := 0
+
+# teleport do gracza
+var _lost_sight_timer := 0.0
+var _is_sight_teleporting := false
 
 # =========================
 # SYGNAŁY
@@ -46,7 +57,7 @@ signal BossDamaged(amount: int)
 # =========================
 func _ready() -> void:
 	super._ready()
-	max_hp = max_hp * PlayerData.level/2
+	max_hp = max_hp * PlayerData.level / 2
 	hp = max_hp
 
 # =========================
@@ -58,6 +69,7 @@ func _physics_process(delta: float) -> void:
 
 	_check_phase2()
 	_check_contact_damage()
+	_update_lost_sight_teleport(delta)
 	_update_boss_state(delta)
 	_update_rotation(delta)
 
@@ -68,6 +80,84 @@ func _check_phase2() -> void:
 	if not _phase2 and hp < max_hp * 0.4:
 		_phase2 = true
 		_dash_cooldown_timer = dash_cooldown * 0.5
+
+# =========================
+# TELEPORT GDY NIE WIDZI GRACZA
+# =========================
+func _update_lost_sight_teleport(delta: float) -> void:
+	if _is_sight_teleporting:
+		return
+	if boss_state == BossState.TELEPORT or boss_state == BossState.DASH:
+		return
+
+	if can_shoot():
+		_lost_sight_timer = lost_sight_teleport_cooldown
+		return
+
+	_lost_sight_timer -= delta
+	if _lost_sight_timer <= 0.0:
+		_lost_sight_timer = lost_sight_teleport_cooldown
+		_start_lost_sight_teleport()
+
+func _start_lost_sight_teleport() -> void:
+	if _is_sight_teleporting:
+		return
+
+	var target := _get_lost_sight_teleport_position()
+	if target == Vector2.ZERO:
+		return
+
+	_is_sight_teleporting = true
+	_do_lost_sight_teleport(target)
+
+func _get_lost_sight_teleport_position() -> Vector2:
+	var player_back: Vector2 = -player.velocity.normalized()
+	if player_back == Vector2.ZERO:
+		player_back = (global_position - player.global_position).normalized()
+
+	var map := agent.get_navigation_map()
+
+	var candidates: Array[Vector2] = [
+		player.global_position + player_back * lost_sight_teleport_distance,
+		player.global_position + Vector2(-player_back.y, player_back.x) * lost_sight_teleport_distance,
+		player.global_position + Vector2(player_back.y, -player_back.x) * lost_sight_teleport_distance,
+		player.global_position - player_back * lost_sight_teleport_distance,
+	]
+
+	for candidate in candidates:
+		var closest: Vector2 = NavigationServer2D.map_get_closest_point(map, candidate)
+		if closest.distance_to(candidate) > 32.0:
+			continue
+		var space_state := get_world_2d().direct_space_state
+		var query := PhysicsRayQueryParameters2D.create(player.global_position, closest)
+		query.exclude = [self, player]
+		query.collision_mask = 0xFFFFFFFF & ~(2 | 4)
+		var result := space_state.intersect_ray(query)
+		if result.is_empty():
+			return closest
+
+	return Vector2.ZERO
+
+func _do_lost_sight_teleport(target: Vector2) -> void:
+	var tween := create_tween()
+	tween.tween_property(self, "modulate:a", 0.0, lost_sight_blink_duration * 0.5)
+	await tween.finished
+
+	if not is_instance_valid(self):
+		return
+
+	global_position = target
+	face_dir = (player.global_position - global_position).normalized()
+	rotation = face_dir.angle()
+
+	tween = create_tween()
+	tween.tween_property(self, "modulate:a", 1.0, lost_sight_blink_duration * 0.5)
+	await tween.finished
+
+	if not is_instance_valid(self):
+		return
+
+	_is_sight_teleporting = false
 
 # =========================
 # AKTUALIZACJA STANU
@@ -94,10 +184,10 @@ func _update_boss_state(delta: float) -> void:
 		BossState.DASH_COOLDOWN:
 			_do_dash_cooldown(delta)
 
-	# Dash tylko w fazie 2
 	if _phase2 and boss_state == BossState.APPROACH:
 		_dash_cooldown_timer -= delta
 		if _dash_cooldown_timer <= 0.0:
+			_dash_combo_remaining = dash_combo_count
 			boss_state = BossState.TELEPORT
 			_start_teleport()
 
@@ -130,11 +220,12 @@ func _spawn_bullet() -> void:
 	bullet.speed = bullet_speed
 
 # =========================
-# TELEPORT (FAZA 2)
+# TELEPORT DASH (FAZA 2)
 # =========================
 func _start_teleport() -> void:
 	var target := _get_teleport_position()
 	if target == Vector2.ZERO:
+		_dash_combo_remaining = 0
 		boss_state = BossState.APPROACH
 		_dash_cooldown_timer = dash_cooldown
 		return
@@ -172,6 +263,8 @@ func _get_teleport_position() -> Vector2:
 		Vector2(-dash_distance, 0),
 		Vector2(dash_distance, 0),
 	]
+
+	offsets.shuffle()
 
 	for offset in offsets:
 		var target: Vector2 = player.global_position + offset
@@ -213,9 +306,14 @@ func _do_dash(delta: float) -> void:
 			has_wall_collision = true
 
 	if has_wall_collision or dist_from_start > dash_distance * 2.0:
-		boss_state = BossState.DASH_COOLDOWN
-		_dash_cooldown_shoot_timer = dash_cooldown_duration
-		_dash_cooldown_timer = dash_cooldown
+		_dash_combo_remaining -= 1
+		if _dash_combo_remaining > 0:
+			boss_state = BossState.TELEPORT
+			_start_teleport()
+		else:
+			boss_state = BossState.DASH_COOLDOWN
+			_dash_cooldown_shoot_timer = dash_cooldown_duration
+			_dash_cooldown_timer = dash_cooldown
 
 # =========================
 # DASH COOLDOWN
@@ -251,7 +349,9 @@ func can_shoot() -> bool:
 
 func take_damage(amount: int, _hit_pause := 0.0) -> void:
 	emit_signal("BossDamaged", amount)
-	super.take_damage(amount, _hit_pause)
+	hp -= amount
+	if hp <= 0:
+		die()
 
 func shoot() -> void:
 	pass
