@@ -172,6 +172,9 @@ func _build_video_list() -> void:
 	dropdown.item_selected.connect(_on_resolution_selected)
 	dropdown.selected = get_index_by_value(RESOLUTIONS, DisplayServer.window_get_size())
 	
+	if not DisplayServer.window_get_mode() == DisplayServer.WINDOW_MODE_WINDOWED:
+		dropdown.disabled = true
+	
 	hBox.add_child(label)
 	hBox.add_child(dropdown)
 	videoVBox.add_child(hBox)
@@ -281,4 +284,5 @@ func _on_reset_pressed() -> void:
 
 
 func _on_control_resized() -> void:
-	$Control.theme.default_font_size = DisplayServer.window_get_size().y/36
+	var size = clamp(DisplayServer.window_get_size().y / 36, 12, 28)
+	$Control.theme.default_font_size = size
