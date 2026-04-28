@@ -27,9 +27,9 @@ func _ready() -> void:
 			acid_check = false
 		
 		if damage == 0:
-			stun_timer = 5
+			stun_timer = 2.67
 		else:
-			stun_timer = 1.2
+			stun_timer = 0.5
 	else:
 		push_error("Melee_attack_collision.gd - weapon_origin jest null!")
 
