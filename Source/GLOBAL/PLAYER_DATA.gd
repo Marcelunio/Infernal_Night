@@ -24,7 +24,7 @@ var coins: int = 0
 var speed: float = 400
 var reload_speed_multiplier:float = 1.0
 var inventory_size:int = 3
-var inventory_weapons: Array = []
+var inventory_weapons: Array = ["knife"]
 var ammo_container: Dictionary = {
 	"9mm": {"max": 50, "current": 50},
 	"5.56mm": {"max": 200, "current": 200},
@@ -38,7 +38,7 @@ var shots_fired: int = 0
 var grenades_thrown: int = 0
 
 #------VAN------
-var van_weapons: Array = ["pistol", "knife"]
+var van_weapons: Array = ["pistol", "shotgun"]
 
 func _ready() -> void:
 	process_mode = PROCESS_MODE_ALWAYS
@@ -201,13 +201,13 @@ func _new_game() -> void:
 		"12gauge": {"max": 40, "current": 40},
 		"7.62mm": {"max": 200, "current": 200}
 	}
-	inventory_weapons = []
+	inventory_weapons = ["knife"]
 	
 	enemy_deaths = 0
 	shots_fired = 0
 	grenades_thrown = 0
 	
-	van_weapons = ["pistol", "knife"]
+	van_weapons = ["pistol", "shotgun"]
 	
 	_save()
 
