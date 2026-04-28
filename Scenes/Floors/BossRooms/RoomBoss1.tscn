@@ -1,7 +1,7 @@
 [gd_scene load_steps=3 format=4 uid="uid://ehv32k8i7rus"]
 
 [ext_resource type="PackedScene" uid="uid://c1da6epqykshi" path="res://Scenes/Floors/ValidRooms/Room.tscn" id="1_vdeqq"]
-[ext_resource type="Texture2D" uid="uid://cva54ciuk85f0" path="res://Assets/light/gradient.tres" id="2_wolu2"]
+[ext_resource type="Texture2D" uid="uid://cva54ciuk85f0" path="res://Assets/Light/gradient.tres" id="2_wolu2"]
 
 [node name="Room" instance=ExtResource("1_vdeqq")]
 
@@ -23,6 +23,7 @@ shadow_enabled = true
 shadow_filter = 1
 texture = ExtResource("2_wolu2")
 texture_scale = 2.0
+height = 80.0
 
 [node name="PointLight2D12" type="PointLight2D" parent="LightGroup" index="1"]
 position = Vector2(1004, 590)
@@ -33,6 +34,7 @@ shadow_enabled = true
 shadow_filter = 1
 texture = ExtResource("2_wolu2")
 texture_scale = 2.0
+height = 80.0
 
 [node name="PointLight2D13" type="PointLight2D" parent="LightGroup" index="2"]
 position = Vector2(144, 587)
@@ -43,6 +45,7 @@ shadow_enabled = true
 shadow_filter = 1
 texture = ExtResource("2_wolu2")
 texture_scale = 2.0
+height = 80.0
 
 [node name="PointLight2D14" type="PointLight2D" parent="LightGroup" index="3"]
 position = Vector2(1006, 178)
@@ -53,6 +56,7 @@ shadow_enabled = true
 shadow_filter = 1
 texture = ExtResource("2_wolu2")
 texture_scale = 2.0
+height = 80.0
 
 [node name="PointLight2D15" type="PointLight2D" parent="LightGroup" index="4"]
 position = Vector2(576, 376)
@@ -64,6 +68,7 @@ shadow_enabled = true
 shadow_filter = 1
 texture = ExtResource("2_wolu2")
 texture_scale = 3.0
+height = 80.0
 
 [node name="PointLight2D16" type="PointLight2D" parent="LightGroup" index="5"]
 position = Vector2(569, 659)
@@ -74,6 +79,7 @@ shadow_enabled = true
 shadow_filter = 1
 texture = ExtResource("2_wolu2")
 texture_scale = 2.0
+height = 80.0
 
 [node name="PointLight2D17" type="PointLight2D" parent="LightGroup" index="6"]
 position = Vector2(581, 114)
@@ -84,3 +90,4 @@ shadow_enabled = true
 shadow_filter = 1
 texture = ExtResource("2_wolu2")
 texture_scale = 2.0
+height = 80.0
