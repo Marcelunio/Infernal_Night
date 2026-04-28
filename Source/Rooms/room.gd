@@ -70,6 +70,7 @@ func spawn_enemies():
 		is_cleared = true
 		for door in doors.values():
 			door.set_collision_mask_value(1, false)
+			door.get_node("block_light").visible = false
 		emit_signal("room_cleared")
 		if room_type == "boss":
 			emit_signal("boss_defeated")
@@ -104,6 +105,7 @@ func clear_room():
 	is_cleared = true
 	for door in doors.values():
 		door.set_collision_mask_value(1, false)
+		door.get_node("block_light").visible = false
 		door.get_child(0).play("open")
 		
 	if not audio_player_door.playing:
