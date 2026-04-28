@@ -1,10 +1,11 @@
-[gd_resource type="TileSet" load_steps=35 format=3 uid="uid://dwjq33gve6fks"]
+[gd_resource type="TileSet" load_steps=37 format=3 uid="uid://dwjq33gve6fks"]
 
 [ext_resource type="Texture2D" uid="uid://dwvb8gat6kfti" path="res://Assets/Tilesets/van2.png" id="1_stlkj"]
 [ext_resource type="Texture2D" uid="uid://d0fyw2g2wv2ds" path="res://Assets/Tilesets/carpetsstuff.png" id="2_f7yts"]
 [ext_resource type="Texture2D" uid="uid://dcjaftvnq1yoq" path="res://Assets/Tilesets/tileset.png" id="2_stlkj"]
 [ext_resource type="Texture2D" uid="uid://l8m207mk34o" path="res://Assets/Tilesets/shop.png" id="2_tqkpo"]
 [ext_resource type="Texture2D" uid="uid://bhq2i0qomawoh" path="res://Assets/Tilesets/store_decor.png" id="4_jpss1"]
+[ext_resource type="Texture2D" uid="uid://bb2fvibep8eyx" path="res://Assets/Entities/door.png" id="4_pgiks"]
 [ext_resource type="Texture2D" uid="uid://sleibykco7jx" path="res://Assets/Tilesets/weapon_shelf.png" id="6_pgiks"]
 
 [sub_resource type="OccluderPolygon2D" id="OccluderPolygon2D_ipptv"]
@@ -121,36 +122,16 @@ texture_region_size = Vector2i(32, 32)
 9:3/0/terrains_peering_bit/bottom_side = 1
 9:2/0 = 0
 9:2/0/terrain_set = 2
-9:2/0/terrain = 0
 9:2/0/physics_layer_0/polygon_0/points = PackedVector2Array(-9.793308, -16, -16, -16, -16, 16, -10.663824, 16, 16, 16, 16, 9.793308, -9.793308, 10.010937)
-9:2/0/terrains_peering_bit/right_side = 0
-9:2/0/terrains_peering_bit/top_side = 0
-9:2/0/terrains_peering_bit/top_right_corner = 0
 10:2/0 = 0
 10:2/0/terrain_set = 2
-10:2/0/terrain = 0
 10:2/0/physics_layer_0/polygon_0/points = PackedVector2Array(16, 9.793308, 16, 16, -16, 16, -16, 9.57568)
-10:2/0/terrains_peering_bit/right_side = 0
-10:2/0/terrains_peering_bit/left_side = 0
-10:2/0/terrains_peering_bit/top_left_corner = 0
-10:2/0/terrains_peering_bit/top_side = 0
-10:2/0/terrains_peering_bit/top_right_corner = 0
 9:1/0 = 0
 9:1/0/terrain_set = 2
-9:1/0/terrain = 0
 9:1/0/physics_layer_0/polygon_0/points = PackedVector2Array(-9.793308, -16, -16, -16, -16, 16, -9.57568, 16)
-9:1/0/terrains_peering_bit/right_side = 0
-9:1/0/terrains_peering_bit/bottom_right_corner = 0
-9:1/0/terrains_peering_bit/bottom_side = 0
-9:1/0/terrains_peering_bit/top_side = 0
-9:1/0/terrains_peering_bit/top_right_corner = 0
 9:0/0 = 0
 9:0/0/terrain_set = 2
-9:0/0/terrain = 0
 9:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-9.793308, -16, -16, -16, -16, 16, -9.57568, 16)
-9:0/0/terrains_peering_bit/right_side = 0
-9:0/0/terrains_peering_bit/bottom_right_corner = 0
-9:0/0/terrains_peering_bit/bottom_side = 0
 9:5/0 = 0
 9:5/0/terrain_set = 2
 9:5/0/terrain = 1
@@ -186,20 +167,10 @@ texture_region_size = Vector2i(32, 32)
 10:3/0/terrains_peering_bit/left_side = 1
 11:1/0 = 0
 11:1/0/terrain_set = 2
-11:1/0/terrain = 0
 11:1/0/physics_layer_0/polygon_0/points = PackedVector2Array(9.793308, -16, 16, -16, 16, 16, 10.010939, 16)
-11:1/0/terrains_peering_bit/bottom_side = 0
-11:1/0/terrains_peering_bit/bottom_left_corner = 0
-11:1/0/terrains_peering_bit/left_side = 0
-11:1/0/terrains_peering_bit/top_left_corner = 0
-11:1/0/terrains_peering_bit/top_side = 0
 11:2/0 = 0
 11:2/0/terrain_set = 2
-11:2/0/terrain = 0
 11:2/0/physics_layer_0/polygon_0/points = PackedVector2Array(9.793308, -16, 16, -16, 16, 16, 10.663824, 16, -16, 16, -16, 9.793308, 9.793308, 10.010937)
-11:2/0/terrains_peering_bit/left_side = 0
-11:2/0/terrains_peering_bit/top_left_corner = 0
-11:2/0/terrains_peering_bit/top_side = 0
 11:3/0 = 0
 11:3/0/terrain_set = 2
 11:3/0/terrain = 1
@@ -222,11 +193,7 @@ texture_region_size = Vector2i(32, 32)
 11:5/0/terrains_peering_bit/top_side = 1
 11:0/0 = 0
 11:0/0/terrain_set = 2
-11:0/0/terrain = 0
 11:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(9.793308, -16, 16, -16, 16, 16, 10.010939, 16)
-11:0/0/terrains_peering_bit/bottom_side = 0
-11:0/0/terrains_peering_bit/bottom_left_corner = 0
-11:0/0/terrains_peering_bit/left_side = 0
 12:0/0 = 0
 12:0/0/terrain_set = 2
 12:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(9.558926, -16, 16, -16, 16, 16, 9.532513, 16)
@@ -304,24 +271,9 @@ texture_region_size = Vector2i(32, 32)
 8:1/0/terrains_peering_bit/top_side = 2
 10:1/0 = 0
 10:1/0/terrain_set = 2
-10:1/0/terrain = 0
 10:1/0/probability = 0.5
-10:1/0/terrains_peering_bit/right_side = 0
-10:1/0/terrains_peering_bit/bottom_right_corner = 0
-10:1/0/terrains_peering_bit/bottom_side = 0
-10:1/0/terrains_peering_bit/bottom_left_corner = 0
-10:1/0/terrains_peering_bit/left_side = 0
-10:1/0/terrains_peering_bit/top_left_corner = 0
-10:1/0/terrains_peering_bit/top_side = 0
-10:1/0/terrains_peering_bit/top_right_corner = 0
 10:0/0 = 0
 10:0/0/terrain_set = 2
-10:0/0/terrain = 0
-10:0/0/terrains_peering_bit/right_side = 0
-10:0/0/terrains_peering_bit/bottom_right_corner = 0
-10:0/0/terrains_peering_bit/bottom_side = 0
-10:0/0/terrains_peering_bit/bottom_left_corner = 0
-10:0/0/terrains_peering_bit/left_side = 0
 0:6/0 = 0
 0:6/0/terrain_set = 2
 0:6/0/terrain = 2
@@ -486,6 +438,19 @@ texture_region_size = Vector2i(32, 32)
 4:7/0 = 0
 5:7/0 = 0
 6:9/0 = 0
+13:7/0 = 0
+13:7/0/terrain_set = 2
+13:7/0/terrain = 0
+13:7/0/probability = 0.75
+13:7/0/terrains_peering_bit/right_side = 0
+13:7/0/terrains_peering_bit/bottom_right_corner = 0
+13:7/0/terrains_peering_bit/bottom_side = 0
+13:7/0/terrains_peering_bit/bottom_left_corner = 0
+13:7/0/terrains_peering_bit/left_side = 0
+13:7/0/terrains_peering_bit/top_left_corner = 0
+13:7/0/terrains_peering_bit/top_side = 0
+13:7/0/terrains_peering_bit/top_right_corner = 0
+7:9/0 = 0
 
 [sub_resource type="OccluderPolygon2D" id="OccluderPolygon2D_r836e"]
 polygon = PackedVector2Array(-16, -16, 16, -16, 16, 16, -16, 16)
@@ -1576,6 +1541,14 @@ texture_region_size = Vector2i(32, 32)
 10:6/0/terrains_peering_bit/left_side = 2
 10:6/0/terrains_peering_bit/top_side = 2
 
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_mbe7i"]
+texture = ExtResource("4_pgiks")
+texture_region_size = Vector2i(32, 32)
+0:0/0 = 0
+0:1/0 = 0
+5:0/0 = 0
+5:1/0 = 0
+
 [sub_resource type="OccluderPolygon2D" id="OccluderPolygon2D_k5ppl"]
 polygon = PackedVector2Array(0.31100464, -16, 16, -16, 16, 16, 0, 16)
 
@@ -1926,3 +1899,4 @@ sources/0 = SubResource("TileSetAtlasSource_tmq46")
 sources/1 = SubResource("TileSetAtlasSource_jpss1")
 sources/4 = SubResource("TileSetAtlasSource_r836e")
 sources/6 = SubResource("TileSetAtlasSource_3uuj4")
+sources/3 = SubResource("TileSetAtlasSource_mbe7i")
