@@ -1,3 +1,5 @@
+Najaktualniejsza wersja projektu można znaleść na repozytorium [Pomeranian Foundry](https://github.com/Pomeranian-Foundry/Infernal_Night)
+
 # Infernal Night
 **A Story Straight from the 9th Circle of Hell**
 
